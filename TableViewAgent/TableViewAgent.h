@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 
 
+@protocol didSelectCell <NSObject>
+- (void)didSelectCell:(id)viewObject;
+@end
+@protocol deleteCell <NSObject>
+- (void)deleteCell:(id)viewObject;
+@end
+
 @interface TableViewAgent : NSObject <UITableViewDataSource, UITableViewDelegate> {
     NSString *cellId;
     id viewObjects;
@@ -21,4 +28,6 @@
 - (void)setDelegate:(id)delegate;
 
 - (id)viewObjectWithIndex:(NSIndexPath *)path;
+
+- (void)redraw;
 @end

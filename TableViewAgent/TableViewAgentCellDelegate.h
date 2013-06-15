@@ -9,7 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @protocol TableViewAgentCellDelegate <NSObject>
-
 - (void)setViewObject:(id)o;
-
 @end

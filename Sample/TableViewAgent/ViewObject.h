@@ -11,7 +11,7 @@
 @interface ViewObject : NSObject
 
 @property (nonatomic) NSString *title;
-@property (nonatomic) NSString *date;
+@property (nonatomic) NSString *message;
 
-- (id)initWithTitle:(NSString *)title date:(NSString *)date;
+- (id)initWithTitle:(NSString *)title message:(NSString *)message;
 @end

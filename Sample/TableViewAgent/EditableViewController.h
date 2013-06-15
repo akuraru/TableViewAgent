@@ -7,7 +7,12 @@
 
 
 #import <Foundation/Foundation.h>
-#import "SingleSectionTableViewAgent.h"
 
-@interface SimpleTableViewAgent : SingleSectionTableViewAgent
+@class TableViewAgent;
+
+@interface EditableViewController : UITableViewController
+
+- (IBAction)touchEdit:(id)sender;
+- (void)setAgent:(TableViewAgent *)agent;
+
 @end

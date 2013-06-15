@@ -9,5 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "SingleSectionTableViewAgent.h"
 
-@interface SimpleTableViewAgent : SingleSectionTableViewAgent
+@interface EditableTableViewAgent : SingleSectionTableViewAgent
+
+- (void)setEditing:(BOOL)b;
+
+- (BOOL)editing;
 @end

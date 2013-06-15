@@ -15,6 +15,6 @@
 
 - (void)setViewObject:(ViewObject *)o {
     self.textLabel.text = o.title;
-    self.detailTextLabel.text = o.date;
+    self.detailTextLabel.text = o.message;
 }
 @end

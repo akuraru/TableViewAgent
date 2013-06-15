@@ -12,6 +12,9 @@
 #import "SecondViewController.h"
 #import "SimpleTableViewAgent.h"
 #import "ViewObject.h"
+#import "SelectCellTableViewAgent.h"
+#import "EditableViewController.h"
+#import "EditableTableViewAgent.h"
 
 @implementation MainViewController {
 }
@@ -22,27 +25,51 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self performSegueWithIdentifier:kSegueAgent sender:[self tableViewAgent:indexPath.row]];
+    [self performSegueWithIdentifier:[self segue:indexPath.row] sender:[self tableViewAgent:indexPath.row]];
+}
+
+- (NSString *)segue:(NSInteger)i {
+    switch (i) {
+        case 0 : return kSegueAgent;
+        case 1 : return kSegueAgent;
+        case 2 : return kSegueEditable;
+    }
+    return kSegueAgent;
 }
 
 - (TableViewAgent *)tableViewAgent:(NSInteger)index {
     TableViewAgent *agent = [self agentInstance:index];
     [agent setCellId:kReuseCell];
     [agent setViewObjects:@[
-            [[ViewObject alloc] initWithTitle:@"hoge" date:@"2012/12/11"],
-            [[ViewObject alloc] initWithTitle:@"piyo" date:@"2012/05/31"],
-            [[ViewObject alloc] initWithTitle:@"fuga" date:@"2012/04/03"],
+            [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
+            [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
+            [[ViewObject alloc] initWithTitle:@"fuga" message:@"2012/04/03"],
     ]];
     return agent;
 }
 
 - (TableViewAgent *)agentInstance:(NSInteger)i {
+    switch (i) {
+        case 0 : return [[SimpleTableViewAgent alloc] init];
+        case 1 : return [[SelectCellTableViewAgent alloc] init];
+        case 2 : return [[EditableTableViewAgent alloc] init];
+    }
     return [[SimpleTableViewAgent alloc] init];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:kSegueAgent]) {
+    if ([self knowSegues:segue.identifier]) {
         [segue.destinationViewController setAgent:sender];
     }
 }
+
+- (BOOL)knowSegues:(NSString *)string {
+    for (NSString *segue in @[kSegueAgent, kSegueEditable]) {
+        if ([segue isEqualToString:string]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 @end

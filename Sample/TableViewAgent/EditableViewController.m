@@ -6,17 +6,22 @@
 //
 
 
-#import "SecondViewController.h"
-#import "TableViewAgent.h"
-#import "ViewObject.h"
+#import "EditableViewController.h"
+#import "TableViewAgentCellDelegate.h"
 #import "ExtactedID.h"
-#import "ThirdViewController.h"
+#import "ViewObject.h"
+#import "TableViewAgent.h"
+#import "EditableTableViewAgent.h"
 
-@implementation SecondViewController {
-    TableViewAgent *agent;
+@implementation EditableViewController {
+    EditableTableViewAgent *agent;
 }
 
-- (void)setAgent:(TableViewAgent *)a {
+- (IBAction)touchEdit:(id)sender {
+    [agent setEditing:!agent.editing];
+}
+
+- (void)setAgent:(id)a {
     agent = a;
 }
 - (void)viewDidLoad {
@@ -36,5 +41,7 @@
     if ([segue.identifier isEqualToString:kSegueEdit]) {
         [segue.destinationViewController setViewObject:sender];
     }
+}
+- (void)deleteCell:(id)viewObject {
 }
 @end

@@ -6,9 +6,8 @@
 //
 
 
-#import "SimpleTableViewAgent.h"
+#import <Foundation/Foundation.h>
+#import "SingleSectionTableViewAgent.h"
 
-
-@implementation SimpleTableViewAgent {
-}
+@interface SelectCellTableViewAgent : SingleSectionTableViewAgent
 @end

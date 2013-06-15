@@ -12,11 +12,11 @@
 @implementation ViewObject {
 
 }
-- (id)initWithTitle:(NSString *)title date:(NSString *)date {
+- (id)initWithTitle:(NSString *)title message:(NSString *)message {
     self = [super init];
     if (self) {
         self.title = title;
-        self.date = date;
+        self.message = message;
     }
     return self;
 }
