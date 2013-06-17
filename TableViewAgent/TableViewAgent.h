@@ -7,6 +7,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "TableViewAgentCellDelegate.h"
 
 
 @protocol didSelectCell <NSObject>
@@ -14,6 +15,9 @@
 @end
 @protocol deleteCell <NSObject>
 - (void)deleteCell:(id)viewObject;
+@end
+@protocol didSelectAdditionalCell
+- (void)didSelectAdditionalCell;
 @end
 
 @interface TableViewAgent : NSObject <UITableViewDataSource, UITableViewDelegate> {
@@ -30,4 +34,6 @@
 - (id)viewObjectWithIndex:(NSIndexPath *)path;
 
 - (void)redraw;
+
+- (void)insertRowWithSection:(NSInteger)section;
 @end

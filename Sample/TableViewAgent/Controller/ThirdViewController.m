@@ -28,6 +28,9 @@
     viewObject.title = self.titleText.text;
     viewObject.message = self.messageText.text;
 
+    if ([self.delegate respondsToSelector:@selector(saveViewObject:)]) {
+        [self.delegate saveViewObject:viewObject];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

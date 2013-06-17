@@ -15,6 +15,8 @@
 #import "SelectCellTableViewAgent.h"
 #import "EditableViewController.h"
 #import "EditableTableViewAgent.h"
+#import "AddCellTableViewAgent.h"
+#import "AdditionalCellTableViewAgent.h"
 
 @implementation MainViewController {
 }
@@ -33,6 +35,8 @@
         case 0 : return kSegueAgent;
         case 1 : return kSegueAgent;
         case 2 : return kSegueEditable;
+        case 3 : return kSegueAdd;
+        case 4 : return kSegueAdditionalCell;
     }
     return kSegueAgent;
 }
@@ -53,6 +57,8 @@
         case 0 : return [[SimpleTableViewAgent alloc] init];
         case 1 : return [[SelectCellTableViewAgent alloc] init];
         case 2 : return [[EditableTableViewAgent alloc] init];
+        case 3 : return [[AddCellTableViewAgent alloc] init];
+        case 4 : return [[AdditionalCellTableViewAgent alloc] init];
     }
     return [[SimpleTableViewAgent alloc] init];
 }
@@ -64,7 +70,7 @@
 }
 
 - (BOOL)knowSegues:(NSString *)string {
-    for (NSString *segue in @[kSegueAgent, kSegueEditable]) {
+    for (NSString *segue in @[kSegueAgent, kSegueEditable, kSegueAdd, kSegueAdditionalCell]) {
         if ([segue isEqualToString:string]) {
             return YES;
         }

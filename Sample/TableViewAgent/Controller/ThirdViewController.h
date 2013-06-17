@@ -10,10 +10,16 @@
 
 @class ViewObject;
 
+@protocol ThirdViewControllerDelegate
+- (void)saveViewObject:(id)viewObject;
+@end
+
 @interface ThirdViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *titleText;
 @property (weak, nonatomic) IBOutlet UITextField *messageText;
+
+@property (weak, nonatomic) id delegate;
 
 - (IBAction)touchSave:(id)sender;
 

@@ -7,7 +7,6 @@
 
 
 #import "TableViewAgent.h"
-#import "TableViewAgentCellDelegate.h"
 
 @implementation TableViewAgent
 
@@ -41,5 +40,8 @@
     for (id cell in [[delegate tableView] visibleCells]) {
         [cell setViewObject:[self viewObjectWithIndex:[[delegate tableView] indexPathForCell:cell]]];
     }
+}
+- (void)insertRowWithSection:(NSInteger)section {
+    [[delegate tableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[viewObjects count] - 1 inSection:section]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 @end
