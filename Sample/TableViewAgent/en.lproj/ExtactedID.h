@@ -4,6 +4,8 @@
 #define kSegueAdditionalCell @"AdditionalCell"
 #define kSegueSelect @"Select"
 #define kSegueAddAndEditNone @"AddAndEditNone"
+#define kSegueAddAndEditHideEditing @"AddAndEditHideEditing"
+#define kSegueAddAndEditShowEditing @"AddAndEditShowEditing"
 #define kReuseCell @"Cell"
 #define kSegueEdit @"Edit"
 #define kReuseAdd @"Add"

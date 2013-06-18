@@ -18,7 +18,7 @@
 @implementation MainService
 
 - (NSArray *)segues {
-    return @[kSegueAgent, kSegueSelect, kSegueEditable, kSegueAdd, kSegueAdditionalCell, kSegueAddAndEditNone];
+    return @[kSegueAgent, kSegueSelect, kSegueEditable, kSegueAdd, kSegueAdditionalCell, kSegueAddAndEditNone, kSegueAddAndEditHideEditing, kSegueAddAndEditShowEditing];
 }
 
 - (NSString *)segue:(NSInteger)index {
@@ -37,6 +37,8 @@
         case 3 : return [[AddCellTableViewAgent alloc] init];
         case 4 : return [[AdditionalCellTableViewAgent alloc] init];
         case 5 : return [[AddAndEditableTableViewAgent alloc] init];
+        case 6 : return [[AddAndEditableTableViewAgent alloc] init];
+        case 7 : return [[AddAndEditableTableViewAgent alloc] init];
     }
     return [[SimpleTableViewAgent alloc] init];
 }

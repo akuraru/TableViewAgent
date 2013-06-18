@@ -7,21 +7,44 @@
 
 
 #import "AddAndEditableTableViewAgent.h"
-
+#import "AdditionalCellStateAlways.h"
+#import "AdditionalCellStateHideEditing.h"
+#import "AdditionalCellStateShowEditing.h"
 
 @implementation AddAndEditableTableViewAgent {
     NSString *additionalCellId;
+    AdditionalCellState *state;
+}
+- (id)init {
+    self = [super init];
+    if (self) {
+        state = [AdditionalCellStateAlways new];
+    }
+    return self;
 }
 
 - (void)setAdditionalCellId:(NSString *)aci {
     additionalCellId = aci;
+}
+- (void)setAdditionalCellMode:(AdditionalCellMode)mode {
+    switch (mode) {
+        case AdditionalCellModeNone: {
+            state = [AdditionalCellStateAlways new];
+        } break;
+        case AdditionalCellModeHideEdting: {
+            state = [AdditionalCellStateHideEditing new];
+        } break;
+        case AdditionalCellModeShowEdting: {
+            state = [AdditionalCellStateShowEditing new];
+        } break;
+    }
 }
 - (void)addViewObject:(id)object {
     viewObjects = [viewObjects arrayByAddingObject:object];
     [self insertRowWithSection:0];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [super tableView:tableView numberOfRowsInSection:section] + 1;
+    return [super tableView:tableView numberOfRowsInSection:section] + [state isShowAddCell:self.editing];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self isAdditionalCellOfIndexPath:indexPath]) {
@@ -60,8 +83,29 @@
 }
 - (void)setEditing:(BOOL)b {
     [[delegate tableView] setEditing:b animated:YES];
+    [self setAddCellHide:[state changeInState:self.editing]];
 }
-
+- (void)setAddCellHide:(ChangeInState)cis {
+    switch (cis) {
+        case ChangeInStateNone: {
+        } break;
+        case ChangeInStateHide: {
+            [self hideAddCell];
+        } break;
+        case ChangeInStateShow: {
+            [self showAddCell];
+        } break;
+    }
+}
+- (void)hideAddCell {
+    [[delegate tableView] deleteRowsAtIndexPaths:@[[self indexPathAddCell]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+- (void)showAddCell {
+    [[delegate tableView] insertRowsAtIndexPaths:@[[self indexPathAddCell]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+- (NSIndexPath *)indexPathAddCell {
+    return [NSIndexPath indexPathForRow:[viewObjects count] inSection:0];
+}
 - (BOOL)editing {
     return [[delegate tableView] isEditing];
 }
