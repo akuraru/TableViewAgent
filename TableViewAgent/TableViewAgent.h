@@ -19,11 +19,11 @@
 @protocol didSelectAdditionalCell
 - (void)didSelectAdditionalCell;
 @end
+id viewObjects;
+id delegate;
 
 @interface TableViewAgent : NSObject <UITableViewDataSource, UITableViewDelegate> {
     NSString *cellId;
-    id viewObjects;
-    id delegate;
 }
 
 - (void)setCellId:(NSString *)cellId;

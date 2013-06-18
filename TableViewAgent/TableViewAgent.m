@@ -28,6 +28,9 @@
     [cell setViewObject:[self viewObjectWithIndex:indexPath]];
     return cell;
 }
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    [self tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
 
 - (id)viewObjectWithIndex:(NSIndexPath *)path {
     return viewObjects[path.row];
