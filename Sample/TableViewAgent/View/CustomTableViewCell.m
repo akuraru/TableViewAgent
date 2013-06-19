@@ -17,4 +17,8 @@
     self.textLabel.text = o.title;
     self.detailTextLabel.text = o.message;
 }
+
+- (CGFloat)heightFromViewObject:(id)o {
+    return [o title].length * 10;
+}
 @end

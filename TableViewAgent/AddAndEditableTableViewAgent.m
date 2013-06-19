@@ -54,16 +54,6 @@
     }
 }
 
-- (void)redraw {
-    for (id cell in [[delegate tableView] visibleCells]) {
-        NSIndexPath *indexPath = [[delegate tableView] indexPathForCell:cell];
-        if ([self isAdditionalCellOfIndexPath:indexPath] == NO) {
-            [cell setViewObject:[self viewObjectWithIndex:indexPath]];
-        }
-    }
-    [[delegate tableView] setEditing:NO animated:NO];
-}
-
 - (UITableViewCell *)createAdditionalCell:(UITableView *)tableView {
     return [tableView dequeueReusableCellWithIdentifier:additionalCellId];;
 }

@@ -14,11 +14,12 @@
 #import "AddCellTableViewAgent.h"
 #import "AdditionalCellTableViewAgent.h"
 #import "AddAndEditableTableViewAgent.h"
+#import "HeightTableViewAgent.h"
 
 @implementation MainService
 
 - (NSArray *)segues {
-    return @[kSegueAgent, kSegueSelect, kSegueEditable, kSegueAdd, kSegueAdditionalCell, kSegueAddAndEditNone, kSegueAddAndEditHideEditing, kSegueAddAndEditShowEditing];
+    return @[kSegueAgent, kSegueSelect, kSegueEditable, kSegueAdd, kSegueAdditionalCell, kSegueAddAndEditNone, kSegueAddAndEditHideEditing, kSegueAddAndEditShowEditing, kSegueHeight];
 }
 
 - (NSString *)segue:(NSInteger)index {
@@ -39,6 +40,7 @@
         case 5 : return [[AddAndEditableTableViewAgent alloc] init];
         case 6 : return [[AddAndEditableTableViewAgent alloc] init];
         case 7 : return [[AddAndEditableTableViewAgent alloc] init];
+        case 8 : return [[HeightTableViewAgent alloc] init];
     }
     return [[SimpleTableViewAgent alloc] init];
 }

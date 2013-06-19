@@ -17,10 +17,6 @@
 - (BOOL)editing {
     return [[delegate tableView] isEditing];
 }
-- (void)redraw {
-    [super redraw];
-    [[delegate tableView] setEditing:NO animated:NO];
-}
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;

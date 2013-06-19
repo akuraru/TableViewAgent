@@ -17,6 +17,7 @@
 		BE225706176BCABD0022DA33 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE225705176BCABD0022DA33 /* Default@2x.png */; };
 		BE225708176BCABD0022DA33 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE225707176BCABD0022DA33 /* Default-568h@2x.png */; };
 		BE22570B176BCABD0022DA33 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE225709176BCABD0022DA33 /* MainStoryboard.storyboard */; };
+		BE3EC31417712A6700AEED69 /* HeightTableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC31317712A6700AEED69 /* HeightTableViewAgent.m */; };
 		BE82B24F1770163400F77391 /* AddOptionHideEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B24E1770163400F77391 /* AddOptionHideEditingViewController.m */; };
 		BE82B2531770189600F77391 /* AdditionalCellState.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B2521770189600F77391 /* AdditionalCellState.m */; };
 		BE82B25617701C9C00F77391 /* AdditionalCellStateAlways.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B25517701C9C00F77391 /* AdditionalCellStateAlways.m */; };
@@ -60,6 +61,8 @@
 		BE225707176BCABD0022DA33 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BE22570A176BCABD0022DA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		BE225716176BCF2B0022DA33 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/ExtactedID.h; sourceTree = "<group>"; };
+		BE3EC31217712A6700AEED69 /* HeightTableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeightTableViewAgent.h; sourceTree = "<group>"; };
+		BE3EC31317712A6700AEED69 /* HeightTableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeightTableViewAgent.m; sourceTree = "<group>"; };
 		BE82B24D1770163400F77391 /* AddOptionHideEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddOptionHideEditingViewController.h; sourceTree = "<group>"; };
 		BE82B24E1770163400F77391 /* AddOptionHideEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddOptionHideEditingViewController.m; sourceTree = "<group>"; };
 		BE82B2511770189600F77391 /* AdditionalCellState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellState.h; sourceTree = "<group>"; };
@@ -207,6 +210,8 @@
 				C8790402FDCD670C8D03F401 /* AdditionalCellTableViewAgent.h */,
 				C879020E74B123CCCE212ED9 /* AddAndEditableTableViewAgent.m */,
 				C8790BDF6A7625C8B1ED15AC /* AddAndEditableTableViewAgent.h */,
+				BE3EC31217712A6700AEED69 /* HeightTableViewAgent.h */,
+				BE3EC31317712A6700AEED69 /* HeightTableViewAgent.m */,
 			);
 			name = TableViewAgent;
 			path = ../TableViewAgent;
@@ -391,6 +396,7 @@
 				BE82B25917701CBC00F77391 /* AdditionalCellStateHideEditing.m in Sources */,
 				BE82B25C17701CCE00F77391 /* AdditionalCellStateShowEditing.m in Sources */,
 				BE82B25F1770211700F77391 /* AddOptionShowEditingViewController.m in Sources */,
+				BE3EC31417712A6700AEED69 /* HeightTableViewAgent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

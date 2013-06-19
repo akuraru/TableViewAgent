@@ -40,9 +40,9 @@
 }
 
 - (void)redraw {
-    for (id cell in [[delegate tableView] visibleCells]) {
-        [cell setViewObject:[self viewObjectWithIndex:[[delegate tableView] indexPathForCell:cell]]];
-    }
+    [[delegate tableView] reloadRowsAtIndexPaths:[[delegate tableView] indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [[delegate tableView] setEditing:NO animated:NO];
+    
 }
 - (void)insertRowWithSection:(NSInteger)section {
     [[delegate tableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[viewObjects count] - 1 inSection:section]] withRowAnimation:UITableViewRowAnimationAutomatic];
