@@ -10,7 +10,6 @@
 
 
 @implementation ViewObject {
-
 }
 - (id)initWithTitle:(NSString *)title message:(NSString *)message {
     self = [super init];
@@ -20,4 +19,5 @@
     }
     return self;
 }
+
 @end

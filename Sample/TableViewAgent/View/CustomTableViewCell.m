@@ -21,4 +21,5 @@
 - (CGFloat)heightFromViewObject:(id)o {
     return [o title].length * 10;
 }
+
 @end

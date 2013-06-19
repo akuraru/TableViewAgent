@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.titleText.text = viewObject.title;
     self.messageText.text = viewObject.message;
 }
@@ -27,7 +27,7 @@
 - (IBAction)touchSave:(id)sender {
     viewObject.title = self.titleText.text;
     viewObject.message = self.messageText.text;
-
+    
     if ([self.delegate respondsToSelector:@selector(saveViewObject:)]) {
         [self.delegate saveViewObject:viewObject];
     }

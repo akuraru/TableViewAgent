@@ -19,22 +19,27 @@
 - (void)setAgent:(TableViewAgent *)a {
     agent = a;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     agent.delegate = self;
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     [agent redraw];
 }
+
 - (void)didSelectCell:(ViewObject *)viewObject {
     [self performSegueWithIdentifier:kSegueEdit sender:viewObject];
 }
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kSegueEdit]) {
         [segue.destinationViewController setViewObject:sender];
     }
 }
+
 @end

@@ -23,24 +23,21 @@
 }
 
 - (NSString *)segue:(NSInteger)index {
-    if (0 <= index && index < self.segues.count)
-        return self.segues[index];
-    else
-        return kSegueAgent;
+    if (0 <= index && index < self.segues.count) return self.segues[index];
+    else return kSegueAgent;
 }
-
 
 - (TableViewAgent *)agentInstance:(NSInteger)index {
     switch (index) {
-        case 0 : return [[SimpleTableViewAgent alloc] init];
-        case 1 : return [[SelectCellTableViewAgent alloc] init];
-        case 2 : return [[EditableTableViewAgent alloc] init];
-        case 3 : return [[AddCellTableViewAgent alloc] init];
-        case 4 : return [[AdditionalCellTableViewAgent alloc] init];
-        case 5 : return [[AddAndEditableTableViewAgent alloc] init];
-        case 6 : return [[AddAndEditableTableViewAgent alloc] init];
-        case 7 : return [[AddAndEditableTableViewAgent alloc] init];
-        case 8 : return [[HeightTableViewAgent alloc] init];
+        case 0: return [[SimpleTableViewAgent alloc] init];
+        case 1: return [[SelectCellTableViewAgent alloc] init];
+        case 2: return [[EditableTableViewAgent alloc] init];
+        case 3: return [[AddCellTableViewAgent alloc] init];
+        case 4: return [[AdditionalCellTableViewAgent alloc] init];
+        case 5: return [[AddAndEditableTableViewAgent alloc] init];
+        case 6: return [[AddAndEditableTableViewAgent alloc] init];
+        case 7: return [[AddAndEditableTableViewAgent alloc] init];
+        case 8: return [[HeightTableViewAgent alloc] init];
     }
     return [[SimpleTableViewAgent alloc] init];
 }
@@ -53,4 +50,5 @@
     }
     return NO;
 }
+
 @end

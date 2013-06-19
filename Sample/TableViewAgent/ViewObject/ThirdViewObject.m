@@ -17,8 +17,8 @@
     self = [super init];
     if (self) {
         _viewObject = vo;
-        self.title = (vo.title) ?: @"";
-        self.message = (vo.message) ?: @"";
+        self.title = (vo.title) ? : @"";
+        self.message = (vo.message) ? : @"";
     }
     return self;
 }

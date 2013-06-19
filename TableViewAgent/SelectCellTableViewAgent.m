@@ -18,4 +18,5 @@
         [delegate didSelectCell:[self viewObjectWithIndex:indexPath]];
     }
 }
+
 @end

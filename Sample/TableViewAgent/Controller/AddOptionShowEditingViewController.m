@@ -14,13 +14,14 @@
 #import "ThirdViewObject.h"
 #import "AddAndEditableTableViewAgent.h"
 
-@implementation AddOptionShowEditingViewController{
+@implementation AddOptionShowEditingViewController {
     AddAndEditableTableViewAgent *agent;
 }
 
 - (IBAction)touchEdit:(id)sender {
     [agent setEditing:!agent.editing];
 }
+
 - (void)didSelectAdditionalCell {
     [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
 }
@@ -30,8 +31,9 @@
     [agent setAdditionalCellId:kReuseAdd];
     [agent setAdditionalCellMode:AdditionalCellModeShowEdting];
 }
+
 - (void)saveViewObject:(ThirdViewObject *)tvo {
-    ViewObject *vo = (tvo.viewObject) ?: [[ViewObject alloc] init];
+    ViewObject *vo = (tvo.viewObject) ? : [[ViewObject alloc] init];
     vo.title = tvo.title;
     vo.message = tvo.message;
     
@@ -58,8 +60,8 @@
         [segue.destinationViewController setDelegate:self];
     }
 }
+
 - (void)deleteCell:(id)viewObject {
 }
-
 
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, ChangeInState) {
+typedef NS_ENUM (NSInteger, ChangeInState) {
     ChangeInStateNone,
     ChangeInStateHide,
     ChangeInStateShow,

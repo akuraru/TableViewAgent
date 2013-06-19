@@ -22,6 +22,7 @@
 - (IBAction)touchEdit:(id)sender {
     [agent setEditing:!agent.editing];
 }
+
 - (void)didSelectAdditionalCell {
     [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
 }
@@ -30,11 +31,12 @@
     agent = a;
     [agent setAdditionalCellId:kReuseAdd];
 }
+
 - (void)saveViewObject:(ThirdViewObject *)tvo {
-    ViewObject *vo = (tvo.viewObject) ?: [[ViewObject alloc] init];
+    ViewObject *vo = (tvo.viewObject) ? : [[ViewObject alloc] init];
     vo.title = tvo.title;
     vo.message = tvo.message;
-
+    
     if (tvo.viewObject == Nil) {
         [agent addViewObject:vo];
     }
@@ -42,13 +44,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     agent.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     [agent redraw];
 }
 
@@ -58,6 +60,8 @@
         [segue.destinationViewController setDelegate:self];
     }
 }
+
 - (void)deleteCell:(id)viewObject {
 }
+
 @end

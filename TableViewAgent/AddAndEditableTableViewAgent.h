@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SingleSectionTableViewAgent.h"
 
-typedef NS_ENUM(NSInteger, AdditionalCellMode) {
+typedef NS_ENUM (NSInteger, AdditionalCellMode) {
     AdditionalCellModeNone,
     AdditionalCellModeHideEdting,
     AdditionalCellModeShowEdting,

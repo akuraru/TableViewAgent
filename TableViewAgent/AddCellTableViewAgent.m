@@ -17,4 +17,5 @@
     viewObjects = [viewObjects arrayByAddingObject:object];
     [self insertRowWithSection:0];
 }
+
 @end

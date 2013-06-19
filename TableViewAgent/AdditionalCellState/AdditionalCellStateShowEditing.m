@@ -17,4 +17,5 @@
 - (ChangeInState)changeInState:(BOOL)edting {
     return (edting == NO) ? ChangeInStateHide : ChangeInStateShow;
 }
+
 @end

@@ -33,10 +33,10 @@
     TableViewAgent *agent = [service agentInstance:index];
     [agent setCellId:kReuseCell];
     [agent setViewObjects:@[
-            [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
-            [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
-            [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
-    ]];
+     [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
+     [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
+     [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
+     ]];
     return agent;
 }
 

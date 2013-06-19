@@ -27,11 +27,12 @@
 - (void)setAgent:(AddCellTableViewAgent *)a {
     agent = a;
 }
+
 - (void)saveViewObject:(ThirdViewObject *)tvo {
-    ViewObject *vo = (tvo.viewObject) ?: [[ViewObject alloc] init];
+    ViewObject *vo = (tvo.viewObject) ? : [[ViewObject alloc] init];
     vo.title = tvo.title;
     vo.message = tvo.message;
-
+    
     if (tvo.viewObject == Nil) {
         [agent addViewObject:vo];
     }
@@ -39,13 +40,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     agent.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     [agent redraw];
 }
 
@@ -55,4 +56,5 @@
         [segue.destinationViewController setDelegate:self];
     }
 }
+
 @end
