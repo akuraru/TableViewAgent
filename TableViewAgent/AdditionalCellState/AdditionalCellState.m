@@ -11,7 +11,7 @@
 @implementation AdditionalCellState
 
 - (BOOL)isShowAddCell:(BOOL)edting {
-    return YES;
+    return NO;
 }
 
 - (ChangeInState)changeInState:(BOOL)edting {

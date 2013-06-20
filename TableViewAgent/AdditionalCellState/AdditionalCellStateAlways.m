@@ -10,4 +10,8 @@
 
 @implementation AdditionalCellStateAlways
 
+- (BOOL)isShowAddCell:(BOOL)edting {
+    return YES;
+}
+
 @end

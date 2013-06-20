@@ -18,11 +18,6 @@
 
 - (void)setAgent:(TableViewAgent *)a {
     agent = a;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
     agent.delegate = self;
 }
 

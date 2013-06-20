@@ -10,6 +10,7 @@
 #import "AdditionalCellStateAlways.h"
 #import "AdditionalCellStateHideEditing.h"
 #import "AdditionalCellStateShowEditing.h"
+#import "AdditionalCellStateNone.h"
 
 @implementation AddAndEditableTableViewAgent {
     NSString *additionalCellId;
@@ -30,6 +31,9 @@
 - (void)setAdditionalCellMode:(AdditionalCellMode)mode {
     switch (mode) {
         case AdditionalCellModeNone: {
+            state = [AdditionalCellStateNone new];
+        } break;
+        case AdditionalCellModeAlways : {
             state = [AdditionalCellStateAlways new];
         } break;
         case AdditionalCellModeHideEdting: {

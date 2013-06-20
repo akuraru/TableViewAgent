@@ -7,6 +7,7 @@
 #define kSegueAddAndEditHideEditing @"AddAndEditHideEditing"
 #define kSegueAddAndEditShowEditing @"AddAndEditShowEditing"
 #define kSegueHeight @"Height"
+#define kSegueSingleSection @"SingleSection"
 #define kReuseCell @"Cell"
 #define kSegueEdit @"Edit"
 #define kReuseAdd @"Add"

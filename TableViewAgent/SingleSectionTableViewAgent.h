@@ -10,4 +10,7 @@
 #import "TableViewAgent.h"
 
 @interface SingleSectionTableViewAgent : TableViewAgent
+
+- (id)viewObjectWithIndex:(NSIndexPath *)path;
+
 @end

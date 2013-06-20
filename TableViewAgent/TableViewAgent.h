@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "TableViewAgentCellDelegate.h"
 
+@class AdditionalCellState;
+@class EditableState;
+
+typedef void override_void;
+typedef id override_id;
 
 @protocol didSelectCell <NSObject>
 - (void)didSelectCell:(id)viewObject;
@@ -16,24 +21,44 @@
 @protocol deleteCell <NSObject>
 - (void)deleteCell:(id)viewObject;
 @end
-@protocol didSelectAdditionalCell
+@protocol didSelectAdditionalCell <NSObject>
 - (void)didSelectAdditionalCell;
 @end
-id viewObjects;
-id delegate;
+
+@protocol TableViewAgentDelegate <didSelectCell, deleteCell, didSelectAdditionalCell>
+@end
+
+typedef NS_ENUM (NSInteger, AdditionalCellMode) {
+    AdditionalCellModeNone,
+    AdditionalCellModeAlways,
+    AdditionalCellModeHideEdting,
+    AdditionalCellModeShowEdting,
+};
+typedef NS_ENUM (NSInteger, EditableMode) {
+    EditableModeNone,
+    EditableModeEnable,
+};
 
 @interface TableViewAgent : NSObject <UITableViewDataSource, UITableViewDelegate> {
     NSString *cellId;
+    id viewObjects;
+    id delegate;
+    AdditionalCellState *addState;
+    EditableState *editableState;
 }
 
 - (void)setCellId:(NSString *)cellId;
 - (void)setViewObjects:(id)viewObjects;
-
 - (void)setDelegate:(id)delegate;
 
-- (id)viewObjectWithIndex:(NSIndexPath *)path;
+- (void)setAdditionalCellMode:(AdditionalCellMode)mode;
+- (void)setEditableMode:(EditableMode)mode;
 
 - (void)redraw;
 
 - (void)insertRowWithSection:(NSInteger)section;
+
+- (override_id)viewObjectWithIndex:(NSIndexPath *)indexPath;
+- (override_void)setEditing:(BOOL)b;
+
 @end

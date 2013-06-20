@@ -9,12 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "SingleSectionTableViewAgent.h"
 
-typedef NS_ENUM (NSInteger, AdditionalCellMode) {
-    AdditionalCellModeNone,
-    AdditionalCellModeHideEdting,
-    AdditionalCellModeShowEdting,
-};
-
 @interface AddAndEditableTableViewAgent : SingleSectionTableViewAgent
 - (void)setAdditionalCellId:(NSString *)aci;
 - (void)setAdditionalCellMode:(AdditionalCellMode)mode;

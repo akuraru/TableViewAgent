@@ -7,8 +7,23 @@
 
 
 #import "TableViewAgent.h"
+#import "AdditionalCellStateNone.h"
+#import "AdditionalCellStateAlways.h"
+#import "AdditionalCellStateHideEditing.h"
+#import "AdditionalCellStateShowEditing.h"
+#import "EditableStateNone.h"
+#import "EditableStateEnadle.h"
 
 @implementation TableViewAgent
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        addState = [AdditionalCellStateNone new];
+        editableState = [EditableStateNone new];
+    }
+    return self;
+}
 
 - (void)setCellId:(NSString *)c {
     cellId = c;
@@ -34,21 +49,50 @@
     [self tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
-- (id)viewObjectWithIndex:(NSIndexPath *)path {
-    return viewObjects[path.row];
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)redraw {
     [[delegate tableView] reloadRowsAtIndexPaths:[[delegate tableView] indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [[delegate tableView] setEditing:NO animated:NO];
+    [self setEditing:NO];
 }
 
 - (void)insertRowWithSection:(NSInteger)section {
     [[delegate tableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[viewObjects count] - 1 inSection:section]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (void)setAdditionalCellMode:(AdditionalCellMode)mode {
+    switch (mode) {
+        case AdditionalCellModeNone : {
+            addState = [AdditionalCellStateNone new];
+        } break;
+        case AdditionalCellModeAlways : {
+            addState = [AdditionalCellStateAlways new];
+        } break;
+        case AdditionalCellModeHideEdting: {
+            addState = [AdditionalCellStateHideEditing new];
+        } break;
+        case AdditionalCellModeShowEdting: {
+            addState = [AdditionalCellStateShowEditing new];
+        } break;
+    }
+}
+- (void)setEditableMode:(EditableMode)mode {
+    switch (mode) {
+        case EditableModeNone : {
+            editableState = [EditableStateNone new];
+        } break;
+        case EditableModeEnable : {
+            editableState = [EditableStateEnadle new];
+        } break;
+    }
+}
+
+- (override_id)viewObjectWithIndex:(NSIndexPath *)indexPath {
+    return nil;
+}
+- (override_void)setEditing:(BOOL)b {
+    [[delegate tableView] setEditing:b animated:YES];
+}
 @end

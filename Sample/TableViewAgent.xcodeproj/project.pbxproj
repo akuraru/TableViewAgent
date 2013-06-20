@@ -24,6 +24,12 @@
 		BE82B25917701CBC00F77391 /* AdditionalCellStateHideEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B25817701CBC00F77391 /* AdditionalCellStateHideEditing.m */; };
 		BE82B25C17701CCE00F77391 /* AdditionalCellStateShowEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B25B17701CCE00F77391 /* AdditionalCellStateShowEditing.m */; };
 		BE82B25F1770211700F77391 /* AddOptionShowEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B25E1770211700F77391 /* AddOptionShowEditingViewController.m */; };
+		BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1217719B3200A6113E /* SSViewController.m */; };
+		BE8FDB1717727A4300A6113E /* EditableState.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1617727A4300A6113E /* EditableState.m */; };
+		BE8FDB1A17727CDF00A6113E /* EditableStateNone.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1917727CDF00A6113E /* EditableStateNone.m */; };
+		BE8FDB1D17727DBA00A6113E /* EditableStateEnadle.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1C17727DBA00A6113E /* EditableStateEnadle.m */; };
+		BEE3CD2F1771868A005A109C /* SSTableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE3CD2E1771868A005A109C /* SSTableViewAgent.m */; };
+		BEE3CD3217718BF0005A109C /* AdditionalCellStateNone.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE3CD3117718BF0005A109C /* AdditionalCellStateNone.m */; };
 		C879001977840BC5FEAFB6B1 /* AddAndEditableTableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = C879020E74B123CCCE212ED9 /* AddAndEditableTableViewAgent.m */; };
 		C87900DD46E65CE247F91932 /* EditableTableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = C879021E6517EF7B24C5AC2F /* EditableTableViewAgent.m */; };
 		C87900EB2FBD950F73F226C9 /* AddOptionNoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790D831DE4309417FD1698 /* AddOptionNoneViewController.m */; };
@@ -75,6 +81,18 @@
 		BE82B25B17701CCE00F77391 /* AdditionalCellStateShowEditing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateShowEditing.m; sourceTree = "<group>"; };
 		BE82B25D1770211700F77391 /* AddOptionShowEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddOptionShowEditingViewController.h; sourceTree = "<group>"; };
 		BE82B25E1770211700F77391 /* AddOptionShowEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddOptionShowEditingViewController.m; sourceTree = "<group>"; };
+		BE8FDB1117719B3200A6113E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
+		BE8FDB1217719B3200A6113E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
+		BE8FDB1517727A4300A6113E /* EditableState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableState.h; sourceTree = "<group>"; };
+		BE8FDB1617727A4300A6113E /* EditableState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableState.m; sourceTree = "<group>"; };
+		BE8FDB1817727CDF00A6113E /* EditableStateNone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableStateNone.h; sourceTree = "<group>"; };
+		BE8FDB1917727CDF00A6113E /* EditableStateNone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableStateNone.m; sourceTree = "<group>"; };
+		BE8FDB1B17727DBA00A6113E /* EditableStateEnadle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableStateEnadle.h; sourceTree = "<group>"; };
+		BE8FDB1C17727DBA00A6113E /* EditableStateEnadle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableStateEnadle.m; sourceTree = "<group>"; };
+		BEE3CD2D1771868A005A109C /* SSTableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTableViewAgent.h; sourceTree = "<group>"; };
+		BEE3CD2E1771868A005A109C /* SSTableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTableViewAgent.m; sourceTree = "<group>"; };
+		BEE3CD3017718BF0005A109C /* AdditionalCellStateNone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateNone.h; sourceTree = "<group>"; };
+		BEE3CD3117718BF0005A109C /* AdditionalCellStateNone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateNone.m; sourceTree = "<group>"; };
 		C879003BB384E66E6C658D90 /* AddCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCellViewController.m; sourceTree = "<group>"; };
 		C87900414D395847A7429C3E /* SelectCellTableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCellTableViewAgent.h; sourceTree = "<group>"; };
 		C8790043B0A754925503375F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -192,6 +210,7 @@
 		BE225714176BCB760022DA33 /* TableViewAgent */ = {
 			isa = PBXGroup;
 			children = (
+				BE8FDB14177279FC00A6113E /* EditableState */,
 				BE82B2501770187300F77391 /* AdditionalCellState */,
 				C87901BF34200094F1D65F23 /* TableViewAgent.h */,
 				C8790BBACFB2706282D720B2 /* TableViewAgent.m */,
@@ -212,6 +231,8 @@
 				C8790BDF6A7625C8B1ED15AC /* AddAndEditableTableViewAgent.h */,
 				BE3EC31217712A6700AEED69 /* HeightTableViewAgent.h */,
 				BE3EC31317712A6700AEED69 /* HeightTableViewAgent.m */,
+				BEE3CD2D1771868A005A109C /* SSTableViewAgent.h */,
+				BEE3CD2E1771868A005A109C /* SSTableViewAgent.m */,
 			);
 			name = TableViewAgent;
 			path = ../TableViewAgent;
@@ -228,8 +249,23 @@
 				BE82B25817701CBC00F77391 /* AdditionalCellStateHideEditing.m */,
 				BE82B25A17701CCE00F77391 /* AdditionalCellStateShowEditing.h */,
 				BE82B25B17701CCE00F77391 /* AdditionalCellStateShowEditing.m */,
+				BEE3CD3017718BF0005A109C /* AdditionalCellStateNone.h */,
+				BEE3CD3117718BF0005A109C /* AdditionalCellStateNone.m */,
 			);
 			path = AdditionalCellState;
+			sourceTree = "<group>";
+		};
+		BE8FDB14177279FC00A6113E /* EditableState */ = {
+			isa = PBXGroup;
+			children = (
+				BE8FDB1517727A4300A6113E /* EditableState.h */,
+				BE8FDB1617727A4300A6113E /* EditableState.m */,
+				BE8FDB1817727CDF00A6113E /* EditableStateNone.h */,
+				BE8FDB1917727CDF00A6113E /* EditableStateNone.m */,
+				BE8FDB1B17727DBA00A6113E /* EditableStateEnadle.h */,
+				BE8FDB1C17727DBA00A6113E /* EditableStateEnadle.m */,
+			);
+			path = EditableState;
 			sourceTree = "<group>";
 		};
 		C87900BA02DDA03BE1CD6B37 /* Controller */ = {
@@ -253,6 +289,8 @@
 				BE82B24E1770163400F77391 /* AddOptionHideEditingViewController.m */,
 				BE82B25D1770211700F77391 /* AddOptionShowEditingViewController.h */,
 				BE82B25E1770211700F77391 /* AddOptionShowEditingViewController.m */,
+				BE8FDB1117719B3200A6113E /* SSViewController.h */,
+				BE8FDB1217719B3200A6113E /* SSViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -397,6 +435,12 @@
 				BE82B25C17701CCE00F77391 /* AdditionalCellStateShowEditing.m in Sources */,
 				BE82B25F1770211700F77391 /* AddOptionShowEditingViewController.m in Sources */,
 				BE3EC31417712A6700AEED69 /* HeightTableViewAgent.m in Sources */,
+				BEE3CD2F1771868A005A109C /* SSTableViewAgent.m in Sources */,
+				BEE3CD3217718BF0005A109C /* AdditionalCellStateNone.m in Sources */,
+				BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */,
+				BE8FDB1717727A4300A6113E /* EditableState.m in Sources */,
+				BE8FDB1A17727CDF00A6113E /* EditableStateNone.m in Sources */,
+				BE8FDB1D17727DBA00A6113E /* EditableStateEnadle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

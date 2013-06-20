@@ -20,4 +20,8 @@
     return [viewObjects count];
 }
 
+- (id)viewObjectWithIndex:(NSIndexPath *)path {
+    return viewObjects[path.row];
+}
+
 @end
