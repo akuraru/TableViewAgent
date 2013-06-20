@@ -9,9 +9,8 @@
 #import "MainViewController.h"
 #import "TableViewAgent.h"
 #import "ExtactedID.h"
-#import "SecondViewController.h"
 #import "ViewObject.h"
-#import "EditableViewController.h"
+#import "SSViewController.h"
 #import "MainService.h"
 
 @implementation MainViewController {

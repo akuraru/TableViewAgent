@@ -18,37 +18,23 @@
 		BE225708176BCABD0022DA33 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE225707176BCABD0022DA33 /* Default-568h@2x.png */; };
 		BE22570B176BCABD0022DA33 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE225709176BCABD0022DA33 /* MainStoryboard.storyboard */; };
 		BE3EC31417712A6700AEED69 /* HeightTableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3EC31317712A6700AEED69 /* HeightTableViewAgent.m */; };
-		BE82B24F1770163400F77391 /* AddOptionHideEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B24E1770163400F77391 /* AddOptionHideEditingViewController.m */; };
 		BE82B2531770189600F77391 /* AdditionalCellState.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B2521770189600F77391 /* AdditionalCellState.m */; };
 		BE82B25617701C9C00F77391 /* AdditionalCellStateAlways.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B25517701C9C00F77391 /* AdditionalCellStateAlways.m */; };
 		BE82B25917701CBC00F77391 /* AdditionalCellStateHideEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B25817701CBC00F77391 /* AdditionalCellStateHideEditing.m */; };
 		BE82B25C17701CCE00F77391 /* AdditionalCellStateShowEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B25B17701CCE00F77391 /* AdditionalCellStateShowEditing.m */; };
-		BE82B25F1770211700F77391 /* AddOptionShowEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B25E1770211700F77391 /* AddOptionShowEditingViewController.m */; };
 		BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1217719B3200A6113E /* SSViewController.m */; };
 		BE8FDB1717727A4300A6113E /* EditableState.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1617727A4300A6113E /* EditableState.m */; };
 		BE8FDB1A17727CDF00A6113E /* EditableStateNone.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1917727CDF00A6113E /* EditableStateNone.m */; };
 		BE8FDB1D17727DBA00A6113E /* EditableStateEnadle.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1C17727DBA00A6113E /* EditableStateEnadle.m */; };
 		BEE3CD2F1771868A005A109C /* SSTableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE3CD2E1771868A005A109C /* SSTableViewAgent.m */; };
 		BEE3CD3217718BF0005A109C /* AdditionalCellStateNone.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE3CD3117718BF0005A109C /* AdditionalCellStateNone.m */; };
-		C879001977840BC5FEAFB6B1 /* AddAndEditableTableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = C879020E74B123CCCE212ED9 /* AddAndEditableTableViewAgent.m */; };
-		C87900DD46E65CE247F91932 /* EditableTableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = C879021E6517EF7B24C5AC2F /* EditableTableViewAgent.m */; };
-		C87900EB2FBD950F73F226C9 /* AddOptionNoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790D831DE4309417FD1698 /* AddOptionNoneViewController.m */; };
-		C8790217E990AEE5A652F716 /* AddCellTableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = C87907B3D131C2D67CF92C57 /* AddCellTableViewAgent.m */; };
 		C87903536A8986DA6EC5F746 /* MainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790598EDF8FE8AE36B952B /* MainService.m */; };
 		C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790F785A526609644BE7B5 /* ThirdViewObject.m */; };
 		C879041242F8D565D437DBD5 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790ACD959A44401E4E0D54 /* CustomTableViewCell.m */; };
 		C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790665BD0F40D548AD722F /* ViewObject.m */; };
 		C879079959003B75D9C7BF87 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790DD4728C683034FBAF4A /* ThirdViewController.m */; };
 		C87907CB6D9AB849475D4CE5 /* TableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790BBACFB2706282D720B2 /* TableViewAgent.m */; };
-		C87908A49D16AD16A6A3E146 /* EditableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790409CCA1E4921D877ED4 /* EditableViewController.m */; };
-		C87908FCA1A53BCA0B96CA0D /* SelectCellTableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = C879089C9ECBBCB99F1BAF0D /* SelectCellTableViewAgent.m */; };
-		C879090B4577DC0338F49EDB /* AdditionalCellTableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = C879019235DCFE4BC8F49157 /* AdditionalCellTableViewAgent.m */; };
 		C87909C858C0691F2E527E6C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790043B0A754925503375F /* MainViewController.m */; };
-		C8790A979D224E69AEFC92AE /* AddCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C879003BB384E66E6C658D90 /* AddCellViewController.m */; };
-		C8790B9006DED1C20C78FF29 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790161A45E527AF2306C1D /* SecondViewController.m */; };
-		C8790BEE8B1F5D947B53CA68 /* SingleSectionTableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = C87905B3D95367DB10235A9D /* SingleSectionTableViewAgent.m */; };
-		C8790E9623C1BBF8EE5BD2C4 /* SimpleTableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790DE6726B3A310E50513B /* SimpleTableViewAgent.m */; };
-		C8790F0B8A416510477F4F5B /* AdditionalCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C879025F1957C53BEDB1A180 /* AdditionalCellViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,8 +55,6 @@
 		BE225716176BCF2B0022DA33 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/ExtactedID.h; sourceTree = "<group>"; };
 		BE3EC31217712A6700AEED69 /* HeightTableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeightTableViewAgent.h; sourceTree = "<group>"; };
 		BE3EC31317712A6700AEED69 /* HeightTableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeightTableViewAgent.m; sourceTree = "<group>"; };
-		BE82B24D1770163400F77391 /* AddOptionHideEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddOptionHideEditingViewController.h; sourceTree = "<group>"; };
-		BE82B24E1770163400F77391 /* AddOptionHideEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddOptionHideEditingViewController.m; sourceTree = "<group>"; };
 		BE82B2511770189600F77391 /* AdditionalCellState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellState.h; sourceTree = "<group>"; };
 		BE82B2521770189600F77391 /* AdditionalCellState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellState.m; sourceTree = "<group>"; };
 		BE82B25417701C9B00F77391 /* AdditionalCellStateAlways.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateAlways.h; sourceTree = "<group>"; };
@@ -79,8 +63,6 @@
 		BE82B25817701CBC00F77391 /* AdditionalCellStateHideEditing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateHideEditing.m; sourceTree = "<group>"; };
 		BE82B25A17701CCE00F77391 /* AdditionalCellStateShowEditing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateShowEditing.h; sourceTree = "<group>"; };
 		BE82B25B17701CCE00F77391 /* AdditionalCellStateShowEditing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateShowEditing.m; sourceTree = "<group>"; };
-		BE82B25D1770211700F77391 /* AddOptionShowEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddOptionShowEditingViewController.h; sourceTree = "<group>"; };
-		BE82B25E1770211700F77391 /* AddOptionShowEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddOptionShowEditingViewController.m; sourceTree = "<group>"; };
 		BE8FDB1117719B3200A6113E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
 		BE8FDB1217719B3200A6113E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
 		BE8FDB1517727A4300A6113E /* EditableState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableState.h; sourceTree = "<group>"; };
@@ -93,43 +75,19 @@
 		BEE3CD2E1771868A005A109C /* SSTableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTableViewAgent.m; sourceTree = "<group>"; };
 		BEE3CD3017718BF0005A109C /* AdditionalCellStateNone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateNone.h; sourceTree = "<group>"; };
 		BEE3CD3117718BF0005A109C /* AdditionalCellStateNone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateNone.m; sourceTree = "<group>"; };
-		C879003BB384E66E6C658D90 /* AddCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCellViewController.m; sourceTree = "<group>"; };
-		C87900414D395847A7429C3E /* SelectCellTableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCellTableViewAgent.h; sourceTree = "<group>"; };
 		C8790043B0A754925503375F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		C879009853F978924C79D87E /* EditableTableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableTableViewAgent.h; sourceTree = "<group>"; };
-		C8790161A45E527AF2306C1D /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		C879019235DCFE4BC8F49157 /* AdditionalCellTableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellTableViewAgent.m; sourceTree = "<group>"; };
 		C87901BF34200094F1D65F23 /* TableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgent.h; sourceTree = "<group>"; };
-		C879020E74B123CCCE212ED9 /* AddAndEditableTableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAndEditableTableViewAgent.m; sourceTree = "<group>"; };
-		C879021E6517EF7B24C5AC2F /* EditableTableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableTableViewAgent.m; sourceTree = "<group>"; };
-		C879025F1957C53BEDB1A180 /* AdditionalCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellViewController.m; sourceTree = "<group>"; };
 		C87902B6380B6A554115F053 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
-		C8790313108BF5C3EA960DFF /* AddCellTableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCellTableViewAgent.h; sourceTree = "<group>"; };
 		C8790352EF7D1394525F8E95 /* ViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewObject.h; sourceTree = "<group>"; };
-		C8790402FDCD670C8D03F401 /* AdditionalCellTableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellTableViewAgent.h; sourceTree = "<group>"; };
-		C8790409CCA1E4921D877ED4 /* EditableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableViewController.m; sourceTree = "<group>"; };
-		C87905223018EDAE3DDCB19D /* AddOptionNoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddOptionNoneViewController.h; sourceTree = "<group>"; };
 		C879056EE85037B2CC3E8E04 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
-		C879058D45E0C5E1DCF737C4 /* AddCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCellViewController.h; sourceTree = "<group>"; };
 		C8790598EDF8FE8AE36B952B /* MainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainService.m; sourceTree = "<group>"; };
 		C87905AA85581FFC391C71B4 /* TableViewAgentCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentCellDelegate.h; sourceTree = "<group>"; };
-		C87905B3D95367DB10235A9D /* SingleSectionTableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleSectionTableViewAgent.m; sourceTree = "<group>"; };
-		C87905D01F8E3FD9E97F4B14 /* SingleSectionTableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleSectionTableViewAgent.h; sourceTree = "<group>"; };
 		C8790665BD0F40D548AD722F /* ViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewObject.m; sourceTree = "<group>"; };
-		C87907B3D131C2D67CF92C57 /* AddCellTableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCellTableViewAgent.m; sourceTree = "<group>"; };
-		C879089C9ECBBCB99F1BAF0D /* SelectCellTableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCellTableViewAgent.m; sourceTree = "<group>"; };
 		C8790A0C3B4E3F0F06841882 /* MainService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainService.h; sourceTree = "<group>"; };
-		C8790A19D26F3F5FB4E58313 /* EditableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableViewController.h; sourceTree = "<group>"; };
 		C8790ACD959A44401E4E0D54 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
-		C8790B44ABF46EA9DB75719B /* AdditionalCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellViewController.h; sourceTree = "<group>"; };
 		C8790BBACFB2706282D720B2 /* TableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewAgent.m; sourceTree = "<group>"; };
-		C8790BDF6A7625C8B1ED15AC /* AddAndEditableTableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAndEditableTableViewAgent.h; sourceTree = "<group>"; };
 		C8790C8A20FD24508847CBEE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		C8790C8F62283218B4E1733D /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		C8790D17C1FCADD8E83DCAF9 /* SimpleTableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTableViewAgent.h; sourceTree = "<group>"; };
-		C8790D831DE4309417FD1698 /* AddOptionNoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddOptionNoneViewController.m; sourceTree = "<group>"; };
 		C8790DD4728C683034FBAF4A /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
-		C8790DE6726B3A310E50513B /* SimpleTableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTableViewAgent.m; sourceTree = "<group>"; };
 		C8790E7509D540B912A684D8 /* ThirdViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewObject.h; sourceTree = "<group>"; };
 		C8790F785A526609644BE7B5 /* ThirdViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,20 +173,6 @@
 				C87901BF34200094F1D65F23 /* TableViewAgent.h */,
 				C8790BBACFB2706282D720B2 /* TableViewAgent.m */,
 				C87905AA85581FFC391C71B4 /* TableViewAgentCellDelegate.h */,
-				C8790DE6726B3A310E50513B /* SimpleTableViewAgent.m */,
-				C8790D17C1FCADD8E83DCAF9 /* SimpleTableViewAgent.h */,
-				C87905B3D95367DB10235A9D /* SingleSectionTableViewAgent.m */,
-				C87905D01F8E3FD9E97F4B14 /* SingleSectionTableViewAgent.h */,
-				C879089C9ECBBCB99F1BAF0D /* SelectCellTableViewAgent.m */,
-				C87900414D395847A7429C3E /* SelectCellTableViewAgent.h */,
-				C879021E6517EF7B24C5AC2F /* EditableTableViewAgent.m */,
-				C879009853F978924C79D87E /* EditableTableViewAgent.h */,
-				C87907B3D131C2D67CF92C57 /* AddCellTableViewAgent.m */,
-				C8790313108BF5C3EA960DFF /* AddCellTableViewAgent.h */,
-				C879019235DCFE4BC8F49157 /* AdditionalCellTableViewAgent.m */,
-				C8790402FDCD670C8D03F401 /* AdditionalCellTableViewAgent.h */,
-				C879020E74B123CCCE212ED9 /* AddAndEditableTableViewAgent.m */,
-				C8790BDF6A7625C8B1ED15AC /* AddAndEditableTableViewAgent.h */,
 				BE3EC31217712A6700AEED69 /* HeightTableViewAgent.h */,
 				BE3EC31317712A6700AEED69 /* HeightTableViewAgent.m */,
 				BEE3CD2D1771868A005A109C /* SSTableViewAgent.h */,
@@ -271,24 +215,10 @@
 		C87900BA02DDA03BE1CD6B37 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C8790409CCA1E4921D877ED4 /* EditableViewController.m */,
 				C8790043B0A754925503375F /* MainViewController.m */,
 				C8790C8A20FD24508847CBEE /* MainViewController.h */,
-				C8790A19D26F3F5FB4E58313 /* EditableViewController.h */,
-				C8790161A45E527AF2306C1D /* SecondViewController.m */,
-				C8790C8F62283218B4E1733D /* SecondViewController.h */,
 				C8790DD4728C683034FBAF4A /* ThirdViewController.m */,
 				C879056EE85037B2CC3E8E04 /* ThirdViewController.h */,
-				C879003BB384E66E6C658D90 /* AddCellViewController.m */,
-				C879058D45E0C5E1DCF737C4 /* AddCellViewController.h */,
-				C879025F1957C53BEDB1A180 /* AdditionalCellViewController.m */,
-				C8790B44ABF46EA9DB75719B /* AdditionalCellViewController.h */,
-				C8790D831DE4309417FD1698 /* AddOptionNoneViewController.m */,
-				C87905223018EDAE3DDCB19D /* AddOptionNoneViewController.h */,
-				BE82B24D1770163400F77391 /* AddOptionHideEditingViewController.h */,
-				BE82B24E1770163400F77391 /* AddOptionHideEditingViewController.m */,
-				BE82B25D1770211700F77391 /* AddOptionShowEditingViewController.h */,
-				BE82B25E1770211700F77391 /* AddOptionShowEditingViewController.m */,
 				BE8FDB1117719B3200A6113E /* SSViewController.h */,
 				BE8FDB1217719B3200A6113E /* SSViewController.m */,
 			);
@@ -410,30 +340,16 @@
 				BE2256FE176BCABC0022DA33 /* main.m in Sources */,
 				BE225702176BCABC0022DA33 /* AppDelegate.m in Sources */,
 				C87907CB6D9AB849475D4CE5 /* TableViewAgent.m in Sources */,
-				C8790E9623C1BBF8EE5BD2C4 /* SimpleTableViewAgent.m in Sources */,
-				C8790BEE8B1F5D947B53CA68 /* SingleSectionTableViewAgent.m in Sources */,
-				C87908FCA1A53BCA0B96CA0D /* SelectCellTableViewAgent.m in Sources */,
-				C87900DD46E65CE247F91932 /* EditableTableViewAgent.m in Sources */,
-				C87908A49D16AD16A6A3E146 /* EditableViewController.m in Sources */,
 				C87909C858C0691F2E527E6C /* MainViewController.m in Sources */,
-				C8790B9006DED1C20C78FF29 /* SecondViewController.m in Sources */,
 				C879079959003B75D9C7BF87 /* ThirdViewController.m in Sources */,
 				C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */,
 				C879041242F8D565D437DBD5 /* CustomTableViewCell.m in Sources */,
-				C8790A979D224E69AEFC92AE /* AddCellViewController.m in Sources */,
 				C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */,
-				C8790217E990AEE5A652F716 /* AddCellTableViewAgent.m in Sources */,
-				C8790F0B8A416510477F4F5B /* AdditionalCellViewController.m in Sources */,
-				C879090B4577DC0338F49EDB /* AdditionalCellTableViewAgent.m in Sources */,
 				C87903536A8986DA6EC5F746 /* MainService.m in Sources */,
-				C87900EB2FBD950F73F226C9 /* AddOptionNoneViewController.m in Sources */,
-				C879001977840BC5FEAFB6B1 /* AddAndEditableTableViewAgent.m in Sources */,
-				BE82B24F1770163400F77391 /* AddOptionHideEditingViewController.m in Sources */,
 				BE82B2531770189600F77391 /* AdditionalCellState.m in Sources */,
 				BE82B25617701C9C00F77391 /* AdditionalCellStateAlways.m in Sources */,
 				BE82B25917701CBC00F77391 /* AdditionalCellStateHideEditing.m in Sources */,
 				BE82B25C17701CCE00F77391 /* AdditionalCellStateShowEditing.m in Sources */,
-				BE82B25F1770211700F77391 /* AddOptionShowEditingViewController.m in Sources */,
 				BE3EC31417712A6700AEED69 /* HeightTableViewAgent.m in Sources */,
 				BEE3CD2F1771868A005A109C /* SSTableViewAgent.m in Sources */,
 				BEE3CD3217718BF0005A109C /* AdditionalCellStateNone.m in Sources */,

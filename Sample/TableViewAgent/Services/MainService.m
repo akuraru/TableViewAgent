@@ -8,40 +8,28 @@
 
 #import "MainService.h"
 #import "ExtactedID.h"
-#import "SimpleTableViewAgent.h"
-#import "SelectCellTableViewAgent.h"
-#import "EditableTableViewAgent.h"
-#import "AddCellTableViewAgent.h"
-#import "AdditionalCellTableViewAgent.h"
-#import "AddAndEditableTableViewAgent.h"
 #import "HeightTableViewAgent.h"
 #import "SSTableViewAgent.h"
 
 @implementation MainService
 
 - (NSArray *)segues {
-    return @[kSegueAgent, kSegueSelect, kSegueEditable, kSegueAdd, kSegueAdditionalCell, kSegueAddAndEditNone, kSegueAddAndEditHideEditing, kSegueAddAndEditShowEditing, kSegueHeight, kSegueSingleSection];
+    return @[kSegueSingleSection];
 }
 
 - (NSString *)segue:(NSInteger)index {
-    if (0 <= index && index < self.segues.count) return self.segues[index];
-    else return kSegueAgent;
+    if (0 <= index && index < self.segues.count) {
+        return self.segues[index];
+    } else {
+        return kSegueSingleSection;
+    }
 }
 
 - (TableViewAgent *)agentInstance:(NSInteger)index {
     switch (index) {
-        case 0: return [[SimpleTableViewAgent alloc] init];
-        case 1: return [[SelectCellTableViewAgent alloc] init];
-        case 2: return [[EditableTableViewAgent alloc] init];
-        case 3: return [[AddCellTableViewAgent alloc] init];
-        case 4: return [[AdditionalCellTableViewAgent alloc] init];
-        case 5: return [[AddAndEditableTableViewAgent alloc] init];
-        case 6: return [[AddAndEditableTableViewAgent alloc] init];
-        case 7: return [[AddAndEditableTableViewAgent alloc] init];
-        case 8: return [[HeightTableViewAgent alloc] init];
-        case 9: return [[SSTableViewAgent alloc] init];
+        case 0: return [[SSTableViewAgent alloc] init];
     }
-    return [[SimpleTableViewAgent alloc] init];
+    return [[TableViewAgent alloc] init];
 }
 
 - (BOOL)existSegues:(NSString *)string {

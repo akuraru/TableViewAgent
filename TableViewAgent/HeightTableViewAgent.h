@@ -6,8 +6,8 @@
 //  Copyright (c) 2013年 P.I.akura. All rights reserved.
 //
 
-#import "SingleSectionTableViewAgent.h"
+#import "TableViewAgent.h"
 
-@interface HeightTableViewAgent : SingleSectionTableViewAgent
+@interface HeightTableViewAgent : TableViewAgent
 
 @end
