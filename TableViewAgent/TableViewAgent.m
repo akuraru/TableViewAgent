@@ -25,10 +25,6 @@
     return self;
 }
 
-- (void)setCellId:(NSString *)c {
-    cellId = c;
-}
-
 - (void)setViewObjects:(id)v {
     viewObjects = v;
 }
@@ -38,10 +34,15 @@
     [[d tableView] setDelegate:self];
     [[d tableView] setDataSource:self];
 }
+- (UITableViewCell *)dequeueCell:(NSIndexPath *)indexPath {
+    id viewObject = [self viewObjectWithIndex:indexPath];
+    return [[delegate tableView] dequeueReusableCellWithIdentifier:[delegate cellIdentifier:viewObject]];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    id cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    [cell setViewObject:[self viewObjectWithIndex:indexPath]];
+    id viewObject = [self viewObjectWithIndex:indexPath];
+    id cell = [self dequeueCell:indexPath];
+    [cell setViewObject:viewObject];
     return cell;
 }
 

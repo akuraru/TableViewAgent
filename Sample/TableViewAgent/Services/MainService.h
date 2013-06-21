@@ -13,7 +13,5 @@
 @interface MainService : NSObject
 
 - (NSString *)segue:(NSInteger)index;
-- (TableViewAgent *)agentInstance:(NSInteger)index;
-- (BOOL)existSegues:(NSString *)string;
 
 @end

@@ -12,7 +12,8 @@
 
 @interface SSViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+
 - (IBAction)touchEdit:(id)sender;
-- (void)setAgent:(SSTableViewAgent *)agent;
 
 @end

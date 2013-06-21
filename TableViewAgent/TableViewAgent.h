@@ -24,8 +24,11 @@ typedef id override_id;
 @protocol didSelectAdditionalCell <NSObject>
 - (void)didSelectAdditionalCell;
 @end
+@protocol cellIdentifier <NSObject>
+- (NSString *)cellIdentifier:(id)viewObject;
+@end
 
-@protocol TableViewAgentDelegate <didSelectCell, deleteCell, didSelectAdditionalCell>
+@protocol TableViewAgentDelegate <didSelectCell, deleteCell, didSelectAdditionalCell, cellIdentifier>
 @end
 
 typedef NS_ENUM (NSInteger, AdditionalCellMode) {
@@ -40,14 +43,12 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 };
 
 @interface TableViewAgent : NSObject <UITableViewDataSource, UITableViewDelegate> {
-    NSString *cellId;
     id viewObjects;
     id delegate;
     AdditionalCellState *addState;
     EditableState *editableState;
 }
 
-- (void)setCellId:(NSString *)cellId;
 - (void)setViewObjects:(id)viewObjects;
 - (void)setDelegate:(id)delegate;
 
@@ -57,6 +58,7 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 - (void)redraw;
 
 - (void)insertRowWithSection:(NSInteger)section;
+- (UITableViewCell *)dequeueCell:(NSIndexPath *)indexPath;
 
 - (override_id)viewObjectWithIndex:(NSIndexPath *)indexPath;
 - (override_void)setEditing:(BOOL)b;

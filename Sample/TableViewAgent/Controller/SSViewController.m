@@ -22,9 +22,14 @@
 - (IBAction)touchEdit:(id)sender {
     [agent setEditing:!agent.editing];
 }
-
-- (void)setAgent:(SSTableViewAgent *)a {
-    agent = a;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    agent = [[SSTableViewAgent alloc] init];
+    agent.viewObjects = @[
+     [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
+     [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
+     [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
+     ];
     agent.delegate = self;
     [agent setAdditionalCellId:kReuseAdd];
     [agent setAdditionalCellMode:AdditionalCellModeHideEdting];
@@ -56,6 +61,9 @@
 
 #pragma -
 #pragma mark TableViewAgentDelegate
+- (NSString *)cellIdentifier:(id)viewObject {
+    return @"Cell";
+}
 
 - (void)didSelectCell:(ViewObject *)viewObject {
     [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];

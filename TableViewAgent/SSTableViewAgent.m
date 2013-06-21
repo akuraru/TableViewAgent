@@ -13,6 +13,7 @@
 @implementation SSTableViewAgent {
     NSString *additionalCellId;
     BOOL editing;
+    UIView *headerView;
 }
 
 - (id)init {
@@ -35,6 +36,9 @@
 - (void)addViewObject:(id)object {
     viewObjects = [viewObjects arrayByAddingObject:object];
     [self insertRowWithSection:0];
+}
+- (void)setHeaderView:(UIView *)hv {
+    headerView = hv;
 }
 
 - (UITableViewCell *)createAdditionalCell:(UITableView *)tableView {
@@ -133,12 +137,23 @@
     }
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    id cell = [[delegate tableView] dequeueReusableCellWithIdentifier:cellId];
-//    if ([cell respondsToSelector:@selector(heightFromViewObject:)]) {
-//        return [cell heightFromViewObject:[self viewObjectWithIndex:indexPath]];
-//    } else {
-//        return [self tableView:tableView cellForRowAtIndexPath:indexPath].frame.size.height;
-//    }
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self isAdditionalCellOfIndexPath:indexPath]) {
+        return [[tableView dequeueReusableCellWithIdentifier:additionalCellId] frame].size.height;
+    } else {
+        id cell = [self dequeueCell:indexPath];
+    if ([cell respondsToSelector:@selector(heightFromViewObject:)]) {
+        return [cell heightFromViewObject:[self viewObjectWithIndex:indexPath]];
+    } else {
+        return [self tableView:tableView cellForRowAtIndexPath:indexPath].frame.size.height;
+    }
+    }
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return headerView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return headerView.frame.size.height;
+}
+
 @end

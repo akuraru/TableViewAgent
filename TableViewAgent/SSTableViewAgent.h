@@ -16,6 +16,8 @@
 
 - (BOOL)editing;
 
+- (void)setHeaderView:(UIView *)headerView;
+
 - (void)addViewObject:(id)object;
 
 @end
