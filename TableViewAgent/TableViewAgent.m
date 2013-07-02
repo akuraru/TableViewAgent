@@ -25,10 +25,6 @@
     return self;
 }
 
-- (void)setViewObjects:(id)v {
-    viewObjects = v;
-}
-
 - (void)setDelegate:(id)d {
     delegate = d;
     [[d tableView] setDelegate:self];
@@ -60,7 +56,7 @@
 }
 
 - (void)insertRowWithSection:(NSInteger)section {
-    [[delegate tableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[viewObjects count] - 1 inSection:section]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [[delegate tableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.viewObjects count] - 1 inSection:section]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)setAdditionalCellMode:(AdditionalCellMode)mode {
