@@ -9,18 +9,22 @@
 #import <Foundation/Foundation.h>
 
 @protocol didSelectCell <NSObject>
+@optional
 - (void)didSelectCell:(id)viewObject;
 @end
 @protocol deleteCell <NSObject>
+@optional
 - (void)deleteCell:(id)viewObject;
 @end
 @protocol didSelectAdditionalCell <NSObject>
+@optional
 - (void)didSelectAdditionalCell;
 @end
 @protocol cellIdentifier <NSObject>
 - (NSString *)cellIdentifier:(id)viewObject;
 @end
 @protocol viewForHeaderView <NSObject>
+@optional
 - (UIView *)viewForHeaderView:(id)viewObjects;
 @end
 
