@@ -37,8 +37,10 @@ typedef id override_id;
 typedef NS_ENUM (NSInteger, AdditionalCellMode) {
     AdditionalCellModeNone,
     AdditionalCellModeAlways,
-    AdditionalCellModeHideEdting,
-    AdditionalCellModeShowEdting,
+    AdditionalCellModeHideEditing,
+    AdditionalCellModeShowEditing,
+    AdditionalCellModeHideEdting __attribute__((deprecated)),
+    AdditionalCellModeShowEdting __attribute__((deprecated)),
 };
 typedef NS_ENUM (NSInteger, EditableMode) {
     EditableModeNone,

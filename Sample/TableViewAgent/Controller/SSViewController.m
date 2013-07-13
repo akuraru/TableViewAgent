@@ -32,7 +32,7 @@
      ];
     agent.delegate = self;
     [agent setAdditionalCellId:kReuseAdd];
-    [agent setAdditionalCellMode:AdditionalCellModeHideEdting];
+    [agent setAdditionalCellMode:AdditionalCellModeHideEditing];
     [agent setEditableMode:EditableModeEnable];
 }
 

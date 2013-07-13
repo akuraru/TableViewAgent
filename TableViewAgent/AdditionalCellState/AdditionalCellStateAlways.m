@@ -10,7 +10,7 @@
 
 @implementation AdditionalCellStateAlways
 
-- (BOOL)isShowAddCell:(BOOL)edting {
+- (BOOL)isShowAddCell:(BOOL) editing {
     return YES;
 }
 
