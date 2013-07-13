@@ -10,12 +10,12 @@
 
 @implementation AdditionalCellStateShowEditing
 
-- (BOOL)isShowAddCell:(BOOL)edting {
-    return edting;
+- (BOOL)isShowAddCell:(BOOL) editing {
+    return editing;
 }
 
-- (ChangeInState)changeInState:(BOOL)edting {
-    return (edting == NO) ? ChangeInStateHide : ChangeInStateShow;
+- (ChangeInState)changeInState:(BOOL) editing {
+    return (editing == NO) ? ChangeInStateHide : ChangeInStateShow;
 }
 
 @end

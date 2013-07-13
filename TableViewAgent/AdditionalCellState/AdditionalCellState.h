@@ -16,7 +16,7 @@ typedef NS_ENUM (NSInteger, ChangeInState) {
 
 @interface AdditionalCellState : NSObject
 
-- (BOOL)isShowAddCell:(BOOL)edting;
-- (ChangeInState)changeInState:(BOOL)edting;
+- (BOOL)isShowAddCell:(BOOL) editing;
+- (ChangeInState)changeInState:(BOOL) editing;
 
 @end
