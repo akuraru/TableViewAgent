@@ -67,6 +67,12 @@
         case AdditionalCellModeAlways : {
             addState = [AdditionalCellStateAlways new];
         } break;
+        case AdditionalCellModeHideEditing: {
+            addState = [AdditionalCellStateHideEditing new];
+        } break;
+        case AdditionalCellModeShowEditing: {
+            addState = [AdditionalCellStateShowEditing new];
+        } break;
         case AdditionalCellModeHideEdting: {
             addState = [AdditionalCellStateHideEditing new];
         } break;
