@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'TableViewAgent'
-  s.version  = '0.0.1'
+  s.version  = '0.0.2'
   s.license  = 'MIT'
   s.summary  = 'Wrapper class of UITableViewDelegate'
   s.homepage = 'http://d.hatena.ne.jp/akuraru/'

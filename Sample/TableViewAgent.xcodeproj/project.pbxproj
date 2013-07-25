@@ -52,6 +52,7 @@
 		BE225707176BCABD0022DA33 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BE22570A176BCABD0022DA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		BE225716176BCF2B0022DA33 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/ExtactedID.h; sourceTree = "<group>"; };
+		BE57033717A11F2400570A50 /* TableViewAgentProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewAgentProtocol.h; sourceTree = "<group>"; };
 		BE82B2511770189600F77391 /* AdditionalCellState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellState.h; sourceTree = "<group>"; };
 		BE82B2521770189600F77391 /* AdditionalCellState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellState.m; sourceTree = "<group>"; };
 		BE82B25417701C9B00F77391 /* AdditionalCellStateAlways.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateAlways.h; sourceTree = "<group>"; };
@@ -172,6 +173,7 @@
 				C87905AA85581FFC391C71B4 /* TableViewAgentCellDelegate.h */,
 				BEE3CD2D1771868A005A109C /* SSTableViewAgent.h */,
 				BEE3CD2E1771868A005A109C /* SSTableViewAgent.m */,
+				BE57033717A11F2400570A50 /* TableViewAgentProtocol.h */,
 			);
 			name = TableViewAgent;
 			path = ../TableViewAgent;

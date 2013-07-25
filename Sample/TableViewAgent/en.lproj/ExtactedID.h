@@ -1,4 +1,5 @@
 #define kSegueSingleSection @"SingleSection"
+#define kSegueMalutSection @"MalutSection"
 #define kReuseCell @"Cell"
 #define kReuseAdd @"Add"
 #define kSegueEdit @"Edit"

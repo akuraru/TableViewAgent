@@ -73,12 +73,6 @@
         case AdditionalCellModeShowEditing: {
             addState = [AdditionalCellStateShowEditing new];
         } break;
-        case AdditionalCellModeHideEdting: {
-            addState = [AdditionalCellStateHideEditing new];
-        } break;
-        case AdditionalCellModeShowEdting: {
-            addState = [AdditionalCellStateShowEditing new];
-        } break;
     }
 }
 - (void)setEditableMode:(EditableMode)mode {
