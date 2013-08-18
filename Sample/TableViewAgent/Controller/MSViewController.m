@@ -1,22 +1,23 @@
 //
-//  SSViewController.m
+//  MSViewController.m
 //  TableViewAgent
 //
-//  Created by P.I.akura on 2013/06/19.
+//  Created by P.I.akura on 2013/08/18.
 //  Copyright (c) 2013年 P.I.akura. All rights reserved.
 //
 
-#import "SSViewController.h"
+#import "MSViewController.h"
 #import "TableViewAgent.h"
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
-#import "SSAgentViewObject.h"
+#import "MSAgentViewObject.h"
 
-@interface SSViewController () <TableViewAgentDelegate>
+@interface MSViewController () <TableViewAgentDelegate>
+
 @end
 
-@implementation SSViewController {
+@implementation MSViewController {
     TableViewAgent *agent;
 }
 
@@ -26,11 +27,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     agent = [[TableViewAgent alloc] init];
-    agent.viewObjects = [[SSAgentViewObject alloc] initWithArray:@[
-     [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
-     [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
-     [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
-     ]];
+    agent.viewObjects = [[MSAgentViewObject alloc] initWithArray:@[@[
+                         [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
+                         [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
+                         ].mutableCopy, @[
+                         [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
+                         ].mutableCopy].mutableCopy];
     agent.delegate = self;
     [agent setAdditionalCellId:kReuseAdd];
     [agent setAdditionalCellMode:AdditionalCellModeHideEditing];

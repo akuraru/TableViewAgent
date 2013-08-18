@@ -12,9 +12,7 @@
 
 @class AdditionalCellState;
 @class EditableState;
-
-typedef void override_void;
-typedef id override_id;
+@protocol AgentViewObjectProtocol;
 
 typedef NS_ENUM (NSInteger, AdditionalCellMode) {
     AdditionalCellModeNone,
@@ -27,25 +25,20 @@ typedef NS_ENUM (NSInteger, EditableMode) {
     EditableModeEnable,
 };
 
-@interface TableViewAgent : NSObject <UITableViewDataSource, UITableViewDelegate> {
-    id<TableViewAgentDelegate> delegate;
-    AdditionalCellState *addState;
-    EditableState *editableState;
-}
+@interface TableViewAgent : NSObject <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) id<AgentViewObjectsDelegate> viewObjects;
-
-- (void)setDelegate:(id<TableViewAgentDelegate>)delegate;
+@property (nonatomic) id<AgentViewObjectProtocol> viewObjects;
+@property (weak, nonatomic) id<TableViewAgentDelegate> delegate;
+@property (nonatomic) NSString *additionalCellId;
+@property (nonatomic) BOOL editing;
 
 - (void)setAdditionalCellMode:(AdditionalCellMode)mode;
 - (void)setEditableMode:(EditableMode)mode;
 
 - (void)redraw;
 
-- (void)insertRowWithSection:(NSInteger)section;
-- (UITableViewCell *)dequeueCell:(NSIndexPath *)indexPath;
+- (void)setEditing:(BOOL)b;
 
-- (override_id)viewObjectWithIndex:(NSIndexPath *)indexPath;
-- (override_void)setEditing:(BOOL)b;
+- (void)addViewObject:(id)object;
 
 @end

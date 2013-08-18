@@ -8,12 +8,11 @@
 
 #import "MainService.h"
 #import "ExtactedID.h"
-#import "SSTableViewAgent.h"
 
 @implementation MainService
 
 - (NSArray *)segues {
-    return @[kSegueSingleSection];
+    return @[kSegueSingleSection, kSegueMalutSection];
 }
 
 - (NSString *)segue:(NSInteger)index {

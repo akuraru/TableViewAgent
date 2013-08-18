@@ -8,8 +8,6 @@
 
 #import "AdditionalCellState.h"
 
-@class SSTableViewAgent;
-
 @interface SSViewController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
