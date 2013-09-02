@@ -76,5 +76,8 @@
 - (void)didSelectAdditionalCell {
     [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
 }
+- (NSString *)sectionTitle:(NSArray *)viewObjects {
+    return [viewObjects[0] title];
+}
 
 @end

@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol sectionCount <NSObject>
-@optional
 - (NSUInteger)sectionCount;
 @end
 @protocol countInSection <NSObject>
@@ -19,18 +18,20 @@
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
 @end
 @protocol addObject <NSObject>
-- (void)addObject:(id)object;
+- (BOOL)addObject:(id)object;
 @end
 @protocol removeObjectAtIndexPath <NSObject>
-- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath;
+- (BOOL)removeObjectAtIndexPath:(NSIndexPath *)indexPath;
 @end
 @protocol existObject <NSObject>
 - (BOOL)existObject:(NSIndexPath *)indexPath;
 @end
 @protocol indexPathAddCell <NSObject>
-@optional
 - (NSIndexPath *)indexPathAddCell;
 @end
+@protocol sectionObjects <NSObject>
+- (NSArray *)sectionObjects:(NSInteger)section;
+@end
 
-@protocol AgentViewObjectProtocol <sectionCount, countInSection, objectAtIndexPath, addObject, removeObjectAtIndexPath, existObject, indexPathAddCell>
+@protocol AgentViewObjectProtocol <sectionCount, countInSection, objectAtIndexPath, addObject, removeObjectAtIndexPath, existObject, indexPathAddCell, sectionObjects>
 @end

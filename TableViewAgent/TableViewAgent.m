@@ -58,8 +58,8 @@
 }
 
 - (void)addViewObject:(id)object {
-    [_viewObjects addObject:object];
-    [self insertRowWithSection:0];
+    BOOL b = [_viewObjects addObject:object];
+    [self insertRowWithSection:0 createSection:b];
 }
 
 #pragma mark -
@@ -71,13 +71,16 @@
             id viewObject = [self viewObjectWithIndex:indexPath];
             [_delegate deleteCell:viewObject];
         }
-        [_viewObjects removeObjectAtIndexPath:indexPath];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        if ([_viewObjects removeObjectAtIndexPath:indexPath]) {
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+        } else {
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self isAdditionalCellOfIndexPath:indexPath]) {
+    if ([self isAdditionalSection:indexPath.section]) {
         return [[tableView dequeueReusableCellWithIdentifier:_additionalCellId] frame].size.height;
     } else {
         id cell = [self dequeueCell:indexPath];
@@ -95,7 +98,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    if ([self isAdditionalCellOfIndexPath:indexPath]) {
+    if ([self isAdditionalSection:indexPath.section]) {
         if ([_delegate respondsToSelector:@selector(didSelectAdditionalCell)]) {
             [_delegate didSelectAdditionalCell];
         }
@@ -110,27 +113,37 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_viewObjects countInSection:section] + [_addState isShowAddCell:_editing];
+    if ([self isAdditionalSection:section]) {
+        return 1;
+    } else {
+        return [_viewObjects countInSection:section];
+    }
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return _viewObjects.sectionCount + [_addState isShowAddCell:_editing];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self isAdditionalCellOfIndexPath:indexPath]) {
+    if ([self isAdditionalSection:indexPath.section]) {
         return [self createAdditionalCell:tableView];
     } else {
         return [self createCell:indexPath];
     }
 }
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if ([_viewObjects respondsToSelector:@selector(sectionCount)]) {
-        return _viewObjects.sectionCount;
-    } else {
-        return 1;
-    }
-}
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return  _editableState.canEdit && [self isAdditionalCellOfIndexPath:indexPath] == NO;
+    return  _editableState.canEdit && [self isAdditionalSection:indexPath.section] == NO;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [@(section) stringValue];
+    if ([self isAdditionalSection:section]) {
+        if ([_delegate respondsToSelector:@selector(addSectionTitle)]) {
+            return [_delegate addSectionTitle];
+        }
+    } else {
+        if ([_delegate respondsToSelector:@selector(sectionTitle:)]) {
+            return [_delegate sectionTitle:[_viewObjects sectionObjects:section]];
+        }
+    }
+    
+    return @"";
 }
 #pragma mark -
 - (UITableViewCell *)createCell:(NSIndexPath *)indexPath {
@@ -146,13 +159,16 @@
 
 #pragma mark -
 
-
-- (void)insertRowWithSection:(NSInteger)section {
-    [[_delegate tableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[_viewObjects countInSection:section] - 1 inSection:section]] withRowAnimation:UITableViewRowAnimationAutomatic];
+- (BOOL)isAdditionalSection:(NSInteger)section {
+    return [_viewObjects sectionCount] == section;
 }
 
-- (BOOL)isAdditionalCellOfIndexPath:(NSIndexPath *)path {
-    return [_viewObjects countInSection:path.section] == path.row;
+- (void)insertRowWithSection:(NSInteger)section createSection:(BOOL)b {
+    if (b) {
+        [[_delegate tableView] insertSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else {
+        [[_delegate tableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[_viewObjects countInSection:section] - 1 inSection:section]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 - (void)setDelegate:(id)d {
     _delegate = d;
@@ -194,18 +210,14 @@
 }
 
 - (void)hideAddCell {
-    [[_delegate tableView] deleteRowsAtIndexPaths:@[[self indexPathAddCell]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [[_delegate tableView] deleteSections:[NSIndexSet indexSetWithIndex:[self sectionOfAddCell]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)showAddCell {
-    [[_delegate tableView] insertRowsAtIndexPaths:@[[self indexPathAddCell]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [[_delegate tableView] insertSections:[NSIndexSet indexSetWithIndex:[self sectionOfAddCell]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (NSIndexPath *)indexPathAddCell {
-    if ([_viewObjects respondsToSelector:@selector(indexPathAddCell)]) {
-        return _viewObjects.indexPathAddCell;
-    } else {
-        return [NSIndexPath indexPathForRow:[_viewObjects countInSection:0] inSection:0];
-    }
+- (NSInteger)sectionOfAddCell {
+    return [_viewObjects sectionCount];
 }
 @end

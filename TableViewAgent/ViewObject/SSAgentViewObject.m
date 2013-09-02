@@ -27,13 +27,24 @@
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
     return _array[indexPath.row];
 }
-- (void)addObject:(id)object {
+- (BOOL)addObject:(id)object {
     [_array addObject:object];
+    return 1 == _array.count;
 }
-- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
     [_array removeObjectAtIndex:indexPath.row];
+    return 0 == _array.count;
 }
 - (BOOL)existObject:(NSIndexPath *)indexPath {
-    return indexPath.row < _array.count;
+    return indexPath.section == 0 && indexPath.row < _array.count;
+}
+- (NSIndexPath *)indexPathAddCell {
+    return [NSIndexPath indexPathForRow:0 inSection:1];
+}
+- (NSArray *)sectionObjects:(NSInteger)section {
+    return _array;
+}
+- (NSUInteger)sectionCount {
+    return 0 < _array.count;
 }
 @end

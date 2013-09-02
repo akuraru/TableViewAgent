@@ -41,20 +41,33 @@
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
     return _array[indexPath.section][indexPath.row];
 }
-- (void)addObject:(id)object {
-    [_array[0] addObject:object];
+- (BOOL)addObject:(id)object {
+    if (_array.count == 0) {
+        [_array addObject:[NSMutableArray array]];
+        [(NSMutableArray *)_array[0] addObject:object];
+        return YES;
+    } else {
+        [(NSMutableArray *)_array[0] addObject:object];
+        return NO;
+    }
 }
-- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *a = _array[indexPath.section];
     [a removeObjectAtIndex:indexPath.row];
     if (a.count == 0) {
         [_array removeObjectAtIndex:indexPath.section];
+        return YES;
     }
+    return NO;
 }
 - (BOOL)existObject:(NSIndexPath *)indexPath {
-    return indexPath.section < _array.count;
+    return indexPath.section < _array.count && indexPath.row < [_array[indexPath.section] count];
 }
 - (NSIndexPath *)indexPathAddCell {
     return [NSIndexPath indexPathForRow:0 inSection:_array.count];
 }
+- (NSArray *)sectionObjects:(NSInteger)section {
+    return _array[section];
+}
+
 @end

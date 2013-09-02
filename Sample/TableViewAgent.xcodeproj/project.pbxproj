@@ -233,9 +233,9 @@
 		C87904B39871D324BDF4F77D /* ViewObject */ = {
 			isa = PBXGroup;
 			children = (
+				C8790F778307E801315918FB /* AgentViewObjectProtocol.h */,
 				C8790350B1AB14F414356A9D /* SSAgentViewObject.m */,
 				C87906C0022B0E5AF44188A8 /* SSAgentViewObject.h */,
-				C8790F778307E801315918FB /* AgentViewObjectProtocol.h */,
 				C8790903988C079300A237C7 /* MSAgentViewObject.m */,
 				C8790FDECC472182ED3CC678 /* MSAgentViewObject.h */,
 			);
