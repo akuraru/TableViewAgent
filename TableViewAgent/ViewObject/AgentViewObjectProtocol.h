@@ -17,9 +17,6 @@
 @protocol objectAtIndexPath <NSObject>
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
 @end
-@protocol addObject <NSObject>
-- (BOOL)addObject:(id)object;
-@end
 @protocol removeObjectAtIndexPath <NSObject>
 - (BOOL)removeObjectAtIndexPath:(NSIndexPath *)indexPath;
 @end
@@ -33,5 +30,5 @@
 - (NSArray *)sectionObjects:(NSInteger)section;
 @end
 
-@protocol AgentViewObjectProtocol <sectionCount, countInSection, objectAtIndexPath, addObject, removeObjectAtIndexPath, existObject, indexPathAddCell, sectionObjects>
+@protocol AgentViewObjectProtocol <sectionCount, countInSection, objectAtIndexPath, removeObjectAtIndexPath, existObject, indexPathAddCell, sectionObjects>
 @end

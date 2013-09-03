@@ -32,8 +32,6 @@
      [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
      ]];
     agent.delegate = self;
-    [agent setAdditionalCellId:kReuseAdd];
-    [agent setAdditionalCellMode:AdditionalCellModeHideEditing];
     [agent setEditableMode:EditableModeEnable];
 }
 
@@ -41,10 +39,6 @@
     ViewObject *vo = (tvo.viewObject) ? : [[ViewObject alloc] init];
     vo.title = tvo.title;
     vo.message = tvo.message;
-    
-    if (tvo.viewObject == Nil) {
-        [agent addViewObject:vo];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
