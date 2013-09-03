@@ -18,15 +18,10 @@
 		BE225708176BCABD0022DA33 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE225707176BCABD0022DA33 /* Default-568h@2x.png */; };
 		BE22570B176BCABD0022DA33 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE225709176BCABD0022DA33 /* MainStoryboard.storyboard */; };
 		BE5C3CE917C0FE0C00D28713 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C3CE817C0FE0C00D28713 /* MSViewController.m */; };
-		BE82B2531770189600F77391 /* AdditionalCellState.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B2521770189600F77391 /* AdditionalCellState.m */; };
-		BE82B25617701C9C00F77391 /* AdditionalCellStateAlways.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B25517701C9C00F77391 /* AdditionalCellStateAlways.m */; };
-		BE82B25917701CBC00F77391 /* AdditionalCellStateHideEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B25817701CBC00F77391 /* AdditionalCellStateHideEditing.m */; };
-		BE82B25C17701CCE00F77391 /* AdditionalCellStateShowEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B25B17701CCE00F77391 /* AdditionalCellStateShowEditing.m */; };
 		BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1217719B3200A6113E /* SSViewController.m */; };
 		BE8FDB1717727A4300A6113E /* EditableState.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1617727A4300A6113E /* EditableState.m */; };
 		BE8FDB1A17727CDF00A6113E /* EditableStateNone.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1917727CDF00A6113E /* EditableStateNone.m */; };
 		BE8FDB1D17727DBA00A6113E /* EditableStateEnadle.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1C17727DBA00A6113E /* EditableStateEnadle.m */; };
-		BEE3CD3217718BF0005A109C /* AdditionalCellStateNone.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE3CD3117718BF0005A109C /* AdditionalCellStateNone.m */; };
 		C8790246FBB1FB98EB0BCD54 /* MSAgentViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790903988C079300A237C7 /* MSAgentViewObject.m */; };
 		C87903536A8986DA6EC5F746 /* MainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790598EDF8FE8AE36B952B /* MainService.m */; };
 		C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790F785A526609644BE7B5 /* ThirdViewObject.m */; };
@@ -57,14 +52,6 @@
 		BE57033717A11F2400570A50 /* TableViewAgentProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewAgentProtocol.h; sourceTree = "<group>"; };
 		BE5C3CE717C0FE0C00D28713 /* MSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSViewController.h; sourceTree = "<group>"; };
 		BE5C3CE817C0FE0C00D28713 /* MSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSViewController.m; sourceTree = "<group>"; };
-		BE82B2511770189600F77391 /* AdditionalCellState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellState.h; sourceTree = "<group>"; };
-		BE82B2521770189600F77391 /* AdditionalCellState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellState.m; sourceTree = "<group>"; };
-		BE82B25417701C9B00F77391 /* AdditionalCellStateAlways.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateAlways.h; sourceTree = "<group>"; };
-		BE82B25517701C9C00F77391 /* AdditionalCellStateAlways.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateAlways.m; sourceTree = "<group>"; };
-		BE82B25717701CBC00F77391 /* AdditionalCellStateHideEditing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateHideEditing.h; sourceTree = "<group>"; };
-		BE82B25817701CBC00F77391 /* AdditionalCellStateHideEditing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateHideEditing.m; sourceTree = "<group>"; };
-		BE82B25A17701CCE00F77391 /* AdditionalCellStateShowEditing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateShowEditing.h; sourceTree = "<group>"; };
-		BE82B25B17701CCE00F77391 /* AdditionalCellStateShowEditing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateShowEditing.m; sourceTree = "<group>"; };
 		BE8FDB1117719B3200A6113E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
 		BE8FDB1217719B3200A6113E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
 		BE8FDB1517727A4300A6113E /* EditableState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableState.h; sourceTree = "<group>"; };
@@ -73,8 +60,6 @@
 		BE8FDB1917727CDF00A6113E /* EditableStateNone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableStateNone.m; sourceTree = "<group>"; };
 		BE8FDB1B17727DBA00A6113E /* EditableStateEnadle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableStateEnadle.h; sourceTree = "<group>"; };
 		BE8FDB1C17727DBA00A6113E /* EditableStateEnadle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableStateEnadle.m; sourceTree = "<group>"; };
-		BEE3CD3017718BF0005A109C /* AdditionalCellStateNone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateNone.h; sourceTree = "<group>"; };
-		BEE3CD3117718BF0005A109C /* AdditionalCellStateNone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateNone.m; sourceTree = "<group>"; };
 		C8790043B0A754925503375F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C87901BF34200094F1D65F23 /* TableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgent.h; sourceTree = "<group>"; };
 		C87902B6380B6A554115F053 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
@@ -174,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				BE8FDB14177279FC00A6113E /* EditableState */,
-				BE82B2501770187300F77391 /* AdditionalCellState */,
 				C87901BF34200094F1D65F23 /* TableViewAgent.h */,
 				C8790BBACFB2706282D720B2 /* TableViewAgent.m */,
 				C87905AA85581FFC391C71B4 /* TableViewAgentCellDelegate.h */,
@@ -183,23 +167,6 @@
 			);
 			name = TableViewAgent;
 			path = ../TableViewAgent;
-			sourceTree = "<group>";
-		};
-		BE82B2501770187300F77391 /* AdditionalCellState */ = {
-			isa = PBXGroup;
-			children = (
-				BE82B2511770189600F77391 /* AdditionalCellState.h */,
-				BE82B2521770189600F77391 /* AdditionalCellState.m */,
-				BE82B25417701C9B00F77391 /* AdditionalCellStateAlways.h */,
-				BE82B25517701C9C00F77391 /* AdditionalCellStateAlways.m */,
-				BE82B25717701CBC00F77391 /* AdditionalCellStateHideEditing.h */,
-				BE82B25817701CBC00F77391 /* AdditionalCellStateHideEditing.m */,
-				BE82B25A17701CCE00F77391 /* AdditionalCellStateShowEditing.h */,
-				BE82B25B17701CCE00F77391 /* AdditionalCellStateShowEditing.m */,
-				BEE3CD3017718BF0005A109C /* AdditionalCellStateNone.h */,
-				BEE3CD3117718BF0005A109C /* AdditionalCellStateNone.m */,
-			);
-			path = AdditionalCellState;
 			sourceTree = "<group>";
 		};
 		BE8FDB14177279FC00A6113E /* EditableState */ = {
@@ -363,11 +330,6 @@
 				C879041242F8D565D437DBD5 /* CustomTableViewCell.m in Sources */,
 				C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */,
 				C87903536A8986DA6EC5F746 /* MainService.m in Sources */,
-				BE82B2531770189600F77391 /* AdditionalCellState.m in Sources */,
-				BE82B25617701C9C00F77391 /* AdditionalCellStateAlways.m in Sources */,
-				BE82B25917701CBC00F77391 /* AdditionalCellStateHideEditing.m in Sources */,
-				BE82B25C17701CCE00F77391 /* AdditionalCellStateShowEditing.m in Sources */,
-				BEE3CD3217718BF0005A109C /* AdditionalCellStateNone.m in Sources */,
 				BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */,
 				BE8FDB1717727A4300A6113E /* EditableState.m in Sources */,
 				BE8FDB1A17727CDF00A6113E /* EditableStateNone.m in Sources */,

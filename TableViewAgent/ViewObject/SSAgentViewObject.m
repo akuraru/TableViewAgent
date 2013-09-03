@@ -27,10 +27,6 @@
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
     return _array[indexPath.row];
 }
-- (BOOL)addObject:(id)object {
-    [_array addObject:object];
-    return 1 == _array.count;
-}
 - (BOOL)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
     [_array removeObjectAtIndex:indexPath.row];
     return 0 == _array.count;

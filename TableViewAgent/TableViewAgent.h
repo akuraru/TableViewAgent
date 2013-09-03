@@ -10,16 +10,9 @@
 #import "TableViewAgentCellDelegate.h"
 #import "TableViewAgentProtocol.h"
 
-@class AdditionalCellState;
 @class EditableState;
 @protocol AgentViewObjectProtocol;
 
-typedef NS_ENUM (NSInteger, AdditionalCellMode) {
-    AdditionalCellModeNone,
-    AdditionalCellModeAlways,
-    AdditionalCellModeHideEditing,
-    AdditionalCellModeShowEditing,
-};
 typedef NS_ENUM (NSInteger, EditableMode) {
     EditableModeNone,
     EditableModeEnable,
@@ -29,16 +22,12 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 
 @property (nonatomic) id<AgentViewObjectProtocol> viewObjects;
 @property (weak, nonatomic) id<TableViewAgentDelegate> delegate;
-@property (nonatomic) NSString *additionalCellId;
 @property (nonatomic) BOOL editing;
 
-- (void)setAdditionalCellMode:(AdditionalCellMode)mode;
 - (void)setEditableMode:(EditableMode)mode;
 
 - (void)redraw;
 
 - (void)setEditing:(BOOL)b;
-
-- (void)addViewObject:(id)object;
 
 @end

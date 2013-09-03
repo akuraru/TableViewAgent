@@ -6,8 +6,6 @@
 //  Copyright (c) 2013年 P.I.akura. All rights reserved.
 //
 
-#import "AdditionalCellState.h"
-
 @interface SSViewController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;

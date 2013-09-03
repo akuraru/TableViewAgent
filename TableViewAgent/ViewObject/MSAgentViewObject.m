@@ -41,16 +41,6 @@
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
     return _array[indexPath.section][indexPath.row];
 }
-- (BOOL)addObject:(id)object {
-    if (_array.count == 0) {
-        [_array addObject:[NSMutableArray array]];
-        [(NSMutableArray *)_array[0] addObject:object];
-        return YES;
-    } else {
-        [(NSMutableArray *)_array[0] addObject:object];
-        return NO;
-    }
-}
 - (BOOL)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *a = _array[indexPath.section];
     [a removeObjectAtIndex:indexPath.row];
