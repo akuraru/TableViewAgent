@@ -23,12 +23,9 @@
 @protocol existObject <NSObject>
 - (BOOL)existObject:(NSIndexPath *)indexPath;
 @end
-@protocol indexPathAddCell <NSObject>
-- (NSIndexPath *)indexPathAddCell;
-@end
 @protocol sectionObjects <NSObject>
 - (NSArray *)sectionObjects:(NSInteger)section;
 @end
 
-@protocol AgentViewObjectProtocol <sectionCount, countInSection, objectAtIndexPath, removeObjectAtIndexPath, existObject, indexPathAddCell, sectionObjects>
+@protocol AgentViewObjectProtocol <sectionCount, countInSection, objectAtIndexPath, removeObjectAtIndexPath, existObject, sectionObjects>
 @end

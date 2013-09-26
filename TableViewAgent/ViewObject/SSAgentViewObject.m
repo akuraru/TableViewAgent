@@ -34,9 +34,6 @@
 - (BOOL)existObject:(NSIndexPath *)indexPath {
     return indexPath.section == 0 && indexPath.row < _array.count;
 }
-- (NSIndexPath *)indexPathAddCell {
-    return [NSIndexPath indexPathForRow:0 inSection:1];
-}
 - (NSArray *)sectionObjects:(NSInteger)section {
     return _array;
 }
