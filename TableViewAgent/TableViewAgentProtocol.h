@@ -18,5 +18,19 @@
 - (NSString *)sectionTitle:(NSArray *)viewObjects;
 @end
 
-@protocol TableViewAgentDelegate <tableView, didSelectCell, deleteCell, cellIdentifier, sectionTitle>
+
+@protocol addCellIdentifier <NSObject>
+@optional
+- (NSString *)addCellIdentifier;
+@end
+@protocol didSelectAdditionalCell <NSObject>
+@optional
+- (void)didSelectAdditionalCell;
+@end
+@protocol addSectionTitle <NSObject>
+@optional
+- (NSString *)addSectionTitle;
+@end
+
+@protocol TableViewAgentDelegate <tableView, didSelectCell, deleteCell, cellIdentifier, sectionTitle, addCellIdentifier, didSelectAdditionalCell, addSectionTitle>
 @end

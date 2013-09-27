@@ -33,12 +33,18 @@
      ]];
     agent.delegate = self;
     [agent setEditableMode:EditableModeEnable];
+    [agent setAdditionalCellMode:AdditionalCellModeHideEditing];
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
     ViewObject *vo = (tvo.viewObject) ? : [[ViewObject alloc] init];
     vo.title = tvo.title;
     vo.message = tvo.message;
+
+    if (tvo.viewObject == Nil) {
+        id viewObjects = agent.viewObjects;
+        [viewObjects addObject:vo];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -65,8 +71,11 @@
 }
 - (void)deleteCell:(id)viewObject {
 }
+
+- (NSString *)addCellIdentifier {
+    return kReuseAdd;
+}
 - (void)didSelectAdditionalCell {
     [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
 }
-
 @end
