@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger , DeleteViewObjectType) {
+    DeleteViewObjectTypeCell,
+    DeleteViewObjectTypeSection,
+    DeleteViewObjectTypeNone,
+};
+
 @protocol sectionCount <NSObject>
 - (NSUInteger)sectionCount;
 @end
@@ -18,7 +24,7 @@
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
 @end
 @protocol removeObjectAtIndexPath <NSObject>
-- (BOOL)removeObjectAtIndexPath:(NSIndexPath *)indexPath;
+- (DeleteViewObjectType)removeObjectAtIndexPath:(NSIndexPath *)indexPath;
 @end
 @protocol existObject <NSObject>
 - (BOOL)existObject:(NSIndexPath *)indexPath;
