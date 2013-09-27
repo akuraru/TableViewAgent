@@ -12,6 +12,8 @@
 #import "ViewObject.h"
 #import "SSViewController.h"
 #import "MainService.h"
+#import "MagicalRecord.h"
+#import "MagicalRecord+Setup.h"
 
 @implementation MainViewController {
     MainService *service;
@@ -19,7 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [MagicalRecord setupCoreDataStack];
+
     service = [MainService new];
 }
 

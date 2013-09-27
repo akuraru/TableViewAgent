@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DDCFBA148DE41AABC73DC30 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04047CB7E427422FB2D7649E /* libPods.a */; };
 		BE2256F2176BCABC0022DA33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
 		BE2256F4176BCABC0022DA33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F3176BCABC0022DA33 /* Foundation.framework */; };
 		BE2256F6176BCABC0022DA33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F5176BCABC0022DA33 /* CoreGraphics.framework */; };
@@ -17,23 +18,31 @@
 		BE225706176BCABD0022DA33 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE225705176BCABD0022DA33 /* Default@2x.png */; };
 		BE225708176BCABD0022DA33 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE225707176BCABD0022DA33 /* Default-568h@2x.png */; };
 		BE22570B176BCABD0022DA33 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE225709176BCABD0022DA33 /* MainStoryboard.storyboard */; };
+		BE4D744217F5056D00287CE8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744017F5056D00287CE8 /* Model.xcdatamodeld */; };
+		BE4D744717F5066300287CE8 /* _Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744417F5066300287CE8 /* _Todo.m */; };
+		BE4D744817F5066300287CE8 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744617F5066300287CE8 /* Todo.m */; };
+		BE4D744C17F5160600287CE8 /* TodoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744B17F5160600287CE8 /* TodoManager.m */; };
 		BE5C3CE917C0FE0C00D28713 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C3CE817C0FE0C00D28713 /* MSViewController.m */; };
 		BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1217719B3200A6113E /* SSViewController.m */; };
 		BE8FDB1717727A4300A6113E /* EditableState.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1617727A4300A6113E /* EditableState.m */; };
 		BE8FDB1A17727CDF00A6113E /* EditableStateNone.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1917727CDF00A6113E /* EditableStateNone.m */; };
 		BE8FDB1D17727DBA00A6113E /* EditableStateEnadle.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1C17727DBA00A6113E /* EditableStateEnadle.m */; };
+		C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */; };
 		C8790246FBB1FB98EB0BCD54 /* MSAgentViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790903988C079300A237C7 /* MSAgentViewObject.m */; };
 		C87903536A8986DA6EC5F746 /* MainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790598EDF8FE8AE36B952B /* MainService.m */; };
 		C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790F785A526609644BE7B5 /* ThirdViewObject.m */; };
 		C879041242F8D565D437DBD5 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790ACD959A44401E4E0D54 /* CustomTableViewCell.m */; };
+		C87905270237FA75311D678E /* WETodo.m in Sources */ = {isa = PBXBuildFile; fileRef = C879000AD100E37BD5CCF83C /* WETodo.m */; };
 		C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790665BD0F40D548AD722F /* ViewObject.m */; };
 		C879079959003B75D9C7BF87 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790DD4728C683034FBAF4A /* ThirdViewController.m */; };
 		C87907CB6D9AB849475D4CE5 /* TableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790BBACFB2706282D720B2 /* TableViewAgent.m */; };
 		C879080E888D7F5B4C7F17F2 /* SSAgentViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790350B1AB14F414356A9D /* SSAgentViewObject.m */; };
 		C87909C858C0691F2E527E6C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790043B0A754925503375F /* MainViewController.m */; };
+		C87909D88301EE6FDD27C043 /* FRCAgentViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790C95AC65187AD385F0CB /* FRCAgentViewObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04047CB7E427422FB2D7649E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE2256EE176BCABC0022DA33 /* TableViewAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE2256F1176BCABC0022DA33 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BE2256F3176BCABC0022DA33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,6 +58,13 @@
 		BE225707176BCABD0022DA33 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BE22570A176BCABD0022DA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		BE225716176BCF2B0022DA33 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/ExtactedID.h; sourceTree = "<group>"; };
+		BE4D744117F5056D00287CE8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		BE4D744317F5066300287CE8 /* _Todo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Todo.h; sourceTree = "<group>"; };
+		BE4D744417F5066300287CE8 /* _Todo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Todo.m; sourceTree = "<group>"; };
+		BE4D744517F5066300287CE8 /* Todo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Todo.h; sourceTree = "<group>"; };
+		BE4D744617F5066300287CE8 /* Todo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Todo.m; sourceTree = "<group>"; };
+		BE4D744A17F5160600287CE8 /* TodoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoManager.h; sourceTree = "<group>"; };
+		BE4D744B17F5160600287CE8 /* TodoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoManager.m; sourceTree = "<group>"; };
 		BE57033717A11F2400570A50 /* TableViewAgentProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewAgentProtocol.h; sourceTree = "<group>"; };
 		BE5C3CE717C0FE0C00D28713 /* MSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSViewController.h; sourceTree = "<group>"; };
 		BE5C3CE817C0FE0C00D28713 /* MSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSViewController.m; sourceTree = "<group>"; };
@@ -60,8 +76,11 @@
 		BE8FDB1917727CDF00A6113E /* EditableStateNone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableStateNone.m; sourceTree = "<group>"; };
 		BE8FDB1B17727DBA00A6113E /* EditableStateEnadle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableStateEnadle.h; sourceTree = "<group>"; };
 		BE8FDB1C17727DBA00A6113E /* EditableStateEnadle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableStateEnadle.m; sourceTree = "<group>"; };
+		C879000AD100E37BD5CCF83C /* WETodo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETodo.m; sourceTree = "<group>"; };
 		C8790043B0A754925503375F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		C87900D1196B2A54304A1558 /* FRCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRCViewController.h; sourceTree = "<group>"; };
 		C87901BF34200094F1D65F23 /* TableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgent.h; sourceTree = "<group>"; };
+		C879028A2852941D22116205 /* FRCAgentViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRCAgentViewObject.h; sourceTree = "<group>"; };
 		C87902B6380B6A554115F053 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		C8790350B1AB14F414356A9D /* SSAgentViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAgentViewObject.m; sourceTree = "<group>"; };
 		C8790352EF7D1394525F8E95 /* ViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewObject.h; sourceTree = "<group>"; };
@@ -70,16 +89,20 @@
 		C87905AA85581FFC391C71B4 /* TableViewAgentCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentCellDelegate.h; sourceTree = "<group>"; };
 		C8790665BD0F40D548AD722F /* ViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewObject.m; sourceTree = "<group>"; };
 		C87906C0022B0E5AF44188A8 /* SSAgentViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAgentViewObject.h; sourceTree = "<group>"; };
+		C879070AF31E3D8CD56EE98B /* WETodo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WETodo.h; sourceTree = "<group>"; };
 		C8790903988C079300A237C7 /* MSAgentViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAgentViewObject.m; sourceTree = "<group>"; };
 		C8790A0C3B4E3F0F06841882 /* MainService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainService.h; sourceTree = "<group>"; };
 		C8790ACD959A44401E4E0D54 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		C8790BBACFB2706282D720B2 /* TableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewAgent.m; sourceTree = "<group>"; };
+		C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRCViewController.m; sourceTree = "<group>"; };
 		C8790C8A20FD24508847CBEE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		C8790C95AC65187AD385F0CB /* FRCAgentViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRCAgentViewObject.m; sourceTree = "<group>"; };
 		C8790DD4728C683034FBAF4A /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		C8790E7509D540B912A684D8 /* ThirdViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewObject.h; sourceTree = "<group>"; };
 		C8790F778307E801315918FB /* AgentViewObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentViewObjectProtocol.h; sourceTree = "<group>"; };
 		C8790F785A526609644BE7B5 /* ThirdViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewObject.m; sourceTree = "<group>"; };
 		C8790FDECC472182ED3CC678 /* MSAgentViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAgentViewObject.h; sourceTree = "<group>"; };
+		DC648156027C4883B2121023 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +113,7 @@
 				BE2256F2176BCABC0022DA33 /* UIKit.framework in Frameworks */,
 				BE2256F4176BCABC0022DA33 /* Foundation.framework in Frameworks */,
 				BE2256F6176BCABC0022DA33 /* CoreGraphics.framework in Frameworks */,
+				2DDCFBA148DE41AABC73DC30 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +127,7 @@
 				BE2256F7176BCABC0022DA33 /* TableViewAgentSample */,
 				BE2256F0176BCABC0022DA33 /* Frameworks */,
 				BE2256EF176BCABC0022DA33 /* Products */,
+				DC648156027C4883B2121023 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,6 +145,7 @@
 				BE2256F1176BCABC0022DA33 /* UIKit.framework */,
 				BE2256F3176BCABC0022DA33 /* Foundation.framework */,
 				BE2256F5176BCABC0022DA33 /* CoreGraphics.framework */,
+				04047CB7E427422FB2D7649E /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -135,6 +161,7 @@
 				C8790A224A4D3D8CE983BE44 /* View */,
 				C8790D791E4571F92C4C01CE /* ViewObject */,
 				C879092E38AB3C74DF427397 /* Services */,
+				C8790A8EEDFA301780DAB1C3 /* Model */,
 			);
 			name = TableViewAgentSample;
 			path = TableViewAgent;
@@ -169,6 +196,15 @@
 			path = ../TableViewAgent;
 			sourceTree = "<group>";
 		};
+		BE4D744917F5160600287CE8 /* EntityManager */ = {
+			isa = PBXGroup;
+			children = (
+				BE4D744A17F5160600287CE8 /* TodoManager.h */,
+				BE4D744B17F5160600287CE8 /* TodoManager.m */,
+			);
+			path = EntityManager;
+			sourceTree = "<group>";
+		};
 		BE8FDB14177279FC00A6113E /* EditableState */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +229,8 @@
 				BE8FDB1217719B3200A6113E /* SSViewController.m */,
 				BE5C3CE717C0FE0C00D28713 /* MSViewController.h */,
 				BE5C3CE817C0FE0C00D28713 /* MSViewController.m */,
+				C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */,
+				C87900D1196B2A54304A1558 /* FRCViewController.h */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -205,6 +243,8 @@
 				C87906C0022B0E5AF44188A8 /* SSAgentViewObject.h */,
 				C8790903988C079300A237C7 /* MSAgentViewObject.m */,
 				C8790FDECC472182ED3CC678 /* MSAgentViewObject.h */,
+				C8790C95AC65187AD385F0CB /* FRCAgentViewObject.m */,
+				C879028A2852941D22116205 /* FRCAgentViewObject.h */,
 			);
 			path = ViewObject;
 			sourceTree = "<group>";
@@ -218,6 +258,18 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		C87909A73566F915FCD0D63A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				BE4D744917F5160600287CE8 /* EntityManager */,
+				BE4D744017F5056D00287CE8 /* Model.xcdatamodeld */,
+				C8790B8CC96CCB93AD54DCED /* Entity */,
+				C879000AD100E37BD5CCF83C /* WETodo.m */,
+				C879070AF31E3D8CD56EE98B /* WETodo.h */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		C8790A224A4D3D8CE983BE44 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +277,25 @@
 				C87902B6380B6A554115F053 /* CustomTableViewCell.h */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C8790A8EEDFA301780DAB1C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C87909A73566F915FCD0D63A /* CoreData */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C8790B8CC96CCB93AD54DCED /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				BE4D744317F5066300287CE8 /* _Todo.h */,
+				BE4D744417F5066300287CE8 /* _Todo.m */,
+				BE4D744517F5066300287CE8 /* Todo.h */,
+				BE4D744617F5066300287CE8 /* Todo.m */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		C8790D791E4571F92C4C01CE /* ViewObject */ = {
@@ -245,10 +316,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE225711176BCABD0022DA33 /* Build configuration list for PBXNativeTarget "TableViewAgent" */;
 			buildPhases = (
+				0F16669AF49F4ED19A06AC79 /* Check Pods Manifest.lock */,
 				BE225717176BD2490022DA33 /* ShellScript */,
 				BE2256EA176BCABC0022DA33 /* Sources */,
 				BE2256EB176BCABC0022DA33 /* Frameworks */,
 				BE2256EC176BCABC0022DA33 /* Resources */,
+				923EE4889AC54640B21C192A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -301,6 +374,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0F16669AF49F4ED19A06AC79 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		923EE4889AC54640B21C192A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BE225717176BD2490022DA33 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -322,21 +425,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE2256FE176BCABC0022DA33 /* main.m in Sources */,
+				BE4D744817F5066300287CE8 /* Todo.m in Sources */,
 				BE225702176BCABC0022DA33 /* AppDelegate.m in Sources */,
 				C87907CB6D9AB849475D4CE5 /* TableViewAgent.m in Sources */,
+				BE4D744717F5066300287CE8 /* _Todo.m in Sources */,
 				C87909C858C0691F2E527E6C /* MainViewController.m in Sources */,
 				C879079959003B75D9C7BF87 /* ThirdViewController.m in Sources */,
 				C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */,
 				C879041242F8D565D437DBD5 /* CustomTableViewCell.m in Sources */,
 				C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */,
+				BE4D744217F5056D00287CE8 /* Model.xcdatamodeld in Sources */,
 				C87903536A8986DA6EC5F746 /* MainService.m in Sources */,
 				BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */,
 				BE8FDB1717727A4300A6113E /* EditableState.m in Sources */,
 				BE8FDB1A17727CDF00A6113E /* EditableStateNone.m in Sources */,
+				BE4D744C17F5160600287CE8 /* TodoManager.m in Sources */,
 				BE8FDB1D17727DBA00A6113E /* EditableStateEnadle.m in Sources */,
 				C879080E888D7F5B4C7F17F2 /* SSAgentViewObject.m in Sources */,
 				C8790246FBB1FB98EB0BCD54 /* MSAgentViewObject.m in Sources */,
 				BE5C3CE917C0FE0C00D28713 /* MSViewController.m in Sources */,
+				C87909D88301EE6FDD27C043 /* FRCAgentViewObject.m in Sources */,
+				C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */,
+				C87905270237FA75311D678E /* WETodo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,22 +538,26 @@
 		};
 		BE225712176BCABD0022DA33 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC648156027C4883B2121023 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableViewAgent/TableViewAgent-Prefix.pch";
 				INFOPLIST_FILE = "TableViewAgent/TableViewAgent-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		BE225713176BCABD0022DA33 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC648156027C4883B2121023 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableViewAgent/TableViewAgent-Prefix.pch";
 				INFOPLIST_FILE = "TableViewAgent/TableViewAgent-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -470,6 +584,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BE4D744017F5056D00287CE8 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BE4D744117F5056D00287CE8 /* Model.xcdatamodel */,
+			);
+			currentVersion = BE4D744117F5056D00287CE8 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BE2256E6176BCABC0022DA33 /* Project object */;
 }

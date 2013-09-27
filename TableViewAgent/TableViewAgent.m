@@ -55,10 +55,13 @@
             id viewObject = [self viewObjectWithIndex:indexPath];
             [_delegate deleteCell:viewObject];
         }
-        if ([_viewObjects removeObjectAtIndexPath:indexPath]) {
-            [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
-        } else {
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        switch ([_viewObjects removeObjectAtIndexPath:indexPath]) {
+            case DeleteViewObjectTypeSection :
+                [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+                break;
+            case DeleteViewObjectTypeCell :
+                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                break;
         }
     }
 }
