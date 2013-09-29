@@ -22,16 +22,12 @@
 @implementation FRCViewController {
     TableViewAgent *agent;
 }
-- (IBAction)touchNew:(id)sender {
-    [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] init]];
-}
 
 - (IBAction)touchEdit:(id)sender {
     [agent setEditing:!agent.editing];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController setToolbarHidden:NO animated:NO];
 
     agent = [[TableViewAgent alloc] init];
     FRCAgentViewObject *object = [[FRCAgentViewObject alloc] initWithFetch:[TodoManager fetchController]];
@@ -39,6 +35,7 @@
     agent.viewObjects = object;
     agent.delegate = self;
     [agent setEditableMode:EditableModeEnable];
+    [agent setAdditionalCellMode:AdditionalCellModeAlways];
 }
 
 - (void)saveViewObject:(WETodo *)we {
@@ -70,10 +67,14 @@
 - (void)deleteCell:(id)viewObject {
     [TodoManager deleteEntity:viewObject];
 }
-- (void)didSelectAdditionalCell {
-    [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
-}
 - (NSString *)sectionTitle:(NSArray *)viewObjects {
     return [viewObjects[0] title];
+}
+
+- (NSString *)addCellIdentifier {
+    return kReuseAdd;
+}
+- (void)didSelectAdditionalCell {
+    [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
 }
 @end

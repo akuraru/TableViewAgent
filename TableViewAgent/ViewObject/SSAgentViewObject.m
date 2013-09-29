@@ -18,6 +18,9 @@
     }
     return self;
 }
+- (void)addObject:(id)object {
+    [_array addObject:object];
+}
 - (void)dealloc {
     _array = nil;
 }

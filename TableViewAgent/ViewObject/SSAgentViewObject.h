@@ -13,4 +13,5 @@
 @property(nonatomic, strong) NSMutableArray *array;
 
 - (id)initWithArray:(NSArray *)array;
+- (void)addObject:(id)object;
 @end

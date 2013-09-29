@@ -13,21 +13,27 @@
 @class EditableState;
 @protocol AgentViewObjectProtocol;
 
+typedef NS_ENUM (NSInteger, AdditionalCellMode) {
+    AdditionalCellModeNone,
+    AdditionalCellModeAlways,
+    AdditionalCellModeHideEditing,
+    AdditionalCellModeShowEditing,
+};
 typedef NS_ENUM (NSInteger, EditableMode) {
     EditableModeNone,
     EditableModeEnable,
 };
 
-@interface TableViewAgent : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface TableViewAgent : NSObject
 
 @property (nonatomic) id<AgentViewObjectProtocol> viewObjects;
 @property (weak, nonatomic) id<TableViewAgentDelegate> delegate;
 @property (nonatomic) BOOL editing;
 
+- (void)setAdditionalCellMode:(AdditionalCellMode)mode;
 - (void)setEditableMode:(EditableMode)mode;
 
 - (void)redraw;
 
-- (void)setEditing:(BOOL)b;
-
+- (BOOL)compareSectionCount:(NSUInteger)count;
 @end

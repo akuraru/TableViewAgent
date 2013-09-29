@@ -18,5 +18,37 @@
 - (NSString *)sectionTitle:(NSArray *)viewObjects;
 @end
 
-@protocol TableViewAgentDelegate <tableView, didSelectCell, deleteCell, cellIdentifier, sectionTitle>
+
+@protocol addCellIdentifier <NSObject>
+@optional
+- (NSString *)addCellIdentifier;
+@end
+@protocol didSelectAdditionalCell <NSObject>
+@optional
+- (void)didSelectAdditionalCell;
+@end
+@protocol addSectionTitle <NSObject>
+@optional
+- (NSString *)addSectionTitle;
+@end
+
+@protocol addSectionHeightForHeader <NSObject>
+@optional
+- (CGFloat)addSectionHeightForHeader;
+@end
+@protocol addSectionHeader <NSObject>
+@optional
+- (UIView *)addSectionHeader;
+@end
+@protocol sectionHeightForHeader <NSObject>
+@optional
+- (CGFloat)sectionHeightForHeader:(id)viewObject;
+@end
+@protocol sectionHeader <NSObject>
+@optional
+- (UIView *)sectionHeader:(id)viewObject;
+@end
+
+
+@protocol TableViewAgentDelegate <tableView, didSelectCell, deleteCell, cellIdentifier, sectionTitle, addCellIdentifier, didSelectAdditionalCell, addSectionTitle, addSectionHeightForHeader, addSectionHeader, sectionHeightForHeader, sectionHeader>
 @end

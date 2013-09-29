@@ -55,7 +55,7 @@
 
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            if ([self sectionCount] != [tableView numberOfSections]) {
+            if ([self.agent compareSectionCount:self.sectionCount]) {
                 [tableView insertSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
             } else {
                 [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
@@ -64,7 +64,7 @@
             break;
 
         case NSFetchedResultsChangeDelete:
-            if ([self sectionCount] != [tableView numberOfSections]) {
+            if ([self.agent compareSectionCount:self.sectionCount]) {
                 [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
             } else {
                 [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
@@ -78,7 +78,7 @@
 
         case NSFetchedResultsChangeMove:
             [tableView beginUpdates];
-            switch ([@([self sectionCount]) compare:@([tableView numberOfSections])]) {
+            switch ([self.agent compareSectionCount:self.sectionCount]) {
                 case NSOrderedSame :
                     if ([self countInSection:newIndexPath.section] == 1) {
                         [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
