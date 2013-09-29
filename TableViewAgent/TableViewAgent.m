@@ -15,7 +15,7 @@
 #import "AdditionalCellStateHideEditing.h"
 #import "AdditionalCellStateShowEditing.h"
 
-@interface TableViewAgent ()
+@interface TableViewAgent () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic) EditableState *editableState;
 @property(nonatomic) AdditionalCellState *addState;
 @end
@@ -148,6 +148,35 @@
     }
     return @"";
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if ([self isAdditionalSection:section]) {
+        if ([_delegate respondsToSelector:@selector(addSectionHeightForHeader)]) {
+            return [_delegate addSectionHeightForHeader];
+        } else if ([_delegate respondsToSelector:@selector(addSectionHeader)]) {
+            return [_delegate addSectionHeader].frame.size.height;
+        }
+    } else {
+        if ([_delegate respondsToSelector:@selector(sectionHeightForHeader:)]) {
+            return [_delegate sectionHeightForHeader:[_viewObjects sectionObjects:section]];
+        } else if ([_delegate respondsToSelector:@selector(sectionHeader:)]) {
+            return [_delegate sectionHeader:[_viewObjects sectionObjects:section]].frame.size.height;
+        }
+    }
+    return -1;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if ([self isAdditionalSection:section]) {
+        if ([_delegate respondsToSelector:@selector(addSectionHeader)]) {
+            return [_delegate addSectionHeader];
+        }
+    } else if ([_delegate respondsToSelector:@selector(sectionHeader:)]) {
+        return [_delegate sectionHeader:[_viewObjects sectionObjects:section]];
+    }
+
+    return nil;
+}
 #pragma mark -
 - (UITableViewCell *)createAdditionalCell:(UITableView *)tableView {
     return [tableView dequeueReusableCellWithIdentifier:[_delegate addCellIdentifier]];
@@ -237,5 +266,6 @@
 
 - (BOOL)compareSectionCount:(NSUInteger)count {
     return [@([_viewObjects sectionCount]) compare:@([_delegate.tableView numberOfSections] - [_addState isShowAddCell:_editing])];
+
 }
 @end

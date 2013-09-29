@@ -98,12 +98,12 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VsZ-Wx-O9B">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VsZ-Wx-O9B">
                                 <rect key="frame" x="129" y="18" width="171" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaI-M5-H48">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaI-M5-H48">
                                 <rect key="frame" x="20" y="21" width="101" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="101" id="xDJ-0G-3Aq"/>
@@ -112,12 +112,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Pa-6o-jJO">
-                                <rect key="frame" x="129" y="51" width="171" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Pa-6o-jJO">
+                                <rect key="frame" x="129" y="55" width="171" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMt-bN-ktp">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMt-bN-ktp">
                                 <rect key="frame" x="20" y="55" width="101" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -127,16 +127,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GMt-bN-ktp" firstAttribute="leading" secondItem="N5t-Qe-NJy" secondAttribute="leading" constant="20" symbolic="YES" id="1Vp-xZ-3Es"/>
-                            <constraint firstItem="7Pa-6o-jJO" firstAttribute="top" secondItem="VsZ-Wx-O9B" secondAttribute="bottom" constant="8" symbolic="YES" id="3At-xX-Hm3"/>
                             <constraint firstItem="UaI-M5-H48" firstAttribute="leading" secondItem="N5t-Qe-NJy" secondAttribute="leading" constant="20" symbolic="YES" id="A5C-rB-NlS"/>
                             <constraint firstItem="VsZ-Wx-O9B" firstAttribute="leading" secondItem="UaI-M5-H48" secondAttribute="trailing" constant="8" symbolic="YES" id="J81-5s-Xgt"/>
                             <constraint firstItem="7Pa-6o-jJO" firstAttribute="leading" secondItem="VsZ-Wx-O9B" secondAttribute="leading" id="Jf3-HH-BOU"/>
                             <constraint firstAttribute="trailing" secondItem="7Pa-6o-jJO" secondAttribute="trailing" constant="20" symbolic="YES" id="L8R-64-Sm9"/>
-                            <constraint firstItem="UaI-M5-H48" firstAttribute="top" secondItem="N5t-Qe-NJy" secondAttribute="top" constant="24" id="NHK-Bn-Y7R"/>
+                            <constraint firstItem="VsZ-Wx-O9B" firstAttribute="top" secondItem="7np-Jd-uPC" secondAttribute="bottom" constant="18" id="QyS-Zr-y4U"/>
                             <constraint firstItem="7Pa-6o-jJO" firstAttribute="leading" secondItem="GMt-bN-ktp" secondAttribute="trailing" constant="8" symbolic="YES" id="SKB-6N-LBX"/>
-                            <constraint firstItem="VsZ-Wx-O9B" firstAttribute="top" secondItem="N5t-Qe-NJy" secondAttribute="top" constant="20" symbolic="YES" id="TAd-D5-GWJ"/>
-                            <constraint firstItem="GMt-bN-ktp" firstAttribute="top" secondItem="N5t-Qe-NJy" secondAttribute="top" constant="62" id="WIY-Ey-HOX"/>
+                            <constraint firstItem="7Pa-6o-jJO" firstAttribute="top" secondItem="VsZ-Wx-O9B" secondAttribute="bottom" constant="7" id="bYz-1J-0bt"/>
                             <constraint firstAttribute="trailing" secondItem="VsZ-Wx-O9B" secondAttribute="trailing" constant="20" symbolic="YES" id="ejC-dr-OqF"/>
+                            <constraint firstItem="GMt-bN-ktp" firstAttribute="top" secondItem="UaI-M5-H48" secondAttribute="bottom" constant="13" id="fwJ-1l-Kza"/>
+                            <constraint firstItem="UaI-M5-H48" firstAttribute="top" secondItem="7np-Jd-uPC" secondAttribute="bottom" constant="21" id="zsA-jd-kWi"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>

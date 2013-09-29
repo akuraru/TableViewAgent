@@ -24,7 +24,7 @@ typedef NS_ENUM (NSInteger, EditableMode) {
     EditableModeEnable,
 };
 
-@interface TableViewAgent : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface TableViewAgent : NSObject
 
 @property (nonatomic) id<AgentViewObjectProtocol> viewObjects;
 @property (weak, nonatomic) id<TableViewAgentDelegate> delegate;
@@ -34,8 +34,6 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 - (void)setEditableMode:(EditableMode)mode;
 
 - (void)redraw;
-
-- (void)setEditing:(BOOL)b;
 
 - (BOOL)compareSectionCount:(NSUInteger)count;
 @end

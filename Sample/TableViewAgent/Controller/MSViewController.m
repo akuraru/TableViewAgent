@@ -70,8 +70,13 @@
 - (void)didSelectAdditionalCell {
     [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
 }
-- (NSString *)sectionTitle:(NSArray *)viewObjects {
-    return [viewObjects[0] title];
+- (UIView *)sectionHeader:(id)viewObject {
+    return ({
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+        [label setText:[viewObject[0] message]];
+        [label setBackgroundColor:[UIColor lightGrayColor]];
+        label;
+    });
 }
 
 @end
