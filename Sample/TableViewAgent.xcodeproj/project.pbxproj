@@ -73,6 +73,7 @@
 		BE57033717A11F2400570A50 /* TableViewAgentProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewAgentProtocol.h; sourceTree = "<group>"; };
 		BE5C3CE717C0FE0C00D28713 /* MSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSViewController.h; sourceTree = "<group>"; };
 		BE5C3CE817C0FE0C00D28713 /* MSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSViewController.m; sourceTree = "<group>"; };
+		BE614DB9180A753F00CAB51F /* TableViewAgentCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewAgentCategory.h; sourceTree = "<group>"; };
 		BE8FDB1117719B3200A6113E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
 		BE8FDB1217719B3200A6113E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
 		BE8FDB1517727A4300A6113E /* EditableState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableState.h; sourceTree = "<group>"; };
@@ -278,6 +279,7 @@
 				C8790FDECC472182ED3CC678 /* MSAgentViewObject.h */,
 				C8790C95AC65187AD385F0CB /* FRCAgentViewObject.m */,
 				C879028A2852941D22116205 /* FRCAgentViewObject.h */,
+				BE614DB9180A753F00CAB51F /* TableViewAgentCategory.h */,
 			);
 			path = ViewObject;
 			sourceTree = "<group>";

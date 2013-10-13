@@ -7,6 +7,7 @@
 
 
 #import "SSAgentViewObject.h"
+#import "TableViewAgentCategory.h"
 
 @implementation SSAgentViewObject
 
@@ -29,9 +30,9 @@
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
     return _array[indexPath.row];
 }
-- (BOOL)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
+- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
     [_array removeObjectAtIndex:indexPath.row];
-    return 0 == _array.count;
+    [self.agent deleteCell:indexPath];
 }
 - (BOOL)existObject:(NSIndexPath *)indexPath {
     return indexPath.section == 0 && indexPath.row < _array.count;
