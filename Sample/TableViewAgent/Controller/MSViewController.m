@@ -33,20 +33,31 @@
                          ].mutableCopy, @[
                          [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
                          ].mutableCopy].mutableCopy];
-    agent.delegate = self;
     [agent setEditableMode:EditableModeEnable];
+    [agent setAdditionalCellMode:AdditionalCellModeAlways];
+    agent.delegate = self;
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
-    ViewObject *vo = (tvo.viewObject) ? : [[ViewObject alloc] init];
-    vo.title = tvo.title;
-    vo.message = tvo.message;
+    if (tvo.viewObject) {
+        ViewObject *vo = tvo.viewObject;
+        vo.title = tvo.title;
+        vo.message = tvo.message;
+        
+        MSAgentViewObject *avo = agent.viewObjects;
+        [avo changeObject:vo];
+    } else {
+        ViewObject *vo = [[ViewObject alloc] init];
+        vo.title = tvo.title;
+        vo.message = tvo.message;
+        
+        MSAgentViewObject *avo = agent.viewObjects;
+        [avo addObject:vo inSection:0];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    [agent redraw];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -67,9 +78,6 @@
 }
 - (void)deleteCell:(id)viewObject {
 }
-- (void)didSelectAdditionalCell {
-    [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
-}
 - (UIView *)sectionHeader:(id)viewObject {
     return ({
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
@@ -77,6 +85,13 @@
         [label setBackgroundColor:[UIColor lightGrayColor]];
         label;
     });
+}
+
+- (NSString *)addCellIdentifier {
+    return kReuseAdd;
+}
+- (void)didSelectAdditionalCell {
+    [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
 }
 
 @end

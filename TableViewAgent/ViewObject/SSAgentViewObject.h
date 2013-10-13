@@ -15,4 +15,5 @@
 
 - (id)initWithArray:(NSArray *)array;
 - (void)addObject:(id)object;
+- (void)changeObject:(id)object;
 @end

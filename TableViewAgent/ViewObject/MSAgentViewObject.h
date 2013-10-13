@@ -14,4 +14,8 @@
 @property(weak, nonatomic) TableViewAgent *agent;
 
 - (id)initWithArray:(NSMutableArray *)array;
+
+- (void)addObject:(id)object inSection:(NSInteger)section;
+- (void)changeObject:(id)object;
+
 @end
