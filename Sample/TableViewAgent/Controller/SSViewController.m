@@ -37,11 +37,18 @@
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
-    ViewObject *vo = (tvo.viewObject) ? : [[ViewObject alloc] init];
-    vo.title = tvo.title;
-    vo.message = tvo.message;
-
-    if (tvo.viewObject == Nil) {
+    if (tvo.viewObject) {
+        ViewObject *vo = tvo.viewObject;
+        vo.title = tvo.title;
+        vo.message = tvo.message;
+        
+        id viewObjects = agent.viewObjects;
+        [viewObjects changeObject:vo];
+    } else {
+        ViewObject *vo = [[ViewObject alloc] init];
+        vo.title = tvo.title;
+        vo.message = tvo.message;
+            
         id viewObjects = agent.viewObjects;
         [viewObjects addObject:vo];
     }

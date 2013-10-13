@@ -7,7 +7,7 @@
 
 
 #import "FRCAgentViewObject.h"
-#import "TableViewAgent.h"
+#import "TableViewAgentCategory.h"
 
 @interface FRCAgentViewObject () <NSFetchedResultsControllerDelegate>
 @property (nonatomic) NSFetchedResultsController * controller;
@@ -38,8 +38,7 @@
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
     return [_controller objectAtIndexPath:indexPath];
 }
-- (DeleteViewObjectType)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
-    return DeleteViewObjectTypeNone;
+- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
 }
 - (BOOL)existObject:(NSIndexPath *)indexPath {
     return indexPath.section < [self sectionCount] && indexPath.row < [self countInSection:indexPath.section];
@@ -50,55 +49,21 @@
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
         atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
         newIndexPath:(NSIndexPath *)newIndexPath {
-
-    UITableView *tableView = self.agent.delegate.tableView;
-
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            if ([self.agent compareSectionCount:self.sectionCount]) {
-                [tableView insertSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
-            } else {
-                [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
-                                 withRowAnimation:UITableViewRowAnimationAutomatic];
-            }
+            [_agent insertCell:newIndexPath];
             break;
 
         case NSFetchedResultsChangeDelete:
-            if ([self.agent compareSectionCount:self.sectionCount]) {
-                [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
-            } else {
-                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                    withRowAnimation:UITableViewRowAnimationAutomatic];
-            }
+            [_agent deleteCell:indexPath];
             break;
 
         case NSFetchedResultsChangeUpdate:
-            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [_agent changeUpdateCell:indexPath];
             break;
 
         case NSFetchedResultsChangeMove:
-            [tableView beginUpdates];
-            switch ([self.agent compareSectionCount:self.sectionCount]) {
-                case NSOrderedSame :
-                    if ([self countInSection:newIndexPath.section] == 1) {
-                        [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
-                        [tableView insertSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
-                    } else {
-                        [tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
-                    }
-                    break;
-                case NSOrderedAscending :
-                    [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
-                    [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
-                                     withRowAnimation:UITableViewRowAnimationAutomatic];
-                    break;
-                case NSOrderedDescending :
-                    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                            withRowAnimation:UITableViewRowAnimationAutomatic];
-                    [tableView insertSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
-                    break;
-            }
-            [tableView endUpdates];
+            [_agent changeMoveCell:indexPath toIndexPath:newIndexPath];
             break;
     }
 }

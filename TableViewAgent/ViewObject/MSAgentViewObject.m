@@ -7,6 +7,7 @@
 
 
 #import "MSAgentViewObject.h"
+#import "TableViewAgentCategory.h"
 
 #ifdef DEBUG
 #define precondition(code) ({code});
@@ -29,6 +30,26 @@
     }
     return self;
 }
+- (void)addObject:(id)object inSection:(NSInteger)section {
+    if (_array.count == 0) {
+        [_array addObject:[NSMutableArray array]];
+    }
+    [_array[section] addObject:object];
+    [_agent insertCell:[NSIndexPath indexPathForItem:[_array[section] count] - 1 inSection:section]];
+}
+- (void)changeObject:(id)object {
+    [_agent changeUpdateCell:[self indexPathForObject:object]];
+}
+- (NSIndexPath *)indexPathForObject:(id)object {
+    for (NSInteger i = 0, _len = _array.count; i <_len; i++) {
+        for (NSInteger j = 0, _len = [_array[i] count]; j < _len; j++) {
+            if ([_array[i][j] isEqual:object]) {
+                return [NSIndexPath indexPathForItem:j inSection:i];
+            }
+        }
+    }
+    return nil;
+}
 - (void)dealloc {
     _array = nil;
 }
@@ -41,14 +62,13 @@
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
     return _array[indexPath.section][indexPath.row];
 }
-- (BOOL)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
+- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *a = _array[indexPath.section];
     [a removeObjectAtIndex:indexPath.row];
     if (a.count == 0) {
         [_array removeObjectAtIndex:indexPath.section];
-        return YES;
     }
-    return NO;
+    [_agent deleteCell:indexPath];
 }
 - (BOOL)existObject:(NSIndexPath *)indexPath {
     return indexPath.section < _array.count && indexPath.row < [_array[indexPath.section] count];

@@ -36,6 +36,10 @@
     [[_delegate tableView] reloadData];
     [self setEditing:NO];
 }
+- (void)setViewObjects:(id<AgentViewObjectProtocol>)viewObjects {
+    _viewObjects = viewObjects;
+    viewObjects.agent = self;
+}
 
 - (void)setAdditionalCellMode:(AdditionalCellMode)mode {
     _addState = [self createAdditionalCellMode:mode];
@@ -57,6 +61,51 @@
         [self setAddCellHide:[_addState changeInState:_editing]];
     }
 }
+#pragma mark -
+#pragma mark change cell
+
+- (void)deleteCell:(NSIndexPath *)indexPath {
+    if ([self compareSectionCount:_viewObjects.sectionCount]) {
+        [_delegate.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else {
+        [_delegate.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+- (void)insertCell:(NSIndexPath *)indexPath {
+    if ([self compareSectionCount:_viewObjects.sectionCount]) {
+        [_delegate.tableView insertSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else {
+        [_delegate.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+- (void)changeUpdateCell:(NSIndexPath *)indexPath {
+    [_delegate.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+- (void)changeMoveCell:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath {
+    UITableView *tableView = _delegate.tableView;
+    [tableView beginUpdates];
+    switch ([self compareSectionCount:_viewObjects.sectionCount]) {
+        case NSOrderedSame :
+            if ([_viewObjects countInSection:newIndexPath.section] == 1) {
+                [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [tableView insertSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+            } else {
+                [tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
+            }
+            break;
+        case NSOrderedAscending :
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        case NSOrderedDescending :
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+            [tableView insertSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+    }
+    [tableView endUpdates];
+}
 
 #pragma mark -
 #pragma mark UITableViewDelegate
@@ -67,16 +116,7 @@
             id viewObject = [self viewObjectWithIndex:indexPath];
             [_delegate deleteCell:viewObject];
         }
-        switch ([_viewObjects removeObjectAtIndexPath:indexPath]) {
-            case DeleteViewObjectTypeSection :
-                [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
-                break;
-            case DeleteViewObjectTypeCell :
-                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                break;
-            case DeleteViewObjectTypeNone:
-                break;
-        }
+        [_viewObjects removeObjectAtIndexPath:indexPath];
     }
 }
 
