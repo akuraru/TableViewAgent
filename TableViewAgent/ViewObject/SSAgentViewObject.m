@@ -8,7 +8,6 @@
 
 #import "SSAgentViewObject.h"
 
-
 @implementation SSAgentViewObject
 
 - (id)initWithArray:(NSArray *)array {

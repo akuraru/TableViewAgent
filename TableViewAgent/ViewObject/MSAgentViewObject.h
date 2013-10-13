@@ -11,6 +11,7 @@
 
 @interface MSAgentViewObject : NSObject <AgentViewObjectProtocol>
 @property(nonatomic, strong) NSMutableArray *array;
+@property(weak, nonatomic) TableViewAgent *agent;
 
 - (id)initWithArray:(NSMutableArray *)array;
 @end

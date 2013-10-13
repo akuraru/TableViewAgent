@@ -36,6 +36,10 @@
     [[_delegate tableView] reloadData];
     [self setEditing:NO];
 }
+- (void)setViewObjects:(id<AgentViewObjectProtocol>)viewObjects {
+    _viewObjects = viewObjects;
+    viewObjects.agent = self;
+}
 
 - (void)setAdditionalCellMode:(AdditionalCellMode)mode {
     _addState = [self createAdditionalCellMode:mode];

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class TableViewAgent;
+
 typedef NS_ENUM(NSInteger , DeleteViewObjectType) {
     DeleteViewObjectTypeCell,
     DeleteViewObjectTypeSection,
@@ -32,6 +34,9 @@ typedef NS_ENUM(NSInteger , DeleteViewObjectType) {
 @protocol sectionObjects <NSObject>
 - (NSArray *)sectionObjects:(NSInteger)section;
 @end
+@protocol agent <NSObject>
+@property (weak, nonatomic) TableViewAgent *agent;
+@end
 
-@protocol AgentViewObjectProtocol <sectionCount, countInSection, objectAtIndexPath, removeObjectAtIndexPath, existObject, sectionObjects>
+@protocol AgentViewObjectProtocol <sectionCount, countInSection, objectAtIndexPath, removeObjectAtIndexPath, existObject, sectionObjects, agent>
 @end

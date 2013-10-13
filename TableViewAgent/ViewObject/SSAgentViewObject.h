@@ -11,6 +11,7 @@
 
 @interface SSAgentViewObject : NSObject <AgentViewObjectProtocol>
 @property(nonatomic, strong) NSMutableArray *array;
+@property(weak, nonatomic) TableViewAgent *agent;
 
 - (id)initWithArray:(NSArray *)array;
 - (void)addObject:(id)object;
