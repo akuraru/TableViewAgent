@@ -66,23 +66,23 @@
 
 - (void)deleteCell:(NSIndexPath *)indexPath {
     if ([self compareSectionCount:_viewObjects.sectionCount]) {
-            [self.delegate.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [_delegate.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
     } else {
-        [self.delegate.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [_delegate.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 - (void)insertCell:(NSIndexPath *)indexPath {
     if ([self compareSectionCount:_viewObjects.sectionCount]) {
-        [self.delegate.tableView insertSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [_delegate.tableView insertSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
     } else {
-        [self.delegate.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [_delegate.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 - (void)changeUpdateCell:(NSIndexPath *)indexPath {
-    [self.delegate.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [_delegate.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 - (void)changeMoveCell:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath {
-    UITableView *tableView = self.delegate.tableView;
+    UITableView *tableView = _delegate.tableView;
     [tableView beginUpdates];
     switch ([self compareSectionCount:_viewObjects.sectionCount]) {
         case NSOrderedSame :

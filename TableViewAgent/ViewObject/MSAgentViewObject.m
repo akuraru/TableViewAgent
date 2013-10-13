@@ -68,7 +68,7 @@
     if (a.count == 0) {
         [_array removeObjectAtIndex:indexPath.section];
     }
-    [self.agent deleteCell:indexPath];
+    [_agent deleteCell:indexPath];
 }
 - (BOOL)existObject:(NSIndexPath *)indexPath {
     return indexPath.section < _array.count && indexPath.row < [_array[indexPath.section] count];

@@ -51,19 +51,19 @@
         newIndexPath:(NSIndexPath *)newIndexPath {
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            [self.agent insertCell:newIndexPath];
+            [_agent insertCell:newIndexPath];
             break;
 
         case NSFetchedResultsChangeDelete:
-            [self.agent deleteCell:indexPath];
+            [_agent deleteCell:indexPath];
             break;
 
         case NSFetchedResultsChangeUpdate:
-            [self.agent changeUpdateCell:indexPath];
+            [_agent changeUpdateCell:indexPath];
             break;
 
         case NSFetchedResultsChangeMove:
-            [self.agent changeMoveCell:indexPath toIndexPath:newIndexPath];
+            [_agent changeMoveCell:indexPath toIndexPath:newIndexPath];
             break;
     }
 }
