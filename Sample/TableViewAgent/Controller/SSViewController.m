@@ -74,7 +74,7 @@
 }
 
 - (void)didSelectCell:(ViewObject *)viewObject {
-    [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
+    //[self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
 }
 - (void)deleteCell:(id)viewObject {
 }

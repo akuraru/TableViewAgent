@@ -10,6 +10,10 @@
 @protocol cellIdentifier <NSObject>
 - (NSString *)cellIdentifier:(id)viewObject;
 @end
+@protocol commonViewObject <NSObject>
+@optional
+- (id)commonViewObject:(id)viewObject;
+@end
 @protocol tableView <NSObject>
 - (UITableView *)tableView;
 @end
@@ -50,5 +54,5 @@
 @end
 
 
-@protocol TableViewAgentDelegate <tableView, didSelectCell, deleteCell, cellIdentifier, sectionTitle, addCellIdentifier, didSelectAdditionalCell, addSectionTitle, addSectionHeightForHeader, addSectionHeader, sectionHeightForHeader, sectionHeader>
+@protocol TableViewAgentDelegate <tableView, didSelectCell, deleteCell, cellIdentifier, commonViewObject, sectionTitle, addCellIdentifier, didSelectAdditionalCell, addSectionTitle, addSectionHeightForHeader, addSectionHeader, sectionHeightForHeader, sectionHeader>
 @end

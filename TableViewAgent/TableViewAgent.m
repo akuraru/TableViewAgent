@@ -15,12 +15,29 @@
 #import "AdditionalCellStateHideEditing.h"
 #import "AdditionalCellStateShowEditing.h"
 
+typedef struct {
+    BOOL didSelectCell              : 1;
+    BOOL deleteCell                 : 1;
+    BOOL cellIdentifier             : 1;
+    BOOL sectionTitle               : 1;
+    BOOL addCellIdentifier          : 1;
+    BOOL commonViewObject           : 1;
+    BOOL didSelectAdditionalCell    : 1;
+    BOOL addSectionTitle            : 1;
+    BOOL addSectionHeightForHeader  : 1;
+    BOOL addSectionHeader           : 1;
+    BOOL sectionHeightForHeader     : 1;
+    BOOL sectionHeader              : 1;
+} HasSelectors;
+
 @interface TableViewAgent () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic) EditableState *editableState;
 @property(nonatomic) AdditionalCellState *addState;
 @end
 
-@implementation TableViewAgent
+@implementation TableViewAgent {
+    HasSelectors hasSelectors;
+}
 
 - (id)init {
     self = [super init];
@@ -112,7 +129,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        if ([_delegate respondsToSelector:@selector(deleteCell:)]) {
+        if (hasSelectors.deleteCell) {
             id viewObject = [self viewObjectWithIndex:indexPath];
             [_delegate deleteCell:viewObject];
         }
@@ -141,11 +158,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     if ([self isAdditionalSection:indexPath.section]) {
-        if ([_delegate respondsToSelector:@selector(didSelectAdditionalCell)]) {
+        if (hasSelectors.didSelectAdditionalCell) {
             [_delegate didSelectAdditionalCell];
         }
     } else {
-        if ([_delegate respondsToSelector:@selector(didSelectCell:)]) {
+        if (hasSelectors.didSelectCell) {
             [_delegate didSelectCell:[self viewObjectWithIndex:indexPath]];
         }
     }
@@ -180,10 +197,10 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if ([self isAdditionalSection:section]) {
-        if ([_delegate respondsToSelector:@selector(addSectionTitle)]) {
+        if (hasSelectors.addSectionTitle) {
             return [_delegate addSectionTitle];
         }
-    } else if ([_delegate respondsToSelector:@selector(sectionTitle:)]) {
+    } else if (hasSelectors.sectionTitle) {
         return [_delegate sectionTitle:[_viewObjects sectionObjects:section]];
     }
     return @"";
@@ -191,15 +208,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if ([self isAdditionalSection:section]) {
-        if ([_delegate respondsToSelector:@selector(addSectionHeightForHeader)]) {
+        if (hasSelectors.addSectionHeightForHeader) {
             return [_delegate addSectionHeightForHeader];
-        } else if ([_delegate respondsToSelector:@selector(addSectionHeader)]) {
+        } else if (hasSelectors.addSectionHeader) {
             return [_delegate addSectionHeader].frame.size.height;
         }
     } else {
-        if ([_delegate respondsToSelector:@selector(sectionHeightForHeader:)]) {
+        if (hasSelectors.sectionHeightForHeader) {
             return [_delegate sectionHeightForHeader:[_viewObjects sectionObjects:section]];
-        } else if ([_delegate respondsToSelector:@selector(sectionHeader:)]) {
+        } else if (hasSelectors.sectionHeader) {
             return [_delegate sectionHeader:[_viewObjects sectionObjects:section]].frame.size.height;
         }
     }
@@ -208,10 +225,10 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if ([self isAdditionalSection:section]) {
-        if ([_delegate respondsToSelector:@selector(addSectionHeader)]) {
+        if (hasSelectors.addSectionHeader) {
             return [_delegate addSectionHeader];
         }
-    } else if ([_delegate respondsToSelector:@selector(sectionHeader:)]) {
+    } else if (hasSelectors.sectionHeader) {
         return [_delegate sectionHeader:[_viewObjects sectionObjects:section]];
     }
 
@@ -225,7 +242,11 @@
 - (UITableViewCell *)createCell:(NSIndexPath *)indexPath {
     id viewObject = [self viewObjectWithIndex:indexPath];
     id cell = [self dequeueCell:indexPath];
-    [cell setViewObject:viewObject];
+    if (hasSelectors.commonViewObject) {
+        [cell setViewObject:viewObject common:[_delegate commonViewObject:viewObject]];
+    } else {
+        [cell setViewObject:viewObject];
+    }
     return cell;
 }
 
@@ -241,6 +262,7 @@
 
 - (void)setDelegate:(id)d {
     _delegate = d;
+    hasSelectors = [self createHasSelector:_delegate];
     [[d tableView] setDelegate:self];
     [[d tableView] setDataSource:self];
 }
@@ -274,16 +296,13 @@
 
 - (void)setAddCellHide:(ChangeInState)cis {
     switch (cis) {
-        case ChangeInStateNone: {
-        }
+        case ChangeInStateNone:
             break;
-        case ChangeInStateHide: {
+        case ChangeInStateHide:
             [self hideAddCell];
-        }
             break;
-        case ChangeInStateShow: {
+        case ChangeInStateShow:
             [self showAddCell];
-        }
             break;
     }
 }
@@ -306,6 +325,21 @@
 
 - (BOOL)compareSectionCount:(NSUInteger)count {
     return [@([_viewObjects sectionCount]) compare:@([_delegate.tableView numberOfSections] - [_addState isShowAddCell:_editing])];
-
+}
+- (HasSelectors)createHasSelector:(id)d {
+    HasSelectors s;
+    s.didSelectCell = [d respondsToSelector:@selector(didSelectCell:)];
+    s.deleteCell = [d respondsToSelector:@selector(deleteCell:)];
+    s.cellIdentifier = [d respondsToSelector:@selector(cellIdentifier:)];
+    s.cellIdentifier = [d respondsToSelector:@selector(commonViewObject:)];
+    s.sectionTitle = [d respondsToSelector:@selector(sectionTitle:)];
+    s.addCellIdentifier = [d respondsToSelector:@selector(addCellIdentifier)];
+    s.didSelectAdditionalCell = [d respondsToSelector:@selector(didSelectAdditionalCell)];
+    s.addSectionTitle = [d respondsToSelector:@selector(addSectionTitle)];
+    s.addSectionHeightForHeader = [d respondsToSelector:@selector(addSectionHeightForHeader)];
+    s.addSectionHeader = [d respondsToSelector:@selector(addSectionHeader)];
+    s.sectionHeightForHeader = [d respondsToSelector:@selector(sectionHeightForHeader:)];
+    s.sectionHeader = [d respondsToSelector:@selector(sectionHeader:)];
+    return s;
 }
 @end
