@@ -21,6 +21,7 @@ typedef struct {
     BOOL cellIdentifier             : 1;
     BOOL sectionTitle               : 1;
     BOOL addCellIdentifier          : 1;
+    BOOL commonViewObject           : 1;
     BOOL didSelectAdditionalCell    : 1;
     BOOL addSectionTitle            : 1;
     BOOL addSectionHeightForHeader  : 1;
@@ -241,7 +242,11 @@ typedef struct {
 - (UITableViewCell *)createCell:(NSIndexPath *)indexPath {
     id viewObject = [self viewObjectWithIndex:indexPath];
     id cell = [self dequeueCell:indexPath];
-    [cell setViewObject:viewObject];
+    if (hasSelectors.commonViewObject) {
+        [cell setViewObject:viewObject common:[_delegate commonViewObject:viewObject]];
+    } else {
+        [cell setViewObject:viewObject];
+    }
     return cell;
 }
 
@@ -291,16 +296,13 @@ typedef struct {
 
 - (void)setAddCellHide:(ChangeInState)cis {
     switch (cis) {
-        case ChangeInStateNone: {
-        }
+        case ChangeInStateNone:
             break;
-        case ChangeInStateHide: {
+        case ChangeInStateHide:
             [self hideAddCell];
-        }
             break;
-        case ChangeInStateShow: {
+        case ChangeInStateShow:
             [self showAddCell];
-        }
             break;
     }
 }
@@ -329,6 +331,7 @@ typedef struct {
     s.didSelectCell = [d respondsToSelector:@selector(didSelectCell:)];
     s.deleteCell = [d respondsToSelector:@selector(deleteCell:)];
     s.cellIdentifier = [d respondsToSelector:@selector(cellIdentifier:)];
+    s.cellIdentifier = [d respondsToSelector:@selector(commonViewObject:)];
     s.sectionTitle = [d respondsToSelector:@selector(sectionTitle:)];
     s.addCellIdentifier = [d respondsToSelector:@selector(addCellIdentifier)];
     s.didSelectAdditionalCell = [d respondsToSelector:@selector(didSelectAdditionalCell)];

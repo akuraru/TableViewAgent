@@ -11,5 +11,6 @@
 @protocol TableViewAgentCellDelegate <NSObject>
 - (void)setViewObject:(id)o;
 @optional
+- (void)setViewObject:(id)o common:(id)c;
 - (CGFloat)heightFromViewObject:(id)o;
 @end
