@@ -34,6 +34,4 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 - (void)setEditableMode:(EditableMode)mode;
 
 - (void)redraw;
-
-- (BOOL)compareSectionCount:(NSUInteger)count;
 @end

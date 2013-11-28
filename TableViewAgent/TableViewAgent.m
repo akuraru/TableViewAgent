@@ -323,7 +323,7 @@ typedef struct {
     return [_viewObjects sectionCount];
 }
 
-- (BOOL)compareSectionCount:(NSUInteger)count {
+- (NSComparisonResult)compareSectionCount:(NSUInteger)count {
     return [@([_viewObjects sectionCount]) compare:@([_delegate.tableView numberOfSections] - [_addState isShowAddCell:_editing])];
 }
 - (HasSelectors)createHasSelector:(id)d {
@@ -331,7 +331,7 @@ typedef struct {
     s.didSelectCell = [d respondsToSelector:@selector(didSelectCell:)];
     s.deleteCell = [d respondsToSelector:@selector(deleteCell:)];
     s.cellIdentifier = [d respondsToSelector:@selector(cellIdentifier:)];
-    s.cellIdentifier = [d respondsToSelector:@selector(commonViewObject:)];
+    s.commonViewObject = [d respondsToSelector:@selector(commonViewObject:)];
     s.sectionTitle = [d respondsToSelector:@selector(sectionTitle:)];
     s.addCellIdentifier = [d respondsToSelector:@selector(addCellIdentifier)];
     s.didSelectAdditionalCell = [d respondsToSelector:@selector(didSelectAdditionalCell)];
