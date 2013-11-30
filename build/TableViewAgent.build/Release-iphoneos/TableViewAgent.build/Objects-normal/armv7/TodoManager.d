@@ -1,0 +1,33 @@
+dependencies: \
+  /Users/akuraru/Documents/Xcode/TableViewAgent/Sample/TableViewAgent/Model/CoreData/EntityManager/TodoManager.m \
+  /Users/akuraru/Documents/Xcode/TableViewAgent/Sample/TableViewAgent/Model/CoreData/EntityManager/TodoManager.h \
+  /Users/akuraru/Documents/Xcode/TableViewAgent/Sample/TableViewAgent/Model/CoreData/Entity/Todo.h \
+  /Users/akuraru/Documents/Xcode/TableViewAgent/Sample/TableViewAgent/Model/CoreData/Entity/_Todo.h \
+  Pods/BuildHeaders/MagicalRecord/CoreData+MagicalRecord.h \
+  Pods/BuildHeaders/MagicalRecord/MagicalRecord.h \
+  Pods/BuildHeaders/MagicalRecord/MagicalRecord+Actions.h \
+  Pods/BuildHeaders/MagicalRecord/NSManagedObjectContext+MagicalRecord.h \
+  Pods/BuildHeaders/MagicalRecord/NSManagedObjectContext+MagicalSaves.h \
+  Pods/BuildHeaders/MagicalRecord/MagicalRecord+ErrorHandling.h \
+  Pods/BuildHeaders/MagicalRecord/MagicalRecord+Options.h \
+  Pods/BuildHeaders/MagicalRecord/MagicalRecord+ShorthandSupport.h \
+  Pods/BuildHeaders/MagicalRecord/MagicalRecord+Setup.h \
+  Pods/BuildHeaders/MagicalRecord/MagicalRecord+iCloud.h \
+  Pods/BuildHeaders/MagicalRecord/NSManagedObject+MagicalRecord.h \
+  Pods/BuildHeaders/MagicalRecord/NSManagedObject+MagicalRequests.h \
+  Pods/BuildHeaders/MagicalRecord/NSManagedObject+MagicalFinders.h \
+  Pods/BuildHeaders/MagicalRecord/NSManagedObject+MagicalAggregation.h \
+  Pods/BuildHeaders/MagicalRecord/NSManagedObjectContext+MagicalObserving.h \
+  Pods/BuildHeaders/MagicalRecord/NSManagedObjectContext+MagicalThreading.h \
+  Pods/BuildHeaders/MagicalRecord/NSPersistentStoreCoordinator+MagicalRecord.h \
+  Pods/BuildHeaders/MagicalRecord/NSPersistentStore+MagicalRecord.h \
+  Pods/BuildHeaders/MagicalRecord/NSManagedObjectModel+MagicalRecord.h \
+  Pods/BuildHeaders/MagicalRecord/MagicalImportFunctions.h \
+  Pods/BuildHeaders/MagicalRecord/NSManagedObject+MagicalDataImport.h \
+  Pods/BuildHeaders/MagicalRecord/NSNumber+MagicalDataImport.h \
+  Pods/BuildHeaders/MagicalRecord/NSObject+MagicalDataImport.h \
+  Pods/BuildHeaders/MagicalRecord/NSString+MagicalDataImport.h \
+  Pods/BuildHeaders/MagicalRecord/NSAttributeDescription+MagicalDataImport.h \
+  Pods/BuildHeaders/MagicalRecord/NSRelationshipDescription+MagicalDataImport.h \
+  Pods/BuildHeaders/MagicalRecord/NSEntityDescription+MagicalDataImport.h \
+  /Users/akuraru/Documents/Xcode/TableViewAgent/Sample/TableViewAgent/Model/CoreData/WETodo.h
