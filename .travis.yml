@@ -1,5 +1,6 @@
 language: objective-c
 before_install:
+  - gem install cocoapods
   - sudo easy_install cpp-coveralls
 script:
   - xctool test GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
