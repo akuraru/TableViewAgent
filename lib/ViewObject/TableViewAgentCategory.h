@@ -12,7 +12,9 @@
 @interface TableViewAgent (AgentViewObject)
 
 - (void)deleteCell:(NSIndexPath *)indexPath;
+- (void)deleteCellsAtSection:(NSInteger)section rows:(NSArray *)rows;
 - (void)insertCell:(NSIndexPath *)indexPath;
+- (void)insertCellsAtSection:(NSInteger)section rows:(NSArray *)rows;
 - (void)changeUpdateCell:(NSIndexPath *)indexPath;
 - (void)changeMoveCell:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
 

@@ -88,12 +88,36 @@ typedef struct {
         [_delegate.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
+
+- (void)deleteCellsAtSection:(NSInteger)section rows:(NSArray *)rows {
+    if ([self compareSectionCount:_viewObjects.sectionCount]) {
+        [_delegate.tableView deleteSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else {
+        [_delegate.tableView deleteRowsAtIndexPaths:[self indexPathsForSection:section rows:rows] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
 - (void)insertCell:(NSIndexPath *)indexPath {
     if ([self compareSectionCount:_viewObjects.sectionCount]) {
         [_delegate.tableView insertSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
     } else {
         [_delegate.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
+}
+- (void)insertCellsAtSection:(NSInteger)section rows:(NSArray *)rows {
+    if ([self compareSectionCount:_viewObjects.sectionCount]) {
+        [_delegate.tableView insertSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else {
+        [_delegate.tableView insertRowsAtIndexPaths:[self indexPathsForSection:section rows:rows] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
+- (NSArray *)indexPathsForSection:(NSInteger)section rows:(NSArray *)rows {
+    NSMutableArray *result = [NSMutableArray array];
+    for (NSNumber *row in rows) {
+        [result addObject:[NSIndexPath indexPathForRow:row.integerValue inSection:section]];
+    }
+    return result;
 }
 - (void)changeUpdateCell:(NSIndexPath *)indexPath {
     [_delegate.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
