@@ -728,6 +728,7 @@
 				INFOPLIST_FILE = "TableViewAgent/TableViewAgent-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -741,6 +742,7 @@
 				INFOPLIST_FILE = "TableViewAgent/TableViewAgent-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -749,7 +751,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -772,6 +774,7 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -780,7 +783,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -800,6 +803,7 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;

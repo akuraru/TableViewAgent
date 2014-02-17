@@ -7,11 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "AdditionalCellStateAlways.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    [[AdditionalCellStateAlways alloc] init]
     return YES;
 }
 
