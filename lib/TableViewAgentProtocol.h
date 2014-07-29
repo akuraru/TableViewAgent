@@ -52,7 +52,11 @@
 @optional
 - (UIView *)sectionHeader:(id)viewObject;
 @end
+@protocol cellHeight <NSObject>
+@optional
+- (CGFloat)cellHeight:(id)viewObject;
+@end
 
 
-@protocol TableViewAgentDelegate <tableView, didSelectCell, deleteCell, cellIdentifier, commonViewObject, sectionTitle, addCellIdentifier, didSelectAdditionalCell, addSectionTitle, addSectionHeightForHeader, addSectionHeader, sectionHeightForHeader, sectionHeader>
+@protocol TableViewAgentDelegate <tableView, didSelectCell, deleteCell, cellIdentifier, commonViewObject, sectionTitle, addCellIdentifier, didSelectAdditionalCell, addSectionTitle, addSectionHeightForHeader, addSectionHeader, sectionHeightForHeader, sectionHeader, cellHeight>
 @end

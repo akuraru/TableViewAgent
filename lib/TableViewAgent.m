@@ -28,6 +28,7 @@ typedef struct {
     BOOL addSectionHeader           : 1;
     BOOL sectionHeightForHeader     : 1;
     BOOL sectionHeader              : 1;
+    BOOL cellHeight                 : 1;
 } HasSelectors;
 
 @interface TableViewAgent () <UITableViewDataSource, UITableViewDelegate>
@@ -131,7 +132,8 @@ typedef struct {
                 [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
                 [tableView insertSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
             } else {
-                [tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
+                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
             break;
         case NSOrderedAscending :
@@ -352,6 +354,7 @@ typedef struct {
 }
 - (HasSelectors)createHasSelector:(id)d {
     HasSelectors s;
+    s.cellHeight = [d respondsToSelector:@selector(cellHeight:)];
     s.didSelectCell = [d respondsToSelector:@selector(didSelectCell:)];
     s.deleteCell = [d respondsToSelector:@selector(deleteCell:)];
     s.cellIdentifier = [d respondsToSelector:@selector(cellIdentifier:)];
