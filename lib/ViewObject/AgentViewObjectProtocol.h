@@ -11,10 +11,10 @@
 @class TableViewAgent;
 
 @protocol sectionCount <NSObject>
-- (NSUInteger)sectionCount;
+- (NSInteger)sectionCount;
 @end
 @protocol countInSection <NSObject>
-- (NSUInteger)countInSection:(NSUInteger)section;
+- (NSInteger)countInSection:(NSInteger)section;
 @end
 @protocol objectAtIndexPath <NSObject>
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
@@ -26,7 +26,7 @@
 - (BOOL)existObject:(NSIndexPath *)indexPath;
 @end
 @protocol sectionObjects <NSObject>
-- (NSArray *)sectionObjects:(NSInteger)section;
+- (id)sectionObjects:(NSInteger)section;
 @end
 @protocol agent <NSObject>
 @property (weak, nonatomic) TableViewAgent *agent;

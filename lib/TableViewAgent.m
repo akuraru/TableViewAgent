@@ -9,6 +9,8 @@
 #import "TableViewAgent.h"
 #import "TableViewAgent-Swift.h"
 #import "AgentViewObjectProtocol.h"
+#import "TableViewAgentProtocol.h"
+#import "TableViewAgentCellDelegate.h"
 
 typedef struct {
     BOOL didSelectCell              : 1;

@@ -16,6 +16,7 @@
 #import "TodoManager.h"
 #import "WETodo.h"
 #import "ThirdViewController.h"
+#import "TableViewAgentDelegate.h"
 
 @interface FRCViewController () <TableViewAgentDelegate>
 @end

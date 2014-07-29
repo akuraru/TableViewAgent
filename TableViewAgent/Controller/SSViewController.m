@@ -11,8 +11,9 @@
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
-#import "SSAgentViewObject.h"
 #import "ThirdViewController.h"
+#import "TableViewAgent-Swift.h"
+#import "TableViewAgentDelegate.h"
 
 @interface SSViewController () <TableViewAgentDelegate>
 @end
@@ -27,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     agent = [[TableViewAgent alloc] init];
-    agent.viewObjects = [[SSAgentViewObject alloc] initWithArray:[self array]];
+    agent.viewObjects = [[SSAgentViewObject alloc] initWithArray:[self array] agent:agent];
     agent.delegate = self;
     [agent setEditableMode:EditableModeEnable];
     [agent setAdditionalCellMode:AdditionalCellModeHideEditing];

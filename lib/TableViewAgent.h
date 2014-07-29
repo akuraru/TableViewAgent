@@ -7,11 +7,11 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TableViewAgentCellDelegate.h"
-#import "TableViewAgentProtocol.h"
+
 
 @class EditableState;
 @protocol AgentViewObjectProtocol;
+@protocol TableViewAgentDelegate;
 
 typedef NS_ENUM (NSInteger, AdditionalCellMode) {
     AdditionalCellModeNone,

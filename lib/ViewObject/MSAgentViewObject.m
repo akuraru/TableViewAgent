@@ -53,10 +53,10 @@
 - (void)dealloc {
     _array = nil;
 }
-- (NSUInteger)sectionCount {
+- (NSInteger)sectionCount {
     return _array.count;
 }
-- (NSUInteger)countInSection:(NSUInteger)section {
+- (NSInteger)countInSection:(NSInteger)section {
     return [_array[section] count];
 }
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {

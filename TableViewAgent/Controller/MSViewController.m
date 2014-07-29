@@ -13,6 +13,7 @@
 #import "ViewObject.h"
 #import "MSAgentViewObject.h"
 #import "ThirdViewController.h"
+#import "TableViewAgentDelegate.h"
 
 @interface MSViewController () <TableViewAgentDelegate>
 

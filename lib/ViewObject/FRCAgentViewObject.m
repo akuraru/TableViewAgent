@@ -26,13 +26,13 @@
 - (void)dealloc {
     _controller = nil;
 }
-- (NSUInteger)sectionCount {
+- (NSInteger)sectionCount {
     if (_controller.sections.count == 1 && [_controller.sections[0] numberOfObjects] == 0) {
         return 0;
     }
     return _controller.sections.count;
 }
-- (NSUInteger)countInSection:(NSUInteger)section {
+- (NSInteger)countInSection:(NSInteger)section {
     return [_controller.sections[section] numberOfObjects];
 }
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
