@@ -7,13 +7,8 @@
 
 
 #import "TableViewAgent.h"
-#import "EditableStateNone.h"
-#import "EditableStateEnadle.h"
+#import "TableViewAgent-Swift.h"
 #import "AgentViewObjectProtocol.h"
-#import "AdditionalCellStateNone.h"
-#import "AdditionalCellStateAlways.h"
-#import "AdditionalCellStateHideEditing.h"
-#import "AdditionalCellStateShowEditing.h"
 
 typedef struct {
     BOOL didSelectCell              : 1;
@@ -320,14 +315,14 @@ typedef struct {
     }
 }
 
-- (void)setAddCellHide:(ChangeInState)cis {
+- (void)setAddCellHide:(NSInteger)cis {
     switch (cis) {
-        case ChangeInStateNone:
+        case 0:
             break;
-        case ChangeInStateHide:
+        case 1:
             [self hideAddCell];
             break;
-        case ChangeInStateShow:
+        case 2:
             [self showAddCell];
             break;
     }

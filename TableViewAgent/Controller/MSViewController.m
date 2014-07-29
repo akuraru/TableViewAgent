@@ -12,6 +12,7 @@
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
 #import "MSAgentViewObject.h"
+#import "ThirdViewController.h"
 
 @interface MSViewController () <TableViewAgentDelegate>
 
@@ -62,8 +63,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kSegueEdit]) {
-        [segue.destinationViewController setViewObject:sender];
-        [segue.destinationViewController setDelegate:self];
+        ThirdViewController *controller = segue.destinationViewController;
+        [controller setViewObject:sender];
+        [controller setDelegate:self];
     }
 }
 

@@ -12,6 +12,7 @@
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
 #import "SSAgentViewObject.h"
+#import "ThirdViewController.h"
 
 @interface SSViewController () <TableViewAgentDelegate>
 @end
@@ -26,15 +27,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     agent = [[TableViewAgent alloc] init];
-    agent.viewObjects = [[SSAgentViewObject alloc] initWithArray:@[
-     [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
-     [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
-     [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
-     ]];
+    agent.viewObjects = [[SSAgentViewObject alloc] initWithArray:[self array]];
     agent.delegate = self;
     [agent setEditableMode:EditableModeEnable];
     [agent setAdditionalCellMode:AdditionalCellModeHideEditing];
 }
+- (NSArray *)array {
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:1000];
+    for (int i = 0; i < 1000; i++) {
+        [result addObject:[[ViewObject alloc] initWithTitle:[@(arc4random()) stringValue] message:@"2012/12/11"]];
+    }
+    return result;
+}
+                         
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
     if (tvo.viewObject) {
@@ -62,8 +67,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kSegueEdit]) {
-        [segue.destinationViewController setViewObject:sender];
-        [segue.destinationViewController setDelegate:self];
+        ThirdViewController *controller = segue.destinationViewController;
+        [controller setViewObject:sender];
+        [controller setDelegate:self];
     }
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2DDCFBA148DE41AABC73DC30 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04047CB7E427422FB2D7649E /* libPods.a */; };
+		BE161195196FE441004E2979 /* showTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C879029E6098E49ED1B97509 /* showTableView.m */; };
 		BE2256F2176BCABC0022DA33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
 		BE2256F4176BCABC0022DA33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F3176BCABC0022DA33 /* Foundation.framework */; };
 		BE2256F6176BCABC0022DA33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F5176BCABC0022DA33 /* CoreGraphics.framework */; };
@@ -23,6 +24,7 @@
 		BE4D744817F5066300287CE8 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744617F5066300287CE8 /* Todo.m */; };
 		BE4D744C17F5160600287CE8 /* TodoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744B17F5160600287CE8 /* TodoManager.m */; };
 		BE5C3CE917C0FE0C00D28713 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C3CE817C0FE0C00D28713 /* MSViewController.m */; };
+		BE6AD8831987AD360002ABA7 /* EditableStateNone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8821987AD360002ABA7 /* EditableStateNone.swift */; };
 		BE76B95C18498F77001E749D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE76B95B18498F77001E749D /* XCTest.framework */; };
 		BE76B95D18498F77001E749D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F3176BCABC0022DA33 /* Foundation.framework */; };
 		BE76B95E18498F77001E749D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
@@ -35,7 +37,6 @@
 		BE76B99E1849A148001E749D /* AdditionalCellStateShowEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9841849A148001E749D /* AdditionalCellStateShowEditing.m */; };
 		BE76B99F1849A148001E749D /* EditableState.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9871849A148001E749D /* EditableState.m */; };
 		BE76B9A01849A148001E749D /* EditableStateEnadle.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9891849A148001E749D /* EditableStateEnadle.m */; };
-		BE76B9A11849A148001E749D /* EditableStateNone.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B98B1849A148001E749D /* EditableStateNone.m */; };
 		BE76B9A21849A148001E749D /* TableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B98D1849A148001E749D /* TableViewAgent.m */; };
 		BE76B9A31849A148001E749D /* FRCAgentViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9941849A148001E749D /* FRCAgentViewObject.m */; };
 		BE76B9A41849A148001E749D /* MSAgentViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9961849A148001E749D /* MSAgentViewObject.m */; };
@@ -49,10 +50,18 @@
 		C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790665BD0F40D548AD722F /* ViewObject.m */; };
 		C879079959003B75D9C7BF87 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790DD4728C683034FBAF4A /* ThirdViewController.m */; };
 		C87909C858C0691F2E527E6C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790043B0A754925503375F /* MainViewController.m */; };
+		C8790AE56CEAA4AA5E94FAA6 /* MainEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790FBDE954ADA09B0FD26B /* MainEntry.m */; };
 		E1E3122E98584106B4701550 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA2420649764F39950BAD1A /* libPods-Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BE6AD8841987AD700002ABA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE2256E6176BCABC0022DA33 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE2256ED176BCABC0022DA33;
+			remoteInfo = TableViewAgent;
+		};
 		BE76B96818498F77001E749D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BE2256E6176BCABC0022DA33 /* Project object */;
@@ -88,6 +97,8 @@
 		BE4D744B17F5160600287CE8 /* TodoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoManager.m; sourceTree = "<group>"; };
 		BE5C3CE717C0FE0C00D28713 /* MSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSViewController.h; sourceTree = "<group>"; };
 		BE5C3CE817C0FE0C00D28713 /* MSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSViewController.m; sourceTree = "<group>"; };
+		BE6AD8811987AD350002ABA7 /* TableViewAgent-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TableViewAgent-Bridging-Header.h"; sourceTree = "<group>"; };
+		BE6AD8821987AD360002ABA7 /* EditableStateNone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableStateNone.swift; sourceTree = "<group>"; };
 		BE76B95A18498F77001E749D /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE76B95B18498F77001E749D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BE76B96118498F77001E749D /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
@@ -108,8 +119,6 @@
 		BE76B9871849A148001E749D /* EditableState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableState.m; sourceTree = "<group>"; };
 		BE76B9881849A148001E749D /* EditableStateEnadle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableStateEnadle.h; sourceTree = "<group>"; };
 		BE76B9891849A148001E749D /* EditableStateEnadle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableStateEnadle.m; sourceTree = "<group>"; };
-		BE76B98A1849A148001E749D /* EditableStateNone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableStateNone.h; sourceTree = "<group>"; };
-		BE76B98B1849A148001E749D /* EditableStateNone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableStateNone.m; sourceTree = "<group>"; };
 		BE76B98C1849A148001E749D /* TableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgent.h; sourceTree = "<group>"; };
 		BE76B98D1849A148001E749D /* TableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewAgent.m; sourceTree = "<group>"; };
 		BE76B98E1849A148001E749D /* TableViewAgentCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentCellDelegate.h; sourceTree = "<group>"; };
@@ -128,7 +137,9 @@
 		C879000AD100E37BD5CCF83C /* WETodo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETodo.m; sourceTree = "<group>"; };
 		C8790043B0A754925503375F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C87900D1196B2A54304A1558 /* FRCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRCViewController.h; sourceTree = "<group>"; };
+		C879029E6098E49ED1B97509 /* showTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = showTableView.m; sourceTree = "<group>"; };
 		C87902B6380B6A554115F053 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
+		C879033420D473A398605380 /* MainEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainEntry.h; sourceTree = "<group>"; };
 		C8790352EF7D1394525F8E95 /* ViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewObject.h; sourceTree = "<group>"; };
 		C879056EE85037B2CC3E8E04 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		C8790598EDF8FE8AE36B952B /* MainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainService.m; sourceTree = "<group>"; };
@@ -141,6 +152,7 @@
 		C8790DD4728C683034FBAF4A /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		C8790E7509D540B912A684D8 /* ThirdViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewObject.h; sourceTree = "<group>"; };
 		C8790F785A526609644BE7B5 /* ThirdViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewObject.m; sourceTree = "<group>"; };
+		C8790FBDE954ADA09B0FD26B /* MainEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainEntry.m; sourceTree = "<group>"; };
 		D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.xcconfig"; path = "Pods/Pods-Tests.xcconfig"; sourceTree = "<group>"; };
 		DC648156027C4883B2121023 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		EAA2420649764F39950BAD1A /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +231,8 @@
 				C8790D791E4571F92C4C01CE /* ViewObject */,
 				C879092E38AB3C74DF427397 /* Services */,
 				C8790A8EEDFA301780DAB1C3 /* Model */,
+				C8790FBDE954ADA09B0FD26B /* MainEntry.m */,
+				C879033420D473A398605380 /* MainEntry.h */,
 			);
 			name = TableViewAgentSample;
 			path = TableViewAgent;
@@ -253,6 +267,7 @@
 			children = (
 				BE76B96518498F77001E749D /* Tests.m */,
 				BE76B96018498F77001E749D /* Supporting Files */,
+				C879029E6098E49ED1B97509 /* showTableView.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -306,8 +321,8 @@
 				BE76B9871849A148001E749D /* EditableState.m */,
 				BE76B9881849A148001E749D /* EditableStateEnadle.h */,
 				BE76B9891849A148001E749D /* EditableStateEnadle.m */,
-				BE76B98A1849A148001E749D /* EditableStateNone.h */,
-				BE76B98B1849A148001E749D /* EditableStateNone.m */,
+				BE6AD8821987AD360002ABA7 /* EditableStateNone.swift */,
+				BE6AD8811987AD350002ABA7 /* TableViewAgent-Bridging-Header.h */,
 			);
 			path = EditableState;
 			sourceTree = "<group>";
@@ -441,6 +456,7 @@
 			);
 			dependencies = (
 				BE76B96918498F77001E749D /* PBXTargetDependency */,
+				BE6AD8851987AD700002ABA7 /* PBXTargetDependency */,
 			);
 			name = Tests;
 			productName = Tests;
@@ -455,6 +471,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = P.I.akura;
+				TargetAttributes = {
+					BE76B95918498F77001E749D = {
+						TestTargetID = BE2256ED176BCABC0022DA33;
+					};
+				};
 			};
 			buildConfigurationList = BE2256E9176BCABC0022DA33 /* Build configuration list for PBXProject "TableViewAgent" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -595,9 +616,9 @@
 				BE4D744217F5056D00287CE8 /* Model.xcdatamodeld in Sources */,
 				C87903536A8986DA6EC5F746 /* MainService.m in Sources */,
 				BE76B9A21849A148001E749D /* TableViewAgent.m in Sources */,
+				BE6AD8831987AD360002ABA7 /* EditableStateNone.swift in Sources */,
 				BE76B9A01849A148001E749D /* EditableStateEnadle.m in Sources */,
 				BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */,
-				BE76B9A11849A148001E749D /* EditableStateNone.m in Sources */,
 				BE76B99E1849A148001E749D /* AdditionalCellStateShowEditing.m in Sources */,
 				BE76B9A51849A148001E749D /* SSAgentViewObject.m in Sources */,
 				BE4D744C17F5160600287CE8 /* TodoManager.m in Sources */,
@@ -606,6 +627,7 @@
 				C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */,
 				C87905270237FA75311D678E /* WETodo.m in Sources */,
 				BE76B9A31849A148001E749D /* FRCAgentViewObject.m in Sources */,
+				C8790AE56CEAA4AA5E94FAA6 /* MainEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,6 +635,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE161195196FE441004E2979 /* showTableView.m in Sources */,
 				BE76B96618498F77001E749D /* Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -620,6 +643,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BE6AD8851987AD700002ABA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE2256ED176BCABC0022DA33 /* TableViewAgent */;
+			targetProxy = BE6AD8841987AD700002ABA7 /* PBXContainerItemProxy */;
+		};
 		BE76B96918498F77001E749D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BE2256ED176BCABC0022DA33 /* TableViewAgent */;
@@ -723,10 +751,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DC648156027C4883B2121023 /* Pods.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableViewAgent/TableViewAgent-Prefix.pch";
 				INFOPLIST_FILE = "TableViewAgent/TableViewAgent-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "lib/EditableState/TableViewAgent-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -737,10 +769,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DC648156027C4883B2121023 /* Pods.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableViewAgent/TableViewAgent-Prefix.pch";
 				INFOPLIST_FILE = "TableViewAgent/TableViewAgent-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "lib/EditableState/TableViewAgent-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -752,6 +787,7 @@
 			baseConfigurationReference = D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TableViewAgent.app/TableViewAgent";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -774,6 +810,7 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -784,6 +821,7 @@
 			baseConfigurationReference = D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TableViewAgent.app/TableViewAgent";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -803,6 +841,7 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
