@@ -8,12 +8,10 @@
 
 #import "MSViewController.h"
 #import "TableViewAgent-Swift.h"
-#import "TableViewAgent.h"
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
 #import "ThirdViewController.h"
-#import "TableViewAgentDelegate.h"
 
 @interface MSViewController () <TableViewAgentDelegate>
 

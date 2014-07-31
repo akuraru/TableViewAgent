@@ -7,7 +7,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TableViewAgentCellDelegate.h"
+#import "TableViewAgent-Swift.h"
 
 @interface CustomTableViewCell : UITableViewCell <TableViewAgentCellDelegate>
 @end

@@ -32,7 +32,7 @@ class SSAgentViewObject : NSObject, AgentViewObjectProtocol {
     func changeObject(object :AnyObject) {
         let path = self.indexPathForObject(object)
         if path {
-            agent.changeUpdateCell(path)
+            agent.changeUpdateCell(path!)
         }
     }
     // deleagte

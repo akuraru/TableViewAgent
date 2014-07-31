@@ -7,14 +7,12 @@
 
 
 #import "FRCViewController.h"
-#import "TableViewAgent.h"
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
 #import "TodoManager.h"
 #import "WETodo.h"
 #import "ThirdViewController.h"
-#import "TableViewAgentDelegate.h"
 #import "TableViewAgent-Swift.h"
 
 @interface FRCViewController () <TableViewAgentDelegate>
@@ -43,8 +41,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-    [agent redraw];
+    
+    [agent reload];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

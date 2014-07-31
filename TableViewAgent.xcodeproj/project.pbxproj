@@ -39,8 +39,10 @@
 		BE76B95E18498F77001E749D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
 		BE76B96418498F77001E749D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE76B96218498F77001E749D /* InfoPlist.strings */; };
 		BE76B96618498F77001E749D /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B96518498F77001E749D /* Tests.m */; };
-		BE76B9A21849A148001E749D /* TableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B98D1849A148001E749D /* TableViewAgent.m */; };
 		BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1217719B3200A6113E /* SSViewController.m */; };
+		BEE8F8DB198A3CD6001477B0 /* TableViewAgentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */; };
+		BEE8F8DD198A43B6001477B0 /* TableViewAgentCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */; };
+		BEE8F8DF198A44AD001477B0 /* TableViewAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */; };
 		BEEA508C1989C74000A373EA /* FRCAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */; };
 		BEFA094D1989FCBF00E6AC82 /* AgentViewObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFA094C1989FCBF00E6AC82 /* AgentViewObjectProtocol.swift */; };
 		C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */; };
@@ -129,14 +131,12 @@
 		BE76B96318498F77001E749D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BE76B96518498F77001E749D /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		BE76B96718498F77001E749D /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		BE76B98C1849A148001E749D /* TableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgent.h; sourceTree = "<group>"; };
-		BE76B98D1849A148001E749D /* TableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewAgent.m; sourceTree = "<group>"; };
-		BE76B98E1849A148001E749D /* TableViewAgentCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentCellDelegate.h; sourceTree = "<group>"; };
-		BE76B98F1849A148001E749D /* TableViewAgentDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentDelegate.h; sourceTree = "<group>"; };
-		BE76B9901849A148001E749D /* TableViewAgentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentProtocol.h; sourceTree = "<group>"; };
-		BE76B9991849A148001E749D /* TableViewAgentCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentCategory.h; sourceTree = "<group>"; };
 		BE8FDB1117719B3200A6113E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
 		BE8FDB1217719B3200A6113E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
+		BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgentDelegate.swift; sourceTree = "<group>"; };
+		BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgentCellDelegate.swift; sourceTree = "<group>"; };
+		BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgent.swift; sourceTree = "<group>"; };
+		BEE8F8E0198A4F83001477B0 /* Enum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enum.h; sourceTree = "<group>"; };
 		BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCAgentViewObject.swift; sourceTree = "<group>"; };
 		BEFA094C1989FCBF00E6AC82 /* AgentViewObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentViewObjectProtocol.swift; sourceTree = "<group>"; };
 		C879000AD100E37BD5CCF83C /* WETodo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETodo.m; sourceTree = "<group>"; };
@@ -292,12 +292,11 @@
 			children = (
 				BE76B97A1849A148001E749D /* AdditionalCellState */,
 				BE76B9851849A148001E749D /* EditableState */,
-				BE76B98C1849A148001E749D /* TableViewAgent.h */,
-				BE76B98D1849A148001E749D /* TableViewAgent.m */,
-				BE76B98E1849A148001E749D /* TableViewAgentCellDelegate.h */,
-				BE76B98F1849A148001E749D /* TableViewAgentDelegate.h */,
-				BE76B9901849A148001E749D /* TableViewAgentProtocol.h */,
 				BE76B9911849A148001E749D /* ViewObject */,
+				BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */,
+				BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */,
+				BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */,
+				BEE8F8E0198A4F83001477B0 /* Enum.h */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -329,7 +328,6 @@
 			isa = PBXGroup;
 			children = (
 				BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */,
-				BE76B9991849A148001E749D /* TableViewAgentCategory.h */,
 				BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */,
 				BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */,
 				BEFA094C1989FCBF00E6AC82 /* AgentViewObjectProtocol.swift */,
@@ -601,6 +599,7 @@
 				BE225702176BCABC0022DA33 /* AppDelegate.m in Sources */,
 				BE4D744717F5066300287CE8 /* _Todo.m in Sources */,
 				C87909C858C0691F2E527E6C /* MainViewController.m in Sources */,
+				BEE8F8DB198A3CD6001477B0 /* TableViewAgentDelegate.swift in Sources */,
 				C879079959003B75D9C7BF87 /* ThirdViewController.m in Sources */,
 				BE6AD8B0198870600002ABA7 /* MSAgentViewObject.swift in Sources */,
 				C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */,
@@ -610,7 +609,8 @@
 				C87903536A8986DA6EC5F746 /* MainService.m in Sources */,
 				BE6AD8A5198870100002ABA7 /* AdditionalCellStateAlways.swift in Sources */,
 				BE6AD8A6198870100002ABA7 /* AdditionalCellStateHideEditing.swift in Sources */,
-				BE76B9A21849A148001E749D /* TableViewAgent.m in Sources */,
+				BEE8F8DF198A44AD001477B0 /* TableViewAgent.swift in Sources */,
+				BEE8F8DD198A43B6001477B0 /* TableViewAgentCellDelegate.swift in Sources */,
 				BE6AD8831987AD360002ABA7 /* EditableStateNone.swift in Sources */,
 				BE6AD8A4198870100002ABA7 /* AdditionalCellState.swift in Sources */,
 				BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */,

@@ -48,7 +48,7 @@ class FRCAgentViewObject : NSObject, AgentViewObjectProtocol, NSFetchedResultsCo
         case NSFetchedResultsChangeType.Update:
             agent.changeUpdateCell(indexPath)
         case NSFetchedResultsChangeType.Move:
-            agent.changeMoveCell(indexPath, toIndexPath: newIndexPath)
+            agent.changeMoveCell(indexPath, newIndexPath: newIndexPath)
         }
     }
 }

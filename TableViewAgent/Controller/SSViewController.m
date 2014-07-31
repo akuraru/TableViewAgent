@@ -7,13 +7,11 @@
 //
 
 #import "SSViewController.h"
-#import "TableViewAgent.h"
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
 #import "ThirdViewController.h"
 #import "TableViewAgent-Swift.h"
-#import "TableViewAgentDelegate.h"
 
 @interface SSViewController () <TableViewAgentDelegate>
 @end
@@ -63,7 +61,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [agent redraw];
+    [agent reload];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
