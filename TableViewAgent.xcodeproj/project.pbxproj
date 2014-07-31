@@ -25,22 +25,22 @@
 		BE4D744C17F5160600287CE8 /* TodoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744B17F5160600287CE8 /* TodoManager.m */; };
 		BE5C3CE917C0FE0C00D28713 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C3CE817C0FE0C00D28713 /* MSViewController.m */; };
 		BE6AD8831987AD360002ABA7 /* EditableStateNone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8821987AD360002ABA7 /* EditableStateNone.swift */; };
+		BE6AD89C198870030002ABA7 /* EditableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD899198870030002ABA7 /* EditableState.swift */; };
+		BE6AD89D198870030002ABA7 /* EditableStateEnadle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD89A198870030002ABA7 /* EditableStateEnadle.swift */; };
+		BE6AD8A4198870100002ABA7 /* AdditionalCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD89F198870100002ABA7 /* AdditionalCellState.swift */; };
+		BE6AD8A5198870100002ABA7 /* AdditionalCellStateAlways.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A0198870100002ABA7 /* AdditionalCellStateAlways.swift */; };
+		BE6AD8A6198870100002ABA7 /* AdditionalCellStateHideEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A1198870100002ABA7 /* AdditionalCellStateHideEditing.swift */; };
+		BE6AD8A7198870100002ABA7 /* AdditionalCellStateNone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A2198870100002ABA7 /* AdditionalCellStateNone.swift */; };
+		BE6AD8A8198870100002ABA7 /* AdditionalCellStateShowEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A3198870100002ABA7 /* AdditionalCellStateShowEditing.swift */; };
+		BE6AD8AA1988701B0002ABA7 /* SSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */; };
+		BE6AD8B0198870600002ABA7 /* MSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */; };
 		BE76B95C18498F77001E749D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE76B95B18498F77001E749D /* XCTest.framework */; };
 		BE76B95D18498F77001E749D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F3176BCABC0022DA33 /* Foundation.framework */; };
 		BE76B95E18498F77001E749D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
 		BE76B96418498F77001E749D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE76B96218498F77001E749D /* InfoPlist.strings */; };
 		BE76B96618498F77001E749D /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B96518498F77001E749D /* Tests.m */; };
-		BE76B99A1849A148001E749D /* AdditionalCellState.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B97C1849A148001E749D /* AdditionalCellState.m */; };
-		BE76B99B1849A148001E749D /* AdditionalCellStateAlways.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B97E1849A148001E749D /* AdditionalCellStateAlways.m */; };
-		BE76B99C1849A148001E749D /* AdditionalCellStateHideEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9801849A148001E749D /* AdditionalCellStateHideEditing.m */; };
-		BE76B99D1849A148001E749D /* AdditionalCellStateNone.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9821849A148001E749D /* AdditionalCellStateNone.m */; };
-		BE76B99E1849A148001E749D /* AdditionalCellStateShowEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9841849A148001E749D /* AdditionalCellStateShowEditing.m */; };
-		BE76B99F1849A148001E749D /* EditableState.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9871849A148001E749D /* EditableState.m */; };
-		BE76B9A01849A148001E749D /* EditableStateEnadle.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9891849A148001E749D /* EditableStateEnadle.m */; };
 		BE76B9A21849A148001E749D /* TableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B98D1849A148001E749D /* TableViewAgent.m */; };
 		BE76B9A31849A148001E749D /* FRCAgentViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9941849A148001E749D /* FRCAgentViewObject.m */; };
-		BE76B9A41849A148001E749D /* MSAgentViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9961849A148001E749D /* MSAgentViewObject.m */; };
-		BE76B9A51849A148001E749D /* SSAgentViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9981849A148001E749D /* SSAgentViewObject.m */; };
 		BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1217719B3200A6113E /* SSViewController.m */; };
 		C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */; };
 		C87903536A8986DA6EC5F746 /* MainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790598EDF8FE8AE36B952B /* MainService.m */; };
@@ -56,6 +56,20 @@
 
 /* Begin PBXContainerItemProxy section */
 		BE6AD8841987AD700002ABA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE2256E6176BCABC0022DA33 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE2256ED176BCABC0022DA33;
+			remoteInfo = TableViewAgent;
+		};
+		BE6AD8AB198870320002ABA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE2256E6176BCABC0022DA33 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE2256ED176BCABC0022DA33;
+			remoteInfo = TableViewAgent;
+		};
+		BE6AD8AD198870320002ABA7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BE2256E6176BCABC0022DA33 /* Project object */;
 			proxyType = 1;
@@ -99,26 +113,21 @@
 		BE5C3CE817C0FE0C00D28713 /* MSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSViewController.m; sourceTree = "<group>"; };
 		BE6AD8811987AD350002ABA7 /* TableViewAgent-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TableViewAgent-Bridging-Header.h"; sourceTree = "<group>"; };
 		BE6AD8821987AD360002ABA7 /* EditableStateNone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableStateNone.swift; sourceTree = "<group>"; };
+		BE6AD899198870030002ABA7 /* EditableState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableState.swift; sourceTree = "<group>"; };
+		BE6AD89A198870030002ABA7 /* EditableStateEnadle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableStateEnadle.swift; sourceTree = "<group>"; };
+		BE6AD89F198870100002ABA7 /* AdditionalCellState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellState.swift; sourceTree = "<group>"; };
+		BE6AD8A0198870100002ABA7 /* AdditionalCellStateAlways.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellStateAlways.swift; sourceTree = "<group>"; };
+		BE6AD8A1198870100002ABA7 /* AdditionalCellStateHideEditing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellStateHideEditing.swift; sourceTree = "<group>"; };
+		BE6AD8A2198870100002ABA7 /* AdditionalCellStateNone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellStateNone.swift; sourceTree = "<group>"; };
+		BE6AD8A3198870100002ABA7 /* AdditionalCellStateShowEditing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellStateShowEditing.swift; sourceTree = "<group>"; };
+		BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSAgentViewObject.swift; sourceTree = "<group>"; };
+		BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSAgentViewObject.swift; sourceTree = "<group>"; };
 		BE76B95A18498F77001E749D /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE76B95B18498F77001E749D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BE76B96118498F77001E749D /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		BE76B96318498F77001E749D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BE76B96518498F77001E749D /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		BE76B96718498F77001E749D /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		BE76B97B1849A148001E749D /* AdditionalCellState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellState.h; sourceTree = "<group>"; };
-		BE76B97C1849A148001E749D /* AdditionalCellState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellState.m; sourceTree = "<group>"; };
-		BE76B97D1849A148001E749D /* AdditionalCellStateAlways.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateAlways.h; sourceTree = "<group>"; };
-		BE76B97E1849A148001E749D /* AdditionalCellStateAlways.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateAlways.m; sourceTree = "<group>"; };
-		BE76B97F1849A148001E749D /* AdditionalCellStateHideEditing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateHideEditing.h; sourceTree = "<group>"; };
-		BE76B9801849A148001E749D /* AdditionalCellStateHideEditing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateHideEditing.m; sourceTree = "<group>"; };
-		BE76B9811849A148001E749D /* AdditionalCellStateNone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateNone.h; sourceTree = "<group>"; };
-		BE76B9821849A148001E749D /* AdditionalCellStateNone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateNone.m; sourceTree = "<group>"; };
-		BE76B9831849A148001E749D /* AdditionalCellStateShowEditing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateShowEditing.h; sourceTree = "<group>"; };
-		BE76B9841849A148001E749D /* AdditionalCellStateShowEditing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateShowEditing.m; sourceTree = "<group>"; };
-		BE76B9861849A148001E749D /* EditableState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableState.h; sourceTree = "<group>"; };
-		BE76B9871849A148001E749D /* EditableState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableState.m; sourceTree = "<group>"; };
-		BE76B9881849A148001E749D /* EditableStateEnadle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableStateEnadle.h; sourceTree = "<group>"; };
-		BE76B9891849A148001E749D /* EditableStateEnadle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableStateEnadle.m; sourceTree = "<group>"; };
 		BE76B98C1849A148001E749D /* TableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgent.h; sourceTree = "<group>"; };
 		BE76B98D1849A148001E749D /* TableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewAgent.m; sourceTree = "<group>"; };
 		BE76B98E1849A148001E749D /* TableViewAgentCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentCellDelegate.h; sourceTree = "<group>"; };
@@ -127,10 +136,6 @@
 		BE76B9921849A148001E749D /* AgentViewObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentViewObjectProtocol.h; sourceTree = "<group>"; };
 		BE76B9931849A148001E749D /* FRCAgentViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRCAgentViewObject.h; sourceTree = "<group>"; };
 		BE76B9941849A148001E749D /* FRCAgentViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRCAgentViewObject.m; sourceTree = "<group>"; };
-		BE76B9951849A148001E749D /* MSAgentViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAgentViewObject.h; sourceTree = "<group>"; };
-		BE76B9961849A148001E749D /* MSAgentViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAgentViewObject.m; sourceTree = "<group>"; };
-		BE76B9971849A148001E749D /* SSAgentViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAgentViewObject.h; sourceTree = "<group>"; };
-		BE76B9981849A148001E749D /* SSAgentViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAgentViewObject.m; sourceTree = "<group>"; };
 		BE76B9991849A148001E749D /* TableViewAgentCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentCategory.h; sourceTree = "<group>"; };
 		BE8FDB1117719B3200A6113E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
 		BE8FDB1217719B3200A6113E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
@@ -300,16 +305,11 @@
 		BE76B97A1849A148001E749D /* AdditionalCellState */ = {
 			isa = PBXGroup;
 			children = (
-				BE76B97B1849A148001E749D /* AdditionalCellState.h */,
-				BE76B97C1849A148001E749D /* AdditionalCellState.m */,
-				BE76B97D1849A148001E749D /* AdditionalCellStateAlways.h */,
-				BE76B97E1849A148001E749D /* AdditionalCellStateAlways.m */,
-				BE76B97F1849A148001E749D /* AdditionalCellStateHideEditing.h */,
-				BE76B9801849A148001E749D /* AdditionalCellStateHideEditing.m */,
-				BE76B9811849A148001E749D /* AdditionalCellStateNone.h */,
-				BE76B9821849A148001E749D /* AdditionalCellStateNone.m */,
-				BE76B9831849A148001E749D /* AdditionalCellStateShowEditing.h */,
-				BE76B9841849A148001E749D /* AdditionalCellStateShowEditing.m */,
+				BE6AD89F198870100002ABA7 /* AdditionalCellState.swift */,
+				BE6AD8A0198870100002ABA7 /* AdditionalCellStateAlways.swift */,
+				BE6AD8A1198870100002ABA7 /* AdditionalCellStateHideEditing.swift */,
+				BE6AD8A2198870100002ABA7 /* AdditionalCellStateNone.swift */,
+				BE6AD8A3198870100002ABA7 /* AdditionalCellStateShowEditing.swift */,
 			);
 			path = AdditionalCellState;
 			sourceTree = "<group>";
@@ -317,10 +317,8 @@
 		BE76B9851849A148001E749D /* EditableState */ = {
 			isa = PBXGroup;
 			children = (
-				BE76B9861849A148001E749D /* EditableState.h */,
-				BE76B9871849A148001E749D /* EditableState.m */,
-				BE76B9881849A148001E749D /* EditableStateEnadle.h */,
-				BE76B9891849A148001E749D /* EditableStateEnadle.m */,
+				BE6AD899198870030002ABA7 /* EditableState.swift */,
+				BE6AD89A198870030002ABA7 /* EditableStateEnadle.swift */,
 				BE6AD8821987AD360002ABA7 /* EditableStateNone.swift */,
 				BE6AD8811987AD350002ABA7 /* TableViewAgent-Bridging-Header.h */,
 			);
@@ -330,14 +328,12 @@
 		BE76B9911849A148001E749D /* ViewObject */ = {
 			isa = PBXGroup;
 			children = (
+				BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */,
 				BE76B9921849A148001E749D /* AgentViewObjectProtocol.h */,
 				BE76B9931849A148001E749D /* FRCAgentViewObject.h */,
 				BE76B9941849A148001E749D /* FRCAgentViewObject.m */,
-				BE76B9951849A148001E749D /* MSAgentViewObject.h */,
-				BE76B9961849A148001E749D /* MSAgentViewObject.m */,
-				BE76B9971849A148001E749D /* SSAgentViewObject.h */,
-				BE76B9981849A148001E749D /* SSAgentViewObject.m */,
 				BE76B9991849A148001E749D /* TableViewAgentCategory.h */,
+				BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */,
 			);
 			path = ViewObject;
 			sourceTree = "<group>";
@@ -457,6 +453,8 @@
 			dependencies = (
 				BE76B96918498F77001E749D /* PBXTargetDependency */,
 				BE6AD8851987AD700002ABA7 /* PBXTargetDependency */,
+				BE6AD8AC198870320002ABA7 /* PBXTargetDependency */,
+				BE6AD8AE198870320002ABA7 /* PBXTargetDependency */,
 			);
 			name = Tests;
 			productName = Tests;
@@ -599,34 +597,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE76B99C1849A148001E749D /* AdditionalCellStateHideEditing.m in Sources */,
-				BE76B9A41849A148001E749D /* MSAgentViewObject.m in Sources */,
 				BE2256FE176BCABC0022DA33 /* main.m in Sources */,
 				BE4D744817F5066300287CE8 /* Todo.m in Sources */,
 				BE225702176BCABC0022DA33 /* AppDelegate.m in Sources */,
-				BE76B99B1849A148001E749D /* AdditionalCellStateAlways.m in Sources */,
 				BE4D744717F5066300287CE8 /* _Todo.m in Sources */,
 				C87909C858C0691F2E527E6C /* MainViewController.m in Sources */,
 				C879079959003B75D9C7BF87 /* ThirdViewController.m in Sources */,
+				BE6AD8B0198870600002ABA7 /* MSAgentViewObject.swift in Sources */,
 				C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */,
-				BE76B99A1849A148001E749D /* AdditionalCellState.m in Sources */,
-				BE76B99D1849A148001E749D /* AdditionalCellStateNone.m in Sources */,
 				C879041242F8D565D437DBD5 /* CustomTableViewCell.m in Sources */,
 				C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */,
 				BE4D744217F5056D00287CE8 /* Model.xcdatamodeld in Sources */,
 				C87903536A8986DA6EC5F746 /* MainService.m in Sources */,
+				BE6AD8A5198870100002ABA7 /* AdditionalCellStateAlways.swift in Sources */,
+				BE6AD8A6198870100002ABA7 /* AdditionalCellStateHideEditing.swift in Sources */,
 				BE76B9A21849A148001E749D /* TableViewAgent.m in Sources */,
 				BE6AD8831987AD360002ABA7 /* EditableStateNone.swift in Sources */,
-				BE76B9A01849A148001E749D /* EditableStateEnadle.m in Sources */,
+				BE6AD8A4198870100002ABA7 /* AdditionalCellState.swift in Sources */,
 				BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */,
-				BE76B99E1849A148001E749D /* AdditionalCellStateShowEditing.m in Sources */,
-				BE76B9A51849A148001E749D /* SSAgentViewObject.m in Sources */,
+				BE6AD8AA1988701B0002ABA7 /* SSAgentViewObject.swift in Sources */,
+				BE6AD89C198870030002ABA7 /* EditableState.swift in Sources */,
 				BE4D744C17F5160600287CE8 /* TodoManager.m in Sources */,
+				BE6AD8A7198870100002ABA7 /* AdditionalCellStateNone.swift in Sources */,
+				BE6AD89D198870030002ABA7 /* EditableStateEnadle.swift in Sources */,
 				BE5C3CE917C0FE0C00D28713 /* MSViewController.m in Sources */,
-				BE76B99F1849A148001E749D /* EditableState.m in Sources */,
 				C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */,
 				C87905270237FA75311D678E /* WETodo.m in Sources */,
 				BE76B9A31849A148001E749D /* FRCAgentViewObject.m in Sources */,
+				BE6AD8A8198870100002ABA7 /* AdditionalCellStateShowEditing.swift in Sources */,
 				C8790AE56CEAA4AA5E94FAA6 /* MainEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,6 +645,16 @@
 			isa = PBXTargetDependency;
 			target = BE2256ED176BCABC0022DA33 /* TableViewAgent */;
 			targetProxy = BE6AD8841987AD700002ABA7 /* PBXContainerItemProxy */;
+		};
+		BE6AD8AC198870320002ABA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE2256ED176BCABC0022DA33 /* TableViewAgent */;
+			targetProxy = BE6AD8AB198870320002ABA7 /* PBXContainerItemProxy */;
+		};
+		BE6AD8AE198870320002ABA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE2256ED176BCABC0022DA33 /* TableViewAgent */;
+			targetProxy = BE6AD8AD198870320002ABA7 /* PBXContainerItemProxy */;
 		};
 		BE76B96918498F77001E749D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -755,6 +763,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableViewAgent/TableViewAgent-Prefix.pch";
 				INFOPLIST_FILE = "TableViewAgent/TableViewAgent-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "lib/EditableState/TableViewAgent-Bridging-Header.h";
@@ -773,6 +782,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableViewAgent/TableViewAgent-Prefix.pch";
 				INFOPLIST_FILE = "TableViewAgent/TableViewAgent-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "lib/EditableState/TableViewAgent-Bridging-Header.h";

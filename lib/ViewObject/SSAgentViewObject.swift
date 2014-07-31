@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class SSAgentViewObject : NSObject, AgentViewObjectProtocol {
-    unowned var agent: TableViewAgent
+    weak var agent: TableViewAgent!
     var array: [AnyObject]
     init(array :[AnyObject], agent: TableViewAgent) {
         self.agent = agent

@@ -35,7 +35,7 @@
 }
 - (NSArray *)array {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:1000];
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 10; i++) {
         [result addObject:[[ViewObject alloc] initWithTitle:[@(arc4random()) stringValue] message:@"2012/12/11"]];
     }
     return result;

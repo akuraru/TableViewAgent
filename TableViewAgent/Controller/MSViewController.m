@@ -7,11 +7,11 @@
 //
 
 #import "MSViewController.h"
+#import "TableViewAgent-Swift.h"
 #import "TableViewAgent.h"
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
-#import "MSAgentViewObject.h"
 #import "ThirdViewController.h"
 #import "TableViewAgentDelegate.h"
 
@@ -34,7 +34,7 @@
                          [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
                          ].mutableCopy, @[
                          [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
-                         ].mutableCopy].mutableCopy];
+                         ].mutableCopy].mutableCopy agent:agent];
     [agent setEditableMode:EditableModeEnable];
     [agent setAdditionalCellMode:AdditionalCellModeAlways];
     agent.delegate = self;
