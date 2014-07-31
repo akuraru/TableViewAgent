@@ -11,11 +11,11 @@
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
-#import "FRCAgentViewObject.h"
 #import "TodoManager.h"
 #import "WETodo.h"
 #import "ThirdViewController.h"
 #import "TableViewAgentDelegate.h"
+#import "TableViewAgent-Swift.h"
 
 @interface FRCViewController () <TableViewAgentDelegate>
 @end
@@ -31,7 +31,7 @@
     [super viewDidLoad];
 
     agent = [[TableViewAgent alloc] init];
-    agent.viewObjects = [[FRCAgentViewObject alloc] initWithFetch:[TodoManager fetchController]];
+    agent.viewObjects = [[FRCAgentViewObject alloc] initWithController:[TodoManager fetchController] agent:agent];
     agent.delegate = self;
     [agent setEditableMode:EditableModeEnable];
     [agent setAdditionalCellMode:AdditionalCellModeAlways];
@@ -67,8 +67,8 @@
 - (void)deleteCell:(id)viewObject {
     [TodoManager deleteEntity:viewObject];
 }
-- (NSString *)sectionTitle:(NSArray *)viewObjects {
-    return [viewObjects[0] title];
+- (NSString *)sectionTitle:(id)viewObjects {
+    return [viewObjects title];
 }
 
 - (NSString *)addCellIdentifier {
