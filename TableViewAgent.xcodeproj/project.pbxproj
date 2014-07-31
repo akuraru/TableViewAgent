@@ -42,6 +42,7 @@
 		BE76B9A21849A148001E749D /* TableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B98D1849A148001E749D /* TableViewAgent.m */; };
 		BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1217719B3200A6113E /* SSViewController.m */; };
 		BEEA508C1989C74000A373EA /* FRCAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */; };
+		BEFA094D1989FCBF00E6AC82 /* AgentViewObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFA094C1989FCBF00E6AC82 /* AgentViewObjectProtocol.swift */; };
 		C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */; };
 		C87903536A8986DA6EC5F746 /* MainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790598EDF8FE8AE36B952B /* MainService.m */; };
 		C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790F785A526609644BE7B5 /* ThirdViewObject.m */; };
@@ -133,11 +134,11 @@
 		BE76B98E1849A148001E749D /* TableViewAgentCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentCellDelegate.h; sourceTree = "<group>"; };
 		BE76B98F1849A148001E749D /* TableViewAgentDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentDelegate.h; sourceTree = "<group>"; };
 		BE76B9901849A148001E749D /* TableViewAgentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentProtocol.h; sourceTree = "<group>"; };
-		BE76B9921849A148001E749D /* AgentViewObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentViewObjectProtocol.h; sourceTree = "<group>"; };
 		BE76B9991849A148001E749D /* TableViewAgentCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentCategory.h; sourceTree = "<group>"; };
 		BE8FDB1117719B3200A6113E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
 		BE8FDB1217719B3200A6113E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
 		BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCAgentViewObject.swift; sourceTree = "<group>"; };
+		BEFA094C1989FCBF00E6AC82 /* AgentViewObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentViewObjectProtocol.swift; sourceTree = "<group>"; };
 		C879000AD100E37BD5CCF83C /* WETodo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETodo.m; sourceTree = "<group>"; };
 		C8790043B0A754925503375F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C87900D1196B2A54304A1558 /* FRCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRCViewController.h; sourceTree = "<group>"; };
@@ -328,10 +329,10 @@
 			isa = PBXGroup;
 			children = (
 				BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */,
-				BE76B9921849A148001E749D /* AgentViewObjectProtocol.h */,
 				BE76B9991849A148001E749D /* TableViewAgentCategory.h */,
 				BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */,
 				BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */,
+				BEFA094C1989FCBF00E6AC82 /* AgentViewObjectProtocol.swift */,
 			);
 			path = ViewObject;
 			sourceTree = "<group>";
@@ -622,6 +623,7 @@
 				C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */,
 				BEEA508C1989C74000A373EA /* FRCAgentViewObject.swift in Sources */,
 				C87905270237FA75311D678E /* WETodo.m in Sources */,
+				BEFA094D1989FCBF00E6AC82 /* AgentViewObjectProtocol.swift in Sources */,
 				BE6AD8A8198870100002ABA7 /* AdditionalCellStateShowEditing.swift in Sources */,
 				C8790AE56CEAA4AA5E94FAA6 /* MainEntry.m in Sources */,
 			);

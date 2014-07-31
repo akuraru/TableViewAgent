@@ -41,19 +41,18 @@
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
+    MSAgentViewObject *avo = (MSAgentViewObject *)agent.viewObjects;
     if (tvo.viewObject) {
         ViewObject *vo = tvo.viewObject;
         vo.title = tvo.title;
         vo.message = tvo.message;
         
-        MSAgentViewObject *avo = agent.viewObjects;
         [avo changeObject:vo];
     } else {
         ViewObject *vo = [[ViewObject alloc] init];
         vo.title = tvo.title;
         vo.message = tvo.message;
         
-        MSAgentViewObject *avo = agent.viewObjects;
         [avo addObject:vo inSection:0];
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class SSAgentViewObject : NSObject, AgentViewObjectProtocol {
-    weak var agent: TableViewAgent!
+    weak var agent :TableViewAgent!
     var array: [AnyObject]
     init(array :[AnyObject], agent: TableViewAgent) {
         self.agent = agent
@@ -25,12 +25,6 @@ class SSAgentViewObject : NSObject, AgentViewObjectProtocol {
         }
         return nil
     }
-    func countInSection(section :Int) -> Int {
-        return array.count
-    }
-    func objectAtIndexPath(indexPath :NSIndexPath) -> AnyObject! {
-        return array[indexPath.row] as AnyObject
-    }
     func addObject(object :AnyObject) {
         array.append(object)
         agent.insertCell(NSIndexPath(forRow: array.count - 1, inSection: 0))
@@ -40,6 +34,16 @@ class SSAgentViewObject : NSObject, AgentViewObjectProtocol {
         if path {
             agent.changeUpdateCell(path)
         }
+    }
+    // deleagte
+    func sectionCount() -> Int {
+        return array.isEmpty ? 0 : 1
+    }
+    func countInSection(section :Int) -> Int {
+        return array.count
+    }
+    func objectAtIndexPath(indexPath :NSIndexPath) -> AnyObject {
+        return array[indexPath.row] as AnyObject
     }
     func removeObjectAtIndexPath(indexPath :NSIndexPath) {
         array.removeAtIndex(indexPath.row)
@@ -51,8 +55,5 @@ class SSAgentViewObject : NSObject, AgentViewObjectProtocol {
     }
     func sectionObjects(section :Int) -> AnyObject {
         return array.bridgeToObjectiveC() as AnyObject
-    }
-    func sectionCount() -> Int {
-        return array.isEmpty ? 0 : 1
     }
 }

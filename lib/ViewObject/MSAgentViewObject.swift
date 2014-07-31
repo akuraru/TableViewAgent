@@ -9,7 +9,7 @@
 import Foundation
 
 class MSAgentViewObject : NSObject, AgentViewObjectProtocol {
-    strong var agent :TableViewAgent
+    weak var agent :TableViewAgent!
     var array : [[AnyObject]]
     init(array :[[AnyObject]], agent: TableViewAgent) {
         self.agent = agent
