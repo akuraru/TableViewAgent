@@ -8,22 +8,22 @@
 
 import Foundation
 
-class MSAgentViewObject<T> : AgentViewObject<T> {
+class MSAgentViewObject<T : NSObject> : AgentViewObject<T> {
     weak var agent :TableViewAgent!
-    var array : [[AnyObject]]
+    var array : [[T]]
     
-    init(array :[[AnyObject]], agent: TableViewAgent) {
+    init(array :[[T]], agent: TableViewAgent) {
         self.agent = agent
         self.array = array
     }
-    override func addObject(object :AnyObject,inSection section :Int) {
+    override func addObject(object :T,inSection section :Int) {
         if array.count <= section {
-            array.append(Array<AnyObject>())
+            array.append(Array<T>())
         }
         array[section].append(object)
         agent.insertCell(NSIndexPath(forRow: array[section].count - 1, inSection: section))
     }
-    override func changeObject(object :AnyObject) {
+    override func changeObject(object :T) {
         agent.changeUpdateCell(indexPathForObject(object))
     }
     func indexPathForObject(object :AnyObject) -> NSIndexPath! {
@@ -42,7 +42,7 @@ class MSAgentViewObject<T> : AgentViewObject<T> {
     override func countInSection(section :Int) -> Int {
         return array[section].count
     }
-    override func objectAtIndexPath(indexPath :NSIndexPath) -> AnyObject{
+    override func objectAtIndexPath(indexPath :NSIndexPath) -> T {
         return array[indexPath.section][indexPath.row]
     }
     override func removeObjectAtIndexPath(indexPath :NSIndexPath) {

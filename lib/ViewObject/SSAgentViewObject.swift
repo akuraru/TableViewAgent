@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-class SSAgentViewObject<T: AnyObject> : AgentViewObject<T> {
+class SSAgentViewObject<T: NSObject> : AgentViewObject<T> {
     weak var agent :TableViewAgent!
-    var array: [AnyObject]
-    init(array :[AnyObject], agent: TableViewAgent) {
+    var array: [T]
+    init(array :[T], agent: TableViewAgent) {
         self.agent = agent
         self.array = array
         super.init()
@@ -26,11 +26,11 @@ class SSAgentViewObject<T: AnyObject> : AgentViewObject<T> {
         }
         return nil
     }
-    override func addObject(object :AnyObject,inSection section :Int) {
+    override func addObject(object :T,inSection section :Int) {
         array.append(object)
         agent.insertCell(NSIndexPath(forRow: array.count - 1, inSection: 0))
     }
-    override func changeObject(object :AnyObject) {
+    override func changeObject(object :T) {
         let path = self.indexPathForObject(object)
         if path {
             agent.changeUpdateCell(path!)
@@ -43,8 +43,8 @@ class SSAgentViewObject<T: AnyObject> : AgentViewObject<T> {
     override func countInSection(section :Int) -> Int {
         return array.count
     }
-    override func objectAtIndexPath(indexPath :NSIndexPath) -> AnyObject {
-        return array[indexPath.row] as AnyObject
+    override func objectAtIndexPath(indexPath :NSIndexPath) -> T {
+        return array[indexPath.row]
     }
     override func removeObjectAtIndexPath(indexPath :NSIndexPath) {
         array.removeAtIndex(indexPath.row)

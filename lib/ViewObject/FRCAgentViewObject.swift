@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class FRCAgentViewObject<T :AnyObject>: AgentViewObject<T>, NSFetchedResultsControllerDelegate {
+class FRCAgentViewObject<T :NSObject>: AgentViewObject<T>, NSFetchedResultsControllerDelegate {
     let controller :NSFetchedResultsController!
     weak var agent :TableViewAgent!
     
@@ -29,8 +29,8 @@ class FRCAgentViewObject<T :AnyObject>: AgentViewObject<T>, NSFetchedResultsCont
     override func countInSection(section :Int) -> Int {
         return controller.sections[section].numberOfObjects
     }
-    override func objectAtIndexPath(indexPath :NSIndexPath) -> AnyObject {
-        return controller.objectAtIndexPath(indexPath)
+    override func objectAtIndexPath(indexPath :NSIndexPath) -> T {
+        return controller.objectAtIndexPath(indexPath) as T
     }
     override func removeObjectAtIndexPath(indexPath :NSIndexPath) {
     }
@@ -40,7 +40,7 @@ class FRCAgentViewObject<T :AnyObject>: AgentViewObject<T>, NSFetchedResultsCont
     override func sectionObjects(section :Int) -> AnyObject {
         return objectAtIndexPath(NSIndexPath(forRow: 0, inSection: section))
     }
-    func controller(controller: NSFetchedResultsController!, didChangeObject anObject: AnyObject!, atIndexPath indexPath: NSIndexPath!, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath!) {
+    func controller(controller: NSFetchedResultsController!, didChangeObject anObject: T!, atIndexPath indexPath: NSIndexPath!, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath!) {
         switch(type) {
         case NSFetchedResultsChangeType.Insert:
             agent.insertCell(newIndexPath)
@@ -53,6 +53,6 @@ class FRCAgentViewObject<T :AnyObject>: AgentViewObject<T>, NSFetchedResultsCont
         }
     }
     
-    override func changeObject(object :AnyObject) { }
-    override func addObject(object :AnyObject,inSection section :Int) { }
+    override func changeObject(object :T) { }
+    override func addObject(object :T,inSection section :Int) { }
 }

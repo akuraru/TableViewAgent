@@ -45,7 +45,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         }
     }
     }
-    var viewObjects: AgentViewObject<AnyObject>!
+    var viewObjects: AgentViewObject<NSObject>!
     
     var _delegate: TableViewAgentDelegate!
     var delegate: TableViewAgentDelegate! {
@@ -62,7 +62,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         editableState = EditableState()
         addState = AdditionalCellState()
     }
-    init(vo :AgentViewObject<AnyObject>, d :TableViewAgentDelegate) {
+    init(vo :AgentViewObject<NSObject>, d :TableViewAgentDelegate) {
         hasSelectors = HasSelectors(didSelectCell: false, deleteCell: false, cellIdentifier: false, sectionTitle: false, addCellIdentifier: false, commonViewObject: false, didSelectAdditionalCell: false, addSectionTitle: false, addSectionHeightForHeader: false, addSectionHeader: false, sectionHeightForHeader: false, sectionHeader: false, cellHeight: false)
         editableState = EditableState()
         addState = AdditionalCellState()
@@ -299,19 +299,19 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         )
     }
     
-    func setSigleSection(array :[AnyObject]) {
+    func setSigleSection(array :[NSObject]) {
         viewObjects = SSAgentViewObject(array: array, agent: self)
     }
-    func setMultiSection(array :[[AnyObject]]) {
+    func setMultiSection(array :[[NSObject]]) {
         viewObjects = MSAgentViewObject(array: array, agent: self)
     }
     func setFetchedResultController(controller :NSFetchedResultsController) {
         viewObjects = FRCAgentViewObject(controller: controller, agent: self)
     }
-    func changeObject(object :AnyObject) {
+    func changeObject(object :NSObject) {
         viewObjects.changeObject(object)
     }
-    func addObject(object :AnyObject,inSection section:Int) {
+    func addObject(object :NSObject,inSection section:Int) {
         viewObjects.addObject(object, inSection: section)
     }
 }

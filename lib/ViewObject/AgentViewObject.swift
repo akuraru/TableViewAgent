@@ -8,11 +8,11 @@
 
 import Foundation
 
-class AgentViewObject<T> : AgentViewObjectProtocol {
+class AgentViewObject<T : NSObject> {
     func sectionCount() -> Int { return 0 }
     func countInSection(section :Int) -> Int { return 0}
-    func objectAtIndexPath(indexPath :NSIndexPath) -> AnyObject {
-        return NSObject()
+    func objectAtIndexPath(indexPath :NSIndexPath) -> T {
+        return NSObject() as T
     }
     func removeObjectAtIndexPath(indexPath :NSIndexPath) {}
     func existObject(indexPath :NSIndexPath) -> Bool {return false}
@@ -20,6 +20,6 @@ class AgentViewObject<T> : AgentViewObjectProtocol {
         return NSObject()
     }
     
-    func changeObject(object :AnyObject) {}
-    func addObject(object :AnyObject,inSection section :Int) {}
+    func changeObject(object :T) {}
+    func addObject(object :T,inSection section :Int) {}
 }
