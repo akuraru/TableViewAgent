@@ -33,8 +33,8 @@
                          ].mutableCopy, @[
                          [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
                          ].mutableCopy]];
-    [agent setEditableMode:EditableModeEnable];
-    [agent setAdditionalCellMode:AdditionalCellModeAlways];
+    [agent setEditableState:[[EditableStateEnadle alloc] init]];
+    [agent setAddState:[[AdditionalCellStateShowEditing alloc] init]];
     agent.delegate = self;
 }
 

@@ -136,7 +136,6 @@
 		BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgentDelegate.swift; sourceTree = "<group>"; };
 		BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgentCellDelegate.swift; sourceTree = "<group>"; };
 		BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgent.swift; sourceTree = "<group>"; };
-		BEE8F8E0198A4F83001477B0 /* Enum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enum.h; sourceTree = "<group>"; };
 		BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCAgentViewObject.swift; sourceTree = "<group>"; };
 		BEFA094C1989FCBF00E6AC82 /* AgentViewObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentViewObjectProtocol.swift; sourceTree = "<group>"; };
 		C879000AD100E37BD5CCF83C /* WETodo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETodo.m; sourceTree = "<group>"; };
@@ -296,7 +295,6 @@
 				BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */,
 				BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */,
 				BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */,
-				BEE8F8E0198A4F83001477B0 /* Enum.h */,
 			);
 			path = lib;
 			sourceTree = "<group>";

@@ -31,8 +31,8 @@
     agent = [[TableViewAgent alloc] init];
     [agent setFetchedResultController:[TodoManager fetchController]];
     agent.delegate = self;
-    [agent setEditableMode:EditableModeEnable];
-    [agent setAdditionalCellMode:AdditionalCellModeAlways];
+    [agent setEditableState:[[EditableStateEnadle alloc] init]];
+    [agent setAddState:[[AdditionalCellStateAlways alloc] init]];
 }
 
 - (void)saveViewObject:(WETodo *)we {

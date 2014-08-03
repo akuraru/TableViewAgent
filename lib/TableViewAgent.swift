@@ -83,33 +83,6 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         self.editing = false
         _delegate.tableView.reloadData()
     }
-    func setAdditionalCellMode(mode: AdditionalCellMode) {
-        addState = createAdditionalCellMode(mode)
-    }
-    func createAdditionalCellMode(mode :AdditionalCellMode) -> AdditionalCellState {
-        switch (mode) {
-        case AdditionalCellMode.Always:
-            return AdditionalCellStateAlways();
-        case AdditionalCellMode.None:
-            return AdditionalCellStateNone();
-        case AdditionalCellMode.ShowEditing:
-            return AdditionalCellStateShowEditing();
-        case AdditionalCellMode.HideEditing:
-            return AdditionalCellStateHideEditing();
-        }
-        
-    }
-    func setEditableMode(mode: EditableMode) {
-        editableState = createEditableMode(mode)
-    }
-    func createEditableMode(mode :EditableMode) -> EditableState {
-        switch (mode) {
-        case EditableMode.None:
-            return EditableStateNone()
-        case EditableMode.Enable:
-            return EditableStateEnadle()
-        }
-    }
     func viewObjectForIndexPath(indexPath :NSIndexPath) -> AnyObject {
         return viewObjects.objectAtIndexPath(indexPath)
     }

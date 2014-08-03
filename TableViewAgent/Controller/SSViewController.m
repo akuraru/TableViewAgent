@@ -28,8 +28,8 @@
     agent = [[TableViewAgent alloc] init];
     [agent setSigleSection:[self array]];
     agent.delegate = self;
-    [agent setEditableMode:EditableModeEnable];
-    [agent setAdditionalCellMode:AdditionalCellModeHideEditing];
+    [agent setEditableState:[[EditableStateEnadle alloc] init]];
+    [agent setAddState:[[AdditionalCellStateHideEditing alloc] init]];
 }
 - (NSArray *)array {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:1000];
