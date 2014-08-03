@@ -9,7 +9,6 @@
 import Foundation
 
 protocol AgentViewObjectProtocol {
-    weak var agent :TableViewAgent! { get set }
     func sectionCount() -> Int
     func countInSection(section :Int) -> Int
     func objectAtIndexPath(indexPath :NSIndexPath) -> AnyObject

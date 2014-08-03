@@ -9,12 +9,13 @@
 import Foundation
 import UIKit
 
-class SSAgentViewObject : NSObject, AgentViewObjectProtocol {
+class SSAgentViewObject<T: AnyObject> : AgentViewObject<T> {
     weak var agent :TableViewAgent!
     var array: [AnyObject]
     init(array :[AnyObject], agent: TableViewAgent) {
         self.agent = agent
         self.array = array
+        super.init()
     }
     func indexPathForObject(object :AnyObject) -> NSIndexPath? {
          let _len  = array.count
@@ -25,35 +26,35 @@ class SSAgentViewObject : NSObject, AgentViewObjectProtocol {
         }
         return nil
     }
-    func addObject(object :AnyObject,inSection section :Int) {
+    override func addObject(object :AnyObject,inSection section :Int) {
         array.append(object)
         agent.insertCell(NSIndexPath(forRow: array.count - 1, inSection: 0))
     }
-    func changeObject(object :AnyObject) {
+    override func changeObject(object :AnyObject) {
         let path = self.indexPathForObject(object)
         if path {
             agent.changeUpdateCell(path!)
         }
     }
     // deleagte
-    func sectionCount() -> Int {
+    override func sectionCount() -> Int {
         return array.isEmpty ? 0 : 1
     }
-    func countInSection(section :Int) -> Int {
+    override func countInSection(section :Int) -> Int {
         return array.count
     }
-    func objectAtIndexPath(indexPath :NSIndexPath) -> AnyObject {
+    override func objectAtIndexPath(indexPath :NSIndexPath) -> AnyObject {
         return array[indexPath.row] as AnyObject
     }
-    func removeObjectAtIndexPath(indexPath :NSIndexPath) {
+    override func removeObjectAtIndexPath(indexPath :NSIndexPath) {
         array.removeAtIndex(indexPath.row)
         agent.deleteCell(indexPath)
     }
-    func existObject(indexPath :NSIndexPath) -> Bool {
+    override func existObject(indexPath :NSIndexPath) -> Bool {
         let row = indexPath.row
         return 0 <= row && row < array.count
     }
-    func sectionObjects(section :Int) -> AnyObject {
+    override func sectionObjects(section :Int) -> AnyObject {
         return array.bridgeToObjectiveC() as AnyObject
     }
 }

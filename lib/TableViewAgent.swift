@@ -45,7 +45,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         }
     }
     }
-    var viewObjects: AgentViewObjectProtocol!
+    var viewObjects: AgentViewObject<AnyObject>!
     
     var _delegate: TableViewAgentDelegate!
     var delegate: TableViewAgentDelegate! {
@@ -62,7 +62,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         editableState = EditableState()
         addState = AdditionalCellState()
     }
-    init(vo :AgentViewObjectProtocol, d :TableViewAgentDelegate) {
+    init(vo :AgentViewObject<AnyObject>, d :TableViewAgentDelegate) {
         hasSelectors = HasSelectors(didSelectCell: false, deleteCell: false, cellIdentifier: false, sectionTitle: false, addCellIdentifier: false, commonViewObject: false, didSelectAdditionalCell: false, addSectionTitle: false, addSectionHeightForHeader: false, addSectionHeader: false, sectionHeightForHeader: false, sectionHeader: false, cellHeight: false)
         editableState = EditableState()
         addState = AdditionalCellState()

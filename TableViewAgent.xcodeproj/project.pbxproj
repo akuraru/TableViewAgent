@@ -34,6 +34,7 @@
 		BE6AD8A8198870100002ABA7 /* AdditionalCellStateShowEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A3198870100002ABA7 /* AdditionalCellStateShowEditing.swift */; };
 		BE6AD8AA1988701B0002ABA7 /* SSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */; };
 		BE6AD8B0198870600002ABA7 /* MSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */; };
+		BE741609198E258C00A4B309 /* AgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE741608198E258C00A4B309 /* AgentViewObject.swift */; };
 		BE76B95C18498F77001E749D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE76B95B18498F77001E749D /* XCTest.framework */; };
 		BE76B95D18498F77001E749D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F3176BCABC0022DA33 /* Foundation.framework */; };
 		BE76B95E18498F77001E749D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
@@ -125,6 +126,7 @@
 		BE6AD8A3198870100002ABA7 /* AdditionalCellStateShowEditing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellStateShowEditing.swift; sourceTree = "<group>"; };
 		BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSAgentViewObject.swift; sourceTree = "<group>"; };
 		BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSAgentViewObject.swift; sourceTree = "<group>"; };
+		BE741608198E258C00A4B309 /* AgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentViewObject.swift; sourceTree = "<group>"; };
 		BE76B95A18498F77001E749D /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE76B95B18498F77001E749D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BE76B96118498F77001E749D /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */,
 				BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */,
 				BEFA094C1989FCBF00E6AC82 /* AgentViewObjectProtocol.swift */,
+				BE741608198E258C00A4B309 /* AgentViewObject.swift */,
 			);
 			path = ViewObject;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				BE6AD8A7198870100002ABA7 /* AdditionalCellStateNone.swift in Sources */,
 				BE6AD89D198870030002ABA7 /* EditableStateEnadle.swift in Sources */,
 				BE5C3CE917C0FE0C00D28713 /* MSViewController.m in Sources */,
+				BE741609198E258C00A4B309 /* AgentViewObject.swift in Sources */,
 				C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */,
 				BEEA508C1989C74000A373EA /* FRCAgentViewObject.swift in Sources */,
 				C87905270237FA75311D678E /* WETodo.m in Sources */,

@@ -8,21 +8,22 @@
 
 import Foundation
 
-class MSAgentViewObject : NSObject, AgentViewObjectProtocol {
+class MSAgentViewObject<T> : AgentViewObject<T> {
     weak var agent :TableViewAgent!
     var array : [[AnyObject]]
+    
     init(array :[[AnyObject]], agent: TableViewAgent) {
         self.agent = agent
         self.array = array
     }
-    func addObject(object :AnyObject,inSection section :Int) {
+    override func addObject(object :AnyObject,inSection section :Int) {
         if array.count <= section {
             array.append(Array<AnyObject>())
         }
         array[section].append(object)
         agent.insertCell(NSIndexPath(forRow: array[section].count - 1, inSection: section))
     }
-    func changeObject(object :AnyObject) {
+    override func changeObject(object :AnyObject) {
         agent.changeUpdateCell(indexPathForObject(object))
     }
     func indexPathForObject(object :AnyObject) -> NSIndexPath! {
@@ -35,16 +36,16 @@ class MSAgentViewObject : NSObject, AgentViewObjectProtocol {
         }
         return nil;
     }
-    func sectionCount() -> Int {
+    override func sectionCount() -> Int {
         return array.count
     }
-    func countInSection(section :Int) -> Int {
+    override func countInSection(section :Int) -> Int {
         return array[section].count
     }
-    func objectAtIndexPath(indexPath :NSIndexPath) -> AnyObject{
+    override func objectAtIndexPath(indexPath :NSIndexPath) -> AnyObject{
         return array[indexPath.section][indexPath.row]
     }
-    func removeObjectAtIndexPath(indexPath :NSIndexPath) {
+    override func removeObjectAtIndexPath(indexPath :NSIndexPath) {
         var a = array[indexPath.section];
         a.removeAtIndex(indexPath.row)
         array[indexPath.section] = a
@@ -53,10 +54,10 @@ class MSAgentViewObject : NSObject, AgentViewObjectProtocol {
         }
         agent.deleteCell(indexPath)
     }
-    func existObject(indexPath :NSIndexPath) -> Bool {
+    override func existObject(indexPath :NSIndexPath) -> Bool {
         return indexPath.section < array.count && indexPath.row < array[indexPath.section].count;
     }
-    func sectionObjects(section :Int) -> AnyObject {
+    override func sectionObjects(section :Int) -> AnyObject {
         return array[section]
     }
 }
