@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 struct HasSelectors {
     let didSelectCell: Bool
@@ -44,14 +45,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         }
     }
     }
-    var _viewObjects: AgentViewObjectProtocol!
-    var viewObjects: AgentViewObjectProtocol! {
-    get { return _viewObjects }
-    set(v) {
-        _viewObjects = v
-        _viewObjects.agent = self
-    }
-    }
+    var viewObjects: AgentViewObjectProtocol!
     
     var _delegate: TableViewAgentDelegate!
     var delegate: TableViewAgentDelegate! {
@@ -72,7 +66,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         hasSelectors = HasSelectors(didSelectCell: false, deleteCell: false, cellIdentifier: false, sectionTitle: false, addCellIdentifier: false, commonViewObject: false, didSelectAdditionalCell: false, addSectionTitle: false, addSectionHeightForHeader: false, addSectionHeader: false, sectionHeightForHeader: false, sectionHeader: false, cellHeight: false)
         editableState = EditableState()
         addState = AdditionalCellState()
-        _viewObjects = vo
+        viewObjects = vo
         _delegate = d
     }
     func setAddCellHide(b: Int) {
@@ -120,7 +114,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         return viewObjects.objectAtIndexPath(indexPath)
     }
     func deleteCell(indexPath :NSIndexPath) {
-        if self.compareSectionCount(_viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
+        if self.compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
             _delegate.tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation:UITableViewRowAnimation.Automatic)
         } else {
             _delegate.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -132,21 +126,21 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         return left < right ? NSComparisonResult.OrderedAscending : left == right ? NSComparisonResult.OrderedSame : NSComparisonResult.OrderedDescending
     }
     func deleteCellsAtSection(section :Int,rows :[Int]) {
-        if compareSectionCount(_viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
+        if compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
             _delegate.tableView.deleteSections(NSIndexSet(index: section), withRowAnimation:UITableViewRowAnimation.Automatic)
         } else {
             _delegate.tableView.deleteRowsAtIndexPaths(indexPathsForSection(section, rows: rows), withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
     func insertCell(indexPath :NSIndexPath) {
-        if compareSectionCount(_viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
+        if compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
             _delegate.tableView.insertSections(NSIndexSet(index: indexPath.section), withRowAnimation: UITableViewRowAnimation.Automatic)
         } else {
             _delegate.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
     func insertCellsAtSection(section :Int, rows: [Int]) {
-        if compareSectionCount(_viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
+        if compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
             _delegate.tableView.insertSections(NSIndexSet(index: section), withRowAnimation: UITableViewRowAnimation.Automatic)
         } else {
             _delegate.tableView.insertRowsAtIndexPaths(indexPathsForSection(section, rows: rows), withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -161,9 +155,9 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
     func changeMoveCell(indexPath :NSIndexPath, newIndexPath :NSIndexPath) {
         let tableView = _delegate.tableView;
         tableView.beginUpdates();
-        switch compareSectionCount(_viewObjects.sectionCount()) {
+        switch compareSectionCount(viewObjects.sectionCount()) {
         case .OrderedSame:
-            if _viewObjects.countInSection(newIndexPath.section) == 1 {
+            if viewObjects.countInSection(newIndexPath.section) == 1 {
                 tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation: UITableViewRowAnimation.Automatic)
                 tableView.insertSections(NSIndexSet(index: newIndexPath.section), withRowAnimation: UITableViewRowAnimation.Automatic)
             } else {
@@ -186,7 +180,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
                 let viewObject: AnyObject = viewObjectWithIndex(indexPath);
                 delegate.deleteCell!(viewObject)
             }
-            _viewObjects.removeObjectAtIndexPath(indexPath)
+            viewObjects.removeObjectAtIndexPath(indexPath)
         }
     }
     func viewObjectWithIndex(indexPath :NSIndexPath) -> AnyObject {
@@ -197,7 +191,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         if isAdditionalSection(section) {
             return 1
         } else {
-            return _viewObjects.countInSection(section)
+            return viewObjects.countInSection(section)
         }
     }
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
@@ -208,7 +202,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         }
     }
     func isAdditionalSection(section :Int) -> Bool {
-        return _viewObjects.sectionCount() == section
+        return viewObjects.sectionCount() == section
     }
     
     func createAdditionalCell(tableView :UITableView) -> AnyObject {
@@ -282,7 +276,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
             if (hasSelectors.sectionHeightForHeader) {
                 return delegate.sectionHeightForHeader!(viewObjects.sectionObjects(section));
             } else if (hasSelectors.sectionHeader) {
-                return delegate.sectionHeader!(_viewObjects.sectionObjects(section)).frame.size.height
+                return delegate.sectionHeader!(viewObjects.sectionObjects(section)).frame.size.height
             }
         }
         return -1;
@@ -294,7 +288,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
                 return delegate.addSectionHeader!();
             }
         } else if (hasSelectors.sectionHeader) {
-            return delegate.sectionHeader!(_viewObjects.sectionObjects(section));
+            return delegate.sectionHeader!(viewObjects.sectionObjects(section));
         }
         return nil;
     }
@@ -302,7 +296,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         if (b) {
             _delegate.tableView.insertSections(NSIndexSet(index: section), withRowAnimation: UITableViewRowAnimation.Automatic)
         } else {
-            _delegate.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: _viewObjects.countInSection(section) - 1, inSection:section)], withRowAnimation: UITableViewRowAnimation.Automatic)
+            _delegate.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: viewObjects.countInSection(section) - 1, inSection:section)], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
     func hideAddCell() {
@@ -330,5 +324,21 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
             sectionHeader: d.respondsToSelector(NSSelectorFromString("sectionHeader:")),
             cellHeight: d.respondsToSelector(NSSelectorFromString("cellHeight"))
         )
+    }
+    
+    func setSigleSection(array :[AnyObject]) {
+        viewObjects = SSAgentViewObject(array: array, agent: self)
+    }
+    func setMultiSection(array :[[AnyObject]]) {
+        viewObjects = MSAgentViewObject(array: array, agent: self)
+    }
+    func setFetchedResultController(controller :NSFetchedResultsController) {
+        viewObjects = FRCAgentViewObject(controller: controller, agent: self)
+    }
+    func changeObject(object :AnyObject) {
+        viewObjects.changeObject(object)
+    }
+    func addObject(object :AnyObject,inSection section:Int) {
+        viewObjects.addObject(object, inSection: section)
     }
 }

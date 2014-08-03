@@ -51,4 +51,7 @@ class FRCAgentViewObject : NSObject, AgentViewObjectProtocol, NSFetchedResultsCo
             agent.changeMoveCell(indexPath, newIndexPath: newIndexPath)
         }
     }
+    
+    func changeObject(object :AnyObject) { }
+    func addObject(object :AnyObject,inSection section :Int) { }
 }

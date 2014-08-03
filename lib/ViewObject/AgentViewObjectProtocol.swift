@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc protocol AgentViewObjectProtocol {
+protocol AgentViewObjectProtocol {
     weak var agent :TableViewAgent! { get set }
     func sectionCount() -> Int
     func countInSection(section :Int) -> Int
@@ -16,4 +16,7 @@ import Foundation
     func removeObjectAtIndexPath(indexPath :NSIndexPath)
     func existObject(indexPath :NSIndexPath) -> Bool
     func sectionObjects(section :Int) -> AnyObject
+    
+    func changeObject(object :AnyObject)
+    func addObject(object :AnyObject,inSection section :Int)
 }

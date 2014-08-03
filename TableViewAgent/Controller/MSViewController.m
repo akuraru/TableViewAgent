@@ -27,31 +27,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     agent = [[TableViewAgent alloc] init];
-    agent.viewObjects = [[MSAgentViewObject alloc] initWithArray:@[@[
+    [agent setMultiSection:@[@[
                          [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
                          [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
                          ].mutableCopy, @[
                          [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
-                         ].mutableCopy].mutableCopy agent:agent];
+                         ].mutableCopy]];
     [agent setEditableMode:EditableModeEnable];
     [agent setAdditionalCellMode:AdditionalCellModeAlways];
     agent.delegate = self;
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
-    MSAgentViewObject *avo = (MSAgentViewObject *)agent.viewObjects;
     if (tvo.viewObject) {
         ViewObject *vo = tvo.viewObject;
         vo.title = tvo.title;
         vo.message = tvo.message;
         
-        [avo changeObject:vo];
+        [agent changeObject:vo];
     } else {
         ViewObject *vo = [[ViewObject alloc] init];
         vo.title = tvo.title;
         vo.message = tvo.message;
         
-        [avo addObject:vo inSection:0];
+        [agent addObject:vo inSection:0];
     }
 }
 

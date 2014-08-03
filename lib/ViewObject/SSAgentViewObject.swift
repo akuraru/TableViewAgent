@@ -25,7 +25,7 @@ class SSAgentViewObject : NSObject, AgentViewObjectProtocol {
         }
         return nil
     }
-    func addObject(object :AnyObject) {
+    func addObject(object :AnyObject,inSection section :Int) {
         array.append(object)
         agent.insertCell(NSIndexPath(forRow: array.count - 1, inSection: 0))
     }

@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     agent = [[TableViewAgent alloc] init];
-    agent.viewObjects = [[SSAgentViewObject alloc] initWithArray:[self array] agent:agent];
+    [agent setSigleSection:[self array]];
     agent.delegate = self;
     [agent setEditableMode:EditableModeEnable];
     [agent setAdditionalCellMode:AdditionalCellModeHideEditing];
@@ -46,15 +46,13 @@
         vo.title = tvo.title;
         vo.message = tvo.message;
         
-        id viewObjects = agent.viewObjects;
-        [viewObjects changeObject:vo];
+        [agent changeObject:vo];
     } else {
         ViewObject *vo = [[ViewObject alloc] init];
         vo.title = tvo.title;
         vo.message = tvo.message;
             
-        id viewObjects = agent.viewObjects;
-        [viewObjects addObject:vo];
+        [agent addObject:vo inSection:0];
     }
 }
 
