@@ -17,19 +17,19 @@
 @end
 
 @implementation SSViewController {
-    TableViewAgent *agent;
+    TableViewAgentAdaptor *adaptor;
 }
 
 - (IBAction)touchEdit:(id)sender {
-    [agent setEditing:!agent.editing];
+    [adaptor setEditing:![adaptor editing]];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    agent = [[TableViewAgent alloc] init];
-    [agent setSigleSection:[self array]];
-    agent.delegate = self;
-    [agent setEditableState:[[EditableStateEnadle alloc] init]];
-    [agent setAddState:[[AdditionalCellStateHideEditing alloc] init]];
+    adaptor = [[TableViewAgentAdaptor alloc] init];
+    [adaptor setSigleSection:[self array]];
+    [adaptor setDelegate:self];
+    [adaptor setEditableModel:EditableModeEnable];
+    [adaptor setAddMode:AdditionalCellModeHideEditing];
 }
 - (NSArray *)array {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:1000];
@@ -46,20 +46,20 @@
         vo.title = tvo.title;
         vo.message = tvo.message;
         
-        [agent changeObject:vo];
+        [adaptor changeObject:vo];
     } else {
         ViewObject *vo = [[ViewObject alloc] init];
         vo.title = tvo.title;
         vo.message = tvo.message;
             
-        [agent addObject:vo inSection:0];
+        [adaptor addObject:vo inSection:0];
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [agent reload];
+    [adaptor reload];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

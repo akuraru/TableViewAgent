@@ -18,24 +18,24 @@
 @end
 
 @implementation MSViewController {
-    TableViewAgent *agent;
+    TableViewAgentAdaptor *adaptor;
 }
 
 - (IBAction)touchEdit:(id)sender {
-    [agent setEditing:!agent.editing];
+    [adaptor setEditing:![adaptor editing]];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    agent = [[TableViewAgent alloc] init];
-    [agent setMultiSection:@[@[
+    adaptor = [[TableViewAgentAdaptor alloc] init];
+    [adaptor setMultiSection:@[@[
                          [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
                          [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
                          ].mutableCopy, @[
                          [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
                          ].mutableCopy]];
-    [agent setEditableState:[[EditableStateEnadle alloc] init]];
-    [agent setAddState:[[AdditionalCellStateShowEditing alloc] init]];
-    agent.delegate = self;
+    [adaptor setEditableModel:EditableModeEnable];
+    [adaptor setAddMode:AdditionalCellModeShowEditing];
+    [adaptor setDelegate:self];
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
@@ -44,13 +44,13 @@
         vo.title = tvo.title;
         vo.message = tvo.message;
         
-        [agent changeObject:vo];
+        [adaptor changeObject:vo];
     } else {
         ViewObject *vo = [[ViewObject alloc] init];
         vo.title = tvo.title;
         vo.message = tvo.message;
         
-        [agent addObject:vo inSection:0];
+        [adaptor addObject:vo inSection:0];
     }
 }
 

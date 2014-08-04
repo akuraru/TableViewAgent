@@ -19,20 +19,20 @@
 @end
 
 @implementation FRCViewController {
-    TableViewAgent *agent;
+    TableViewAgentAdaptor *adaptor;
 }
 
 - (IBAction)touchEdit:(id)sender {
-    [agent setEditing:!agent.editing];
+    [adaptor setEditing:![adaptor editing]];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    agent = [[TableViewAgent alloc] init];
-    [agent setFetchedResultController:[TodoManager fetchController]];
-    agent.delegate = self;
-    [agent setEditableState:[[EditableStateEnadle alloc] init]];
-    [agent setAddState:[[AdditionalCellStateAlways alloc] init]];
+    adaptor = [[TableViewAgentAdaptor alloc] init];
+    [adaptor setFetchedResultController:[TodoManager fetchController]];
+    [adaptor setDelegate:self];
+    [adaptor setEditableModel:EditableModeEnable];
+    [adaptor setAddMode:AdditionalCellModeAlways];
 }
 
 - (void)saveViewObject:(WETodo *)we {
@@ -42,7 +42,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [agent reload];
+    [adaptor reload];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

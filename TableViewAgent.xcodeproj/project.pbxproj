@@ -41,6 +41,7 @@
 		BE76B96418498F77001E749D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE76B96218498F77001E749D /* InfoPlist.strings */; };
 		BE76B96618498F77001E749D /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B96518498F77001E749D /* Tests.m */; };
 		BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1217719B3200A6113E /* SSViewController.m */; };
+		BEB49A30198F8814001C219C /* TableViewAgentAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB49A2F198F8814001C219C /* TableViewAgentAdaptor.swift */; };
 		BEE8F8DB198A3CD6001477B0 /* TableViewAgentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */; };
 		BEE8F8DD198A43B6001477B0 /* TableViewAgentCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */; };
 		BEE8F8DF198A44AD001477B0 /* TableViewAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */; };
@@ -134,6 +135,8 @@
 		BE76B96718498F77001E749D /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		BE8FDB1117719B3200A6113E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
 		BE8FDB1217719B3200A6113E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
+		BEB49A2F198F8814001C219C /* TableViewAgentAdaptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgentAdaptor.swift; sourceTree = "<group>"; };
+		BEB49A31198F8A08001C219C /* Enum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enum.h; sourceTree = "<group>"; };
 		BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgentDelegate.swift; sourceTree = "<group>"; };
 		BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgentCellDelegate.swift; sourceTree = "<group>"; };
 		BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgent.swift; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 				BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */,
 				BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */,
 				BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */,
+				BEB49A2F198F8814001C219C /* TableViewAgentAdaptor.swift */,
+				BEB49A31198F8A08001C219C /* Enum.h */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -616,6 +621,7 @@
 				BE6AD89C198870030002ABA7 /* EditableState.swift in Sources */,
 				BE4D744C17F5160600287CE8 /* TodoManager.m in Sources */,
 				BE6AD8A7198870100002ABA7 /* AdditionalCellStateNone.swift in Sources */,
+				BEB49A30198F8814001C219C /* TableViewAgentAdaptor.swift in Sources */,
 				BE6AD89D198870030002ABA7 /* EditableStateEnadle.swift in Sources */,
 				BE5C3CE917C0FE0C00D28713 /* MSViewController.m in Sources */,
 				BE741609198E258C00A4B309 /* AgentViewObject.swift in Sources */,

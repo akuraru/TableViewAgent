@@ -298,20 +298,4 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
             cellHeight: d.respondsToSelector(NSSelectorFromString("cellHeight"))
         )
     }
-    
-    func setSigleSection(array :[NSObject]) {
-        viewObjects = SSAgentViewObject(array: array, agent: self)
-    }
-    func setMultiSection(array :[[NSObject]]) {
-        viewObjects = MSAgentViewObject(array: array, agent: self)
-    }
-    func setFetchedResultController(controller :NSFetchedResultsController) {
-        viewObjects = FRCAgentViewObject(controller: controller, agent: self)
-    }
-    func changeObject(object :NSObject) {
-        viewObjects.changeObject(object)
-    }
-    func addObject(object :NSObject,inSection section:Int) {
-        viewObjects.addObject(object, inSection: section)
-    }
 }
