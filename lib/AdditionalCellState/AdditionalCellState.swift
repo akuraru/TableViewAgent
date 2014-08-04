@@ -12,7 +12,7 @@ enum ChangeInState {
     case None, Hide, Show
 }
 
-class AdditionalCellState :NSObject {
+class AdditionalCellState {
     func isShowAddCell(editing :Bool) -> Bool {
         return false
     }

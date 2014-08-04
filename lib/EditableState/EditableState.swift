@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EditableState : NSObject {
+class EditableState {
     func canEdit() -> Bool {
         return false
     }
