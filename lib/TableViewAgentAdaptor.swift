@@ -11,7 +11,7 @@ import CoreData
 
 class TableViewAgentAdaptor : NSObject {
     let agent :TableViewAgent
-    init() {
+    override init() {
         agent = TableViewAgent()
     }
     

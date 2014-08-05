@@ -32,7 +32,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
     var editableState: EditableState
     var addState: AdditionalCellState
     var _editing = false
-    public var editing: Bool {
+    internal var editing: Bool {
     get {
         return _editing
     }
@@ -57,7 +57,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         d.tableView.dataSource = self
     }
     }
-    init() {
+    override init() {
         hasSelectors = HasSelectors(didSelectCell: false, deleteCell: false, cellIdentifier: false, sectionTitle: false, addCellIdentifier: false, commonViewObject: false, didSelectAdditionalCell: false, addSectionTitle: false, addSectionHeightForHeader: false, addSectionHeader: false, sectionHeightForHeader: false, sectionHeader: false, cellHeight: false)
         editableState = EditableState()
         addState = AdditionalCellState()
@@ -184,8 +184,8 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
     func createCell(indexPath :NSIndexPath) -> AnyObject {
         let viewObject: AnyObject = viewObjectWithIndex(indexPath)
         let cell: AnyObject = dequeueCell(indexPath)
-        if cell as? TableViewAgentCellDelegate {
-            cell.setViewObject(viewObject)
+        if let c = cell as? TableViewAgentCellDelegate {
+            c.setViewObject(viewObject)
         }
         return cell;
     }

@@ -32,7 +32,7 @@ class SSAgentViewObject<T: NSObject> : AgentViewObject<T> {
     }
     override func changeObject(object :T) {
         let path = self.indexPathForObject(object)
-        if path {
+        if path != nil {
             agent.changeUpdateCell(path!)
         }
     }
@@ -55,6 +55,6 @@ class SSAgentViewObject<T: NSObject> : AgentViewObject<T> {
         return 0 <= row && row < array.count
     }
     override func sectionObjects(section :Int) -> AnyObject {
-        return array.bridgeToObjectiveC() as AnyObject
+        return array
     }
 }
