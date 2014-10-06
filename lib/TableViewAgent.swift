@@ -160,14 +160,14 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         return viewObjects.objectAtIndexPath(indexPath)
     }
     // UITableViewDataSouer
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isAdditionalSection(section) {
             return 1
         } else {
             return viewObjects.countInSection(section)
         }
     }
-    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if isAdditionalSection(indexPath.section) {
             return createAdditionalCell(tableView) as UITableViewCell;
         } else {
@@ -179,7 +179,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
     }
     
     func createAdditionalCell(tableView :UITableView) -> AnyObject {
-        return tableView.dequeueReusableCellWithIdentifier(delegate.addCellIdentifier!())
+        return tableView.dequeueReusableCellWithIdentifier(delegate.addCellIdentifier!())!
     }
     func createCell(indexPath :NSIndexPath) -> AnyObject {
         let viewObject: AnyObject = viewObjectWithIndex(indexPath)
@@ -191,9 +191,9 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
     }
     func dequeueCell(indexPath: NSIndexPath) -> AnyObject {
         let viewObject: AnyObject = viewObjectWithIndex(indexPath);
-        return _delegate.tableView.dequeueReusableCellWithIdentifier(_delegate.cellIdentifier(viewObject))
+        return _delegate.tableView.dequeueReusableCellWithIdentifier(_delegate.cellIdentifier(viewObject))!
     }
-    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if isAdditionalSection(indexPath.section) {
             let cell: AnyObject = createAdditionalCell(tableView)
             if cell.respondsToSelector(NSSelectorFromString("heightFromViewObject")) {
@@ -213,7 +213,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView!, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath!) {
         self.tableView(tableView, didSelectRowAtIndexPath: indexPath)
     }
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if isAdditionalSection(indexPath.section) {
@@ -222,13 +222,13 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
             delegate.didSelectCell!(viewObjectWithIndex(indexPath))
         }
     }
-    func numberOfSectionsInTableView(tableView :UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return viewObjects.sectionCount() + (addState.isShowAddCell(editing) ? 1 : 0)
     }
     func tableView(tableView :UITableView, canEditRowAtIndexPath indexPath:NSIndexPath) -> Bool {
         return editableState.canEdit() && isAdditionalSection(indexPath.section) == false;
     }
-    func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if isAdditionalSection(section) {
             if hasSelectors.addSectionTitle {
                 return _delegate.addSectionTitle!();
@@ -238,7 +238,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         }
         return ""
     }
-    func tableView(tableView: UITableView!, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if isAdditionalSection(section) {
             if hasSelectors.addSectionHeightForHeader {
                 return delegate.addSectionHeightForHeader!()
@@ -254,8 +254,7 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         }
         return -1;
     }
-    
-    func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if isAdditionalSection(section) {
             if (hasSelectors.addSectionHeader) {
                 return delegate.addSectionHeader!();

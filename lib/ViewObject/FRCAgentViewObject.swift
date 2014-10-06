@@ -41,13 +41,21 @@ class FRCAgentViewObject<T :NSObject>: AgentViewObject<T> {
         controller.delegate = self.support
     }
     override func sectionCount() -> Int {
-        if controller.sections.count == 1 && controller.sections[0].numberOfObjects == 0 {
+        if let s = controller.sections {
+            if s.count == 1 && s[0].numberOfObjects == 0 {
+                return 0
+            }
+            return s.count
+        } else {
             return 0
         }
-        return controller.sections.count;
     }
     override func countInSection(section :Int) -> Int {
-        return controller.sections[section].numberOfObjects
+        if let s = controller.sections {
+            return s[section].numberOfObjects
+        } else {
+            return 0;
+        }
     }
     override func objectAtIndexPath(indexPath :NSIndexPath) -> T {
         return controller.objectAtIndexPath(indexPath) as T
