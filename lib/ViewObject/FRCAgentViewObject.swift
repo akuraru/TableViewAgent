@@ -10,8 +10,8 @@ import Foundation
 import CoreData
 
 class Support :NSObject, NSFetchedResultsControllerDelegate {
-    weak var agent :TableViewAgent!
-    init(agent :TableViewAgent!) {
+    weak var agent :TableViewAgent<NSObject>!
+    init(agent :TableViewAgent<NSObject>) {
         self.agent = agent
     }
     func controller(controller: NSFetchedResultsController!, didChangeObject anObject: AnyObject!, atIndexPath indexPath: NSIndexPath!, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath!) {
@@ -28,17 +28,20 @@ class Support :NSObject, NSFetchedResultsControllerDelegate {
     }
 }
 
-class FRCAgentViewObject<T :NSObject>: AgentViewObject<T> {
+class FRCAgentViewObject<T: NSObject>: AgentViewObject<T> {
     let controller :NSFetchedResultsController!
-    weak var agent :TableViewAgent!
+    weak var agent :TableViewAgent<T>!
     let support:Support!
     
-    init(controller :NSFetchedResultsController, agent: TableViewAgent) {
+    init(controller :NSFetchedResultsController, agent: TableViewAgent<T>) {
         super.init()
         self.agent = agent
         self.controller = controller
-        self.support = Support(agent: agent)
+        self.support = Support(agent: a())
         controller.delegate = self.support
+    }
+    func a() -> TableViewAgent<NSObject> {
+        return agent as Any as TableViewAgent<NSObject>
     }
     override func sectionCount() -> Int {
         if let s = controller.sections {

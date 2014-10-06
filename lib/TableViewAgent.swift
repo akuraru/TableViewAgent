@@ -26,8 +26,110 @@ struct HasSelectors {
     let cellHeight: Bool
 }
 
+class TableViewAgentSupport: NSObject, UITableViewDelegate, UITableViewDataSource {
+    var agent: TableViewAgent<NSObject>!
+    // UITableViewDelegate
+    func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            if (agent.hasSelectors.deleteCell) {
+                let viewObject: AnyObject = agent.viewObjectWithIndex(indexPath);
+                agent.delegate.deleteCell!(viewObject)
+            }
+            agent.viewObjects.removeObjectAtIndexPath(indexPath)
+        }
+    }
+    // UITableViewDataSoucer
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if agent.isAdditionalSection(section) {
+            return 1
+        } else {
+            return agent.viewObjects.countInSection(section)
+        }
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if agent.isAdditionalSection(indexPath.section) {
+            return agent.createAdditionalCell(tableView) as UITableViewCell;
+        } else {
+            return agent.createCell(indexPath) as UITableViewCell;
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if agent.isAdditionalSection(indexPath.section) {
+            let cell: AnyObject = agent.createAdditionalCell(tableView)
+            if cell.respondsToSelector(NSSelectorFromString("heightFromViewObject")) {
+                let c = cell as TableViewAgentCellDelegate
+                return c.heightFromViewObject(agent.viewObjectWithIndex(indexPath));
+            } else {
+                return cell.frame.size.height
+            }
+        } else {
+            let cell: AnyObject = agent.dequeueCell(indexPath);
+            if cell.respondsToSelector(NSSelectorFromString("heightFromViewObject")) {
+                return cell.heightFromViewObject(agent.viewObjectWithIndex(indexPath))
+            } else {
+                return cell.frame.size.height
+            }
+        }
+    }
+    func tableView(tableView: UITableView!, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath!) {
+        self.tableView(tableView, didSelectRowAtIndexPath: indexPath)
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        if agent.isAdditionalSection(indexPath.section) {
+            agent.delegate.didSelectAdditionalCell!()
+        } else {
+            agent.delegate.didSelectCell!(agent.viewObjectWithIndex(indexPath))
+        }
+    }
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return agent.viewObjects.sectionCount() + (agent.addState.isShowAddCell(agent.editing) ? 1 : 0)
+    }
+    func tableView(tableView :UITableView, canEditRowAtIndexPath indexPath:NSIndexPath) -> Bool {
+        return agent.editableState.canEdit() && agent.isAdditionalSection(indexPath.section) == false;
+    }
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if agent.isAdditionalSection(section) {
+            if agent.hasSelectors.addSectionTitle {
+                return agent.delegate.addSectionTitle!();
+            }
+        } else if agent.hasSelectors.sectionTitle {
+            return agent.delegate.sectionTitle!(agent.viewObjects.sectionObjects(section));
+        }
+        return ""
+    }
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if agent.isAdditionalSection(section) {
+            if agent.hasSelectors.addSectionHeightForHeader {
+                return agent.delegate.addSectionHeightForHeader!()
+            } else if agent.hasSelectors.addSectionHeader {
+                return agent.delegate.addSectionHeader!().frame.size.height
+            }
+        } else {
+            if (agent.hasSelectors.sectionHeightForHeader) {
+                return agent.delegate.sectionHeightForHeader!(agent.viewObjects.sectionObjects(section));
+            } else if (agent.hasSelectors.sectionHeader) {
+                return agent.delegate.sectionHeader!(agent.viewObjects.sectionObjects(section)).frame.size.height
+            }
+        }
+        return -1;
+    }
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if agent.isAdditionalSection(section) {
+            if (agent.hasSelectors.addSectionHeader) {
+                return agent.delegate.addSectionHeader!();
+            }
+        } else if (agent.hasSelectors.sectionHeader) {
+            return agent.delegate.sectionHeader!(agent.viewObjects.sectionObjects(section));
+        }
+        return nil;
+    }
+}
 
-class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
+class TableViewAgent<T: NSObject> {
+    let support: TableViewAgentSupport
     var hasSelectors :HasSelectors
     var editableState: EditableState
     var addState: AdditionalCellState
@@ -53,21 +155,25 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
     set(d) {
         hasSelectors = createHasSelectors(d)
         _delegate = d;
-        d.tableView.delegate = self
-        d.tableView.dataSource = self
+        d.tableView.delegate = self.support
+        d.tableView.dataSource = self.support
     }
     }
-    override init() {
+    init() {
+        self.support = TableViewAgentSupport()
         hasSelectors = HasSelectors(didSelectCell: false, deleteCell: false, cellIdentifier: false, sectionTitle: false, addCellIdentifier: false, commonViewObject: false, didSelectAdditionalCell: false, addSectionTitle: false, addSectionHeightForHeader: false, addSectionHeader: false, sectionHeightForHeader: false, sectionHeader: false, cellHeight: false)
         editableState = EditableState()
         addState = AdditionalCellState()
+        self.support.agent = self as Any as TableViewAgent<NSObject>
     }
     init(vo :AgentViewObject<NSObject>, d :TableViewAgentDelegate) {
+        self.support = TableViewAgentSupport()
         hasSelectors = HasSelectors(didSelectCell: false, deleteCell: false, cellIdentifier: false, sectionTitle: false, addCellIdentifier: false, commonViewObject: false, didSelectAdditionalCell: false, addSectionTitle: false, addSectionHeightForHeader: false, addSectionHeader: false, sectionHeightForHeader: false, sectionHeader: false, cellHeight: false)
         editableState = EditableState()
         addState = AdditionalCellState()
         viewObjects = vo
         _delegate = d
+        self.support.agent = self as Any as TableViewAgent<NSObject>
     }
     func setAddCellHide(b: Int) {
         switch(b) {
@@ -146,33 +252,8 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
         }
         tableView.endUpdates()
     }
-    // UITableViewDelegate
-    func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            if (hasSelectors.deleteCell) {
-                let viewObject: AnyObject = viewObjectWithIndex(indexPath);
-                delegate.deleteCell!(viewObject)
-            }
-            viewObjects.removeObjectAtIndexPath(indexPath)
-        }
-    }
     func viewObjectWithIndex(indexPath :NSIndexPath) -> AnyObject {
         return viewObjects.objectAtIndexPath(indexPath)
-    }
-    // UITableViewDataSouer
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isAdditionalSection(section) {
-            return 1
-        } else {
-            return viewObjects.countInSection(section)
-        }
-    }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if isAdditionalSection(indexPath.section) {
-            return createAdditionalCell(tableView) as UITableViewCell;
-        } else {
-            return createCell(indexPath) as UITableViewCell;
-        }
     }
     func isAdditionalSection(section :Int) -> Bool {
         return viewObjects.sectionCount() == section
@@ -192,77 +273,6 @@ class TableViewAgent : NSObject, UITableViewDelegate, UITableViewDataSource {
     func dequeueCell(indexPath: NSIndexPath) -> AnyObject {
         let viewObject: AnyObject = viewObjectWithIndex(indexPath);
         return _delegate.tableView.dequeueReusableCellWithIdentifier(_delegate.cellIdentifier(viewObject))!
-    }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if isAdditionalSection(indexPath.section) {
-            let cell: AnyObject = createAdditionalCell(tableView)
-            if cell.respondsToSelector(NSSelectorFromString("heightFromViewObject")) {
-                return  cell.heightFromViewObject(viewObjectWithIndex(indexPath));
-            } else {
-                return cell.frame.size.height
-            }
-        } else {
-            let cell: AnyObject = dequeueCell(indexPath);
-            if cell.respondsToSelector(NSSelectorFromString("heightFromViewObject")) {
-                return cell.heightFromViewObject(viewObjectWithIndex(indexPath))
-            } else {
-                return cell.frame.size.height
-            }
-        }
-    }
-    func tableView(tableView: UITableView!, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath!) {
-        self.tableView(tableView, didSelectRowAtIndexPath: indexPath)
-    }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        if isAdditionalSection(indexPath.section) {
-            delegate.didSelectAdditionalCell!()
-        } else {
-            delegate.didSelectCell!(viewObjectWithIndex(indexPath))
-        }
-    }
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return viewObjects.sectionCount() + (addState.isShowAddCell(editing) ? 1 : 0)
-    }
-    func tableView(tableView :UITableView, canEditRowAtIndexPath indexPath:NSIndexPath) -> Bool {
-        return editableState.canEdit() && isAdditionalSection(indexPath.section) == false;
-    }
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if isAdditionalSection(section) {
-            if hasSelectors.addSectionTitle {
-                return _delegate.addSectionTitle!();
-            }
-        } else if hasSelectors.sectionTitle {
-            return delegate.sectionTitle!(viewObjects.sectionObjects(section));
-        }
-        return ""
-    }
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if isAdditionalSection(section) {
-            if hasSelectors.addSectionHeightForHeader {
-                return delegate.addSectionHeightForHeader!()
-            } else if hasSelectors.addSectionHeader {
-                return delegate.addSectionHeader!().frame.size.height
-            }
-        } else {
-            if (hasSelectors.sectionHeightForHeader) {
-                return delegate.sectionHeightForHeader!(viewObjects.sectionObjects(section));
-            } else if (hasSelectors.sectionHeader) {
-                return delegate.sectionHeader!(viewObjects.sectionObjects(section)).frame.size.height
-            }
-        }
-        return -1;
-    }
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if isAdditionalSection(section) {
-            if (hasSelectors.addSectionHeader) {
-                return delegate.addSectionHeader!();
-            }
-        } else if (hasSelectors.sectionHeader) {
-            return delegate.sectionHeader!(viewObjects.sectionObjects(section));
-        }
-        return nil;
     }
     func insertRowWithSection(section :Int, createSection b :Bool) {
         if (b) {

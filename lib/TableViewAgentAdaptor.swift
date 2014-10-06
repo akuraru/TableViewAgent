@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 class TableViewAgentAdaptor : NSObject {
-    let agent :TableViewAgent
+    let agent :TableViewAgent<NSObject>
     override init() {
         agent = TableViewAgent()
     }

@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 class SSAgentViewObject<T: NSObject> : AgentViewObject<T> {
-    weak var agent :TableViewAgent!
+    weak var agent :TableViewAgent<T>!
     var array: [T]
-    init(array :[T], agent: TableViewAgent) {
+    init(array :[T], agent: TableViewAgent<T>) {
         self.agent = agent
         self.array = array
         super.init()
