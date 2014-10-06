@@ -17,7 +17,7 @@ class SSAgentViewObject<T: NSObject> : AgentViewObject<T> {
         self.array = array
         super.init()
     }
-    func indexPathForObject(object :AnyObject) -> NSIndexPath? {
+    func indexPathForObject(object :T) -> NSIndexPath? {
          let _len  = array.count
         for var i = 0; i < _len; i++ {
             if object.isEqual(array[0]) {
@@ -54,7 +54,7 @@ class SSAgentViewObject<T: NSObject> : AgentViewObject<T> {
         let row = indexPath.row
         return 0 <= row && row < array.count
     }
-    override func sectionObjects(section :Int) -> AnyObject {
-        return array
+    override func sectionObjects(section :Int) -> T {
+        return array[section]
     }
 }

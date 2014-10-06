@@ -12,12 +12,12 @@ class AgentViewObject<T : NSObject> {
     func sectionCount() -> Int { return 0 }
     func countInSection(section :Int) -> Int { return 0}
     func objectAtIndexPath(indexPath :NSIndexPath) -> T {
-        return NSObject() as T
+        return T()
     }
     func removeObjectAtIndexPath(indexPath :NSIndexPath) {}
     func existObject(indexPath :NSIndexPath) -> Bool {return false}
-    func sectionObjects(section :Int) -> AnyObject {
-        return NSObject()
+    func sectionObjects(section :Int) -> T {
+        return T()
     }
     
     func changeObject(object :T) {}

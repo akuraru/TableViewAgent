@@ -147,7 +147,7 @@ class TableViewAgent<T: NSObject> {
         }
     }
     }
-    var viewObjects: AgentViewObject<NSObject>!
+    var viewObjects: AgentViewObject<T>!
     
     var _delegate: TableViewAgentDelegate!
     var delegate: TableViewAgentDelegate! {
@@ -166,7 +166,7 @@ class TableViewAgent<T: NSObject> {
         addState = AdditionalCellState()
         self.support.agent = self as Any as TableViewAgent<NSObject>
     }
-    init(vo :AgentViewObject<NSObject>, d :TableViewAgentDelegate) {
+    init(vo :AgentViewObject<T>, d :TableViewAgentDelegate) {
         self.support = TableViewAgentSupport()
         hasSelectors = HasSelectors(didSelectCell: false, deleteCell: false, cellIdentifier: false, sectionTitle: false, addCellIdentifier: false, commonViewObject: false, didSelectAdditionalCell: false, addSectionTitle: false, addSectionHeightForHeader: false, addSectionHeader: false, sectionHeightForHeader: false, sectionHeader: false, cellHeight: false)
         editableState = EditableState()
@@ -189,7 +189,7 @@ class TableViewAgent<T: NSObject> {
         self.editing = false
         _delegate.tableView.reloadData()
     }
-    func viewObjectForIndexPath(indexPath :NSIndexPath) -> AnyObject {
+    func viewObjectForIndexPath(indexPath :NSIndexPath) -> T {
         return viewObjects.objectAtIndexPath(indexPath)
     }
     func deleteCell(indexPath :NSIndexPath) {
@@ -252,7 +252,7 @@ class TableViewAgent<T: NSObject> {
         }
         tableView.endUpdates()
     }
-    func viewObjectWithIndex(indexPath :NSIndexPath) -> AnyObject {
+    func viewObjectWithIndex(indexPath :NSIndexPath) -> T {
         return viewObjects.objectAtIndexPath(indexPath)
     }
     func isAdditionalSection(section :Int) -> Bool {
@@ -263,7 +263,7 @@ class TableViewAgent<T: NSObject> {
         return tableView.dequeueReusableCellWithIdentifier(delegate.addCellIdentifier!())!
     }
     func createCell(indexPath :NSIndexPath) -> AnyObject {
-        let viewObject: AnyObject = viewObjectWithIndex(indexPath)
+        let viewObject = viewObjectWithIndex(indexPath)
         let cell: AnyObject = dequeueCell(indexPath)
         if let c = cell as? TableViewAgentCellDelegate {
             c.setViewObject(viewObject)

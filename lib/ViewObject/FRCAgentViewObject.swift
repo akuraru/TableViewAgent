@@ -16,13 +16,13 @@ class Support :NSObject, NSFetchedResultsControllerDelegate {
     }
     func controller(controller: NSFetchedResultsController!, didChangeObject anObject: AnyObject!, atIndexPath indexPath: NSIndexPath!, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath!) {
         switch(type) {
-        case NSFetchedResultsChangeType.Insert:
+        case .Insert:
             agent.insertCell(newIndexPath)
-        case NSFetchedResultsChangeType.Delete:
+        case .Delete:
             agent.deleteCell(indexPath)
-        case NSFetchedResultsChangeType.Update:
+        case .Update:
             agent.changeUpdateCell(indexPath)
-        case NSFetchedResultsChangeType.Move:
+        case .Move:
             agent.changeMoveCell(indexPath, newIndexPath: newIndexPath)
         }
     }
@@ -68,7 +68,7 @@ class FRCAgentViewObject<T: NSObject>: AgentViewObject<T> {
     override func existObject(indexPath :NSIndexPath) -> Bool {
         return indexPath.section < sectionCount() && indexPath.row < countInSection(indexPath.section)
     }
-    override func sectionObjects(section :Int) -> AnyObject {
+    override func sectionObjects(section :Int) -> T {
         return objectAtIndexPath(NSIndexPath(forRow: 0, inSection: section))
     }
     

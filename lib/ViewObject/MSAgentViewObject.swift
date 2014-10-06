@@ -26,7 +26,7 @@ class MSAgentViewObject<T : NSObject> : AgentViewObject<T> {
     override func changeObject(object :T) {
         agent.changeUpdateCell(indexPathForObject(object))
     }
-    func indexPathForObject(object :AnyObject) -> NSIndexPath! {
+    func indexPathForObject(object :T) -> NSIndexPath! {
         for var i = 0, _len = array.count; i < _len; i++ {
             for var j = 0, _len = array[i].count; j < _len; j++ {
                 if array[i][j].isEqual(object) {
@@ -57,7 +57,7 @@ class MSAgentViewObject<T : NSObject> : AgentViewObject<T> {
     override func existObject(indexPath :NSIndexPath) -> Bool {
         return indexPath.section < array.count && indexPath.row < array[indexPath.section].count;
     }
-    override func sectionObjects(section :Int) -> AnyObject {
-        return array[section]
+    override func sectionObjects(section :Int) -> T {
+        return array[section][0]
     }
 }
