@@ -10,30 +10,14 @@ import Foundation
 import UIKit
 import CoreData
 
-struct HasSelectors {
-    let didSelectCell: Bool
-    let deleteCell: Bool
-    let cellIdentifier: Bool
-    let sectionTitle: Bool
-    let addCellIdentifier: Bool
-    let commonViewObject: Bool
-    let didSelectAdditionalCell: Bool
-    let addSectionTitle: Bool
-    let addSectionHeightForHeader: Bool
-    let addSectionHeader: Bool
-    let sectionHeightForHeader: Bool
-    let sectionHeader: Bool
-    let cellHeight: Bool
-}
-
 class TableViewAgentSupport: NSObject, UITableViewDelegate, UITableViewDataSource {
     var agent: TableViewAgent<NSObject>!
     // UITableViewDelegate
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            if (agent.hasSelectors.deleteCell) {
+            if let f = agent.deleteCell {
                 let viewObject: AnyObject = agent.viewObjectWithIndex(indexPath);
-                agent.delegate.deleteCell!(viewObject)
+                f(viewObject)
             }
             agent.viewObjects.removeObjectAtIndexPath(indexPath)
         }
@@ -79,9 +63,9 @@ class TableViewAgentSupport: NSObject, UITableViewDelegate, UITableViewDataSourc
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if agent.isAdditionalSection(indexPath.section) {
-            agent.delegate.didSelectAdditionalCell!()
+            agent.didSelectAdditionalCell!()
         } else {
-            agent.delegate.didSelectCell!(agent.viewObjectWithIndex(indexPath))
+            agent.didSelectCell!(agent.viewObjectWithIndex(indexPath))
         }
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -92,45 +76,67 @@ class TableViewAgentSupport: NSObject, UITableViewDelegate, UITableViewDataSourc
     }
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if agent.isAdditionalSection(section) {
-            if agent.hasSelectors.addSectionTitle {
-                return agent.delegate.addSectionTitle!();
+            if let t = agent.addSectionTitle {
+                return t()
             }
-        } else if agent.hasSelectors.sectionTitle {
-            return agent.delegate.sectionTitle!(agent.viewObjects.sectionObjects(section));
+        } else if let t = agent.sectionTitle {
+            return t(agent.viewObjects.sectionObjects(section));
         }
         return ""
     }
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if agent.isAdditionalSection(section) {
-            if agent.hasSelectors.addSectionHeightForHeader {
-                return agent.delegate.addSectionHeightForHeader!()
-            } else if agent.hasSelectors.addSectionHeader {
-                return agent.delegate.addSectionHeader!().frame.size.height
+            if let f = agent.addSectionHeightForHeader {
+                return f()
+            } else if let f = agent.addSectionHeader {
+                return f().frame.size.height
             }
         } else {
-            if (agent.hasSelectors.sectionHeightForHeader) {
-                return agent.delegate.sectionHeightForHeader!(agent.viewObjects.sectionObjects(section));
-            } else if (agent.hasSelectors.sectionHeader) {
-                return agent.delegate.sectionHeader!(agent.viewObjects.sectionObjects(section)).frame.size.height
+            if let f = agent.sectionHeightForHeader {
+                return f(agent.viewObjects.sectionObjects(section));
+            } else if let f = agent.sectionHeader {
+                return f(agent.viewObjects.sectionObjects(section)).frame.size.height
             }
         }
         return -1;
     }
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if agent.isAdditionalSection(section) {
-            if (agent.hasSelectors.addSectionHeader) {
-                return agent.delegate.addSectionHeader!();
+            if let f = agent.addSectionHeader {
+                return f();
             }
-        } else if (agent.hasSelectors.sectionHeader) {
-            return agent.delegate.sectionHeader!(agent.viewObjects.sectionObjects(section));
+        } else if let f = agent.sectionHeader {
+            return f(agent.viewObjects.sectionObjects(section));
         }
         return nil;
     }
 }
 
 class TableViewAgent<T: NSObject> {
+    var didSelectCell: (AnyObject -> ())?
+    var deleteCell: (AnyObject -> ())?
+    var cellIdentifier: (AnyObject -> String)!
+    var commonViewObject:(AnyObject -> AnyObject)?
+    var _tableView: UITableView!
+    var tableView: UITableView! {
+        get { return _tableView }
+        set(t) {
+            _tableView = t
+            t.delegate = self.support
+            t.dataSource = self.support
+        }
+    }
+    var sectionTitle: (AnyObject -> String)?
+    var addCellIdentifier: (() -> String)?
+    var didSelectAdditionalCell: (() -> ())?
+    var addSectionTitle: (() -> String)?
+    var addSectionHeightForHeader: (() -> CGFloat)?
+    var addSectionHeader: (() -> UIView)?
+    var sectionHeightForHeader: (AnyObject -> CGFloat)?
+    var sectionHeader: (AnyObject -> UIView)?
+    var cellHeight: (AnyObject-> CGFloat)?
+    
     let support: TableViewAgentSupport
-    var hasSelectors :HasSelectors
     var editableState: EditableState
     var addState: AdditionalCellState
     var _editing = false
@@ -141,38 +147,26 @@ class TableViewAgent<T: NSObject> {
     set(b) {
         if (editableState.canEdit() && editing != b) {
             _editing = b;
-            _delegate.tableView.setEditing(!(b), animated: false)
-            _delegate.tableView.setEditing(b, animated: true)
+            tableView.setEditing(!(b), animated: false)
+            tableView.setEditing(b, animated: true)
             setAddCellHide(addState.changeInState(editing))
         }
     }
     }
     var viewObjects: AgentViewObject<T>!
     
-    var _delegate: TableViewAgentDelegate!
-    var delegate: TableViewAgentDelegate! {
-    get { return _delegate }
-    set(d) {
-        hasSelectors = createHasSelectors(d)
-        _delegate = d;
-        d.tableView.delegate = self.support
-        d.tableView.dataSource = self.support
-    }
-    }
     init() {
         self.support = TableViewAgentSupport()
-        hasSelectors = HasSelectors(didSelectCell: false, deleteCell: false, cellIdentifier: false, sectionTitle: false, addCellIdentifier: false, commonViewObject: false, didSelectAdditionalCell: false, addSectionTitle: false, addSectionHeightForHeader: false, addSectionHeader: false, sectionHeightForHeader: false, sectionHeader: false, cellHeight: false)
         editableState = EditableState()
         addState = AdditionalCellState()
         self.support.agent = self as Any as TableViewAgent<NSObject>
     }
-    init(vo :AgentViewObject<T>, d :TableViewAgentDelegate) {
+    init(vo :AgentViewObject<T>, view :UITableView) {
         self.support = TableViewAgentSupport()
-        hasSelectors = HasSelectors(didSelectCell: false, deleteCell: false, cellIdentifier: false, sectionTitle: false, addCellIdentifier: false, commonViewObject: false, didSelectAdditionalCell: false, addSectionTitle: false, addSectionHeightForHeader: false, addSectionHeader: false, sectionHeightForHeader: false, sectionHeader: false, cellHeight: false)
         editableState = EditableState()
         addState = AdditionalCellState()
         viewObjects = vo
-        _delegate = d
+        tableView = view
         self.support.agent = self as Any as TableViewAgent<NSObject>
     }
     func setAddCellHide(b: Int) {
@@ -187,52 +181,51 @@ class TableViewAgent<T: NSObject> {
     }
     func reload() {
         self.editing = false
-        _delegate.tableView.reloadData()
+        tableView.reloadData()
     }
     func viewObjectForIndexPath(indexPath :NSIndexPath) -> T {
         return viewObjects.objectAtIndexPath(indexPath)
     }
     func deleteCell(indexPath :NSIndexPath) {
         if self.compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
-            _delegate.tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation:UITableViewRowAnimation.Automatic)
+            tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation:UITableViewRowAnimation.Automatic)
         } else {
-            _delegate.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
     func compareSectionCount(sectionCount: Int) -> NSComparisonResult {
         let left = viewObjects.sectionCount()
-        let right = _delegate.tableView.numberOfSections() - (addState.isShowAddCell(editing) ? 1 : 0)
+        let right = tableView.numberOfSections() - (addState.isShowAddCell(editing) ? 1 : 0)
         return left < right ? NSComparisonResult.OrderedAscending : left == right ? NSComparisonResult.OrderedSame : NSComparisonResult.OrderedDescending
     }
     func deleteCellsAtSection(section :Int,rows :[Int]) {
         if compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
-            _delegate.tableView.deleteSections(NSIndexSet(index: section), withRowAnimation:UITableViewRowAnimation.Automatic)
+            tableView.deleteSections(NSIndexSet(index: section), withRowAnimation:UITableViewRowAnimation.Automatic)
         } else {
-            _delegate.tableView.deleteRowsAtIndexPaths(indexPathsForSection(section, rows: rows), withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.deleteRowsAtIndexPaths(indexPathsForSection(section, rows: rows), withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
     func insertCell(indexPath :NSIndexPath) {
         if compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
-            _delegate.tableView.insertSections(NSIndexSet(index: indexPath.section), withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.insertSections(NSIndexSet(index: indexPath.section), withRowAnimation: UITableViewRowAnimation.Automatic)
         } else {
-            _delegate.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
     func insertCellsAtSection(section :Int, rows: [Int]) {
         if compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
-            _delegate.tableView.insertSections(NSIndexSet(index: section), withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.insertSections(NSIndexSet(index: section), withRowAnimation: UITableViewRowAnimation.Automatic)
         } else {
-            _delegate.tableView.insertRowsAtIndexPaths(indexPathsForSection(section, rows: rows), withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.insertRowsAtIndexPaths(indexPathsForSection(section, rows: rows), withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
     func indexPathsForSection(section :Int, rows:[Int]) ->  [NSIndexPath] {
         return rows.map{NSIndexPath(forRow: $0, inSection: section)}
     }
     func changeUpdateCell(indexPath :NSIndexPath) {
-        _delegate.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     func changeMoveCell(indexPath :NSIndexPath, newIndexPath :NSIndexPath) {
-        let tableView = _delegate.tableView;
         tableView.beginUpdates();
         switch compareSectionCount(viewObjects.sectionCount()) {
         case .OrderedSame:
@@ -260,7 +253,7 @@ class TableViewAgent<T: NSObject> {
     }
     
     func createAdditionalCell(tableView :UITableView) -> AnyObject {
-        return tableView.dequeueReusableCellWithIdentifier(delegate.addCellIdentifier!())!
+        return tableView.dequeueReusableCellWithIdentifier(addCellIdentifier!())!
     }
     func createCell(indexPath :NSIndexPath) -> AnyObject {
         let viewObject = viewObjectWithIndex(indexPath)
@@ -272,39 +265,22 @@ class TableViewAgent<T: NSObject> {
     }
     func dequeueCell(indexPath: NSIndexPath) -> AnyObject {
         let viewObject: AnyObject = viewObjectWithIndex(indexPath);
-        return _delegate.tableView.dequeueReusableCellWithIdentifier(_delegate.cellIdentifier(viewObject))!
+        return tableView.dequeueReusableCellWithIdentifier(cellIdentifier(viewObject))!
     }
     func insertRowWithSection(section :Int, createSection b :Bool) {
         if (b) {
-            _delegate.tableView.insertSections(NSIndexSet(index: section), withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.insertSections(NSIndexSet(index: section), withRowAnimation: UITableViewRowAnimation.Automatic)
         } else {
-            _delegate.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: viewObjects.countInSection(section) - 1, inSection:section)], withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: viewObjects.countInSection(section) - 1, inSection:section)], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
     func hideAddCell() {
-        delegate.tableView.deleteSections(NSIndexSet(index: viewObjects.sectionCount()), withRowAnimation: UITableViewRowAnimation.Automatic)
+        tableView.deleteSections(NSIndexSet(index: viewObjects.sectionCount()), withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     func showAddCell() {
-        delegate.tableView.insertSections(NSIndexSet(index: viewObjects.sectionCount()), withRowAnimation: UITableViewRowAnimation.Automatic)
+        tableView.insertSections(NSIndexSet(index: viewObjects.sectionCount()), withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     func sectionOfAddCell() -> Int {
         return viewObjects.sectionCount()
-    }
-    func createHasSelectors(d :TableViewAgentDelegate!) -> HasSelectors {
-        return HasSelectors(
-            didSelectCell: d.respondsToSelector(NSSelectorFromString("didSelectCell:")),
-            deleteCell: d.respondsToSelector(NSSelectorFromString("deleteCell:")),
-            cellIdentifier: d.respondsToSelector(NSSelectorFromString("cellIdentifier:")),
-            sectionTitle: d.respondsToSelector(NSSelectorFromString("sectionTitle:")),
-            addCellIdentifier: d.respondsToSelector(NSSelectorFromString("addCellIdentifier")),
-            commonViewObject: d.respondsToSelector(NSSelectorFromString("commonViewObject")),
-            didSelectAdditionalCell: d.respondsToSelector(NSSelectorFromString("didSelectAdditionalCell")),
-            addSectionTitle: d.respondsToSelector(NSSelectorFromString("addSectionTitle")),
-            addSectionHeightForHeader: d.respondsToSelector(NSSelectorFromString("addSectionHeightForHeader")),
-            addSectionHeader: d.respondsToSelector(NSSelectorFromString("addSectionHeader")),
-            sectionHeightForHeader: d.respondsToSelector(NSSelectorFromString("sectionHeightForHeader:")),
-            sectionHeader: d.respondsToSelector(NSSelectorFromString("sectionHeader:")),
-            cellHeight: d.respondsToSelector(NSSelectorFromString("cellHeight"))
-        )
     }
 }

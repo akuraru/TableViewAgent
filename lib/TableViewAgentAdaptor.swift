@@ -10,11 +10,12 @@ import Foundation
 import CoreData
 
 class TableViewAgentAdaptor : NSObject {
-    let agent :TableViewAgent<NSObject>
+    let agent: TableViewAgent<NSObject>
+    var _detegate: TableViewAgentDelegate!
+    
     override init() {
         agent = TableViewAgent()
     }
-    
     func setSigleSection(array :[NSObject]) {
         agent.viewObjects = SSAgentViewObject(array: array, agent: agent)
     }
@@ -31,7 +32,48 @@ class TableViewAgentAdaptor : NSObject {
         agent.viewObjects.addObject(object, inSection: section)
     }
     func setDelegate(d :TableViewAgentDelegate!){
-        agent.delegate = d
+        _detegate = d
+        
+        agent.tableView = d.tableView
+        agent.didSelectCell = d.respondsToSelector(NSSelectorFromString("didSelectCell:")) ? {o in
+            d.didSelectCell!(o)
+            } : nil
+        agent.deleteCell = d.respondsToSelector(NSSelectorFromString("deleteCell:")) ? {o in
+            d.deleteCell!(o)
+            } : nil
+        agent.cellIdentifier = d.respondsToSelector(NSSelectorFromString("cellIdentifier:")) ? {o in
+            return d.cellIdentifier(o)
+            } : nil
+        agent.commonViewObject = d.respondsToSelector(NSSelectorFromString("commonViewObject:")) ? {o in
+            return d.commonViewObject!(o)
+            } : nil
+        agent.sectionTitle = d.respondsToSelector(NSSelectorFromString("sectionTitle:")) ? {o in
+            return d.sectionTitle!(o)
+            } : nil
+        agent.addCellIdentifier = d.respondsToSelector(NSSelectorFromString("addCellIdentifier")) ? {() in
+            return d.addCellIdentifier!()
+            } : nil
+        agent.didSelectAdditionalCell = d.respondsToSelector(NSSelectorFromString("didSelectAdditionalCell")) ? {() in
+            d.didSelectAdditionalCell!()
+            } : nil
+        agent.addSectionTitle = d.respondsToSelector(NSSelectorFromString("addSectionTitle:")) ? {() in
+            return d.addSectionTitle!()
+            } : nil
+        agent.addSectionHeightForHeader = d.respondsToSelector(NSSelectorFromString("addSectionHeightForHeader")) ? {() in
+            return d.addSectionHeightForHeader!()
+            } : nil
+        agent.addSectionHeader = d.respondsToSelector(NSSelectorFromString("addSectionHeader")) ? {() in
+            return d.addSectionHeader!()
+            } : nil
+        agent.sectionHeightForHeader = d.respondsToSelector(NSSelectorFromString("sectionHeightForHeader:")) ? {o in
+            return d.sectionHeightForHeader!(o)
+            } : nil
+        agent.sectionHeader = d.respondsToSelector(NSSelectorFromString("sectionHeader:")) ? {o in
+            return d.sectionHeader!(o)
+            } : nil
+        agent.cellHeight = d.respondsToSelector(NSSelectorFromString("cellHeight:")) ? {o in
+            return d.cellHeight!(o)
+            } : nil
     }
     func setEditableModel(mode :EditableMode) {
         agent.editableState = createEditableState(mode)
