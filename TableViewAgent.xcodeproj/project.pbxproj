@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2DDCFBA148DE41AABC73DC30 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04047CB7E427422FB2D7649E /* libPods.a */; };
+		BE02704C19E8E0C5003F8692 /* AdditionalCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704A19E8E0C5003F8692 /* AdditionalCellState.swift */; };
+		BE02704D19E8E0C5003F8692 /* EditableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704B19E8E0C5003F8692 /* EditableState.swift */; };
 		BE161195196FE441004E2979 /* showTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C879029E6098E49ED1B97509 /* showTableView.m */; };
 		BE2256F2176BCABC0022DA33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
 		BE2256F4176BCABC0022DA33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F3176BCABC0022DA33 /* Foundation.framework */; };
@@ -24,14 +26,6 @@
 		BE4D744817F5066300287CE8 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744617F5066300287CE8 /* Todo.m */; };
 		BE4D744C17F5160600287CE8 /* TodoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744B17F5160600287CE8 /* TodoManager.m */; };
 		BE5C3CE917C0FE0C00D28713 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C3CE817C0FE0C00D28713 /* MSViewController.m */; };
-		BE6AD8831987AD360002ABA7 /* EditableStateNone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8821987AD360002ABA7 /* EditableStateNone.swift */; };
-		BE6AD89C198870030002ABA7 /* EditableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD899198870030002ABA7 /* EditableState.swift */; };
-		BE6AD89D198870030002ABA7 /* EditableStateEnadle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD89A198870030002ABA7 /* EditableStateEnadle.swift */; };
-		BE6AD8A4198870100002ABA7 /* AdditionalCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD89F198870100002ABA7 /* AdditionalCellState.swift */; };
-		BE6AD8A5198870100002ABA7 /* AdditionalCellStateAlways.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A0198870100002ABA7 /* AdditionalCellStateAlways.swift */; };
-		BE6AD8A6198870100002ABA7 /* AdditionalCellStateHideEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A1198870100002ABA7 /* AdditionalCellStateHideEditing.swift */; };
-		BE6AD8A7198870100002ABA7 /* AdditionalCellStateNone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A2198870100002ABA7 /* AdditionalCellStateNone.swift */; };
-		BE6AD8A8198870100002ABA7 /* AdditionalCellStateShowEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A3198870100002ABA7 /* AdditionalCellStateShowEditing.swift */; };
 		BE6AD8AA1988701B0002ABA7 /* SSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */; };
 		BE6AD8B0198870600002ABA7 /* MSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */; };
 		BE741609198E258C00A4B309 /* AgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE741608198E258C00A4B309 /* AgentViewObject.swift */; };
@@ -91,6 +85,9 @@
 
 /* Begin PBXFileReference section */
 		04047CB7E427422FB2D7649E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE02704919E8D6C9003F8692 /* TableViewAgent-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TableViewAgent-Bridging-Header.h"; sourceTree = "<group>"; };
+		BE02704A19E8E0C5003F8692 /* AdditionalCellState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellState.swift; sourceTree = "<group>"; };
+		BE02704B19E8E0C5003F8692 /* EditableState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableState.swift; sourceTree = "<group>"; };
 		BE2256EE176BCABC0022DA33 /* TableViewAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE2256F1176BCABC0022DA33 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BE2256F3176BCABC0022DA33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,15 +112,6 @@
 		BE4D744B17F5160600287CE8 /* TodoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoManager.m; sourceTree = "<group>"; };
 		BE5C3CE717C0FE0C00D28713 /* MSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSViewController.h; sourceTree = "<group>"; };
 		BE5C3CE817C0FE0C00D28713 /* MSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSViewController.m; sourceTree = "<group>"; };
-		BE6AD8811987AD350002ABA7 /* TableViewAgent-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TableViewAgent-Bridging-Header.h"; sourceTree = "<group>"; };
-		BE6AD8821987AD360002ABA7 /* EditableStateNone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableStateNone.swift; sourceTree = "<group>"; };
-		BE6AD899198870030002ABA7 /* EditableState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableState.swift; sourceTree = "<group>"; };
-		BE6AD89A198870030002ABA7 /* EditableStateEnadle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableStateEnadle.swift; sourceTree = "<group>"; };
-		BE6AD89F198870100002ABA7 /* AdditionalCellState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellState.swift; sourceTree = "<group>"; };
-		BE6AD8A0198870100002ABA7 /* AdditionalCellStateAlways.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellStateAlways.swift; sourceTree = "<group>"; };
-		BE6AD8A1198870100002ABA7 /* AdditionalCellStateHideEditing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellStateHideEditing.swift; sourceTree = "<group>"; };
-		BE6AD8A2198870100002ABA7 /* AdditionalCellStateNone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellStateNone.swift; sourceTree = "<group>"; };
-		BE6AD8A3198870100002ABA7 /* AdditionalCellStateShowEditing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellStateShowEditing.swift; sourceTree = "<group>"; };
 		BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSAgentViewObject.swift; sourceTree = "<group>"; };
 		BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSAgentViewObject.swift; sourceTree = "<group>"; };
 		BE741608198E258C00A4B309 /* AgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentViewObject.swift; sourceTree = "<group>"; };
@@ -229,6 +217,7 @@
 		BE2256F7176BCABC0022DA33 /* TableViewAgentSample */ = {
 			isa = PBXGroup;
 			children = (
+				BE02704919E8D6C9003F8692 /* TableViewAgent-Bridging-Header.h */,
 				BE225700176BCABC0022DA33 /* AppDelegate.h */,
 				BE225701176BCABC0022DA33 /* AppDelegate.m */,
 				BE225709176BCABD0022DA33 /* MainStoryboard.storyboard */,
@@ -292,8 +281,8 @@
 		BE76B9791849A148001E749D /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				BE76B97A1849A148001E749D /* AdditionalCellState */,
-				BE76B9851849A148001E749D /* EditableState */,
+				BE02704A19E8E0C5003F8692 /* AdditionalCellState.swift */,
+				BE02704B19E8E0C5003F8692 /* EditableState.swift */,
 				BE76B9911849A148001E749D /* ViewObject */,
 				BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */,
 				BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */,
@@ -302,29 +291,6 @@
 				BEB49A31198F8A08001C219C /* Enum.h */,
 			);
 			path = lib;
-			sourceTree = "<group>";
-		};
-		BE76B97A1849A148001E749D /* AdditionalCellState */ = {
-			isa = PBXGroup;
-			children = (
-				BE6AD89F198870100002ABA7 /* AdditionalCellState.swift */,
-				BE6AD8A0198870100002ABA7 /* AdditionalCellStateAlways.swift */,
-				BE6AD8A1198870100002ABA7 /* AdditionalCellStateHideEditing.swift */,
-				BE6AD8A2198870100002ABA7 /* AdditionalCellStateNone.swift */,
-				BE6AD8A3198870100002ABA7 /* AdditionalCellStateShowEditing.swift */,
-			);
-			path = AdditionalCellState;
-			sourceTree = "<group>";
-		};
-		BE76B9851849A148001E749D /* EditableState */ = {
-			isa = PBXGroup;
-			children = (
-				BE6AD899198870030002ABA7 /* EditableState.swift */,
-				BE6AD89A198870030002ABA7 /* EditableStateEnadle.swift */,
-				BE6AD8821987AD360002ABA7 /* EditableStateNone.swift */,
-				BE6AD8811987AD350002ABA7 /* TableViewAgent-Bridging-Header.h */,
-			);
-			path = EditableState;
 			sourceTree = "<group>";
 		};
 		BE76B9911849A148001E749D /* ViewObject */ = {
@@ -610,25 +576,19 @@
 				C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */,
 				BE4D744217F5056D00287CE8 /* Model.xcdatamodeld in Sources */,
 				C87903536A8986DA6EC5F746 /* MainService.m in Sources */,
-				BE6AD8A5198870100002ABA7 /* AdditionalCellStateAlways.swift in Sources */,
-				BE6AD8A6198870100002ABA7 /* AdditionalCellStateHideEditing.swift in Sources */,
 				BEE8F8DF198A44AD001477B0 /* TableViewAgent.swift in Sources */,
 				BEE8F8DD198A43B6001477B0 /* TableViewAgentCellDelegate.swift in Sources */,
-				BE6AD8831987AD360002ABA7 /* EditableStateNone.swift in Sources */,
-				BE6AD8A4198870100002ABA7 /* AdditionalCellState.swift in Sources */,
+				BE02704D19E8E0C5003F8692 /* EditableState.swift in Sources */,
 				BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */,
 				BE6AD8AA1988701B0002ABA7 /* SSAgentViewObject.swift in Sources */,
-				BE6AD89C198870030002ABA7 /* EditableState.swift in Sources */,
 				BE4D744C17F5160600287CE8 /* TodoManager.m in Sources */,
-				BE6AD8A7198870100002ABA7 /* AdditionalCellStateNone.swift in Sources */,
 				BEB49A30198F8814001C219C /* TableViewAgentAdaptor.swift in Sources */,
-				BE6AD89D198870030002ABA7 /* EditableStateEnadle.swift in Sources */,
 				BE5C3CE917C0FE0C00D28713 /* MSViewController.m in Sources */,
 				BE741609198E258C00A4B309 /* AgentViewObject.swift in Sources */,
 				C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */,
 				BEEA508C1989C74000A373EA /* FRCAgentViewObject.swift in Sources */,
 				C87905270237FA75311D678E /* WETodo.m in Sources */,
-				BE6AD8A8198870100002ABA7 /* AdditionalCellStateShowEditing.swift in Sources */,
+				BE02704C19E8E0C5003F8692 /* AdditionalCellState.swift in Sources */,
 				C8790AE56CEAA4AA5E94FAA6 /* MainEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -770,7 +730,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "lib/EditableState/TableViewAgent-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "TableViewAgent/TableViewAgent-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -789,7 +749,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "lib/EditableState/TableViewAgent-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "TableViewAgent/TableViewAgent-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

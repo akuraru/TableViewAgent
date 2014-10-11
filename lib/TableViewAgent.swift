@@ -157,23 +157,23 @@ class TableViewAgent<T: NSObject> {
     
     init() {
         self.support = TableViewAgentSupport()
-        editableState = EditableState()
-        addState = AdditionalCellState()
+        editableState = .None
+        addState = .None
         self.support.agent = self as Any as TableViewAgent<NSObject>
     }
     init(vo :AgentViewObject<T>, view :UITableView) {
         self.support = TableViewAgentSupport()
-        editableState = EditableState()
-        addState = AdditionalCellState()
+        editableState = .None
+        addState = .None
         viewObjects = vo
         tableView = view
         self.support.agent = self as Any as TableViewAgent<NSObject>
     }
-    func setAddCellHide(b: Int) {
+    func setAddCellHide(b: ChangeInState) {
         switch(b) {
-        case 1:
+        case .Hide:
             hideAddCell()
-        case 2:
+        case .Show:
             showAddCell()
         default:
             break

@@ -8,8 +8,12 @@
 
 import Foundation
 
-class EditableState {
+enum EditableState {
+    case Enable, None
     func canEdit() -> Bool {
-        return false
+        switch self {
+        case .Enable: return true
+        case .None: return false
+        }
     }
 }

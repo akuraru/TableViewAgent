@@ -80,8 +80,8 @@ class TableViewAgentAdaptor : NSObject {
     }
     func createEditableState(mode :EditableMode) -> EditableState {
         switch mode {
-        case .Enable: return EditableStateEnadle()
-        case .None: return EditableStateNone()
+        case .Enable: return EditableState.Enable
+        case .None: return EditableState.None
         }
     }
     func setAddMode(mode :AdditionalCellMode) {
@@ -89,10 +89,10 @@ class TableViewAgentAdaptor : NSObject {
     }
     func createAddState(mode :AdditionalCellMode) -> AdditionalCellState {
         switch mode {
-        case .None: return AdditionalCellStateNone();
-        case .HideEditing: return AdditionalCellStateHideEditing();
-        case .ShowEditing: return AdditionalCellStateShowEditing();
-        case .Always: return AdditionalCellStateAlways();
+        case .None: return .None
+        case .HideEditing: return .HideEditing
+        case .ShowEditing: return .ShowEditing
+        case .Always: return .Always
         }
     }
     func editing() -> Bool {
