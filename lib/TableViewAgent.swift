@@ -199,7 +199,7 @@ class TableViewAgent<T: NSObject> {
         return viewObjects.objectAtIndexPath(indexPath)
     }
     func deleteCell(indexPath :NSIndexPath) {
-        if self.compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
+        if self.compareSectionCount(viewObjects.sectionCount()) != .OrderedSame {
             tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation:.Automatic)
         } else {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
@@ -211,21 +211,21 @@ class TableViewAgent<T: NSObject> {
         return left < right ? .OrderedAscending : left == right ? .OrderedSame : .OrderedDescending
     }
     func deleteCellsAtSection(section :Int,rows :[Int]) {
-        if compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
+        if compareSectionCount(viewObjects.sectionCount()) != .OrderedSame {
             tableView.deleteSections(NSIndexSet(index: section), withRowAnimation:.Automatic)
         } else {
             tableView.deleteRowsAtIndexPaths(indexPathsForSection(section, rows: rows), withRowAnimation: .Automatic)
         }
     }
     func insertCell(indexPath :NSIndexPath) {
-        if compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
+        if compareSectionCount(viewObjects.sectionCount()) != .OrderedSame {
             tableView.insertSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Automatic)
         } else {
             tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
     }
     func insertCellsAtSection(section :Int, rows: [Int]) {
-        if compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
+        if compareSectionCount(viewObjects.sectionCount()) != .OrderedSame {
             tableView.insertSections(NSIndexSet(index: section), withRowAnimation: .Automatic)
         } else {
             tableView.insertRowsAtIndexPaths(indexPathsForSection(section, rows: rows), withRowAnimation: .Automatic)
