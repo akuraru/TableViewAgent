@@ -11,6 +11,5 @@ import UIKit
 
 @objc protocol TableViewAgentCellDelegate : NSObjectProtocol {
     func setViewObject(o :AnyObject)
-    optional func setViewObject(o :AnyObject, common :AnyObject)
     func heightFromViewObject(o :AnyObject) -> CGFloat
 }

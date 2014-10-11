@@ -13,7 +13,6 @@ import UIKit
     optional func didSelectCell(viewObject :AnyObject)
     optional func deleteCell(viewObject :AnyObject)
     func cellIdentifier(viewObject :AnyObject) -> String
-    optional func commonViewObject(viewObject :AnyObject) -> AnyObject
     var tableView :UITableView { get }
     optional func sectionTitle(viewObjects :AnyObject) -> String
     optional func addCellIdentifier() -> String

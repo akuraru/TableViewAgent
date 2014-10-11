@@ -44,9 +44,6 @@ class TableViewAgentAdaptor : NSObject {
         agent.cellIdentifier = d.respondsToSelector(NSSelectorFromString("cellIdentifier:")) ? {o in
             return d.cellIdentifier(o)
             } : nil
-        agent.commonViewObject = d.respondsToSelector(NSSelectorFromString("commonViewObject:")) ? {o in
-            return d.commonViewObject!(o)
-            } : nil
         agent.sectionTitle = d.respondsToSelector(NSSelectorFromString("sectionTitle:")) ? {o in
             return d.sectionTitle!(o)
             } : nil

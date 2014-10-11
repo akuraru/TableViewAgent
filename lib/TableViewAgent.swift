@@ -11,7 +11,13 @@ import UIKit
 import CoreData
 
 class TableViewAgentSupport: NSObject, UITableViewDelegate, UITableViewDataSource {
-    var agent: TableViewAgent<NSObject>!
+    weak var agent: TableViewAgent<NSObject>!
+    var cells: Dictionary<String, TableViewAgentCellDelegate>
+    
+    override init() {
+        cells = Dictionary()
+        super.init()
+    }
     // UITableViewDelegate
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
@@ -39,21 +45,28 @@ class TableViewAgentSupport: NSObject, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if agent.isAdditionalSection(indexPath.section) {
-            let cell: AnyObject = agent.createAdditionalCell(tableView)
-            if cell.respondsToSelector(NSSelectorFromString("heightFromViewObject")) {
-                let c = cell as TableViewAgentCellDelegate
-                return c.heightFromViewObject(agent.viewObjectWithIndex(indexPath));
-            } else {
-                return cell.frame.size.height
-            }
+        let cell: AnyObject = self.cell(tableView, indexPath: indexPath)
+        if cell.respondsToSelector(NSSelectorFromString("heightFromViewObject")) {
+            return cell.heightFromViewObject(agent.viewObjectWithIndex(indexPath))
         } else {
-            let cell: AnyObject = agent.dequeueCell(indexPath);
-            if cell.respondsToSelector(NSSelectorFromString("heightFromViewObject")) {
-                return cell.heightFromViewObject(agent.viewObjectWithIndex(indexPath))
-            } else {
-                return cell.frame.size.height
-            }
+            return cell.frame.size.height
+        }
+    }
+    func cell(tableView: UITableView, indexPath: NSIndexPath) -> TableViewAgentCellDelegate {
+        let identifier = cellId(indexPath)
+        if let c = cells[identifier] {
+            return c
+        } else {
+            let c = tableView.dequeueReusableCellWithIdentifier(identifier) as TableViewAgentCellDelegate
+            cells[identifier] = c
+            return c
+        }
+    }
+    func cellId(indexPath: NSIndexPath) -> String {
+        if agent.isAdditionalSection(indexPath.section) {
+            return agent.addCellIdentifier!()
+        } else {
+            return agent.cellIdentifier(agent.viewObjectWithIndex(indexPath))
         }
     }
     func tableView(tableView: UITableView!, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath!) {
@@ -116,7 +129,6 @@ class TableViewAgent<T: NSObject> {
     var didSelectCell: (AnyObject -> ())?
     var deleteCell: (AnyObject -> ())?
     var cellIdentifier: (AnyObject -> String)!
-    var commonViewObject:(AnyObject -> AnyObject)?
     var _tableView: UITableView!
     var tableView: UITableView! {
         get { return _tableView }
@@ -188,60 +200,60 @@ class TableViewAgent<T: NSObject> {
     }
     func deleteCell(indexPath :NSIndexPath) {
         if self.compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
-            tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation:UITableViewRowAnimation.Automatic)
+            tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation:.Automatic)
         } else {
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
     }
     func compareSectionCount(sectionCount: Int) -> NSComparisonResult {
         let left = viewObjects.sectionCount()
         let right = tableView.numberOfSections() - (addState.isShowAddCell(editing) ? 1 : 0)
-        return left < right ? NSComparisonResult.OrderedAscending : left == right ? NSComparisonResult.OrderedSame : NSComparisonResult.OrderedDescending
+        return left < right ? .OrderedAscending : left == right ? .OrderedSame : .OrderedDescending
     }
     func deleteCellsAtSection(section :Int,rows :[Int]) {
         if compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
-            tableView.deleteSections(NSIndexSet(index: section), withRowAnimation:UITableViewRowAnimation.Automatic)
+            tableView.deleteSections(NSIndexSet(index: section), withRowAnimation:.Automatic)
         } else {
-            tableView.deleteRowsAtIndexPaths(indexPathsForSection(section, rows: rows), withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.deleteRowsAtIndexPaths(indexPathsForSection(section, rows: rows), withRowAnimation: .Automatic)
         }
     }
     func insertCell(indexPath :NSIndexPath) {
         if compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
-            tableView.insertSections(NSIndexSet(index: indexPath.section), withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.insertSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Automatic)
         } else {
-            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
     }
     func insertCellsAtSection(section :Int, rows: [Int]) {
         if compareSectionCount(viewObjects.sectionCount()) != NSComparisonResult.OrderedSame {
-            tableView.insertSections(NSIndexSet(index: section), withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.insertSections(NSIndexSet(index: section), withRowAnimation: .Automatic)
         } else {
-            tableView.insertRowsAtIndexPaths(indexPathsForSection(section, rows: rows), withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.insertRowsAtIndexPaths(indexPathsForSection(section, rows: rows), withRowAnimation: .Automatic)
         }
     }
     func indexPathsForSection(section :Int, rows:[Int]) ->  [NSIndexPath] {
         return rows.map{NSIndexPath(forRow: $0, inSection: section)}
     }
     func changeUpdateCell(indexPath :NSIndexPath) {
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
     func changeMoveCell(indexPath :NSIndexPath, newIndexPath :NSIndexPath) {
         tableView.beginUpdates();
         switch compareSectionCount(viewObjects.sectionCount()) {
         case .OrderedSame:
             if viewObjects.countInSection(newIndexPath.section) == 1 {
-                tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation: UITableViewRowAnimation.Automatic)
-                tableView.insertSections(NSIndexSet(index: newIndexPath.section), withRowAnimation: UITableViewRowAnimation.Automatic)
+                tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Automatic)
+                tableView.insertSections(NSIndexSet(index: newIndexPath.section), withRowAnimation: .Automatic)
             } else {
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
             }
         case .OrderedAscending:
-            tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation: UITableViewRowAnimation.Automatic)
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Automatic)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
         case .OrderedDescending:
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            tableView.insertSections(NSIndexSet(index: newIndexPath.section), withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.insertSections(NSIndexSet(index: newIndexPath.section), withRowAnimation: .Automatic)
         }
         tableView.endUpdates()
     }
@@ -269,16 +281,16 @@ class TableViewAgent<T: NSObject> {
     }
     func insertRowWithSection(section :Int, createSection b :Bool) {
         if (b) {
-            tableView.insertSections(NSIndexSet(index: section), withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.insertSections(NSIndexSet(index: section), withRowAnimation: .Automatic)
         } else {
-            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: viewObjects.countInSection(section) - 1, inSection:section)], withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: viewObjects.countInSection(section) - 1, inSection:section)], withRowAnimation: .Automatic)
         }
     }
     func hideAddCell() {
-        tableView.deleteSections(NSIndexSet(index: viewObjects.sectionCount()), withRowAnimation: UITableViewRowAnimation.Automatic)
+        tableView.deleteSections(NSIndexSet(index: viewObjects.sectionCount()), withRowAnimation: .Automatic)
     }
     func showAddCell() {
-        tableView.insertSections(NSIndexSet(index: viewObjects.sectionCount()), withRowAnimation: UITableViewRowAnimation.Automatic)
+        tableView.insertSections(NSIndexSet(index: viewObjects.sectionCount()), withRowAnimation: .Automatic)
     }
     func sectionOfAddCell() -> Int {
         return viewObjects.sectionCount()
