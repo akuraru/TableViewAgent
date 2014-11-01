@@ -80,7 +80,7 @@
 - (UIView *)sectionHeader:(id)viewObject {
     return ({
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-        [label setText:[viewObject[0] message]];
+        [label setText:[viewObject message]];
         [label setBackgroundColor:[UIColor lightGrayColor]];
         label;
     });

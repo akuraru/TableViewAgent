@@ -438,7 +438,7 @@
 		BE2256E6176BCABC0022DA33 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = P.I.akura;
 				TargetAttributes = {
 					BE76B95918498F77001E749D = {
@@ -766,7 +766,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TableViewAgent.app/TableViewAgent";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -800,7 +799,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TableViewAgent.app/TableViewAgent";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;

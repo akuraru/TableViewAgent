@@ -22,5 +22,6 @@ import UIKit
     optional func addSectionHeader() -> UIView
     optional func sectionHeightForHeader(viewObject :AnyObject) -> CGFloat
     optional func sectionHeader(viewObject :AnyObject) -> UIView
-    optional func cellHeight(viewObject :AnyObject)-> CGFloat
+    optional func cellHeight(viewObject :AnyObject) -> CGFloat
+    optional func transform(viewObject: AnyObject) -> AnyObject
 }

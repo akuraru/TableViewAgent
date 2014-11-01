@@ -10,20 +10,23 @@ import Foundation
 import CoreData
 
 class TableViewAgentAdaptor : NSObject {
-    let agent: TableViewAgent<NSObject>
-    var _detegate: TableViewAgentDelegate!
+    let agent: TableViewAgent<NSObject, NSObject>
+    var _delegate: TableViewAgentDelegate!
     
     override init() {
         agent = TableViewAgent()
     }
     func setSigleSection(array :[NSObject]) {
-        agent.viewObjects = SSAgentViewObject(array: array, agent: agent)
+        let t = (_delegate != nil) ? {(t: NSObject) in self._delegate.transform!(t) as NSObject} : {u in u}
+        agent.viewObjects = SSAgentViewObject(array: array, agent: agent, t)
     }
     func setMultiSection(array :[[NSObject]]) {
-        agent.viewObjects = MSAgentViewObject(array: array, agent: agent)
+        let t = (_delegate != nil) ? {(t: NSObject) in self._delegate.transform!(t) as NSObject} : {u in u}
+        agent.viewObjects = MSAgentViewObject(array: array, agent: agent, t)
     }
     func setFetchedResultController(controller :NSFetchedResultsController) {
-        agent.viewObjects = FRCAgentViewObject(controller: controller, agent: agent)
+        let t = (_delegate != nil) ? {(t: NSObject) in self._delegate.transform!(t) as NSObject} : {u in u}
+        agent.viewObjects = FRCAgentViewObject(controller: controller, agent: agent, t)
     }
     func changeObject(object :NSObject) {
         agent.viewObjects.changeObject(object)
@@ -32,7 +35,7 @@ class TableViewAgentAdaptor : NSObject {
         agent.viewObjects.addObject(object, inSection: section)
     }
     func setDelegate(d :TableViewAgentDelegate!){
-        _detegate = d
+        _delegate = d
         
         agent.tableView = d.tableView
         agent.didSelectCell = d.respondsToSelector(NSSelectorFromString("didSelectCell:")) ? {o in
@@ -71,6 +74,11 @@ class TableViewAgentAdaptor : NSObject {
         agent.cellHeight = d.respondsToSelector(NSSelectorFromString("cellHeight:")) ? {o in
             return d.cellHeight!(o)
             } : nil
+        if let vo = agent.viewObjects {
+            if d.respondsToSelector(NSSelectorFromString("transform:")) {
+                vo.transform = {(t: NSObject) -> NSObject in d.transform!(t) as NSObject}
+            }
+        }
     }
     func setEditableModel(mode :EditableMode) {
         agent.editableState = createEditableState(mode)

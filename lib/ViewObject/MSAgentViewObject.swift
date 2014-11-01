@@ -8,13 +8,14 @@
 
 import Foundation
 
-class MSAgentViewObject<T : NSObject> : AgentViewObject<T> {
-    weak var agent :TableViewAgent<T>!
+class MSAgentViewObject<T : NSObject, U: NSObject> : AgentViewObject<T, U> {
+    weak var agent :TableViewAgent<T, U>!
     var array : [[T]]
     
-    init(array :[[T]], agent: TableViewAgent<T>) {
+    init(array :[[T]], agent: TableViewAgent<T, U>, transform: T -> U = ({t in t} as T->U)) {
         self.agent = agent
         self.array = array
+        super.init(transform)
     }
     override func addObject(object :T,inSection section :Int) {
         if array.count <= section {
@@ -42,8 +43,8 @@ class MSAgentViewObject<T : NSObject> : AgentViewObject<T> {
     override func countInSection(section :Int) -> Int {
         return array[section].count
     }
-    override func objectAtIndexPath(indexPath :NSIndexPath) -> T {
-        return array[indexPath.section][indexPath.row]
+    override func objectAtIndexPath(indexPath :NSIndexPath) -> U {
+        return transform(array[indexPath.section][indexPath.row])
     }
     override func removeObjectAtIndexPath(indexPath :NSIndexPath) {
         var a = array[indexPath.section];
@@ -57,7 +58,7 @@ class MSAgentViewObject<T : NSObject> : AgentViewObject<T> {
     override func existObject(indexPath :NSIndexPath) -> Bool {
         return indexPath.section < array.count && indexPath.row < array[indexPath.section].count;
     }
-    override func sectionObjects(section :Int) -> T {
-        return array[section][0]
+    override func sectionObjects(section :Int) -> U {
+        return transform(array[section][0])
     }
 }

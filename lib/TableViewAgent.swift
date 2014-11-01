@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 
 class TableViewAgentSupport: NSObject, UITableViewDelegate, UITableViewDataSource {
-    weak var agent: TableViewAgent<NSObject>!
+    weak var agent: TableViewAgent<NSObject, NSObject>!
     var cells: Dictionary<String, TableViewAgentCellDelegate>
     
     override init() {
@@ -125,7 +125,7 @@ class TableViewAgentSupport: NSObject, UITableViewDelegate, UITableViewDataSourc
     }
 }
 
-class TableViewAgent<T: NSObject> {
+class TableViewAgent<T: NSObject, U: NSObject> {
     var didSelectCell: (AnyObject -> ())?
     var deleteCell: (AnyObject -> ())?
     var cellIdentifier: (AnyObject -> String)!
@@ -165,21 +165,21 @@ class TableViewAgent<T: NSObject> {
         }
     }
     }
-    var viewObjects: AgentViewObject<T>!
+    var viewObjects: AgentViewObject<T, U>!
     
     init() {
         self.support = TableViewAgentSupport()
         editableState = .None
         addState = .None
-        self.support.agent = self as Any as TableViewAgent<NSObject>
+        self.support.agent = self as Any as TableViewAgent<NSObject, NSObject>
     }
-    init(vo :AgentViewObject<T>, view :UITableView) {
+    init(vo :AgentViewObject<T, U>, view :UITableView) {
         self.support = TableViewAgentSupport()
         editableState = .None
         addState = .None
         viewObjects = vo
         tableView = view
-        self.support.agent = self as Any as TableViewAgent<NSObject>
+        self.support.agent = self as Any as TableViewAgent<NSObject, NSObject>
     }
     func setAddCellHide(b: ChangeInState) {
         switch(b) {
@@ -195,7 +195,7 @@ class TableViewAgent<T: NSObject> {
         self.editing = false
         tableView.reloadData()
     }
-    func viewObjectForIndexPath(indexPath :NSIndexPath) -> T {
+    func viewObjectForIndexPath(indexPath :NSIndexPath) -> U {
         return viewObjects.objectAtIndexPath(indexPath)
     }
     func deleteCell(indexPath :NSIndexPath) {
@@ -257,7 +257,7 @@ class TableViewAgent<T: NSObject> {
         }
         tableView.endUpdates()
     }
-    func viewObjectWithIndex(indexPath :NSIndexPath) -> T {
+    func viewObjectWithIndex(indexPath :NSIndexPath) -> U {
         return viewObjects.objectAtIndexPath(indexPath)
     }
     func isAdditionalSection(section :Int) -> Bool {

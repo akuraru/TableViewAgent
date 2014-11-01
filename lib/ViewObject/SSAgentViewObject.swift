@@ -9,13 +9,14 @@
 import Foundation
 import UIKit
 
-class SSAgentViewObject<T: NSObject> : AgentViewObject<T> {
-    weak var agent :TableViewAgent<T>!
+class SSAgentViewObject<T: NSObject, U: NSObject> : AgentViewObject<T, U> {
+    weak var agent :TableViewAgent<T, U>!
     var array: [T]
-    init(array :[T], agent: TableViewAgent<T>) {
+    
+    init(array :[T], agent: TableViewAgent<T, U>, transform: T -> U = ({t in t} as T -> U)) {
         self.agent = agent
         self.array = array
-        super.init()
+        super.init(transform)
     }
     func indexPathForObject(object :T) -> NSIndexPath? {
          let _len  = array.count
@@ -43,8 +44,8 @@ class SSAgentViewObject<T: NSObject> : AgentViewObject<T> {
     override func countInSection(section :Int) -> Int {
         return array.count
     }
-    override func objectAtIndexPath(indexPath :NSIndexPath) -> T {
-        return array[indexPath.row]
+    override func objectAtIndexPath(indexPath :NSIndexPath) -> U {
+        return transform(array[indexPath.row])
     }
     override func removeObjectAtIndexPath(indexPath :NSIndexPath) {
         array.removeAtIndex(indexPath.row)
@@ -54,7 +55,7 @@ class SSAgentViewObject<T: NSObject> : AgentViewObject<T> {
         let row = indexPath.row
         return 0 <= row && row < array.count
     }
-    override func sectionObjects(section :Int) -> T {
-        return array[section]
+    override func sectionObjects(section :Int) -> U {
+        return transform(array[section])
     }
 }
