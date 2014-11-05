@@ -11,6 +11,8 @@
 		BE02704C19E8E0C5003F8692 /* AdditionalCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704A19E8E0C5003F8692 /* AdditionalCellState.swift */; };
 		BE02704D19E8E0C5003F8692 /* EditableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704B19E8E0C5003F8692 /* EditableState.swift */; };
 		BE02704F19E8FA99003F8692 /* AddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE02704E19E8FA99003F8692 /* AddTableViewCell.m */; };
+		BE110EC61A05D481004DD528 /* AKUArrayFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE110EC51A05D481004DD528 /* AKUArrayFetchedResultsController.m */; };
+		BE110EC81A05D6B0004DD528 /* AVOArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE110EC71A05D6B0004DD528 /* AVOArrayController.swift */; };
 		BE161195196FE441004E2979 /* showTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C879029E6098E49ED1B97509 /* showTableView.m */; };
 		BE2256F2176BCABC0022DA33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
 		BE2256F4176BCABC0022DA33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F3176BCABC0022DA33 /* Foundation.framework */; };
@@ -91,6 +93,9 @@
 		BE02704B19E8E0C5003F8692 /* EditableState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableState.swift; sourceTree = "<group>"; };
 		BE02704E19E8FA99003F8692 /* AddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTableViewCell.m; sourceTree = "<group>"; };
 		BE02705019E8FAAC003F8692 /* AddTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTableViewCell.h; sourceTree = "<group>"; };
+		BE110EC41A05D481004DD528 /* AKUArrayFetchedResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKUArrayFetchedResultsController.h; sourceTree = "<group>"; };
+		BE110EC51A05D481004DD528 /* AKUArrayFetchedResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKUArrayFetchedResultsController.m; sourceTree = "<group>"; };
+		BE110EC71A05D6B0004DD528 /* AVOArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVOArrayController.swift; sourceTree = "<group>"; };
 		BE2256EE176BCABC0022DA33 /* TableViewAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE2256F1176BCABC0022DA33 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BE2256F3176BCABC0022DA33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -299,10 +304,13 @@
 		BE76B9911849A148001E749D /* ViewObject */ = {
 			isa = PBXGroup;
 			children = (
+				BE110EC41A05D481004DD528 /* AKUArrayFetchedResultsController.h */,
+				BE110EC51A05D481004DD528 /* AKUArrayFetchedResultsController.m */,
 				BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */,
 				BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */,
 				BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */,
 				BE741608198E258C00A4B309 /* AgentViewObject.swift */,
+				BE110EC71A05D6B0004DD528 /* AVOArrayController.swift */,
 			);
 			path = ViewObject;
 			sourceTree = "<group>";
@@ -571,6 +579,7 @@
 				BE2256FE176BCABC0022DA33 /* main.m in Sources */,
 				BE02704F19E8FA99003F8692 /* AddTableViewCell.m in Sources */,
 				BE4D744817F5066300287CE8 /* Todo.m in Sources */,
+				BE110EC61A05D481004DD528 /* AKUArrayFetchedResultsController.m in Sources */,
 				BE225702176BCABC0022DA33 /* AppDelegate.m in Sources */,
 				BE4D744717F5066300287CE8 /* _Todo.m in Sources */,
 				C87909C858C0691F2E527E6C /* MainViewController.m in Sources */,
@@ -579,6 +588,7 @@
 				BE6AD8B0198870600002ABA7 /* MSAgentViewObject.swift in Sources */,
 				C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */,
 				C879041242F8D565D437DBD5 /* CustomTableViewCell.m in Sources */,
+				BE110EC81A05D6B0004DD528 /* AVOArrayController.swift in Sources */,
 				C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */,
 				BE4D744217F5056D00287CE8 /* Model.xcdatamodeld in Sources */,
 				C87903536A8986DA6EC5F746 /* MainService.m in Sources */,
