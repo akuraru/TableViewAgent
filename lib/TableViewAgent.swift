@@ -3,7 +3,7 @@
 //  AKUTableViewAgent
 //
 //  Created by akuraru on 2014/07/16.
-//  Copyright (c) 2014年 akuraru. All rights reserved.
+//  Copyright (c) 2014 akuraru. All rights reserved.
 //
 
 import Foundation
