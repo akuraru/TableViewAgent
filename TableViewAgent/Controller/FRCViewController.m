@@ -7,33 +7,32 @@
 
 
 #import "FRCViewController.h"
-#import "TableViewAgent.h"
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
-#import "MSAgentViewObject.h"
-#import "FRCAgentViewObject.h"
 #import "TodoManager.h"
 #import "WETodo.h"
+#import "ThirdViewController.h"
+#import "TableViewAgent-Swift.h"
 
 @interface FRCViewController () <TableViewAgentDelegate>
 @end
 
 @implementation FRCViewController {
-    TableViewAgent *agent;
+    TableViewAgentAdaptor *adaptor;
 }
 
 - (IBAction)touchEdit:(id)sender {
-    [agent setEditing:!agent.editing];
+    [adaptor setEditing:![adaptor editing]];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    agent = [[TableViewAgent alloc] init];
-    agent.viewObjects = [[FRCAgentViewObject alloc] initWithFetch:[TodoManager fetchController]];
-    agent.delegate = self;
-    [agent setEditableMode:EditableModeEnable];
-    [agent setAdditionalCellMode:AdditionalCellModeAlways];
+    adaptor = [[TableViewAgentAdaptor alloc] init];
+    [adaptor setFetchedResultController:[TodoManager fetchController]];
+    [adaptor setDelegate:self];
+    [adaptor setEditableModel:EditableModeEnable];
+    [adaptor setAddMode:AdditionalCellModeAlways];
 }
 
 - (void)saveViewObject:(WETodo *)we {
@@ -42,14 +41,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-    [agent redraw];
+    
+    [adaptor reload];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kSegueEdit]) {
-        [segue.destinationViewController setViewObject:sender];
-        [segue.destinationViewController setDelegate:self];
+        ThirdViewController *controller = segue.destinationViewController;
+        [controller setViewObject:sender];
+        [controller setDelegate:self];
     }
 }
 
@@ -65,8 +65,8 @@
 - (void)deleteCell:(id)viewObject {
     [TodoManager deleteEntity:viewObject];
 }
-- (NSString *)sectionTitle:(NSArray *)viewObjects {
-    return [viewObjects[0] title];
+- (NSString *)sectionTitle:(id)viewObjects {
+    return [viewObjects title];
 }
 
 - (NSString *)addCellIdentifier {

@@ -1,4 +1,5 @@
 PODS:
+  - AKUStoryboardEntry (1.0.0)
   - Kiwi/ARC (2.2.3)
   - Kiwi/NonARC (2.2.3)
   - Kiwi/XCTest (2.2.3):
@@ -9,11 +10,13 @@ PODS:
   - MagicalRecord/Core (2.2)
 
 DEPENDENCIES:
+  - AKUStoryboardEntry
   - Kiwi/XCTest
   - MagicalRecord
 
 SPEC CHECKSUMS:
-  Kiwi: 04c51e880831d291748ec702d42c4101f7eb95c9
-  MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
+  AKUStoryboardEntry: aef4dd302982c567fad55c7ae5d28b672925ab53
+  Kiwi: 7b9bc7294de746357213067a1df49cc0a59384e8
+  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.33.1

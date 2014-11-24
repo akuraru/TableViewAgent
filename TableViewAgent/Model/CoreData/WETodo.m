@@ -23,4 +23,9 @@
     }
     return self;
 }
+
+- (void)update:(Todo *)todo {
+    todo.title = _title;
+    todo.message = _message;
+}
 @end

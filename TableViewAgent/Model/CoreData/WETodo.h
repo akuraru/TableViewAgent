@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class Todo;
 
 @interface WETodo : NSObject
 
@@ -16,4 +17,6 @@
 @property (nonatomic) NSString *message;
 
 - (id)initWithTodo:(id)todo;
+
+- (void)update:(Todo *)todo;
 @end

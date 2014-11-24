@@ -3,39 +3,39 @@
 //  TableViewAgent
 //
 //  Created by P.I.akura on 2013/08/18.
-//  Copyright (c) 2013年 P.I.akura. All rights reserved.
+//  Copyright (c) 2013 P.I.akura. All rights reserved.
 //
 
 #import "MSViewController.h"
-#import "TableViewAgent.h"
+#import "TableViewAgent-Swift.h"
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
-#import "MSAgentViewObject.h"
+#import "ThirdViewController.h"
 
 @interface MSViewController () <TableViewAgentDelegate>
 
 @end
 
 @implementation MSViewController {
-    TableViewAgent *agent;
+    TableViewAgentAdaptor *adaptor;
 }
 
 - (IBAction)touchEdit:(id)sender {
-    [agent setEditing:!agent.editing];
+    [adaptor setEditing:![adaptor editing]];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    agent = [[TableViewAgent alloc] init];
-    agent.viewObjects = [[MSAgentViewObject alloc] initWithArray:@[@[
+    adaptor = [[TableViewAgentAdaptor alloc] init];
+    [adaptor setMultiSection:@[@[
                          [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
                          [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
                          ].mutableCopy, @[
                          [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
-                         ].mutableCopy].mutableCopy];
-    [agent setEditableMode:EditableModeEnable];
-    [agent setAdditionalCellMode:AdditionalCellModeAlways];
-    agent.delegate = self;
+                         ].mutableCopy]];
+    [adaptor setEditableModel:EditableModeEnable];
+    [adaptor setAddMode:AdditionalCellModeShowEditing];
+    [adaptor setDelegate:self];
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
@@ -44,15 +44,13 @@
         vo.title = tvo.title;
         vo.message = tvo.message;
         
-        MSAgentViewObject *avo = agent.viewObjects;
-        [avo changeObject:vo];
+        [adaptor changeObject:vo];
     } else {
         ViewObject *vo = [[ViewObject alloc] init];
         vo.title = tvo.title;
         vo.message = tvo.message;
         
-        MSAgentViewObject *avo = agent.viewObjects;
-        [avo addObject:vo inSection:0];
+        [adaptor addObject:vo inSection:0];
     }
 }
 
@@ -62,8 +60,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kSegueEdit]) {
-        [segue.destinationViewController setViewObject:sender];
-        [segue.destinationViewController setDelegate:self];
+        ThirdViewController *controller = segue.destinationViewController;
+        [controller setViewObject:sender];
+        [controller setDelegate:self];
     }
 }
 
@@ -81,7 +80,7 @@
 - (UIView *)sectionHeader:(id)viewObject {
     return ({
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-        [label setText:[viewObject[0] message]];
+        [label setText:[viewObject message]];
         [label setBackgroundColor:[UIColor lightGrayColor]];
         label;
     });
