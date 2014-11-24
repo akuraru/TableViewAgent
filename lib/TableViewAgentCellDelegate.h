@@ -7,7 +7,10 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TableViewAgentCellDelegate.h"
 
-@interface CustomTableViewCell : UITableViewCell <TableViewAgentCellDelegate>
+@protocol TableViewAgentCellDelegate <NSObject>
+- (void)setViewObject:(id)o;
+@optional
+- (void)setViewObject:(id)o common:(id)c;
+- (CGFloat)heightFromViewObject:(id)o;
 @end

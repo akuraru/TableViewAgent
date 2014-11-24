@@ -8,6 +8,12 @@ const struct TodoAttributes TodoAttributes = {
 	.title = @"title",
 };
 
+const struct TodoRelationships TodoRelationships = {
+};
+
+const struct TodoFetchedProperties TodoFetchedProperties = {
+};
+
 @implementation TodoID
 @end
 
@@ -33,13 +39,31 @@ const struct TodoAttributes TodoAttributes = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+	
 
 	return keyPaths;
 }
 
+
+
+
 @dynamic message;
+
+
+
+
+
 
 @dynamic title;
 
-@end
 
+
+
+
+
+
+
+
+
+
+@end
