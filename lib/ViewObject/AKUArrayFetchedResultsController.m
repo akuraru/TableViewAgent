@@ -239,4 +239,8 @@
 - (NSUInteger)numberOfObjects {
     return self.objects.count;
 }
+
+- (BOOL)isEqual:(id)object {
+    return [[self name] isEqualToString:[object name]] && [[self indexTitle] isEqualToString:[object indexTitle]] && [[self objects] isEqual:[object objects]];
+}
 @end

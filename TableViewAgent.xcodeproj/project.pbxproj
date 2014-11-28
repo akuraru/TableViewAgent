@@ -13,7 +13,6 @@
 		BE02704F19E8FA99003F8692 /* AddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE02704E19E8FA99003F8692 /* AddTableViewCell.m */; };
 		BE110EC61A05D481004DD528 /* AKUArrayFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE110EC51A05D481004DD528 /* AKUArrayFetchedResultsController.m */; };
 		BE110EC81A05D6B0004DD528 /* AVOArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE110EC71A05D6B0004DD528 /* AVOArrayController.swift */; };
-		BE161195196FE441004E2979 /* showTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C879029E6098E49ED1B97509 /* showTableView.m */; };
 		BE2256F2176BCABC0022DA33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
 		BE2256F4176BCABC0022DA33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F3176BCABC0022DA33 /* Foundation.framework */; };
 		BE2256F6176BCABC0022DA33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F5176BCABC0022DA33 /* CoreGraphics.framework */; };
@@ -36,13 +35,25 @@
 		BE76B95D18498F77001E749D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F3176BCABC0022DA33 /* Foundation.framework */; };
 		BE76B95E18498F77001E749D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
 		BE76B96418498F77001E749D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE76B96218498F77001E749D /* InfoPlist.strings */; };
-		BE76B96618498F77001E749D /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B96518498F77001E749D /* Tests.m */; };
 		BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1217719B3200A6113E /* SSViewController.m */; };
 		BEB49A30198F8814001C219C /* TableViewAgentAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB49A2F198F8814001C219C /* TableViewAgentAdaptor.swift */; };
 		BEE8F8DB198A3CD6001477B0 /* TableViewAgentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */; };
 		BEE8F8DD198A43B6001477B0 /* TableViewAgentCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */; };
 		BEE8F8DF198A44AD001477B0 /* TableViewAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */; };
 		BEEA508C1989C74000A373EA /* FRCAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */; };
+		BEFD41C21A28055C00AD63CB /* AVOArrayControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFD41C11A28055C00AD63CB /* AVOArrayControllerTest.swift */; };
+		BEFD41C31A28059E00AD63CB /* AdditionalCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704A19E8E0C5003F8692 /* AdditionalCellState.swift */; };
+		BEFD41C41A28059E00AD63CB /* EditableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704B19E8E0C5003F8692 /* EditableState.swift */; };
+		BEFD41C51A28059E00AD63CB /* AKUArrayFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE110EC51A05D481004DD528 /* AKUArrayFetchedResultsController.m */; };
+		BEFD41C61A28059E00AD63CB /* SSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */; };
+		BEFD41C71A28059E00AD63CB /* MSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */; };
+		BEFD41C81A28059E00AD63CB /* FRCAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */; };
+		BEFD41C91A28059E00AD63CB /* AgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE741608198E258C00A4B309 /* AgentViewObject.swift */; };
+		BEFD41CA1A28059E00AD63CB /* AVOArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE110EC71A05D6B0004DD528 /* AVOArrayController.swift */; };
+		BEFD41CB1A28059E00AD63CB /* TableViewAgentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */; };
+		BEFD41CC1A28059E00AD63CB /* TableViewAgentCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */; };
+		BEFD41CD1A28059E00AD63CB /* TableViewAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */; };
+		BEFD41CE1A28059E00AD63CB /* TableViewAgentAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB49A2F198F8814001C219C /* TableViewAgentAdaptor.swift */; };
 		C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */; };
 		C87903536A8986DA6EC5F746 /* MainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790598EDF8FE8AE36B952B /* MainService.m */; };
 		C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790F785A526609644BE7B5 /* ThirdViewObject.m */; };
@@ -88,6 +99,10 @@
 
 /* Begin PBXFileReference section */
 		04047CB7E427422FB2D7649E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		50062C56CFE5369DEDA69100 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5F9983D9448EFA968A697871 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		8B73E5D5A0A3A5817CD36E75 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9A2EF27E1B83859EEEBEF7D8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BE02704919E8D6C9003F8692 /* TableViewAgent-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TableViewAgent-Bridging-Header.h"; sourceTree = "<group>"; };
 		BE02704A19E8E0C5003F8692 /* AdditionalCellState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellState.swift; sourceTree = "<group>"; };
 		BE02704B19E8E0C5003F8692 /* EditableState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableState.swift; sourceTree = "<group>"; };
@@ -127,7 +142,6 @@
 		BE76B95B18498F77001E749D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BE76B96118498F77001E749D /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		BE76B96318498F77001E749D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BE76B96518498F77001E749D /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		BE76B96718498F77001E749D /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		BE8FDB1117719B3200A6113E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
 		BE8FDB1217719B3200A6113E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
@@ -137,10 +151,11 @@
 		BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgentCellDelegate.swift; sourceTree = "<group>"; };
 		BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgent.swift; sourceTree = "<group>"; };
 		BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCAgentViewObject.swift; sourceTree = "<group>"; };
+		BEFD41C01A28055B00AD63CB /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
+		BEFD41C11A28055C00AD63CB /* AVOArrayControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVOArrayControllerTest.swift; sourceTree = "<group>"; };
 		C879000AD100E37BD5CCF83C /* WETodo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETodo.m; sourceTree = "<group>"; };
 		C8790043B0A754925503375F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C87900D1196B2A54304A1558 /* FRCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRCViewController.h; sourceTree = "<group>"; };
-		C879029E6098E49ED1B97509 /* showTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = showTableView.m; sourceTree = "<group>"; };
 		C87902B6380B6A554115F053 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		C879033420D473A398605380 /* MainEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainEntry.h; sourceTree = "<group>"; };
 		C8790352EF7D1394525F8E95 /* ViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewObject.h; sourceTree = "<group>"; };
@@ -156,8 +171,6 @@
 		C8790E7509D540B912A684D8 /* ThirdViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewObject.h; sourceTree = "<group>"; };
 		C8790F785A526609644BE7B5 /* ThirdViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewObject.m; sourceTree = "<group>"; };
 		C8790FBDE954ADA09B0FD26B /* MainEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainEntry.m; sourceTree = "<group>"; };
-		D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.xcconfig"; path = "Pods/Pods-Tests.xcconfig"; sourceTree = "<group>"; };
-		DC648156027C4883B2121023 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		EAA2420649764F39950BAD1A /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -195,8 +208,7 @@
 				BE76B95F18498F77001E749D /* Tests */,
 				BE2256F0176BCABC0022DA33 /* Frameworks */,
 				BE2256EF176BCABC0022DA33 /* Products */,
-				DC648156027C4883B2121023 /* Pods.xcconfig */,
-				D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */,
+				CF1F1AD968B055A860219F1A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -269,9 +281,9 @@
 		BE76B95F18498F77001E749D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				BE76B96518498F77001E749D /* Tests.m */,
 				BE76B96018498F77001E749D /* Supporting Files */,
-				C879029E6098E49ED1B97509 /* showTableView.m */,
+				BEFD41C11A28055C00AD63CB /* AVOArrayControllerTest.swift */,
+				BEFD41C01A28055B00AD63CB /* Tests-Bridging-Header.h */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -392,6 +404,17 @@
 				C8790E7509D540B912A684D8 /* ThirdViewObject.h */,
 			);
 			path = ViewObject;
+			sourceTree = "<group>";
+		};
+		CF1F1AD968B055A860219F1A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9A2EF27E1B83859EEEBEF7D8 /* Pods.debug.xcconfig */,
+				50062C56CFE5369DEDA69100 /* Pods.release.xcconfig */,
+				8B73E5D5A0A3A5817CD36E75 /* Pods-Tests.debug.xcconfig */,
+				5F9983D9448EFA968A697871 /* Pods-Tests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -523,7 +546,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5FDA5A35BA1A4402AB508566 /* Check Pods Manifest.lock */ = {
@@ -553,7 +576,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BE225717176BD2490022DA33 /* ShellScript */ = {
@@ -613,8 +636,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE161195196FE441004E2979 /* showTableView.m in Sources */,
-				BE76B96618498F77001E749D /* Tests.m in Sources */,
+				BEFD41CD1A28059E00AD63CB /* TableViewAgent.swift in Sources */,
+				BEFD41CE1A28059E00AD63CB /* TableViewAgentAdaptor.swift in Sources */,
+				BEFD41C31A28059E00AD63CB /* AdditionalCellState.swift in Sources */,
+				BEFD41C91A28059E00AD63CB /* AgentViewObject.swift in Sources */,
+				BEFD41C71A28059E00AD63CB /* MSAgentViewObject.swift in Sources */,
+				BEFD41CC1A28059E00AD63CB /* TableViewAgentCellDelegate.swift in Sources */,
+				BEFD41C81A28059E00AD63CB /* FRCAgentViewObject.swift in Sources */,
+				BEFD41C61A28059E00AD63CB /* SSAgentViewObject.swift in Sources */,
+				BEFD41C21A28055C00AD63CB /* AVOArrayControllerTest.swift in Sources */,
+				BEFD41CB1A28059E00AD63CB /* TableViewAgentDelegate.swift in Sources */,
+				BEFD41C51A28059E00AD63CB /* AKUArrayFetchedResultsController.m in Sources */,
+				BEFD41CA1A28059E00AD63CB /* AVOArrayController.swift in Sources */,
+				BEFD41C41A28059E00AD63CB /* EditableState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,7 +771,7 @@
 		};
 		BE225712176BCABD0022DA33 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC648156027C4883B2121023 /* Pods.xcconfig */;
+			baseConfigurationReference = 9A2EF27E1B83859EEEBEF7D8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -756,7 +790,7 @@
 		};
 		BE225713176BCABD0022DA33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC648156027C4883B2121023 /* Pods.xcconfig */;
+			baseConfigurationReference = 50062C56CFE5369DEDA69100 /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -774,7 +808,7 @@
 		};
 		BE76B96A18498F77001E749D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */;
+			baseConfigurationReference = 8B73E5D5A0A3A5817CD36E75 /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TableViewAgent.app/TableViewAgent";
 				CLANG_ENABLE_MODULES = YES;
@@ -798,16 +832,19 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
 		BE76B96B18498F77001E749D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */;
+			baseConfigurationReference = 5F9983D9448EFA968A697871 /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TableViewAgent.app/TableViewAgent";
 				CLANG_ENABLE_MODULES = YES;
@@ -828,9 +865,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;

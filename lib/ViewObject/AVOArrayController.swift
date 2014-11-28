@@ -22,11 +22,11 @@ class AVOArrayController<T: NSCopying> {
     var sections: [AKUArrayFetchedResultsSectionInfo]!
     var arrayIndexPath: NSDictionary!
     
-    init(array :[T], groupedBy groupedTerm: (T -> NSCopying), sortedBy sortTerm: (T, T) -> Bool) {
+    init(array :[T], groupedBy groupedTerm: (T -> NSCopying)!, sortedBy sortTerm: ((T, T) -> Bool)?) {
         self.sectionsByName = groupedTerm
         
-        self.sortTerm = sortTerm
-        self.fetchedObjects = array.sorted(sortTerm)
+        self.sortTerm = sortTerm != nil ? sortTerm! : {t,u in false}
+        self.fetchedObjects = array.sorted(self.sortTerm)
         self.sections = createSections()
     }
 
@@ -80,12 +80,14 @@ class AVOArrayController<T: NSCopying> {
     }
     func createArrayIndexPath(result: [AKUArrayFetchedResultsSectionInfo]) -> NSDictionary {
         var dict = NSMutableDictionary()
+        var i = 0
         for index in 0..<(result.count) {
             let info = result[index]
             for row in 0..<(info.numberOfObjects) {
-                let object = self.fetchedObjects[index]
+                let object = self.fetchedObjects[i]
                 let indexPath = NSIndexPath(forRow: (row - 0), inSection: index)
                 dict[object] = indexPath
+                i++
             }
         }
         return dict

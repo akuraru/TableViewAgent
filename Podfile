@@ -6,5 +6,5 @@ pod 'MagicalRecord'
 pod 'AKUStoryboardEntry'
 
 target :Tests do
-  pod 'Kiwi/XCTest'
+  pod 'Kiwi'
 end
