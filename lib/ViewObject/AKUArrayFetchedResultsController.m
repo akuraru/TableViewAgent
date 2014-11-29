@@ -241,6 +241,8 @@
 }
 
 - (BOOL)isEqual:(id)object {
-    return [[self name] isEqualToString:[object name]] && [[self indexTitle] isEqualToString:[object indexTitle]] && [[self objects] isEqual:[object objects]];
+    return ((self.name == nil && [object name] == nil) || [[self name] isEqualToString:[object name]])
+    && ((self.indexTitle == nil && [object indexTitle] == nil) || [[self indexTitle] isEqualToString:[object indexTitle]])
+    && (([self objects] == nil && [object objects] == nil) || [[self objects] isEqual:[object objects]]);
 }
 @end

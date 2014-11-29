@@ -13,7 +13,10 @@ import CoreData
 protocol AVOArrayControllerDelegate: NSObjectProtocol, NSFetchedResultsControllerDelegate {
 }
 
-class AVOArrayController<T: NSCopying> {
+protocol ArrayController: NSCopying, NSObjectProtocol {
+}
+
+class AVOArrayController<T: ArrayController>: Equatable {
     var delegate: AVOArrayControllerDelegate!
     var fetchedObjects: [T]
     let sortTerm: ((T, T) -> Bool)
@@ -114,4 +117,15 @@ class AVOArrayController<T: NSCopying> {
             self.delegate.controller!(self as Any as NSFetchedResultsController, didChangeObject: object, atIndexPath: indexPath, forChangeType: type, newIndexPath: newIndexPath)
         }
     }
+}
+
+func ==<T: ArrayController>(lhs: AVOArrayController<T>, rhs: AVOArrayController<T>) -> Bool {
+    let fo1 = lhs.fetchedObjects
+    let fo2 = rhs.fetchedObjects
+    for (t1, t2) in Zip2(fo1, fo2) {
+        if (!(t1.isEqual(t2))) {
+            return false
+        }
+    }
+    return lhs.sections == rhs.sections
 }
