@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import CoreData
 
-protocol AVOArrayControllerDelegate: NSObjectProtocol, NSFetchedResultsControllerDelegate {
-}
 
 protocol ArrayController: NSCopying, NSObjectProtocol {
+}
+protocol AVOArrayControllerDelegate {
 }
 
 class AVOArrayController<T: ArrayController>: Equatable {
@@ -37,13 +37,7 @@ class AVOArrayController<T: ArrayController>: Equatable {
         return self.sections[indexPath.section].objects[indexPath.row] as T
     }
     func indexPathAtObject(object: T) -> NSIndexPath? {
-        let keys: NSArray = self.arrayIndexPath.allKeys
-        let index = keys.indexOfObject(object)
-        if index != NSNotFound {
-            return self.arrayIndexPath[keys[index] as NSCopying] as NSIndexPath?
-        } else {
-            return nil
-        }
+        return self.arrayIndexPath[object] as NSIndexPath?
     }
     func addObject(object: T) {
         self.addObjects([object])
@@ -57,6 +51,55 @@ class AVOArrayController<T: ArrayController>: Equatable {
         let indexPaths = sortedObjects.map {o in (o, self.indexPathAtObject(o)) }
         for (object, indexPath) in indexPaths {
             self.didChangeObject(object, atIndexPath: nil, forChangeType: NSFetchedResultsChangeType.Insert, newIndexPath: indexPath!)
+        }
+        
+        self.controllerDidChangeContent()
+    }
+    func removeObject(object: T) {
+        self.removeObjects([object])
+    }
+    func removeObjects(objects: [T]) {
+        self.controllerWillChangeConect()
+        
+        self.fetchedObjects = self.fetchedObjects.filter{t in false == objects.reduce(false, combine: { (b, o) -> Bool in
+            b ? true : t.isEqual(o)
+        })}
+        self.sections = self.createSections()
+        let indexPaths = objects.map {o in (o, self.indexPathAtObject(o)) }
+//        for (object, indexPath) in indexPaths {
+//            self.didChangeObject(object, atIndexPath: nil, forChangeType: NSFetchedResultsChangeType.Insert, newIndexPath: indexPath!)
+//        }
+        
+        self.controllerDidChangeContent()
+        
+    }
+    func updateObject(object: T) {
+        self.updateObjects([object])
+    }
+    func updateObjects(objects: [T]) {
+        self.controllerWillChangeConect()
+        
+        for o in objects {
+            let index = NSArray(array: self.fetchedObjects).indexOfObject(o)
+            if index != NSNotFound {
+                self.fetchedObjects[index] = o
+                self.fetchedObjects = self.fetchedObjects.sorted(self.sortTerm)
+                self.fetchedObjects = self.fetchedObjects.sorted(self.sortTerm)
+                self.sections = self.createSections()
+            }
+            
+//            let indexPath = self.indexPathAtObject(o)
+//            if let ip = indexPath {
+//                if (index != NSNotFound) {
+//                    self.fetchedObjects[index] = o
+//                    self.fetchedObjects = self.fetchedObjects.sorted(self.sortTerm)
+//                    self.sections = self.createSections()
+//                    let newIndexPath: NSIndexPath = self.indexPathAtObject(o)!
+//                    
+//                    let type = (ip.isEqual(newIndexPath)) ? NSFetchedResultsChangeType.Update : .Move
+//                    self.didChangeObject(o, atIndexPath:ip, forChangeType:type, newIndexPath:newIndexPath)
+//                }
+//            }
         }
         
         self.controllerDidChangeContent()
@@ -103,19 +146,19 @@ class AVOArrayController<T: ArrayController>: Equatable {
         return info;
     }
     func controllerWillChangeConect() {
-        if self.delegate != nil && self.delegate.respondsToSelector(NSSelectorFromString("controllerWillChangeContent:")) {
-            self.delegate.controllerWillChangeContent!(self as Any as NSFetchedResultsController)
-        }
+//        if self.delegate != nil && moveself.delegate.respondsToSelector(NSSelectorFromString("controllerWillChangeContent:")) {
+//            self.delegate.controllerWillChangeContent!(self)
+//        }
     }
     func controllerDidChangeContent() {
-        if self.delegate != nil && self.delegate.respondsToSelector(NSSelectorFromString("controllerDidChangeContent:")) {
-            self.delegate.controllerDidChangeContent!(self as Any as NSFetchedResultsController)
-        }
+//        if self.delegate != nil && self.delegate.respondsToSelector(NSSelectorFromString("controllerDidChangeContent:")) {
+//            self.delegate.controllerDidChangeContent!(self as AnyObject)
+//        }
     }
     func didChangeObject(object: T, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
-        if self.delegate != nil && self.delegate.respondsToSelector(NSSelectorFromString("controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:")) {
-            self.delegate.controller!(self as Any as NSFetchedResultsController, didChangeObject: object, atIndexPath: indexPath, forChangeType: type, newIndexPath: newIndexPath)
-        }
+//        if self.delegate != nil && self.delegate.respondsToSelector(NSSelectorFromString("controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:")) {
+//            self.delegate.controller!(self as Any as NSFetchedResultsController, didChangeObject: object, atIndexPath: indexPath, forChangeType: type, newIndexPath: newIndexPath)
+//        }
     }
 }
 
