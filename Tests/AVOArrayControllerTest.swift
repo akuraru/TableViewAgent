@@ -40,6 +40,10 @@ class AVOTestObject: NSObject, ArrayController {
     }
 }
 
+func ==(lhs: AVOTestObject, rhs: AVOTestObject) -> Bool {
+    return lhs.identifier == rhs.identifier
+}
+
 class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
     typealias T = AVOTestObject
     var controller: AVOArrayController<T>!
@@ -59,10 +63,7 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
         XCTAssertEqual(controller.fetchedObjects, sortedArray(array), "empty list")
     }
     func testSections() {
-        let expected = AKUArrayFetchedResultsSectionInfo();
-        expected.name = nil
-        expected.indexTitle = nil
-        expected.objects = sortedArray(array)
+        let expected = AVOArraySectionInfo.create(nil, indexTitle: nil, objects: sortedArray(array))
         XCTAssertEqual(controller.sections, [expected])
     }
     func testAddObject() {
@@ -95,7 +96,17 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
         let a = array.map{t in t == updateT ? updateT : t}
         let expected = AVOArrayController(array: a, groupedBy: nil, sortedBy: sortTerm)
         AVOArrayControllerAssertEqual(controller, expected)
+    }
+    func testInsertOrUpdateObject() {
+        let updateT = AVOTestObject("arc", 1)
+        controller.insertOrUpdateObject(updateT)
         
+        let a = array.filter({t in t == updateT}).isEmpty ? {
+            let t = (self.array + [updateT])
+            return self.sortTerm != nil ? t.sorted(self.sortTerm) : t
+            }() : array.map{t in t == updateT ? updateT : t}
+        let expected = AVOArrayController(array: a, groupedBy: nil, sortedBy: sortTerm)
+        AVOArrayControllerAssertEqual(controller, expected)
     }
     func addArray(array: [T],_ Ts: [T]) -> [T] {
         return sortedArray(array + Ts)
@@ -109,19 +120,21 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
         checkControllerWillChangeContent(controller)
     }
     func AVOArrayControllerAssertEqual(c1: AVOArrayController<T>,_ c2: AVOArrayController<T>) {
+        XCTAssertEqual(c1.fetchedObjects.count, c2.fetchedObjects.count)
         for (t1, t2) in Zip2(c1.fetchedObjects, c2.fetchedObjects) {
             XCTAssert(t1.isEqualToTest(t2), "\(String(t1.string)):\(t1.identifier), \(String(t2.string)):\(t2.identifier)")
         }
         SctionInfoAssertEqual(c1.sections, c2.sections)
     }
-    func SctionInfoAssertEqual(s1: [AKUArrayFetchedResultsSectionInfo],_ s2: [AKUArrayFetchedResultsSectionInfo]) {
-            for (i1, i2) in Zip2(s1, s2) {
-                eq(i1.name, i2.name)
-                eq(i1.indexTitle, i2.indexTitle)
-                for (t1, t2) in Zip2(i1.objects as [T], i2.objects as [T]) {
-                    XCTAssert(t1.isEqualToTest(t2), "\(String(t1.string)):\(t1.identifier), \(String(t2.string)):\(t2.identifier)")
-                }
+    func SctionInfoAssertEqual(s1: [AVOArraySectionInfo<T>],_ s2: [AVOArraySectionInfo<T>]) {
+        XCTAssertEqual(s1.count, s2.count)
+        for (i1, i2) in Zip2(s1, s2) {
+            eq(i1.name, i2.name)
+            eq(i1.indexTitle, i2.indexTitle)
+            for (t1, t2) in Zip2(i1.objects as [T], i2.objects as [T]) {
+                XCTAssert(t1.isEqualToTest(t2), "\(String(t1.string)):\(t1.identifier), \(String(t2.string)):\(t2.identifier)")
             }
+        }
     }
     func eq<T: Equatable>(o1: T?,_ o2: T?) {
         switch (o1, o2) {
