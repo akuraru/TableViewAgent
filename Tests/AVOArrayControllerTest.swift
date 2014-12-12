@@ -53,6 +53,7 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
     override func setUp() {
         super.setUp()
         controller = AVOArrayController(array: array, nil, sortTerm)
+        controller.delegate = self
     }
     override func tearDown() {
         super.tearDown()
@@ -68,6 +69,14 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
     }
     func testAddObject() {
         let addT = AVOTestObject("unknown", 10);
+        self.callControllerWillChangeContent = {}
+        self.callControllerDidChangeContent = {}
+        self.callController = {(anObject, indexPath, type, newIndexPath) in
+            XCTAssertEqual(addT, anObject as AVOTestObject)
+            XCTAssert(indexPath == nil)
+            XCTAssertEqual(type, NSFetchedResultsChangeType.Insert)
+            XCTAssertEqual(newIndexPath!, NSIndexPath(forRow: self.array.count, inSection: 0))
+        }
         
         controller.addObject(addT)
         
@@ -76,6 +85,18 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
     }
     func testAddObjects() {
         let addTs = [AVOTestObject("unknown", 10), AVOTestObject("warwlof", 11)]
+        self.callControllerWillChangeContent = {}
+        self.callControllerDidChangeContent = {}
+        self.callController = {(anObject, indexPath, type, newIndexPath) in
+            XCTAssert(indexPath == nil)
+            XCTAssertEqual(type, NSFetchedResultsChangeType.Insert)
+            if addTs[0] == anObject as AVOTestObject {
+                XCTAssertEqual(newIndexPath!, NSIndexPath(forRow: self.array.count, inSection: 0))
+            } else {
+                XCTAssertEqual(addTs[1], anObject as AVOTestObject)
+                XCTAssertEqual(newIndexPath!, NSIndexPath(forRow: self.array.count + 1, inSection: 0))
+            }
+        }
         controller.addObjects(addTs)
         
         let expected = AVOArrayController(array: array + addTs, groupedBy: nil, sortedBy: sortTerm)
@@ -83,6 +104,14 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
     }
     func testRemoveObject() {
         let removeT = AVOTestObject("alice", 1)
+        self.callControllerWillChangeContent = {}
+        self.callControllerDidChangeContent = {}
+        self.callController = {(anObject, indexPath, type, newIndexPath) in
+            XCTAssertEqual(removeT, anObject as AVOTestObject)
+            XCTAssertEqual(indexPath!, NSIndexPath(forRow: 0, inSection: 0))
+            XCTAssertEqual(type, NSFetchedResultsChangeType.Delete)
+            XCTAssert(newIndexPath == nil)
+        }
         controller.removeObject(removeT)
         
         let a = array.filter{t in t != removeT}
@@ -91,6 +120,8 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
     }
     func testUpdateObject() {
         let updateT = AVOTestObject("arc", 1)
+        self.callControllerWillChangeContent = {}
+        self.callControllerDidChangeContent = {}
         controller.updateObject(updateT)
         
         let a = array.map{t in t == updateT ? updateT : t}
@@ -99,6 +130,8 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
     }
     func testInsertOrUpdateObject() {
         let updateT = AVOTestObject("arc", 1)
+        self.callControllerWillChangeContent = {}
+        self.callControllerDidChangeContent = {}
         controller.insertOrUpdateObject(updateT)
         
         let a = array.filter({t in t == updateT}).isEmpty ? {
@@ -144,6 +177,32 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
             XCTAssert(true)
         case _:
             XCTFail("false")
+        }
+    }
+    var callController: ((anObject: AnyObject, indexPath: NSIndexPath?, type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) -> ())!
+    func controller(didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        if let c = callController {
+            c(anObject: anObject, indexPath: indexPath, type: type, newIndexPath: newIndexPath)
+        } else {
+            XCTFail("don't call this delegate method")
+        }
+    }
+    var callControllerWillChangeContent: (() -> ())!
+    func controllerWillChangeContent() {
+        if let c = callControllerWillChangeContent {
+            c()
+            self.callControllerWillChangeContent = nil
+        } else {
+            XCTFail("don't call this delegate method")
+        }
+    }
+    var callControllerDidChangeContent: (() -> ())!
+    func controllerDidChangeContent() {
+        if let c = callControllerDidChangeContent {
+            c()
+            self.callControllerDidChangeContent = nil
+        } else {
+            XCTFail("don't call this delegate method")
         }
     }
 }
