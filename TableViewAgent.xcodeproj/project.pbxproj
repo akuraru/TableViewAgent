@@ -11,7 +11,7 @@
 		BE02704C19E8E0C5003F8692 /* AdditionalCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704A19E8E0C5003F8692 /* AdditionalCellState.swift */; };
 		BE02704D19E8E0C5003F8692 /* EditableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704B19E8E0C5003F8692 /* EditableState.swift */; };
 		BE02704F19E8FA99003F8692 /* AddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE02704E19E8FA99003F8692 /* AddTableViewCell.m */; };
-		BE110EC81A05D6B0004DD528 /* AVOArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE110EC71A05D6B0004DD528 /* AVOArrayController.swift */; };
+		BE110EC81A05D6B0004DD528 /* FRCLikeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE110EC71A05D6B0004DD528 /* FRCLikeObject.swift */; };
 		BE2256F2176BCABC0022DA33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
 		BE2256F4176BCABC0022DA33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F3176BCABC0022DA33 /* Foundation.framework */; };
 		BE2256F6176BCABC0022DA33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F5176BCABC0022DA33 /* CoreGraphics.framework */; };
@@ -40,14 +40,14 @@
 		BEE8F8DD198A43B6001477B0 /* TableViewAgentCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */; };
 		BEE8F8DF198A44AD001477B0 /* TableViewAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */; };
 		BEEA508C1989C74000A373EA /* FRCAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */; };
-		BEFD41C21A28055C00AD63CB /* AVOArrayControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFD41C11A28055C00AD63CB /* AVOArrayControllerTest.swift */; };
+		BEFD41C21A28055C00AD63CB /* FRCLikeObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFD41C11A28055C00AD63CB /* FRCLikeObjectTest.swift */; };
 		BEFD41C31A28059E00AD63CB /* AdditionalCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704A19E8E0C5003F8692 /* AdditionalCellState.swift */; };
 		BEFD41C41A28059E00AD63CB /* EditableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704B19E8E0C5003F8692 /* EditableState.swift */; };
 		BEFD41C61A28059E00AD63CB /* SSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */; };
 		BEFD41C71A28059E00AD63CB /* MSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */; };
 		BEFD41C81A28059E00AD63CB /* FRCAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */; };
 		BEFD41C91A28059E00AD63CB /* AgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE741608198E258C00A4B309 /* AgentViewObject.swift */; };
-		BEFD41CA1A28059E00AD63CB /* AVOArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE110EC71A05D6B0004DD528 /* AVOArrayController.swift */; };
+		BEFD41CA1A28059E00AD63CB /* FRCLikeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE110EC71A05D6B0004DD528 /* FRCLikeObject.swift */; };
 		BEFD41CB1A28059E00AD63CB /* TableViewAgentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */; };
 		BEFD41CC1A28059E00AD63CB /* TableViewAgentCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */; };
 		BEFD41CD1A28059E00AD63CB /* TableViewAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */; };
@@ -106,7 +106,7 @@
 		BE02704B19E8E0C5003F8692 /* EditableState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableState.swift; sourceTree = "<group>"; };
 		BE02704E19E8FA99003F8692 /* AddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTableViewCell.m; sourceTree = "<group>"; };
 		BE02705019E8FAAC003F8692 /* AddTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTableViewCell.h; sourceTree = "<group>"; };
-		BE110EC71A05D6B0004DD528 /* AVOArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVOArrayController.swift; sourceTree = "<group>"; };
+		BE110EC71A05D6B0004DD528 /* FRCLikeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCLikeObject.swift; sourceTree = "<group>"; };
 		BE2256EE176BCABC0022DA33 /* TableViewAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE2256F1176BCABC0022DA33 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BE2256F3176BCABC0022DA33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -148,7 +148,7 @@
 		BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgent.swift; sourceTree = "<group>"; };
 		BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCAgentViewObject.swift; sourceTree = "<group>"; };
 		BEFD41C01A28055B00AD63CB /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
-		BEFD41C11A28055C00AD63CB /* AVOArrayControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVOArrayControllerTest.swift; sourceTree = "<group>"; };
+		BEFD41C11A28055C00AD63CB /* FRCLikeObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCLikeObjectTest.swift; sourceTree = "<group>"; };
 		C879000AD100E37BD5CCF83C /* WETodo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETodo.m; sourceTree = "<group>"; };
 		C8790043B0A754925503375F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C87900D1196B2A54304A1558 /* FRCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRCViewController.h; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				BE76B96018498F77001E749D /* Supporting Files */,
-				BEFD41C11A28055C00AD63CB /* AVOArrayControllerTest.swift */,
+				BEFD41C11A28055C00AD63CB /* FRCLikeObjectTest.swift */,
 				BEFD41C01A28055B00AD63CB /* Tests-Bridging-Header.h */,
 			);
 			path = Tests;
@@ -316,7 +316,7 @@
 				BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */,
 				BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */,
 				BE741608198E258C00A4B309 /* AgentViewObject.swift */,
-				BE110EC71A05D6B0004DD528 /* AVOArrayController.swift */,
+				BE110EC71A05D6B0004DD528 /* FRCLikeObject.swift */,
 			);
 			path = ViewObject;
 			sourceTree = "<group>";
@@ -604,7 +604,7 @@
 				BE6AD8B0198870600002ABA7 /* MSAgentViewObject.swift in Sources */,
 				C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */,
 				C879041242F8D565D437DBD5 /* CustomTableViewCell.m in Sources */,
-				BE110EC81A05D6B0004DD528 /* AVOArrayController.swift in Sources */,
+				BE110EC81A05D6B0004DD528 /* FRCLikeObject.swift in Sources */,
 				C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */,
 				BE4D744217F5056D00287CE8 /* Model.xcdatamodeld in Sources */,
 				C87903536A8986DA6EC5F746 /* MainService.m in Sources */,
@@ -637,9 +637,9 @@
 				BEFD41CC1A28059E00AD63CB /* TableViewAgentCellDelegate.swift in Sources */,
 				BEFD41C81A28059E00AD63CB /* FRCAgentViewObject.swift in Sources */,
 				BEFD41C61A28059E00AD63CB /* SSAgentViewObject.swift in Sources */,
-				BEFD41C21A28055C00AD63CB /* AVOArrayControllerTest.swift in Sources */,
+				BEFD41C21A28055C00AD63CB /* FRCLikeObjectTest.swift in Sources */,
 				BEFD41CB1A28059E00AD63CB /* TableViewAgentDelegate.swift in Sources */,
-				BEFD41CA1A28059E00AD63CB /* AVOArrayController.swift in Sources */,
+				BEFD41CA1A28059E00AD63CB /* FRCLikeObject.swift in Sources */,
 				BEFD41C41A28059E00AD63CB /* EditableState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,21 +11,21 @@ import UIKit
 import CoreData
 
 
-protocol ArrayController: NSCopying, NSObjectProtocol, Equatable {
+protocol FRCLikeObjectGenerics: NSCopying, NSObjectProtocol, Equatable {
 }
-protocol AVOArrayControllerDelegate {
+protocol FRCLikeObjectDelegate {
     func controller(didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?)
     func controllerWillChangeContent()
     func controllerDidChangeContent()
 }
 
-class AVOArrayController<T: ArrayController>: Equatable {
-    var delegate: AVOArrayControllerDelegate!
+class FRCLikeObject<T: FRCLikeObjectGenerics>: Equatable {
+    var delegate: FRCLikeObjectDelegate!
     var fetchedObjects: [T]
     let sortTerm: ((T, T) -> Bool)
     let sectionsByName: (T -> NSCopying)?
 
-    var sections: [AVOArraySectionInfo<T>]!
+    var sections: [FRCLikeObjectSectionInfo<T>]!
     var arrayIndexPath: NSDictionary!
     
     init(array :[T], groupedBy groupedTerm: (T -> NSCopying)!, sortedBy sortTerm: ((T, T) -> Bool)?) {
@@ -83,6 +83,8 @@ class AVOArrayController<T: ArrayController>: Equatable {
     }
     func updateObjects(objects: [T]) {
         self.controllerWillChangeConect()
+
+        let indexPaths = objects.map{o in self.indexPathAtObject(o)}
         for o in objects.sorted(self.sortTerm) {
             let index = NSArray(array: self.fetchedObjects).indexOfObject(o)
             if index != NSNotFound {
@@ -91,19 +93,15 @@ class AVOArrayController<T: ArrayController>: Equatable {
         }
         self.fetchedObjects = self.fetchedObjects.sorted(self.sortTerm)
         self.sections = self.createSections()
-        
-//            let indexPath = self.indexPathAtObject(o)
-//            if let ip = indexPath {
-//                if (index != NSNotFound) {
-//                    self.fetchedObjects[index] = o
-//                    self.fetchedObjects = self.fetchedObjects.sorted(self.sortTerm)
-//                    self.sections = self.createSections()
-//                    let newIndexPath: NSIndexPath = self.indexPathAtObject(o)!
-//                    
-//                    let type = (ip.isEqual(newIndexPath)) ? NSFetchedResultsChangeType.Update : .Move
-//                    self.didChangeObject(o, atIndexPath:ip, forChangeType:type, newIndexPath:newIndexPath)
-//                }
-//            }
+
+        let newIndexPaths = objects.map{o in self.indexPathAtObject(o)}
+        for (o, (oi, ni)) in Zip2(objects, Zip2(indexPaths, newIndexPaths)) {
+            if oi != nil {
+                let type = (oi!.isEqual(ni)) ? NSFetchedResultsChangeType.Update : .Move
+                self.didChangeObject(o, atIndexPath: oi, forChangeType: type, newIndexPath: ni)
+            }
+        }
+
         self.controllerDidChangeContent()
     }
     func insertOrUpdateObject(object: T) {
@@ -111,6 +109,7 @@ class AVOArrayController<T: ArrayController>: Equatable {
     }
     func insertOrUpdateObjects(objects: [T]) {
         self.controllerWillChangeConect()
+        let indexPaths = objects.map{o in self.indexPathAtObject(o)}
         for o in objects.sorted(self.sortTerm) {
             let index = NSArray(array: self.fetchedObjects).indexOfObject(o)
             if index != NSNotFound {
@@ -122,9 +121,20 @@ class AVOArrayController<T: ArrayController>: Equatable {
         self.fetchedObjects = self.fetchedObjects.sorted(self.sortTerm)
         self.sections = self.createSections()
         
+        let newIndexPaths = objects.map{o in self.indexPathAtObject(o)}
+        for (o, (oi, ni)) in Zip2(objects, Zip2(indexPaths, newIndexPaths)) {
+            if oi != nil {
+                let type = (oi!.isEqual(ni)) ? NSFetchedResultsChangeType.Update : .Move
+                self.didChangeObject(o, atIndexPath: oi, forChangeType: type, newIndexPath: ni)
+            } else {
+                let type = NSFetchedResultsChangeType.Insert
+                self.didChangeObject(o, atIndexPath: nil, forChangeType: type, newIndexPath: ni)
+            }
+        }
+        
         self.controllerDidChangeContent()
     }
-    func createSections() -> [AVOArraySectionInfo<T>] {
+    func createSections() -> [FRCLikeObjectSectionInfo<T>] {
         if let keyPath = self.sectionsByName {
             let dictionary = NSMutableDictionary()
             for o in self.fetchedObjects {
@@ -136,7 +146,7 @@ class AVOArrayController<T: ArrayController>: Equatable {
                     dictionary[value] = [o]
                 }
             }
-            let result = Array<AVOArraySectionInfo<T>>()
+            let result = Array<FRCLikeObjectSectionInfo<T>>()
             self.arrayIndexPath = createArrayIndexPath(result)
             return result
         } else {
@@ -145,7 +155,7 @@ class AVOArrayController<T: ArrayController>: Equatable {
             return result
         }
     }
-    func createArrayIndexPath(result: [AVOArraySectionInfo<T>]) -> NSDictionary {
+    func createArrayIndexPath(result: [FRCLikeObjectSectionInfo<T>]) -> NSDictionary {
         var dict = NSMutableDictionary()
         var i = 0
         for index in 0..<(result.count) {
@@ -159,8 +169,8 @@ class AVOArrayController<T: ArrayController>: Equatable {
         }
         return dict
     }
-    func createSectionInfo(name: String?, objects: [T]) -> AVOArraySectionInfo<T> {
-        return AVOArraySectionInfo.create(name, indexTitle: name, objects: objects);
+    func createSectionInfo(name: String?, objects: [T]) -> FRCLikeObjectSectionInfo<T> {
+        return FRCLikeObjectSectionInfo.create(name, indexTitle: name, objects: objects);
     }
     func controllerWillChangeConect() {
         if let d = self.delegate {
@@ -179,7 +189,7 @@ class AVOArrayController<T: ArrayController>: Equatable {
     }
 }
 
-func ==<T: ArrayController>(lhs: AVOArrayController<T>, rhs: AVOArrayController<T>) -> Bool {
+func ==<T: FRCLikeObjectGenerics>(lhs: FRCLikeObject<T>, rhs: FRCLikeObject<T>) -> Bool {
     let fo1 = lhs.fetchedObjects
     let fo2 = rhs.fetchedObjects
     for (t1, t2) in Zip2(fo1, fo2) {
@@ -190,16 +200,16 @@ func ==<T: ArrayController>(lhs: AVOArrayController<T>, rhs: AVOArrayController<
     return lhs.sections == rhs.sections
 }
 
-struct AVOArraySectionInfo<T: ArrayController>: Equatable {
+struct FRCLikeObjectSectionInfo<T: FRCLikeObjectGenerics>: Equatable {
     let name: String?
     let indexTitle: String?
     let objects: [T]
     let numberOfObjects: Int
-    static func create(name: String?, indexTitle: String?, objects: [T]) -> AVOArraySectionInfo<T> {
-        return AVOArraySectionInfo(name: name, indexTitle: indexTitle, objects: objects, numberOfObjects: objects.count)
+    static func create(name: String?, indexTitle: String?, objects: [T]) -> FRCLikeObjectSectionInfo<T> {
+        return FRCLikeObjectSectionInfo(name: name, indexTitle: indexTitle, objects: objects, numberOfObjects: objects.count)
     }
 }
 
-func ==<T: Equatable>(lhs: AVOArraySectionInfo<T>, rhs: AVOArraySectionInfo<T>) -> Bool {
+func ==<T: Equatable>(lhs: FRCLikeObjectSectionInfo<T>, rhs: FRCLikeObjectSectionInfo<T>) -> Bool {
     return lhs.name == rhs.name && lhs.indexTitle == rhs.indexTitle && lhs.objects == rhs.objects
 }

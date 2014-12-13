@@ -1,5 +1,5 @@
 //
-//  AVOArrayControllerTest.swift
+//  FRCLikeObjectTest.swift
 //  TableViewAgent
 //
 //  Created by akuraru on 2014/11/28.
@@ -11,10 +11,8 @@ import Foundation
 import XCTest
 import CoreData
 
-extension NSString: ArrayController {
-}
 
-class AVOTestObject: NSObject, ArrayController {
+class AVOTestObject: NSObject, FRCLikeObjectGenerics {
     let string: NSString
     let identifier: Int
     init(_ string: NSString,_ identifier: Int) {
@@ -44,15 +42,15 @@ func ==(lhs: AVOTestObject, rhs: AVOTestObject) -> Bool {
     return lhs.identifier == rhs.identifier
 }
 
-class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
+class FRCLikeObjectTest: XCTestCase, FRCLikeObjectDelegate {
     typealias T = AVOTestObject
-    var controller: AVOArrayController<T>!
+    var controller: FRCLikeObject<T>!
     var array: [T]! = []
     var sortTerm: ((T, T) -> Bool)! = nil
     
     override func setUp() {
         super.setUp()
-        controller = AVOArrayController(array: array, nil, sortTerm)
+        controller = FRCLikeObject(array: array, nil, sortTerm)
         controller.delegate = self
     }
     override func tearDown() {
@@ -64,7 +62,7 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
         XCTAssertEqual(controller.fetchedObjects, sortedArray(array), "empty list")
     }
     func testSections() {
-        let expected = AVOArraySectionInfo.create(nil, indexTitle: nil, objects: sortedArray(array))
+        let expected = FRCLikeObjectSectionInfo.create(nil, indexTitle: nil, objects: sortedArray(array))
         XCTAssertEqual(controller.sections, [expected])
     }
     func testAddObject() {
@@ -80,8 +78,8 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
         
         controller.addObject(addT)
         
-        let expected = AVOArrayController(array: array + [addT], groupedBy: nil, sortedBy: sortTerm)
-        AVOArrayControllerAssertEqual(controller, expected)
+        let expected = FRCLikeObject(array: array + [addT], groupedBy: nil, sortedBy: sortTerm)
+        FRCLikeObjectAssertEqual(controller, expected)
     }
     func testAddObjects() {
         let addTs = [AVOTestObject("unknown", 10), AVOTestObject("warwlof", 11)]
@@ -99,8 +97,8 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
         }
         controller.addObjects(addTs)
         
-        let expected = AVOArrayController(array: array + addTs, groupedBy: nil, sortedBy: sortTerm)
-        AVOArrayControllerAssertEqual(controller, expected)
+        let expected = FRCLikeObject(array: array + addTs, groupedBy: nil, sortedBy: sortTerm)
+        FRCLikeObjectAssertEqual(controller, expected)
     }
     func testRemoveObject() {
         let removeT = AVOTestObject("alice", 1)
@@ -115,31 +113,48 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
         controller.removeObject(removeT)
         
         let a = array.filter{t in t != removeT}
-        let expected = AVOArrayController(array: a, groupedBy: nil, sortedBy: sortTerm)
-        AVOArrayControllerAssertEqual(controller, expected)
+        let expected = FRCLikeObject(array: a, groupedBy: nil, sortedBy: sortTerm)
+        FRCLikeObjectAssertEqual(controller, expected)
     }
     func testUpdateObject() {
         let updateT = AVOTestObject("arc", 1)
         self.callControllerWillChangeContent = {}
         self.callControllerDidChangeContent = {}
+        self.callController = {(anObject, indexPath, type, newIndexPath) in
+            XCTAssertEqual(updateT, anObject as AVOTestObject)
+            XCTAssertEqual(indexPath!, NSIndexPath(forRow: 0, inSection: 0))
+            XCTAssertEqual(type, NSFetchedResultsChangeType.Update)
+            XCTAssert(newIndexPath == indexPath)
+        }
         controller.updateObject(updateT)
         
         let a = array.map{t in t == updateT ? updateT : t}
-        let expected = AVOArrayController(array: a, groupedBy: nil, sortedBy: sortTerm)
-        AVOArrayControllerAssertEqual(controller, expected)
+        let expected = FRCLikeObject(array: a, groupedBy: nil, sortedBy: sortTerm)
+        FRCLikeObjectAssertEqual(controller, expected)
     }
     func testInsertOrUpdateObject() {
         let updateT = AVOTestObject("arc", 1)
         self.callControllerWillChangeContent = {}
         self.callControllerDidChangeContent = {}
+        self.callController = {(anObject, indexPath, type, newIndexPath) in
+            XCTAssertEqual(updateT, anObject as AVOTestObject)
+            if type == NSFetchedResultsChangeType.Update {
+                XCTAssertEqual(indexPath!, NSIndexPath(forRow: 0, inSection: 0))
+                XCTAssert(newIndexPath == indexPath)
+            } else {
+                XCTAssertEqual(type, NSFetchedResultsChangeType.Insert)
+                XCTAssertEqual(newIndexPath!, NSIndexPath(forRow: 0, inSection: 0))
+                XCTAssert(indexPath == nil)
+            }
+        }
         controller.insertOrUpdateObject(updateT)
         
         let a = array.filter({t in t == updateT}).isEmpty ? {
             let t = (self.array + [updateT])
             return self.sortTerm != nil ? t.sorted(self.sortTerm) : t
             }() : array.map{t in t == updateT ? updateT : t}
-        let expected = AVOArrayController(array: a, groupedBy: nil, sortedBy: sortTerm)
-        AVOArrayControllerAssertEqual(controller, expected)
+        let expected = FRCLikeObject(array: a, groupedBy: nil, sortedBy: sortTerm)
+        FRCLikeObjectAssertEqual(controller, expected)
     }
     func addArray(array: [T],_ Ts: [T]) -> [T] {
         return sortedArray(array + Ts)
@@ -152,14 +167,14 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         checkControllerWillChangeContent(controller)
     }
-    func AVOArrayControllerAssertEqual(c1: AVOArrayController<T>,_ c2: AVOArrayController<T>) {
+    func FRCLikeObjectAssertEqual(c1: FRCLikeObject<T>,_ c2: FRCLikeObject<T>) {
         XCTAssertEqual(c1.fetchedObjects.count, c2.fetchedObjects.count)
         for (t1, t2) in Zip2(c1.fetchedObjects, c2.fetchedObjects) {
             XCTAssert(t1.isEqualToTest(t2), "\(String(t1.string)):\(t1.identifier), \(String(t2.string)):\(t2.identifier)")
         }
         SctionInfoAssertEqual(c1.sections, c2.sections)
     }
-    func SctionInfoAssertEqual(s1: [AVOArraySectionInfo<T>],_ s2: [AVOArraySectionInfo<T>]) {
+    func SctionInfoAssertEqual(s1: [FRCLikeObjectSectionInfo<T>],_ s2: [FRCLikeObjectSectionInfo<T>]) {
         XCTAssertEqual(s1.count, s2.count)
         for (i1, i2) in Zip2(s1, s2) {
             eq(i1.name, i2.name)
@@ -207,7 +222,7 @@ class AVOArrayControllerTest: XCTestCase, AVOArrayControllerDelegate {
     }
 }
 
-class OneListTest: AVOArrayControllerTest {
+class OneListTest: FRCLikeObjectTest {
     override func setUp() {
         array = [AVOTestObject("alice", 1)]
         super.setUp()
@@ -224,7 +239,7 @@ class SortedListTest: OneListTest {
     }
 }
 
-class MoreListTest: AVOArrayControllerTest {
+class MoreListTest: FRCLikeObjectTest {
     override func setUp() {
         array = [AVOTestObject("alice", 1), AVOTestObject("charlie", 3), AVOTestObject("bob", 2)]
         super.setUp()
