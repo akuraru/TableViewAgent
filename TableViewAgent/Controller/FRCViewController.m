@@ -14,6 +14,7 @@
 #import "WETodo.h"
 #import "ThirdViewController.h"
 #import "TableViewAgent-Swift.h"
+#import "Enum.h"
 
 @interface FRCViewController () <TableViewAgentDelegate>
 @end

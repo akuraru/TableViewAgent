@@ -10,16 +10,13 @@ import Foundation
 import UIKit
 import CoreData
 
-
-protocol FRCLikeObjectGenerics: NSCopying, NSObjectProtocol, Equatable {
-}
 protocol FRCLikeObjectDelegate {
     func controller(didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?)
     func controllerWillChangeContent()
     func controllerDidChangeContent()
 }
 
-class FRCLikeObject<T: FRCLikeObjectGenerics>: Equatable {
+class FRCLikeObject<T: NSObject>: Equatable {
     var delegate: FRCLikeObjectDelegate!
     var fetchedObjects: [T]
     let sortTerm: ((T, T) -> Bool)
@@ -40,7 +37,7 @@ class FRCLikeObject<T: FRCLikeObjectGenerics>: Equatable {
         return self.sections[indexPath.section].objects[indexPath.row] as T
     }
     func indexPathAtObject(object: T) -> NSIndexPath? {
-        return self.arrayIndexPath[object] as NSIndexPath?
+        return self.arrayIndexPath[object as AnyObject as NSCopying] as NSIndexPath?
     }
     func addObject(object: T) {
         self.addObjects([object])
@@ -163,7 +160,7 @@ class FRCLikeObject<T: FRCLikeObjectGenerics>: Equatable {
             for row in 0..<(info.numberOfObjects) {
                 let object = self.fetchedObjects[i]
                 let indexPath = NSIndexPath(forRow: (row - 0), inSection: index)
-                dict[object] = indexPath
+                dict[object as AnyObject as NSCopying] = indexPath
                 i++
             }
         }
@@ -189,7 +186,7 @@ class FRCLikeObject<T: FRCLikeObjectGenerics>: Equatable {
     }
 }
 
-func ==<T: FRCLikeObjectGenerics>(lhs: FRCLikeObject<T>, rhs: FRCLikeObject<T>) -> Bool {
+func ==<T: NSObject>(lhs: FRCLikeObject<T>, rhs: FRCLikeObject<T>) -> Bool {
     let fo1 = lhs.fetchedObjects
     let fo2 = rhs.fetchedObjects
     for (t1, t2) in Zip2(fo1, fo2) {
@@ -200,7 +197,7 @@ func ==<T: FRCLikeObjectGenerics>(lhs: FRCLikeObject<T>, rhs: FRCLikeObject<T>) 
     return lhs.sections == rhs.sections
 }
 
-struct FRCLikeObjectSectionInfo<T: FRCLikeObjectGenerics>: Equatable {
+struct FRCLikeObjectSectionInfo<T: NSObject>: Equatable {
     let name: String?
     let indexTitle: String?
     let objects: [T]
@@ -210,6 +207,6 @@ struct FRCLikeObjectSectionInfo<T: FRCLikeObjectGenerics>: Equatable {
     }
 }
 
-func ==<T: Equatable>(lhs: FRCLikeObjectSectionInfo<T>, rhs: FRCLikeObjectSectionInfo<T>) -> Bool {
+func ==<T: NSObject>(lhs: FRCLikeObjectSectionInfo<T>, rhs: FRCLikeObjectSectionInfo<T>) -> Bool {
     return lhs.name == rhs.name && lhs.indexTitle == rhs.indexTitle && lhs.objects == rhs.objects
 }
