@@ -4,4 +4,3 @@
 #define kReuseCell @"Cell"
 #define kReuseAdd @"Add"
 #define kSegueEdit @"Edit"
-#define kSegueFRCLikeObject @"FRCLikeObject"

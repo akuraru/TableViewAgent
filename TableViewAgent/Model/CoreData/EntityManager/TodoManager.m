@@ -14,17 +14,22 @@
 @implementation TodoManager
 
 + (NSFetchedResultsController *)fetchController {
-    return [Todo MR_fetchAllGroupedBy:@"message" withPredicate:nil sortedBy:@"message,title" ascending:YES];
+    return [Todo MR_fetchAllGroupedBy:@"message" withPredicate:nil sortedBy:@"message,title" ascending:YES inContext:[self context]];
 }
 
-+ (void)deleteEntity:(NSManagedObject *)object {
-    [object MR_deleteEntity];
-    [object.managedObjectContext MR_saveToPersistentStoreAndWait];
++ (void)deleteEntity:(id)object {
+    [object MR_deleteInContext:[self context]];
+    [[self context] MR_saveToPersistentStoreAndWait];
+}
+
++ (NSManagedObjectContext *)context {
+    return [NSManagedObjectContext MR_defaultContext];
 }
 
 + (void)updateEntity:(WETodo *)todo {
-    Todo *entity = todo.todo ?: [Todo MR_createEntity];
-    [todo update:entity];
-    [entity.managedObjectContext MR_saveToPersistentStoreAndWait];
+    Todo *entity = todo.todo ?: [Todo MR_createInContext:[self context]];
+    entity.title = todo.title;
+    entity.message = todo.message;
+    [[self context] MR_saveToPersistentStoreAndWait];
 }
 @end

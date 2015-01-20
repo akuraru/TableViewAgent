@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2DDCFBA148DE41AABC73DC30 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04047CB7E427422FB2D7649E /* libPods.a */; };
-		BE02704C19E8E0C5003F8692 /* AdditionalCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704A19E8E0C5003F8692 /* AdditionalCellState.swift */; };
-		BE02704D19E8E0C5003F8692 /* EditableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704B19E8E0C5003F8692 /* EditableState.swift */; };
-		BE02704F19E8FA99003F8692 /* AddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE02704E19E8FA99003F8692 /* AddTableViewCell.m */; };
-		BE110EC81A05D6B0004DD528 /* FRCLikeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE110EC71A05D6B0004DD528 /* FRCLikeObject.swift */; };
-		BE19E0A51A3BD51C00CD3649 /* AVOLikeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19E0A41A3BD51C00CD3649 /* AVOLikeObject.swift */; };
 		BE2256F2176BCABC0022DA33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
 		BE2256F4176BCABC0022DA33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F3176BCABC0022DA33 /* Foundation.framework */; };
 		BE2256F6176BCABC0022DA33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F5176BCABC0022DA33 /* CoreGraphics.framework */; };
@@ -28,32 +23,24 @@
 		BE4D744817F5066300287CE8 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744617F5066300287CE8 /* Todo.m */; };
 		BE4D744C17F5160600287CE8 /* TodoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744B17F5160600287CE8 /* TodoManager.m */; };
 		BE5C3CE917C0FE0C00D28713 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C3CE817C0FE0C00D28713 /* MSViewController.m */; };
-		BE6AD8AA1988701B0002ABA7 /* SSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */; };
-		BE6AD8B0198870600002ABA7 /* MSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */; };
-		BE741609198E258C00A4B309 /* AgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE741608198E258C00A4B309 /* AgentViewObject.swift */; };
 		BE76B95C18498F77001E749D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE76B95B18498F77001E749D /* XCTest.framework */; };
 		BE76B95D18498F77001E749D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F3176BCABC0022DA33 /* Foundation.framework */; };
 		BE76B95E18498F77001E749D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
 		BE76B96418498F77001E749D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE76B96218498F77001E749D /* InfoPlist.strings */; };
+		BE76B96618498F77001E749D /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B96518498F77001E749D /* Tests.m */; };
+		BE76B99A1849A148001E749D /* AdditionalCellState.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B97C1849A148001E749D /* AdditionalCellState.m */; };
+		BE76B99B1849A148001E749D /* AdditionalCellStateAlways.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B97E1849A148001E749D /* AdditionalCellStateAlways.m */; };
+		BE76B99C1849A148001E749D /* AdditionalCellStateHideEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9801849A148001E749D /* AdditionalCellStateHideEditing.m */; };
+		BE76B99D1849A148001E749D /* AdditionalCellStateNone.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9821849A148001E749D /* AdditionalCellStateNone.m */; };
+		BE76B99E1849A148001E749D /* AdditionalCellStateShowEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9841849A148001E749D /* AdditionalCellStateShowEditing.m */; };
+		BE76B99F1849A148001E749D /* EditableState.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9871849A148001E749D /* EditableState.m */; };
+		BE76B9A01849A148001E749D /* EditableStateEnadle.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9891849A148001E749D /* EditableStateEnadle.m */; };
+		BE76B9A11849A148001E749D /* EditableStateNone.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B98B1849A148001E749D /* EditableStateNone.m */; };
+		BE76B9A21849A148001E749D /* TableViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B98D1849A148001E749D /* TableViewAgent.m */; };
+		BE76B9A31849A148001E749D /* FRCAgentViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9941849A148001E749D /* FRCAgentViewObject.m */; };
+		BE76B9A41849A148001E749D /* MSAgentViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9961849A148001E749D /* MSAgentViewObject.m */; };
+		BE76B9A51849A148001E749D /* SSAgentViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B9981849A148001E749D /* SSAgentViewObject.m */; };
 		BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1217719B3200A6113E /* SSViewController.m */; };
-		BEB49A30198F8814001C219C /* TableViewAgentAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB49A2F198F8814001C219C /* TableViewAgentAdaptor.swift */; };
-		BEE026CE1A5FE19100E8AA68 /* FRVLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE026CD1A5FE19100E8AA68 /* FRVLikeViewController.swift */; };
-		BEE8F8DB198A3CD6001477B0 /* TableViewAgentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */; };
-		BEE8F8DD198A43B6001477B0 /* TableViewAgentCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */; };
-		BEE8F8DF198A44AD001477B0 /* TableViewAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */; };
-		BEEA508C1989C74000A373EA /* FRCAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */; };
-		BEFD41C21A28055C00AD63CB /* FRCLikeObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFD41C11A28055C00AD63CB /* FRCLikeObjectTest.swift */; };
-		BEFD41C31A28059E00AD63CB /* AdditionalCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704A19E8E0C5003F8692 /* AdditionalCellState.swift */; };
-		BEFD41C41A28059E00AD63CB /* EditableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE02704B19E8E0C5003F8692 /* EditableState.swift */; };
-		BEFD41C61A28059E00AD63CB /* SSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */; };
-		BEFD41C71A28059E00AD63CB /* MSAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */; };
-		BEFD41C81A28059E00AD63CB /* FRCAgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */; };
-		BEFD41C91A28059E00AD63CB /* AgentViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE741608198E258C00A4B309 /* AgentViewObject.swift */; };
-		BEFD41CA1A28059E00AD63CB /* FRCLikeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE110EC71A05D6B0004DD528 /* FRCLikeObject.swift */; };
-		BEFD41CB1A28059E00AD63CB /* TableViewAgentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */; };
-		BEFD41CC1A28059E00AD63CB /* TableViewAgentCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */; };
-		BEFD41CD1A28059E00AD63CB /* TableViewAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */; };
-		BEFD41CE1A28059E00AD63CB /* TableViewAgentAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB49A2F198F8814001C219C /* TableViewAgentAdaptor.swift */; };
 		C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */; };
 		C87903536A8986DA6EC5F746 /* MainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790598EDF8FE8AE36B952B /* MainService.m */; };
 		C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790F785A526609644BE7B5 /* ThirdViewObject.m */; };
@@ -62,33 +49,10 @@
 		C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790665BD0F40D548AD722F /* ViewObject.m */; };
 		C879079959003B75D9C7BF87 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790DD4728C683034FBAF4A /* ThirdViewController.m */; };
 		C87909C858C0691F2E527E6C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790043B0A754925503375F /* MainViewController.m */; };
-		C8790AE56CEAA4AA5E94FAA6 /* MainEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790FBDE954ADA09B0FD26B /* MainEntry.m */; };
-		C8790CBB0AC26F80D4F059F6 /* NSObject+performSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790DF3B85A22031F5C1F5F /* NSObject+performSelector.m */; };
 		E1E3122E98584106B4701550 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA2420649764F39950BAD1A /* libPods-Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BE6AD8841987AD700002ABA7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BE2256E6176BCABC0022DA33 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BE2256ED176BCABC0022DA33;
-			remoteInfo = TableViewAgent;
-		};
-		BE6AD8AB198870320002ABA7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BE2256E6176BCABC0022DA33 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BE2256ED176BCABC0022DA33;
-			remoteInfo = TableViewAgent;
-		};
-		BE6AD8AD198870320002ABA7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BE2256E6176BCABC0022DA33 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BE2256ED176BCABC0022DA33;
-			remoteInfo = TableViewAgent;
-		};
 		BE76B96818498F77001E749D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BE2256E6176BCABC0022DA33 /* Project object */;
@@ -100,17 +64,6 @@
 
 /* Begin PBXFileReference section */
 		04047CB7E427422FB2D7649E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		50062C56CFE5369DEDA69100 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		5F9983D9448EFA968A697871 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
-		8B73E5D5A0A3A5817CD36E75 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		9A2EF27E1B83859EEEBEF7D8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		BE02704919E8D6C9003F8692 /* TableViewAgent-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TableViewAgent-Bridging-Header.h"; sourceTree = "<group>"; };
-		BE02704A19E8E0C5003F8692 /* AdditionalCellState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalCellState.swift; sourceTree = "<group>"; };
-		BE02704B19E8E0C5003F8692 /* EditableState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableState.swift; sourceTree = "<group>"; };
-		BE02704E19E8FA99003F8692 /* AddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTableViewCell.m; sourceTree = "<group>"; };
-		BE02705019E8FAAC003F8692 /* AddTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTableViewCell.h; sourceTree = "<group>"; };
-		BE110EC71A05D6B0004DD528 /* FRCLikeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCLikeObject.swift; sourceTree = "<group>"; };
-		BE19E0A41A3BD51C00CD3649 /* AVOLikeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVOLikeObject.swift; sourceTree = "<group>"; };
 		BE2256EE176BCABC0022DA33 /* TableViewAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE2256F1176BCABC0022DA33 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BE2256F3176BCABC0022DA33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -135,30 +88,47 @@
 		BE4D744B17F5160600287CE8 /* TodoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoManager.m; sourceTree = "<group>"; };
 		BE5C3CE717C0FE0C00D28713 /* MSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSViewController.h; sourceTree = "<group>"; };
 		BE5C3CE817C0FE0C00D28713 /* MSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSViewController.m; sourceTree = "<group>"; };
-		BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSAgentViewObject.swift; sourceTree = "<group>"; };
-		BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSAgentViewObject.swift; sourceTree = "<group>"; };
-		BE741608198E258C00A4B309 /* AgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentViewObject.swift; sourceTree = "<group>"; };
 		BE76B95A18498F77001E749D /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE76B95B18498F77001E749D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BE76B96118498F77001E749D /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		BE76B96318498F77001E749D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BE76B96518498F77001E749D /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		BE76B96718498F77001E749D /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		BE76B97B1849A148001E749D /* AdditionalCellState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellState.h; sourceTree = "<group>"; };
+		BE76B97C1849A148001E749D /* AdditionalCellState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellState.m; sourceTree = "<group>"; };
+		BE76B97D1849A148001E749D /* AdditionalCellStateAlways.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateAlways.h; sourceTree = "<group>"; };
+		BE76B97E1849A148001E749D /* AdditionalCellStateAlways.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateAlways.m; sourceTree = "<group>"; };
+		BE76B97F1849A148001E749D /* AdditionalCellStateHideEditing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateHideEditing.h; sourceTree = "<group>"; };
+		BE76B9801849A148001E749D /* AdditionalCellStateHideEditing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateHideEditing.m; sourceTree = "<group>"; };
+		BE76B9811849A148001E749D /* AdditionalCellStateNone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateNone.h; sourceTree = "<group>"; };
+		BE76B9821849A148001E749D /* AdditionalCellStateNone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateNone.m; sourceTree = "<group>"; };
+		BE76B9831849A148001E749D /* AdditionalCellStateShowEditing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalCellStateShowEditing.h; sourceTree = "<group>"; };
+		BE76B9841849A148001E749D /* AdditionalCellStateShowEditing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalCellStateShowEditing.m; sourceTree = "<group>"; };
+		BE76B9861849A148001E749D /* EditableState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableState.h; sourceTree = "<group>"; };
+		BE76B9871849A148001E749D /* EditableState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableState.m; sourceTree = "<group>"; };
+		BE76B9881849A148001E749D /* EditableStateEnadle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableStateEnadle.h; sourceTree = "<group>"; };
+		BE76B9891849A148001E749D /* EditableStateEnadle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableStateEnadle.m; sourceTree = "<group>"; };
+		BE76B98A1849A148001E749D /* EditableStateNone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableStateNone.h; sourceTree = "<group>"; };
+		BE76B98B1849A148001E749D /* EditableStateNone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableStateNone.m; sourceTree = "<group>"; };
+		BE76B98C1849A148001E749D /* TableViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgent.h; sourceTree = "<group>"; };
+		BE76B98D1849A148001E749D /* TableViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewAgent.m; sourceTree = "<group>"; };
+		BE76B98E1849A148001E749D /* TableViewAgentCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentCellDelegate.h; sourceTree = "<group>"; };
+		BE76B98F1849A148001E749D /* TableViewAgentDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentDelegate.h; sourceTree = "<group>"; };
+		BE76B9901849A148001E749D /* TableViewAgentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentProtocol.h; sourceTree = "<group>"; };
+		BE76B9921849A148001E749D /* AgentViewObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentViewObjectProtocol.h; sourceTree = "<group>"; };
+		BE76B9931849A148001E749D /* FRCAgentViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRCAgentViewObject.h; sourceTree = "<group>"; };
+		BE76B9941849A148001E749D /* FRCAgentViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRCAgentViewObject.m; sourceTree = "<group>"; };
+		BE76B9951849A148001E749D /* MSAgentViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAgentViewObject.h; sourceTree = "<group>"; };
+		BE76B9961849A148001E749D /* MSAgentViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAgentViewObject.m; sourceTree = "<group>"; };
+		BE76B9971849A148001E749D /* SSAgentViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAgentViewObject.h; sourceTree = "<group>"; };
+		BE76B9981849A148001E749D /* SSAgentViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAgentViewObject.m; sourceTree = "<group>"; };
+		BE76B9991849A148001E749D /* TableViewAgentCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAgentCategory.h; sourceTree = "<group>"; };
 		BE8FDB1117719B3200A6113E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
 		BE8FDB1217719B3200A6113E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
-		BEB49A2F198F8814001C219C /* TableViewAgentAdaptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgentAdaptor.swift; sourceTree = "<group>"; };
-		BEB49A31198F8A08001C219C /* Enum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enum.h; sourceTree = "<group>"; };
-		BEE026CD1A5FE19100E8AA68 /* FRVLikeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRVLikeViewController.swift; sourceTree = "<group>"; };
-		BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgentDelegate.swift; sourceTree = "<group>"; };
-		BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgentCellDelegate.swift; sourceTree = "<group>"; };
-		BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAgent.swift; sourceTree = "<group>"; };
-		BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCAgentViewObject.swift; sourceTree = "<group>"; };
-		BEFD41C01A28055B00AD63CB /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
-		BEFD41C11A28055C00AD63CB /* FRCLikeObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCLikeObjectTest.swift; sourceTree = "<group>"; };
 		C879000AD100E37BD5CCF83C /* WETodo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETodo.m; sourceTree = "<group>"; };
 		C8790043B0A754925503375F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C87900D1196B2A54304A1558 /* FRCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRCViewController.h; sourceTree = "<group>"; };
 		C87902B6380B6A554115F053 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
-		C879033420D473A398605380 /* MainEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainEntry.h; sourceTree = "<group>"; };
 		C8790352EF7D1394525F8E95 /* ViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewObject.h; sourceTree = "<group>"; };
 		C879056EE85037B2CC3E8E04 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		C8790598EDF8FE8AE36B952B /* MainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainService.m; sourceTree = "<group>"; };
@@ -168,12 +138,11 @@
 		C8790ACD959A44401E4E0D54 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRCViewController.m; sourceTree = "<group>"; };
 		C8790C8A20FD24508847CBEE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		C8790CDCCD800CF0DA8AED5B /* NSObject+performSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+performSelector.h"; sourceTree = "<group>"; };
 		C8790DD4728C683034FBAF4A /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
-		C8790DF3B85A22031F5C1F5F /* NSObject+performSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+performSelector.m"; sourceTree = "<group>"; };
 		C8790E7509D540B912A684D8 /* ThirdViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewObject.h; sourceTree = "<group>"; };
 		C8790F785A526609644BE7B5 /* ThirdViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewObject.m; sourceTree = "<group>"; };
-		C8790FBDE954ADA09B0FD26B /* MainEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainEntry.m; sourceTree = "<group>"; };
+		D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.xcconfig"; path = "Pods/Pods-Tests.xcconfig"; sourceTree = "<group>"; };
+		DC648156027C4883B2121023 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		EAA2420649764F39950BAD1A /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -211,7 +180,8 @@
 				BE76B95F18498F77001E749D /* Tests */,
 				BE2256F0176BCABC0022DA33 /* Frameworks */,
 				BE2256EF176BCABC0022DA33 /* Products */,
-				CF1F1AD968B055A860219F1A /* Pods */,
+				DC648156027C4883B2121023 /* Pods.xcconfig */,
+				D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -240,7 +210,6 @@
 		BE2256F7176BCABC0022DA33 /* TableViewAgentSample */ = {
 			isa = PBXGroup;
 			children = (
-				BE02704919E8D6C9003F8692 /* TableViewAgent-Bridging-Header.h */,
 				BE225700176BCABC0022DA33 /* AppDelegate.h */,
 				BE225701176BCABC0022DA33 /* AppDelegate.m */,
 				BE225709176BCABD0022DA33 /* MainStoryboard.storyboard */,
@@ -250,8 +219,6 @@
 				C8790D791E4571F92C4C01CE /* ViewObject */,
 				C879092E38AB3C74DF427397 /* Services */,
 				C8790A8EEDFA301780DAB1C3 /* Model */,
-				C8790FBDE954ADA09B0FD26B /* MainEntry.m */,
-				C879033420D473A398605380 /* MainEntry.h */,
 			);
 			name = TableViewAgentSample;
 			path = TableViewAgent;
@@ -284,9 +251,8 @@
 		BE76B95F18498F77001E749D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				BE76B96518498F77001E749D /* Tests.m */,
 				BE76B96018498F77001E749D /* Supporting Files */,
-				BEFD41C11A28055C00AD63CB /* FRCLikeObjectTest.swift */,
-				BEFD41C01A28055B00AD63CB /* Tests-Bridging-Header.h */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -304,27 +270,59 @@
 		BE76B9791849A148001E749D /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				BE02704A19E8E0C5003F8692 /* AdditionalCellState.swift */,
-				BE02704B19E8E0C5003F8692 /* EditableState.swift */,
+				BE76B97A1849A148001E749D /* AdditionalCellState */,
+				BE76B9851849A148001E749D /* EditableState */,
+				BE76B98C1849A148001E749D /* TableViewAgent.h */,
+				BE76B98D1849A148001E749D /* TableViewAgent.m */,
+				BE76B98E1849A148001E749D /* TableViewAgentCellDelegate.h */,
+				BE76B98F1849A148001E749D /* TableViewAgentDelegate.h */,
+				BE76B9901849A148001E749D /* TableViewAgentProtocol.h */,
 				BE76B9911849A148001E749D /* ViewObject */,
-				BEE8F8DA198A3CD6001477B0 /* TableViewAgentDelegate.swift */,
-				BEE8F8DC198A43B6001477B0 /* TableViewAgentCellDelegate.swift */,
-				BEE8F8DE198A44AD001477B0 /* TableViewAgent.swift */,
-				BEB49A2F198F8814001C219C /* TableViewAgentAdaptor.swift */,
-				BEB49A31198F8A08001C219C /* Enum.h */,
 			);
 			path = lib;
+			sourceTree = "<group>";
+		};
+		BE76B97A1849A148001E749D /* AdditionalCellState */ = {
+			isa = PBXGroup;
+			children = (
+				BE76B97B1849A148001E749D /* AdditionalCellState.h */,
+				BE76B97C1849A148001E749D /* AdditionalCellState.m */,
+				BE76B97D1849A148001E749D /* AdditionalCellStateAlways.h */,
+				BE76B97E1849A148001E749D /* AdditionalCellStateAlways.m */,
+				BE76B97F1849A148001E749D /* AdditionalCellStateHideEditing.h */,
+				BE76B9801849A148001E749D /* AdditionalCellStateHideEditing.m */,
+				BE76B9811849A148001E749D /* AdditionalCellStateNone.h */,
+				BE76B9821849A148001E749D /* AdditionalCellStateNone.m */,
+				BE76B9831849A148001E749D /* AdditionalCellStateShowEditing.h */,
+				BE76B9841849A148001E749D /* AdditionalCellStateShowEditing.m */,
+			);
+			path = AdditionalCellState;
+			sourceTree = "<group>";
+		};
+		BE76B9851849A148001E749D /* EditableState */ = {
+			isa = PBXGroup;
+			children = (
+				BE76B9861849A148001E749D /* EditableState.h */,
+				BE76B9871849A148001E749D /* EditableState.m */,
+				BE76B9881849A148001E749D /* EditableStateEnadle.h */,
+				BE76B9891849A148001E749D /* EditableStateEnadle.m */,
+				BE76B98A1849A148001E749D /* EditableStateNone.h */,
+				BE76B98B1849A148001E749D /* EditableStateNone.m */,
+			);
+			path = EditableState;
 			sourceTree = "<group>";
 		};
 		BE76B9911849A148001E749D /* ViewObject */ = {
 			isa = PBXGroup;
 			children = (
-				BE6AD8A91988701B0002ABA7 /* SSAgentViewObject.swift */,
-				BE6AD8AF198870600002ABA7 /* MSAgentViewObject.swift */,
-				BEEA508B1989C74000A373EA /* FRCAgentViewObject.swift */,
-				BE741608198E258C00A4B309 /* AgentViewObject.swift */,
-				BE110EC71A05D6B0004DD528 /* FRCLikeObject.swift */,
-				BE19E0A41A3BD51C00CD3649 /* AVOLikeObject.swift */,
+				BE76B9921849A148001E749D /* AgentViewObjectProtocol.h */,
+				BE76B9931849A148001E749D /* FRCAgentViewObject.h */,
+				BE76B9941849A148001E749D /* FRCAgentViewObject.m */,
+				BE76B9951849A148001E749D /* MSAgentViewObject.h */,
+				BE76B9961849A148001E749D /* MSAgentViewObject.m */,
+				BE76B9971849A148001E749D /* SSAgentViewObject.h */,
+				BE76B9981849A148001E749D /* SSAgentViewObject.m */,
+				BE76B9991849A148001E749D /* TableViewAgentCategory.h */,
 			);
 			path = ViewObject;
 			sourceTree = "<group>";
@@ -342,7 +340,6 @@
 				BE5C3CE817C0FE0C00D28713 /* MSViewController.m */,
 				C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */,
 				C87900D1196B2A54304A1558 /* FRCViewController.h */,
-				BEE026CD1A5FE19100E8AA68 /* FRVLikeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -352,8 +349,6 @@
 			children = (
 				C8790598EDF8FE8AE36B952B /* MainService.m */,
 				C8790A0C3B4E3F0F06841882 /* MainService.h */,
-				C8790DF3B85A22031F5C1F5F /* NSObject+performSelector.m */,
-				C8790CDCCD800CF0DA8AED5B /* NSObject+performSelector.h */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -375,8 +370,6 @@
 			children = (
 				C8790ACD959A44401E4E0D54 /* CustomTableViewCell.m */,
 				C87902B6380B6A554115F053 /* CustomTableViewCell.h */,
-				BE02704E19E8FA99003F8692 /* AddTableViewCell.m */,
-				BE02705019E8FAAC003F8692 /* AddTableViewCell.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -409,17 +402,6 @@
 				C8790E7509D540B912A684D8 /* ThirdViewObject.h */,
 			);
 			path = ViewObject;
-			sourceTree = "<group>";
-		};
-		CF1F1AD968B055A860219F1A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9A2EF27E1B83859EEEBEF7D8 /* Pods.debug.xcconfig */,
-				50062C56CFE5369DEDA69100 /* Pods.release.xcconfig */,
-				8B73E5D5A0A3A5817CD36E75 /* Pods-Tests.debug.xcconfig */,
-				5F9983D9448EFA968A697871 /* Pods-Tests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,9 +441,6 @@
 			);
 			dependencies = (
 				BE76B96918498F77001E749D /* PBXTargetDependency */,
-				BE6AD8851987AD700002ABA7 /* PBXTargetDependency */,
-				BE6AD8AC198870320002ABA7 /* PBXTargetDependency */,
-				BE6AD8AE198870320002ABA7 /* PBXTargetDependency */,
 			);
 			name = Tests;
 			productName = Tests;
@@ -474,13 +453,8 @@
 		BE2256E6176BCABC0022DA33 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = P.I.akura;
-				TargetAttributes = {
-					BE76B95918498F77001E749D = {
-						TestTargetID = BE2256ED176BCABC0022DA33;
-					};
-				};
 			};
 			buildConfigurationList = BE2256E9176BCABC0022DA33 /* Build configuration list for PBXProject "TableViewAgent" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -551,7 +525,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5FDA5A35BA1A4402AB508566 /* Check Pods Manifest.lock */ = {
@@ -581,7 +555,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BE225717176BD2490022DA33 /* ShellScript */ = {
@@ -604,38 +578,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE76B99C1849A148001E749D /* AdditionalCellStateHideEditing.m in Sources */,
+				BE76B9A41849A148001E749D /* MSAgentViewObject.m in Sources */,
 				BE2256FE176BCABC0022DA33 /* main.m in Sources */,
-				BE02704F19E8FA99003F8692 /* AddTableViewCell.m in Sources */,
-				BEE026CE1A5FE19100E8AA68 /* FRVLikeViewController.swift in Sources */,
 				BE4D744817F5066300287CE8 /* Todo.m in Sources */,
 				BE225702176BCABC0022DA33 /* AppDelegate.m in Sources */,
+				BE76B99B1849A148001E749D /* AdditionalCellStateAlways.m in Sources */,
 				BE4D744717F5066300287CE8 /* _Todo.m in Sources */,
 				C87909C858C0691F2E527E6C /* MainViewController.m in Sources */,
-				BE19E0A51A3BD51C00CD3649 /* AVOLikeObject.swift in Sources */,
-				BEE8F8DB198A3CD6001477B0 /* TableViewAgentDelegate.swift in Sources */,
 				C879079959003B75D9C7BF87 /* ThirdViewController.m in Sources */,
-				BE6AD8B0198870600002ABA7 /* MSAgentViewObject.swift in Sources */,
 				C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */,
+				BE76B99A1849A148001E749D /* AdditionalCellState.m in Sources */,
+				BE76B99D1849A148001E749D /* AdditionalCellStateNone.m in Sources */,
 				C879041242F8D565D437DBD5 /* CustomTableViewCell.m in Sources */,
-				BE110EC81A05D6B0004DD528 /* FRCLikeObject.swift in Sources */,
 				C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */,
 				BE4D744217F5056D00287CE8 /* Model.xcdatamodeld in Sources */,
 				C87903536A8986DA6EC5F746 /* MainService.m in Sources */,
-				BEE8F8DF198A44AD001477B0 /* TableViewAgent.swift in Sources */,
-				BEE8F8DD198A43B6001477B0 /* TableViewAgentCellDelegate.swift in Sources */,
-				BE02704D19E8E0C5003F8692 /* EditableState.swift in Sources */,
+				BE76B9A21849A148001E749D /* TableViewAgent.m in Sources */,
+				BE76B9A01849A148001E749D /* EditableStateEnadle.m in Sources */,
 				BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */,
-				BE6AD8AA1988701B0002ABA7 /* SSAgentViewObject.swift in Sources */,
+				BE76B9A11849A148001E749D /* EditableStateNone.m in Sources */,
+				BE76B99E1849A148001E749D /* AdditionalCellStateShowEditing.m in Sources */,
+				BE76B9A51849A148001E749D /* SSAgentViewObject.m in Sources */,
 				BE4D744C17F5160600287CE8 /* TodoManager.m in Sources */,
-				BEB49A30198F8814001C219C /* TableViewAgentAdaptor.swift in Sources */,
 				BE5C3CE917C0FE0C00D28713 /* MSViewController.m in Sources */,
-				BE741609198E258C00A4B309 /* AgentViewObject.swift in Sources */,
+				BE76B99F1849A148001E749D /* EditableState.m in Sources */,
 				C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */,
-				BEEA508C1989C74000A373EA /* FRCAgentViewObject.swift in Sources */,
 				C87905270237FA75311D678E /* WETodo.m in Sources */,
-				BE02704C19E8E0C5003F8692 /* AdditionalCellState.swift in Sources */,
-				C8790AE56CEAA4AA5E94FAA6 /* MainEntry.m in Sources */,
-				C8790CBB0AC26F80D4F059F6 /* NSObject+performSelector.m in Sources */,
+				BE76B9A31849A148001E749D /* FRCAgentViewObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,39 +613,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEFD41CD1A28059E00AD63CB /* TableViewAgent.swift in Sources */,
-				BEFD41CE1A28059E00AD63CB /* TableViewAgentAdaptor.swift in Sources */,
-				BEFD41C31A28059E00AD63CB /* AdditionalCellState.swift in Sources */,
-				BEFD41C91A28059E00AD63CB /* AgentViewObject.swift in Sources */,
-				BEFD41C71A28059E00AD63CB /* MSAgentViewObject.swift in Sources */,
-				BEFD41CC1A28059E00AD63CB /* TableViewAgentCellDelegate.swift in Sources */,
-				BEFD41C81A28059E00AD63CB /* FRCAgentViewObject.swift in Sources */,
-				BEFD41C61A28059E00AD63CB /* SSAgentViewObject.swift in Sources */,
-				BEFD41C21A28055C00AD63CB /* FRCLikeObjectTest.swift in Sources */,
-				BEFD41CB1A28059E00AD63CB /* TableViewAgentDelegate.swift in Sources */,
-				BEFD41CA1A28059E00AD63CB /* FRCLikeObject.swift in Sources */,
-				BEFD41C41A28059E00AD63CB /* EditableState.swift in Sources */,
+				BE76B96618498F77001E749D /* Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BE6AD8851987AD700002ABA7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BE2256ED176BCABC0022DA33 /* TableViewAgent */;
-			targetProxy = BE6AD8841987AD700002ABA7 /* PBXContainerItemProxy */;
-		};
-		BE6AD8AC198870320002ABA7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BE2256ED176BCABC0022DA33 /* TableViewAgent */;
-			targetProxy = BE6AD8AB198870320002ABA7 /* PBXContainerItemProxy */;
-		};
-		BE6AD8AE198870320002ABA7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BE2256ED176BCABC0022DA33 /* TableViewAgent */;
-			targetProxy = BE6AD8AD198870320002ABA7 /* PBXContainerItemProxy */;
-		};
 		BE76B96918498F77001E749D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BE2256ED176BCABC0022DA33 /* TableViewAgent */;
@@ -777,46 +721,37 @@
 		};
 		BE225712176BCABD0022DA33 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A2EF27E1B83859EEEBEF7D8 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = DC648156027C4883B2121023 /* Pods.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableViewAgent/TableViewAgent-Prefix.pch";
 				INFOPLIST_FILE = "TableViewAgent/TableViewAgent-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "TableViewAgent/TableViewAgent-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
-				VALID_ARCHS = "armv7 armv7s arm64";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		BE225713176BCABD0022DA33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50062C56CFE5369DEDA69100 /* Pods.release.xcconfig */;
+			baseConfigurationReference = DC648156027C4883B2121023 /* Pods.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableViewAgent/TableViewAgent-Prefix.pch";
 				INFOPLIST_FILE = "TableViewAgent/TableViewAgent-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "TableViewAgent/TableViewAgent-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
-				VALID_ARCHS = "armv7 armv7s arm64";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		BE76B96A18498F77001E749D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B73E5D5A0A3A5817CD36E75 /* Pods-Tests.debug.xcconfig */;
+			baseConfigurationReference = D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TableViewAgent.app/TableViewAgent";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -838,21 +773,17 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				VALID_ARCHS = "armv7 armv7s arm64";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
 		BE76B96B18498F77001E749D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F9983D9448EFA968A697871 /* Pods-Tests.release.xcconfig */;
+			baseConfigurationReference = D10E8D26854249E0ACDBACF3 /* Pods-Tests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TableViewAgent.app/TableViewAgent";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -871,11 +802,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				VALID_ARCHS = "armv7 armv7s arm64";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
