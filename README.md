@@ -45,11 +45,11 @@ library that wraps the delegate and datesource of UITableView
 @end
 ```
 
-## 思想
-　
- UITableViewは、特定の集合を表示させるためのViewである。特定の集合は、必ず一意の順序が規定でき、時としてグループ化されている。集合の個数はCellの数と等しく、各集合の要素はCellを描画するために十分な情報を保持している。各要素は独立しているため、各Cellの相互作用は存在しない(Cell内の相互作用は有無を問わない)。
+## Idea
 
- 各要素はCellに写像される。写像する際、`setViewObject:`のメッセージによって要素がCellに送られる。Cellの表示方法や変更は責務である。要素の内容によってCellが選択されるが、それは、`cellIdentifier:`によって行われる。
+　UITableView is a view for displaying a particular set. The set always be defined a unique order, are sometimes grouped. The number of sets equal to the number of TableViewCell. Each elements of set holds enough information to draw TableViewCell. Since each element is independent, the interaction is not present in the Cell (interactions in Cell or without).
+
+Each element is mapped to Cell. When mapping, `setViewObject:` element is sent to the TableViewCell by a message. Display methods and change the Cell is the responsibility. Although Cell is selected by the content of the element, it is, `cellIdentifier:` by is performed.
 
  
 
