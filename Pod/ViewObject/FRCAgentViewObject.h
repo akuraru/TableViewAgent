@@ -14,8 +14,9 @@
 
 @interface FRCAgentViewObject : NSObject <AgentViewObjectProtocol>
 
-@property (readonly, nonatomic) NSFetchedResultsController * controller;
-@property (weak, nonatomic) TableViewAgent *agent;
+@property(readonly, nonatomic) NSFetchedResultsController *controller;
+@property(weak, nonatomic) TableViewAgent *agent;
+@property(copy, nonatomic) id(^convert)(id);
 
 - (id)initWithFetch:(NSFetchedResultsController *)controller;
 

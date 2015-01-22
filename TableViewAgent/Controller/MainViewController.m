@@ -7,10 +7,6 @@
 
 
 #import "MainViewController.h"
-#import "TableViewAgent.h"
-#import "ExtactedID.h"
-#import "ViewObject.h"
-#import "SSViewController.h"
 #import "MainService.h"
 #import "MagicalRecord.h"
 #import "MagicalRecord+Setup.h"

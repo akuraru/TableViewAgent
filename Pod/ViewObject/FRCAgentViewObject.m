@@ -36,7 +36,8 @@
     return [_controller.sections[section] numberOfObjects];
 }
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
-    return [_controller objectAtIndexPath:indexPath];
+    id object = [_controller objectAtIndexPath:indexPath];
+    return self.convert ? self.convert(object) : object;
 }
 - (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
 }

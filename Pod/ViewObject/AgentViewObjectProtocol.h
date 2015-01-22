@@ -10,27 +10,15 @@
 
 @class TableViewAgent;
 
-@protocol sectionCount <NSObject>
+@protocol AgentViewObjectProtocol <NSObject>
 - (NSUInteger)sectionCount;
-@end
-@protocol countInSection <NSObject>
 - (NSUInteger)countInSection:(NSUInteger)section;
-@end
-@protocol objectAtIndexPath <NSObject>
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
-@end
-@protocol removeObjectAtIndexPath <NSObject>
 - (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath;
-@end
-@protocol existObject <NSObject>
 - (BOOL)existObject:(NSIndexPath *)indexPath;
-@end
-@protocol sectionObjects <NSObject>
 - (NSArray *)sectionObjects:(NSInteger)section;
-@end
-@protocol agent <NSObject>
 @property (weak, nonatomic) TableViewAgent *agent;
-@end
 
-@protocol AgentViewObjectProtocol <sectionCount, countInSection, objectAtIndexPath, removeObjectAtIndexPath, existObject, sectionObjects, agent>
+@optional
+@property(copy, nonatomic) id(^convert)(id);
 @end
