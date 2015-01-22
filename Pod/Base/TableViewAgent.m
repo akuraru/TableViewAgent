@@ -167,11 +167,18 @@ typedef struct {
     if ([self isAdditionalSection:indexPath.section]) {
         return [[tableView dequeueReusableCellWithIdentifier:[_delegate addCellIdentifier]] frame].size.height;
     } else {
-        id cell = [self dequeueCell:indexPath];
-        if ([cell respondsToSelector:@selector(heightFromViewObject:)]) {
-            return [cell heightFromViewObject:[self viewObjectWithIndex:indexPath]];
+        id viewObject = [self viewObjectWithIndex:indexPath];
+        NSString *cellIdentifier = [_delegate cellIdentifier:viewObject];
+        Class<TableViewAgentCellDelegate> cellClass = NSClassFromString(cellIdentifier);
+        if ([cellClass respondsToSelector:@selector(heightFromViewObject:)]) {
+            return [cellClass heightFromViewObject:viewObject];
         } else {
-            return [self tableView:tableView cellForRowAtIndexPath:indexPath].frame.size.height;
+            id cell = [self dequeueCell:indexPath];
+            if ([cell respondsToSelector:@selector(heightFromViewObject:)]) {
+                return [cell heightFromViewObject:[self viewObjectWithIndex:indexPath]];
+            } else {
+                return [self tableView:tableView cellForRowAtIndexPath:indexPath].frame.size.height;
+            }
         }
     }
 }

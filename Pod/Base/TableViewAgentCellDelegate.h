@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @protocol TableViewAgentCellDelegate <NSObject>
++ (CGFloat)heightFromViewObject:(id)o;
 - (void)setViewObject:(id)o;
 @optional
-- (void)setViewObject:(id)o common:(id)c;
-- (CGFloat)heightFromViewObject:(id)o;
+- (void)setViewObject:(id)o common:(id)c __attribute__ ((deprecated));
+- (CGFloat)heightFromViewObject:(id)oa __attribute__ ((deprecated));
 @end
+
