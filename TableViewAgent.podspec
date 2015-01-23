@@ -8,6 +8,6 @@ Pod::Spec.new do |s|
   s.author       = { "akuraru" => "akuraru@gmail.com" }
   s.ios.deployment_target = '7.0'
   s.source       = { :git => "#{s.homepage}.git", :tag => s.version }
-  s.source_files  = 'Pod/**/*.{h,m}'
+  s.source_files  = 'Pod/Classes/**/*.{h,m}'
   s.requires_arc = true
 end
