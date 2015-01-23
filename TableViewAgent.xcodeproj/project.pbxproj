@@ -28,7 +28,6 @@
 		BE76B95D18498F77001E749D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F3176BCABC0022DA33 /* Foundation.framework */; };
 		BE76B95E18498F77001E749D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2256F1176BCABC0022DA33 /* UIKit.framework */; };
 		BE76B96418498F77001E749D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE76B96218498F77001E749D /* InfoPlist.strings */; };
-		BE76B96618498F77001E749D /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE76B96518498F77001E749D /* Tests.m */; };
 		BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1217719B3200A6113E /* SSViewController.m */; };
 		C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */; };
 		C87903536A8986DA6EC5F746 /* MainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790598EDF8FE8AE36B952B /* MainService.m */; };
@@ -37,6 +36,7 @@
 		C87905270237FA75311D678E /* WETodo.m in Sources */ = {isa = PBXBuildFile; fileRef = C879000AD100E37BD5CCF83C /* WETodo.m */; };
 		C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790665BD0F40D548AD722F /* ViewObject.m */; };
 		C879079959003B75D9C7BF87 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790DD4728C683034FBAF4A /* ThirdViewController.m */; };
+		C879096312E5A6F90A50A40D /* AVOArrrayControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790854A9F301ADFCD0C447 /* AVOArrrayControllerTest.m */; };
 		C87909C858C0691F2E527E6C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790043B0A754925503375F /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -84,7 +84,6 @@
 		BE76B95A18498F77001E749D /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE76B96118498F77001E749D /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		BE76B96318498F77001E749D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BE76B96518498F77001E749D /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		BE76B96718498F77001E749D /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		BE8FDB1117719B3200A6113E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
 		BE8FDB1217719B3200A6113E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
@@ -97,6 +96,7 @@
 		C8790598EDF8FE8AE36B952B /* MainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainService.m; sourceTree = "<group>"; };
 		C8790665BD0F40D548AD722F /* ViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewObject.m; sourceTree = "<group>"; };
 		C879070AF31E3D8CD56EE98B /* WETodo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WETodo.h; sourceTree = "<group>"; };
+		C8790854A9F301ADFCD0C447 /* AVOArrrayControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVOArrrayControllerTest.m; sourceTree = "<group>"; };
 		C8790A0C3B4E3F0F06841882 /* MainService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainService.h; sourceTree = "<group>"; };
 		C8790ACD959A44401E4E0D54 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRCViewController.m; sourceTree = "<group>"; };
@@ -221,8 +221,8 @@
 		BE76B95F18498F77001E749D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				BE76B96518498F77001E749D /* Tests.m */,
 				BE76B96018498F77001E749D /* Supporting Files */,
+				C8790854A9F301ADFCD0C447 /* AVOArrrayControllerTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -365,6 +365,11 @@
 			attributes = {
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = P.I.akura;
+				TargetAttributes = {
+					BE76B95918498F77001E749D = {
+						TestTargetID = BE2256ED176BCABC0022DA33;
+					};
+				};
 			};
 			buildConfigurationList = BE2256E9176BCABC0022DA33 /* Build configuration list for PBXProject "TableViewAgent" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -511,7 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE76B96618498F77001E749D /* Tests.m in Sources */,
+				C879096312E5A6F90A50A40D /* AVOArrrayControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +680,8 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TableViewAgent.app/TableViewAgent";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -703,7 +709,8 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TableViewAgent.app/TableViewAgent";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
