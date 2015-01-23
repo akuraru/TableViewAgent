@@ -96,15 +96,31 @@ NSArray *sortedArray(NSArray *array) {
 
     [controller addObject:addT];
 
-    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:array groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
+    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[array arrayByAddingObject:addT] groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
     [self AVOArrayControllerAssertEqual:controller expected:expected];
 }
 
-- (void)AVOArrayControllerAssertEqual:(AVOArrayController *)controller expected:(AVOArrayController *)expected {
-
+- (void)testAddObjects {
+    NSArray *addTs = @[[[AVOTestObject alloc] initWithString:@"unknown" identifier:10], [[AVOTestObject alloc] initWithString:@"warwlof" identifier:11]];
+    callControllerWillChangeContent = ^{};
+    callControllerDidChangeContent = ^{};
+    callController = ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssert(indexPath == nil);
+        XCTAssertEqual(type, NSFetchedResultsChangeInsert);
+        if ([addTs[0] isEqual:anObject]) {
+            XCTAssertEqual(newIndexPath, [NSIndexPath indexPathForRow:array.count inSection:0]);
+        } else {
+            XCTAssertEqual(addTs[1], anObject);
+            XCTAssertEqual(newIndexPath, [NSIndexPath indexPathForRow:array.count + 1 inSection:0]);
+        }
+    };
+    [controller addObjects:addTs];
+    
+    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[array arrayByAddingObjectsFromArray:addTs] groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
+    [self AVOArrayControllerAssertEqual:controller expected:expected];
 }
 
-- (void)AVOArrayControllerAssertEqual:(AVOArrayController *)c1 ecpected:(AVOArrayController *)c2; {
+- (void)AVOArrayControllerAssertEqual:(AVOArrayController *)c1 expected:(AVOArrayController *)c2 {
     XCTAssertEqual(c1.fetchedObjects.count, c2.fetchedObjects.count);
     for (int i = 0; i < c1.fetchedObjects.count; ++i) {
         id t1 = c1.fetchedObjects[i];
@@ -132,25 +148,6 @@ NSArray *sortedArray(NSArray *array) {
 
 
 /*
-    - (void)testAddObjects {
-        let addTs = [AVOTestObject("unknown", 10), AVOTestObject("warwlof", 11)]
-        self.callControllerWillChangeContent = {}
-        self.callControllerDidChangeContent = {}
-        self.callController = {(anObject, indexPath, type, newIndexPath) in
-        XCTAssert(indexPath == nil)
-        XCTAssertEqual(type, NSFetchedResultsChangeType.Insert)
-        if addTs[0] == anObject as AVOTestObject {
-            XCTAssertEqual(newIndexPath!, NSIndexPath(forRow: self.array.count, inSection: 0))
-        } else {
-            XCTAssertEqual(addTs[1], anObject as AVOTestObject)
-                    XCTAssertEqual(newIndexPath!, NSIndexPath(forRow: self.array.count + 1, inSection: 0))
-        }
-        }
-        controller.addObjects(addTs)
-
-        let expected = AVOArrayController(array: array + addTs, groupedBy: nil, sortedBy: sortTerm)
-        AVOArrayControllerAssertEqual(controller, expected)
-    }
     - (void)testRemoveObject {
         let removeT = AVOTestObject("alice", 1)
         self.callControllerWillChangeContent = {}
