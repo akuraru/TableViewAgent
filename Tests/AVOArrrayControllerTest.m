@@ -1,7 +1,7 @@
 #import "Kiwi.h"
 #import "AVOArrayControoler.h"
 
-@interface AVOTestObject : NSObject
+@interface AVOTestObject : NSObject<NSCopying>
 @property(nonatomic) NSString *string;
 @property(nonatomic) NSInteger identifie;
 @end
@@ -11,6 +11,7 @@
     self = [super init];
     if (self) {
         self.string = string;
+        self.identifie = identifier;
     }
     return self;
 }
@@ -28,6 +29,14 @@
 
 - (NSComparisonResult)compare:(id)object {
     return [@(self.identifie) compare:@([self identifie])];
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    return self;
+}
+
+- (NSUInteger)hash {
+    return self.identifie;
 }
 @end
 
@@ -53,19 +62,25 @@ NSArray *sortedArray(NSArray *array) {
     }];
 }
 
+@interface AVOArrayControllerTest () <NSFetchedResultsControllerDelegate>
+@end
+
 @implementation AVOArrayControllerTest {
     AVOArrayController *controller;
     NSArray *array;
+
     BOOL (^sortTerm)(id obj1, id obj2);
-    
+
     void (^callControllerWillChangeContent)();
+
     void (^callControllerDidChangeContent)();
+
     void (^callController)(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath);
 }
 - (void)setUp {
     [super setUp];
     controller = [[AVOArrayController alloc] initWithArray:array groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
-//    [controller setDelegate:self];
+    [controller setDelegate:self];
 }
 
 - (void)tearDown {
@@ -75,12 +90,13 @@ NSArray *sortedArray(NSArray *array) {
 }
 
 - (void)testFetchedObjects {
-    XCTAssertEqual(controller.fetchedObjects, sortedArray(array), @"empty list");
+    NSArray *expected = sortedArray(array) ?: @[];
+    XCTAssertEqualObjects(controller.fetchedObjects, expected, @"empty list");
 }
 
 - (void)testSections {
     AVOArrayControllerSectionInfo *expected = [[AVOArrayControllerSectionInfo alloc] initWithName:nil objects:sortedArray(array)];
-    XCTAssertEqualObjects(controller.sections, @[expected]);
+    [self SctionInfoAssertEqual:controller.sections expected:@[expected]];
 }
 
 - (void)testAddObject {
@@ -96,7 +112,7 @@ NSArray *sortedArray(NSArray *array) {
 
     [controller addObject:addT];
 
-    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[array arrayByAddingObject:addT] groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
+    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[array ?: @[] arrayByAddingObject:addT] groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
     [self AVOArrayControllerAssertEqual:controller expected:expected];
 }
 
@@ -115,13 +131,16 @@ NSArray *sortedArray(NSArray *array) {
         }
     };
     [controller addObjects:addTs];
-    
-    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[array arrayByAddingObjectsFromArray:addTs] groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
+
+    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[array ?: @[] arrayByAddingObjectsFromArray:addTs] groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
     [self AVOArrayControllerAssertEqual:controller expected:expected];
 }
 
 - (void)AVOArrayControllerAssertEqual:(AVOArrayController *)c1 expected:(AVOArrayController *)c2 {
-    XCTAssertEqual(c1.fetchedObjects.count, c2.fetchedObjects.count);
+    if (c1.fetchedObjects.count != c2.fetchedObjects.count) {
+        XCTFail("count");
+        return;
+    }
     for (int i = 0; i < c1.fetchedObjects.count; ++i) {
         id t1 = c1.fetchedObjects[i];
         id t2 = c2.fetchedObjects[i];
@@ -142,6 +161,32 @@ NSArray *sortedArray(NSArray *array) {
             id t2 = i2.objects[i];
             XCTAssert([t1 isEqualToTest:t2], @"{\n %@: %zd,\n %@: %zd", [t1 string], [t1 identifie], [t2 string], [t2 identifie]);
         }
+    }
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    if (callController) {
+        callController(anObject, indexPath, type, newIndexPath);
+    } else {
+        XCTFail("don't call this delegate method");
+    }
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    if (callControllerWillChangeContent) {
+        callControllerWillChangeContent();
+        callControllerWillChangeContent = nil;
+    } else {
+        XCTFail("don't call this delegate method");
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    if (callControllerDidChangeContent) {
+        callControllerDidChangeContent();
+        callControllerDidChangeContent = nil;
+    } else {
+        XCTFail("don't call this delegate method");
     }
 }
 @end
@@ -206,32 +251,6 @@ NSArray *sortedArray(NSArray *array) {
                 XCTAssert(true)
             case _:
                 XCTFail("false")
-        }
-    }
-    var callController: ((anObject: AnyObject, indexPath: NSIndexPath?, type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) -> ())!
-            func controller(didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        if let c = callController {
-                c(anObject: anObject, indexPath: indexPath, type: type, newIndexPath: newIndexPath)
-            } else {
-            XCTFail("don't call this delegate method")
-        }
-    }
-    var callControllerWillChangeContent: (() -> ())!
-            func controllerWillChangeContent {
-        if let c = callControllerWillChangeContent {
-                c()
-                self.callControllerWillChangeContent = nil
-            } else {
-            XCTFail("don't call this delegate method")
-        }
-    }
-    var callControllerDidChangeContent: (() -> ())!
-            func controllerDidChangeContent {
-        if let c = callControllerDidChangeContent {
-                c()
-                self.callControllerDidChangeContent = nil
-            } else {
-            XCTFail("don't call this delegate method")
         }
     }
 }

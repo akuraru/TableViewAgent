@@ -56,7 +56,7 @@
         if (searchTerm) {
             array = [array filteredArrayUsingPredicate:searchTerm];
         }
-        self.fetchedObjects = [array mutableCopy];
+        self.fetchedObjects = array ? [array mutableCopy]: [@[] mutableCopy];
         [self.fetchedObjects sortUsingDescriptors:[self sortDescriptors]];
         self.sectionsByName = groupedTerm;
         self.sections = [self createSections];
