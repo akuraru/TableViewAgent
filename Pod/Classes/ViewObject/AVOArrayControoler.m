@@ -144,10 +144,12 @@
     [self controllerWillChangeContent];
 
     NSIndexPath *indexPath = [self indexPathForObject:object];
+    if (indexPath) {
     [self.fetchedObjects removeObject:object];
-    self.sections = [self createSections];
+        self.sections = [self createSections];
 
-    [self didChangeObject:object atIndexPath:indexPath forChangeType:NSFetchedResultsChangeDelete newIndexPath:nil];
+        [self didChangeObject:object atIndexPath:indexPath forChangeType:NSFetchedResultsChangeDelete newIndexPath:nil];
+    }
 
     [self controllerDidChangeContent];
 }

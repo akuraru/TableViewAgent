@@ -121,7 +121,7 @@ NSArray *sortedArray(NSArray *array) {
     callControllerWillChangeContent = ^{};
     callControllerDidChangeContent = ^{};
     callController = ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
-        XCTAssert(indexPath == nil);
+        XCTAssertTrue(indexPath == nil, "indexPath");
         XCTAssertEqual(type, NSFetchedResultsChangeInsert);
         if ([addTs[0] isEqual:anObject]) {
             XCTAssertEqual(newIndexPath, [NSIndexPath indexPathForRow:array.count inSection:0]);
@@ -133,6 +133,23 @@ NSArray *sortedArray(NSArray *array) {
     [controller addObjects:addTs];
 
     AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[array ?: @[] arrayByAddingObjectsFromArray:addTs] groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
+    [self AVOArrayControllerAssertEqual:controller expected:expected];
+}
+
+- (void)testRemoveObject {
+    AVOTestObject *removeT = [[AVOTestObject alloc] initWithString:@"alice" identifier:1];
+    callControllerWillChangeContent = ^{};
+    callControllerDidChangeContent = ^{};
+    callController = ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertEqualObjects(removeT, anObject);
+        XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:0 inSection:0]);
+        XCTAssertEqual(type, NSFetchedResultsChangeDelete);;
+        XCTAssert(newIndexPath == nil, "hoge");
+    };
+    [controller removeObject:removeT];
+    
+    NSArray *a = array.count == 0 ? @[] : [self filter:array objects:@[removeT]];
+    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:a groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
     [self AVOArrayControllerAssertEqual:controller expected:expected];
 }
 
@@ -164,6 +181,16 @@ NSArray *sortedArray(NSArray *array) {
     }
 }
 
+- (NSArray *)filter:(NSArray *)arr objects:(id)objects {
+    NSMutableArray *result = [NSMutableArray array];
+    for (id a in arr) {
+        if ([objects indexOfObject:a] != NSNotFound) {
+            [result addObject:a];
+        }
+    }
+    return result;
+}
+
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
     if (callController) {
         callController(anObject, indexPath, type, newIndexPath);
@@ -193,22 +220,6 @@ NSArray *sortedArray(NSArray *array) {
 
 
 /*
-    - (void)testRemoveObject {
-        let removeT = AVOTestObject("alice", 1)
-        self.callControllerWillChangeContent = {}
-        self.callControllerDidChangeContent = {}
-        self.callController = {(anObject, indexPath, type, newIndexPath) in
-        XCTAssertEqual(removeT, anObject as AVOTestObject)
-        XCTAssertEqual(indexPath!, NSIndexPath(forRow: 0, inSection: 0))
-        XCTAssertEqual(type, NSFetchedResultsChangeType.Delete)
-        XCTAssert(newIndexPath == nil)
-        }
-        controller.removeObject(removeT)
-
-        let a = array.filter{t in t != removeT}
-        let expected = AVOArrayController(array: a, groupedBy: nil, sortedBy: sortTerm)
-        AVOArrayControllerAssertEqual(controller, expected)
-    }
     - (void)testUpdateObject {
         let updateT = AVOTestObject("arc", 1)
         self.callControllerWillChangeContent = {}
