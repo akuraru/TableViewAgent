@@ -38,26 +38,23 @@
 @property(nonatomic) NSArray *sections;
 @property(nonatomic) id sectionsByName;
 @property(nonatomic) id sectionIndexTitlesSections;
-@property(nonatomic) NSArray *sortKeys;
-@property(nonatomic) NSArray *sortDescriptors;
 @property(nonatomic) NSPredicate *searchTerm;
+@property(copy, nonatomic) NSComparisonResult (^comparator)(id, id);
 @property(nonatomic) NSDictionary *arrayIndexPath;
 @end
 
 @implementation AVOArrayController {
 
 }
-- (id)initWithArray:(NSArray *)array groupedBy:(NSString *)groupedTerm withPredicate:(NSPredicate *)searchTerm sortedBy:(NSString *)sortTerm ascending:(BOOL)ascending {
+- (id)initWithArray:(NSArray *)array groupedBy:(NSString *)groupedTerm withPredicate:(NSPredicate *)searchTerm sortedBy:(NSComparisonResult (^)(id, id))comparator {
     self = [super init];
     if (self) {
-        self.sortKeys = [self sortKeysForTerm:sortTerm];
-        self.sortDescriptors = [self sortDescriptors:self.sortKeys ascending:ascending];
-        self.searchTerm = searchTerm;
+        self.comparator = comparator;
         if (searchTerm) {
             array = [array filteredArrayUsingPredicate:searchTerm];
         }
         self.fetchedObjects = array ? [array mutableCopy]: [@[] mutableCopy];
-        [self.fetchedObjects sortUsingDescriptors:[self sortDescriptors]];
+        [self sortArray];
         self.sectionsByName = groupedTerm;
         self.sections = [self createSections];
     }
@@ -105,7 +102,7 @@
             continue;
         }
         [self.fetchedObjects addObject:object];
-        [self.fetchedObjects sortUsingDescriptors:[self sortDescriptors]];
+        [self sortArray];
         self.sections = [self createSections];
         NSIndexPath *indexPath = [self indexPathForObject:object];
 
@@ -128,7 +125,7 @@
         NSUInteger index = [self.fetchedObjects indexOfObject:o];
         if (indexPath != nil && index != NSNotFound) {
             self.fetchedObjects[index] = o;
-            [self.fetchedObjects sortUsingDescriptors:[self sortDescriptors]];
+            [self sortArray];
             self.sections = [self createSections];
             NSIndexPath *newIndexPath = [self indexPathForObject:o];
 
@@ -186,13 +183,13 @@
 
 - (NSArray *)createSections {
     NSString *keyPath = self.sectionsByName;
-    NSString *sortKey = self.sortKeys.count == 0 ? self.sectionsByName : self.sortKeys[0];
     if (keyPath == nil) {
         NSArray *result = @[[self createSectionInfo:nil objects:self.fetchedObjects]];
         [self createArrayIndexPath:result];
         return result;
     }
 
+    
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     for (id o in self.fetchedObjects) {
         id value = [o valueForKeyPath:keyPath];
@@ -200,7 +197,7 @@
         if (pair) {
             [pair.second addObject:o];
         } else {
-            id sortValue = [o valueForKeyPath:sortKey];
+            id sortValue = [o valueForKeyPath:keyPath];
             dictionary[value] = [AKUPair pairWithFirst:sortValue second:[NSMutableArray arrayWithObject:o]];
         }
     }
@@ -234,6 +231,12 @@
         }
     }];
     self.arrayIndexPath = dict;
+}
+
+- (void)sortArray {
+    if (self.comparator) {
+        [self.fetchedObjects sortUsingComparator:self.comparator];
+    }
 }
 @end
 

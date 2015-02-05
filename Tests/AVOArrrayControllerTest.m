@@ -28,7 +28,7 @@
 }
 
 - (NSComparisonResult)compare:(id)object {
-    return [@(self.identifie) compare:@([self identifie])];
+    return [@(self.identifie) compare:@([object identifie])];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -56,46 +56,47 @@
 @interface AVOArrayControllerTest : XCTestCase
 @end
 
-NSArray *sortedArray(NSArray *array) {
-    return [array sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id obj1, id obj2) {
-        return [obj1 compare:obj2];
-    }];
-}
-
-@interface AVOArrayControllerTest () <NSFetchedResultsControllerDelegate>
-@end
-
-@implementation AVOArrayControllerTest {
+@interface AVOArrayControllerTest () <NSFetchedResultsControllerDelegate> {
     AVOArrayController *controller;
-    NSArray *array;
-
-    BOOL (^sortTerm)(id obj1, id obj2);
-
+    
     void (^callControllerWillChangeContent)();
-
+    
     void (^callControllerDidChangeContent)();
-
+    
     void (^callController)(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath);
 }
+@property(strong, nonatomic) NSComparisonResult(^sortTerm)(id obj1, id obj2);
+@property(nonatomic) NSArray *array;
+@end
+
+@implementation AVOArrayControllerTest
 - (void)setUp {
     [super setUp];
-    controller = [[AVOArrayController alloc] initWithArray:array groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
+    controller = [[AVOArrayController alloc] initWithArray:self.array groupedBy:nil withPredicate:nil sortedBy:self.sortTerm];
     [controller setDelegate:self];
 }
 
 - (void)tearDown {
     [super tearDown];
-    array = @[];
-    sortTerm = nil;
+    self.array = nil;
+    self.sortTerm = nil;
+}
+
+- (NSArray *)sortedArray {
+    if (self.sortTerm) {
+        return [self.array sortedArrayUsingComparator:self.sortTerm];
+    } else {
+        return self.array ?: @[];
+    }
 }
 
 - (void)testFetchedObjects {
-    NSArray *expected = sortedArray(array) ?: @[];
+    NSArray *expected = [self sortedArray];
     XCTAssertEqualObjects(controller.fetchedObjects, expected, @"empty list");
 }
 
 - (void)testSections {
-    AVOArrayControllerSectionInfo *expected = [[AVOArrayControllerSectionInfo alloc] initWithName:nil objects:sortedArray(array)];
+    AVOArrayControllerSectionInfo *expected = [[AVOArrayControllerSectionInfo alloc] initWithName:nil objects:[self sortedArray]];
     [self SctionInfoAssertEqual:controller.sections expected:@[expected]];
 }
 
@@ -107,12 +108,12 @@ NSArray *sortedArray(NSArray *array) {
         XCTAssertEqualObjects(addT, anObject);
         XCTAssert(indexPath == nil);
         XCTAssertEqual(type, NSFetchedResultsChangeInsert);
-        XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:array.count inSection:0]);
+        XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:self.array.count inSection:0]);
     };
 
     [controller addObject:addT];
 
-    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[array ?: @[] arrayByAddingObject:addT] groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
+    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[self.array ?: @[] arrayByAddingObject:addT] groupedBy:nil withPredicate:nil sortedBy:self.sortTerm];
     [self AVOArrayControllerAssertEqual:controller expected:expected];
 }
 
@@ -124,15 +125,15 @@ NSArray *sortedArray(NSArray *array) {
         XCTAssertTrue(indexPath == nil, "indexPath");
         XCTAssertEqual(type, NSFetchedResultsChangeInsert);
         if ([addTs[0] isEqual:anObject]) {
-            XCTAssertEqual(newIndexPath, [NSIndexPath indexPathForRow:array.count inSection:0]);
+            XCTAssertEqual(newIndexPath, [NSIndexPath indexPathForRow:self.array.count inSection:0]);
         } else {
             XCTAssertEqual(addTs[1], anObject);
-            XCTAssertEqual(newIndexPath, [NSIndexPath indexPathForRow:array.count + 1 inSection:0]);
+            XCTAssertEqual(newIndexPath, [NSIndexPath indexPathForRow:self.array.count + 1 inSection:0]);
         }
     };
     [controller addObjects:addTs];
 
-    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[array ?: @[] arrayByAddingObjectsFromArray:addTs] groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
+    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[self.array ?: @[] arrayByAddingObjectsFromArray:addTs] groupedBy:nil withPredicate:nil sortedBy:self.sortTerm];
     [self AVOArrayControllerAssertEqual:controller expected:expected];
 }
 
@@ -148,9 +149,30 @@ NSArray *sortedArray(NSArray *array) {
     };
     [controller removeObject:removeT];
     
-    NSArray *a = array.count == 0 ? @[] : [self filter:array objects:@[removeT]];
-    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:a groupedBy:nil withPredicate:nil sortedBy:nil ascending:YES];
+    NSArray *a = self.array.count == 0 ? @[] : [self filter:self.array objects:@[removeT]];
+    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:a groupedBy:nil withPredicate:nil sortedBy:self.sortTerm];
     [self AVOArrayControllerAssertEqual:controller expected:expected];
+}
+
+- (void)testUpdateObject {
+    AVOTestObject *updateT = [[AVOTestObject alloc] initWithString:@"arc" identifier:1];
+    if ([self.array indexOfObject:updateT] != NSNotFound) {
+        callControllerWillChangeContent = ^{};
+        callControllerDidChangeContent = ^{};
+        callController = ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+            XCTAssertEqualObjects(updateT, anObject);
+            XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:0 inSection:0]);
+            XCTAssertEqual(type, NSFetchedResultsChangeUpdate);;
+            XCTAssert(newIndexPath == [NSIndexPath indexPathForRow:0 inSection:0], "hoge");
+        };
+        [controller updateObject:updateT];
+        
+        NSArray *a = [self update:self.array objects:@[updateT]];
+        AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:a groupedBy:nil withPredicate:nil sortedBy:self.sortTerm];
+        [self AVOArrayControllerAssertEqual:controller expected:expected];
+    } else {
+        
+    }
 }
 
 - (void)AVOArrayControllerAssertEqual:(AVOArrayController *)c1 expected:(AVOArrayController *)c2 {
@@ -181,10 +203,23 @@ NSArray *sortedArray(NSArray *array) {
     }
 }
 
+- (NSArray *)update:(NSArray *)arr objects:(id)objects {
+    NSMutableArray *result = [NSMutableArray array];
+    for (id a in arr) {
+        NSInteger index = [objects indexOfObject:a];
+        if (index != NSNotFound) {
+            [result addObject:objects[index]];
+        } else {
+            [result addObject:a];
+        }
+    }
+    return result;
+}
+
 - (NSArray *)filter:(NSArray *)arr objects:(id)objects {
     NSMutableArray *result = [NSMutableArray array];
     for (id a in arr) {
-        if ([objects indexOfObject:a] != NSNotFound) {
+        if ([objects indexOfObject:a] == NSNotFound) {
             [result addObject:a];
         }
     }
@@ -219,84 +254,55 @@ NSArray *sortedArray(NSArray *array) {
 @end
 
 
-/*
-    - (void)testUpdateObject {
-        let updateT = AVOTestObject("arc", 1)
-        self.callControllerWillChangeContent = {}
-        self.callControllerDidChangeContent = {}
-        controller.updateObject(updateT)
+@interface OneListTest : AVOArrayControllerTest
+@end
 
-        let a = array.map{t in t == updateT ? updateT : t}
-        let expected = AVOArrayController(array: a, groupedBy: nil, sortedBy: sortTerm)
-        AVOArrayControllerAssertEqual(controller, expected)
-    }
-    - (void)testInsertOrUpdateObject {
-        let updateT = AVOTestObject("arc", 1)
-        self.callControllerWillChangeContent = {}
-        self.callControllerDidChangeContent = {}
-        controller.insertOrUpdateObject(updateT)
+@implementation OneListTest
+- (void)setUp {
+    self.array = @[[[AVOTestObject alloc] initWithString:@"alice" identifier:1]];
+    [super setUp];
+}
+@end
 
-        let a = array.filter({t in t == updateT}).isEmpty ? {
-                let t = (self.array + [updateT])
-                return self.sortTerm != nil ? t.sorted(self.sortTerm) : t
-        }() : array.map{t in t == updateT ? updateT : t}
-        let expected = AVOArrayController(array: a, groupedBy: nil, sortedBy: sortTerm)
-        AVOArrayControllerAssertEqual(controller, expected)
-    }
-    func addArray(array: [T],_ Ts: [T]) -> [T] {
-        return sortedArray(array + Ts)
-    }
-    func sortedArray(array: [T]) -> [T] {
-        return array
-    }
+@interface SortedListTest: OneListTest
+@end
 
-    var checkControllerWillChangeContent: (NSFetchedResultsController -> ())!
-            func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        checkControllerWillChangeContent(controller)
-    }
-    func eq<T: Equatable>(o1: T?,_ o2: T?) {
-        switch (o1, o2) {
-            case let (.Some(v1), .Some(v2)):
-                XCTAssertEqual(v1, v2)
-            case (nil, nil):
-                XCTAssert(true)
-            case _:
-                XCTFail("false")
-        }
-    }
+@implementation SortedListTest
+
+- (void)setUp {
+    self.sortTerm = ^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 compare:obj2];
+    };
+    [super setUp];
 }
 
-class OneListTest: AVOArrayControllerTest {
-    override func setUp {
-        array = [AVOTestObject("alice", 1)]
-        super.setUp()
-    }
+@end
+
+@interface MoreListTest: AVOArrayControllerTest
+@end
+@implementation MoreListTest
+
+
+- (void)setUp {
+    self.array = @[
+        [[AVOTestObject alloc] initWithString:@"alice" identifier:1],
+        [[AVOTestObject alloc] initWithString:@"charlie" identifier:3],
+        [[AVOTestObject alloc] initWithString:@"bob" identifier:2],
+    ];
+    [super setUp];
 }
 
-class SortedListTest: OneListTest {
-    override func setUp {
-        sortTerm = {(t: AVOTestObject, u: AVOTestObject) in t.identifier < u.identifier}
-        super.setUp()
-    }
-    override func sortedArray(a: [T]) -> [T] {
-        return a.sorted(self.sortTerm)
-    }
+@end
+
+@interface MoreSortedListTest: MoreListTest
+@end
+@implementation MoreSortedListTest
+
+- (void)setUp {
+    self.sortTerm = ^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 compare:obj2];
+    };
+    [super setUp];
 }
 
-class MoreListTest: AVOArrayControllerTest {
-    override func setUp {
-        array = [AVOTestObject("alice", 1), AVOTestObject("charlie", 3), AVOTestObject("bob", 2)]
-        super.setUp()
-    }
-}
-
-class MoreSortedListTest: MoreListTest {
-    override func setUp {
-        sortTerm = {(t: AVOTestObject, u: AVOTestObject) in t.identifier < u.identifier}
-        super.setUp()
-    }
-    override func sortedArray(a: [T]) -> [T] {
-        return a.sorted(self.sortTerm)
-    }
-}
-*/
+@end
