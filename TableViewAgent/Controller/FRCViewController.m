@@ -15,6 +15,7 @@
 #import "FRCAgentViewObject.h"
 #import "TodoManager.h"
 #import "WETodo.h"
+#import "ThirdViewController.h"
 
 @interface FRCViewController () <TableViewAgentDelegate>
 @end
@@ -56,7 +57,7 @@
 #pragma -
 #pragma mark TableViewAgentDelegate
 - (NSString *)cellIdentifier:(id)viewObject {
-    return @"Cell";
+    return kReuseCustomTableViewCell;
 }
 
 - (void)didSelectCell:(ViewObject *)viewObject {

@@ -1,9 +1,15 @@
-platform :ios, '5.0'
-
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '7.0'
 inhibit_all_warnings!
 
-pod 'MagicalRecord'
+target 'TableViewAgent', :exclusive => true do
+  pod 'MagicalRecord'
+  pod "TableViewAgent", :path => "./"
+end
 
 target :Tests do
-  pod 'Kiwi/XCTest'
+  pod 'MagicalRecord'
+  pod "TableViewAgent", :path => "./"
+
+  pod 'Kiwi'
 end

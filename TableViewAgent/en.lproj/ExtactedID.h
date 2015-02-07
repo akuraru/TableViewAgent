@@ -1,6 +1,7 @@
 #define kSegueSingleSection @"SingleSection"
 #define kSegueMalutSection @"MalutSection"
 #define kSegueFectedResult @"FectedResult"
-#define kReuseCell @"Cell"
+#define kSegueArray @"Array"
+#define kReuseCustomTableViewCell @"CustomTableViewCell"
 #define kReuseAdd @"Add"
 #define kSegueEdit @"Edit"

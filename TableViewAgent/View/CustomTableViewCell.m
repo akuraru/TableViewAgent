@@ -9,17 +9,19 @@
 #import "CustomTableViewCell.h"
 #import "ViewObject.h"
 
+@interface CustomTableViewCell () <TableViewAgentCellDelegate>
+@end
 
 @implementation CustomTableViewCell {
+}
+
++ (CGFloat)heightFromViewObject:(id)o {
+    return [[o title] length] * 10;
 }
 
 - (void)setViewObject:(ViewObject *)o {
     self.textLabel.text = o.title;
     self.detailTextLabel.text = o.message;
-}
-
-- (CGFloat)heightFromViewObject:(id)o {
-    return [o title].length * 10;
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
 #import "SSAgentViewObject.h"
+#import "ThirdViewController.h"
 
 @interface SSViewController () <TableViewAgentDelegate>
 @end
@@ -70,7 +71,7 @@
 #pragma -
 #pragma mark TableViewAgentDelegate
 - (NSString *)cellIdentifier:(id)viewObject {
-    return @"Cell";
+    return kReuseCustomTableViewCell;
 }
 
 - (void)didSelectCell:(ViewObject *)viewObject {
