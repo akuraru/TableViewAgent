@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ViewObject : NSObject
+@interface ViewObject : NSObject <NSCopying>
 
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *message;

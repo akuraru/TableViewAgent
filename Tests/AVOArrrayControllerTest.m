@@ -1,17 +1,19 @@
 #import "Kiwi.h"
 #import "AVOArrayControoler.h"
 
-@interface AVOTestObject : NSObject<NSCopying>
+@interface AVOTestObject : NSObject <NSCopying>
 @property(nonatomic) NSString *string;
 @property(nonatomic) NSInteger identifie;
+@property(nonatomic) NSString *groupe;
 @end
 
 @implementation AVOTestObject
-- (instancetype)initWithString:(NSString *)string identifier:(NSInteger)identifier {
+- (instancetype)initWithString:(NSString *)string identifier:(NSInteger)identifier groupe:(NSString *)groupe {
     self = [super init];
     if (self) {
         self.string = string;
         self.identifie = identifier;
+        self.groupe = groupe;
     }
     return self;
 }
@@ -24,11 +26,17 @@
 - (BOOL)isEqualToTest:(id)object {
     return [object isKindOfClass:[AVOTestObject class]] &&
             [self.string isEqualToString:[object string]] &&
-            self.identifie == (NSInteger) [object identifie];
+            self.identifie == (NSInteger) [object identifie] &&
+            self.groupe == [object groupe];
 }
 
 - (NSComparisonResult)compare:(id)object {
-    return [@(self.identifie) compare:@([object identifie])];
+    NSComparisonResult result = [[self groupe] compare:[object groupe]];
+    if (result != NSOrderedSame) {
+        return result;
+    } else {
+        return [@([self identifie]) compare:@([object identifie])];
+    }
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -58,13 +66,14 @@
 
 @interface AVOArrayControllerTest () <NSFetchedResultsControllerDelegate> {
     AVOArrayController *controller;
-    
+
     void (^callControllerWillChangeContent)();
-    
+
     void (^callControllerDidChangeContent)();
-    
+
     void (^callController)(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath);
 }
+@property(nonatomic) NSString *groupeBy;
 @property(strong, nonatomic) NSComparisonResult(^sortTerm)(id obj1, id obj2);
 @property(nonatomic) NSArray *array;
 @end
@@ -72,7 +81,7 @@
 @implementation AVOArrayControllerTest
 - (void)setUp {
     [super setUp];
-    controller = [[AVOArrayController alloc] initWithArray:self.array groupedBy:nil withPredicate:nil sortedBy:self.sortTerm];
+    controller = [[AVOArrayController alloc] initWithArray:self.array groupedBy:self.groupeBy withPredicate:nil sortedBy:self.sortTerm];
     [controller setDelegate:self];
 }
 
@@ -96,83 +105,105 @@
 }
 
 - (void)testSections {
-    AVOArrayControllerSectionInfo *expected = [[AVOArrayControllerSectionInfo alloc] initWithName:nil objects:[self sortedArray]];
-    [self SctionInfoAssertEqual:controller.sections expected:@[expected]];
+    NSArray *expected = [self sections];
+    [self SctionInfoAssertEqual:controller.sections expected:expected];
+}
+
+- (NSArray *)sections {
+    return @[
+            [[AVOArrayControllerSectionInfo alloc] initWithName:nil objects:[self sortedArray]]
+    ];
 }
 
 - (void)testAddObject {
-    AVOTestObject *addT = [[AVOTestObject alloc] initWithString:@"unknown" identifier:10];
+    AVOTestObject *addT = [[AVOTestObject alloc] initWithString:@"unknown" identifier:10 groupe:@"A"];
     callControllerWillChangeContent = ^{};
     callControllerDidChangeContent = ^{};
-    callController = ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+    callController = [self addObjectCellController:addT];
+
+    [controller addObject:addT];
+
+    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[self.array ?: @[] arrayByAddingObject:addT] groupedBy:self.groupeBy withPredicate:nil sortedBy:self.sortTerm];
+    [self AVOArrayControllerAssertEqual:controller expected:expected];
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))addObjectCellController:(AVOTestObject *)addT {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
         XCTAssertEqualObjects(addT, anObject);
         XCTAssert(indexPath == nil);
         XCTAssertEqual(type, NSFetchedResultsChangeInsert);
         XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:self.array.count inSection:0]);
     };
-
-    [controller addObject:addT];
-
-    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[self.array ?: @[] arrayByAddingObject:addT] groupedBy:nil withPredicate:nil sortedBy:self.sortTerm];
-    [self AVOArrayControllerAssertEqual:controller expected:expected];
 }
 
 - (void)testAddObjects {
-    NSArray *addTs = @[[[AVOTestObject alloc] initWithString:@"unknown" identifier:10], [[AVOTestObject alloc] initWithString:@"warwlof" identifier:11]];
+    NSArray *addTs = @[[[AVOTestObject alloc] initWithString:@"unknown" identifier:10 groupe:@"A"], [[AVOTestObject alloc] initWithString:@"warwlof" identifier:11 groupe:@"B"]];
     callControllerWillChangeContent = ^{};
     callControllerDidChangeContent = ^{};
-    callController = ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
-        XCTAssertTrue(indexPath == nil, "indexPath");
-        XCTAssertEqual(type, NSFetchedResultsChangeInsert);
-        if ([addTs[0] isEqual:anObject]) {
-            XCTAssertEqual(newIndexPath, [NSIndexPath indexPathForRow:self.array.count inSection:0]);
-        } else {
-            XCTAssertEqual(addTs[1], anObject);
-            XCTAssertEqual(newIndexPath, [NSIndexPath indexPathForRow:self.array.count + 1 inSection:0]);
-        }
-    };
+    callController = [self addObjectsCellController:addTs];
     [controller addObjects:addTs];
 
-    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[self.array ?: @[] arrayByAddingObjectsFromArray:addTs] groupedBy:nil withPredicate:nil sortedBy:self.sortTerm];
+    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:[self.array ?: @[] arrayByAddingObjectsFromArray:addTs] groupedBy:self.groupeBy withPredicate:nil sortedBy:self.sortTerm];
     [self AVOArrayControllerAssertEqual:controller expected:expected];
 }
 
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))addObjectsCellController:(NSArray *)addTs {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertTrue(indexPath == nil, "indexPath");
+        XCTAssertEqual(type, NSFetchedResultsChangeInsert);
+        if ([addTs[0] isEqual:anObject]) {
+            XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:self.array.count inSection:0]);
+        } else {
+            XCTAssertEqualObjects(addTs[1], anObject);
+            XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:self.array.count + 1 inSection:0]);
+        }
+    };
+}
+
 - (void)testRemoveObject {
-    AVOTestObject *removeT = [[AVOTestObject alloc] initWithString:@"alice" identifier:1];
+    AVOTestObject *removeT = [[AVOTestObject alloc] initWithString:@"alice" identifier:1 groupe:@"A"];
     callControllerWillChangeContent = ^{};
     callControllerDidChangeContent = ^{};
-    callController = ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+    callController = [self removeObjectCellController:removeT];
+    [controller removeObject:removeT];
+
+    NSArray *a = self.array.count == 0 ? @[] : [self filter:self.array objects:@[removeT]];
+    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:a groupedBy:self.groupeBy withPredicate:nil sortedBy:self.sortTerm];
+    [self AVOArrayControllerAssertEqual:controller expected:expected];
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))removeObjectCellController:(AVOTestObject *)removeT {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
         XCTAssertEqualObjects(removeT, anObject);
         XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:0 inSection:0]);
         XCTAssertEqual(type, NSFetchedResultsChangeDelete);;
         XCTAssert(newIndexPath == nil, "hoge");
     };
-    [controller removeObject:removeT];
-    
-    NSArray *a = self.array.count == 0 ? @[] : [self filter:self.array objects:@[removeT]];
-    AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:a groupedBy:nil withPredicate:nil sortedBy:self.sortTerm];
-    [self AVOArrayControllerAssertEqual:controller expected:expected];
 }
 
 - (void)testUpdateObject {
-    AVOTestObject *updateT = [[AVOTestObject alloc] initWithString:@"arc" identifier:1];
+    AVOTestObject *updateT = [[AVOTestObject alloc] initWithString:@"arc" identifier:1 groupe:@"A"];
     if ([self.array indexOfObject:updateT] != NSNotFound) {
         callControllerWillChangeContent = ^{};
         callControllerDidChangeContent = ^{};
-        callController = ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        callController = [self updateObjectCellController:updateT];
+        [controller updateObject:updateT];
+
+        NSArray *a = [self update:self.array objects:@[updateT]];
+        AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:a groupedBy:self.groupeBy withPredicate:nil sortedBy:self.sortTerm];
+        [self AVOArrayControllerAssertEqual:controller expected:expected];
+    } else {
+
+    }
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))updateObjectCellController:(AVOTestObject *)updateT {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
             XCTAssertEqualObjects(updateT, anObject);
             XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:0 inSection:0]);
             XCTAssertEqual(type, NSFetchedResultsChangeUpdate);;
             XCTAssert(newIndexPath == [NSIndexPath indexPathForRow:0 inSection:0], "hoge");
         };
-        [controller updateObject:updateT];
-        
-        NSArray *a = [self update:self.array objects:@[updateT]];
-        AVOArrayController *expected = [[AVOArrayController alloc] initWithArray:a groupedBy:nil withPredicate:nil sortedBy:self.sortTerm];
-        [self AVOArrayControllerAssertEqual:controller expected:expected];
-    } else {
-        
-    }
 }
 
 - (void)AVOArrayControllerAssertEqual:(AVOArrayController *)c1 expected:(AVOArrayController *)c2 {
@@ -189,7 +220,10 @@
 }
 
 - (void)SctionInfoAssertEqual:(NSArray *)s1 expected:(NSArray *)s2 {
-    XCTAssertEqual(s1.count, s2.count);
+    if (s1.count != s2.count) {
+        XCTFail(@"not eq section count");
+        return;
+    }
     for (int i = 0; i < s1.count; ++i) {
         AVOArrayControllerSectionInfo *i1 = s1[i];
         AVOArrayControllerSectionInfo *i2 = s2[i];
@@ -259,45 +293,135 @@
 
 @implementation OneListTest
 - (void)setUp {
-    self.array = @[[[AVOTestObject alloc] initWithString:@"alice" identifier:1]];
+    self.array = @[[[AVOTestObject alloc] initWithString:@"alice" identifier:1 groupe:@"A"]];
     [super setUp];
 }
 @end
 
-@interface SortedListTest: OneListTest
+@interface SortedListTest : OneListTest
 @end
 
 @implementation SortedListTest
-
 - (void)setUp {
     self.sortTerm = ^NSComparisonResult(id obj1, id obj2) {
         return [obj1 compare:obj2];
     };
     [super setUp];
 }
-
 @end
 
-@interface MoreListTest: AVOArrayControllerTest
+@interface GroupedListTest : OneListTest
 @end
-@implementation MoreListTest
 
-
+@implementation GroupedListTest
 - (void)setUp {
-    self.array = @[
-        [[AVOTestObject alloc] initWithString:@"alice" identifier:1],
-        [[AVOTestObject alloc] initWithString:@"charlie" identifier:3],
-        [[AVOTestObject alloc] initWithString:@"bob" identifier:2],
+    self.groupeBy = @"groupe";
+    [super setUp];
+}
+
+- (NSArray *)sections {
+    return @[
+            [[AVOArrayControllerSectionInfo alloc] initWithName:@"A" objects:[self sortedArray]]
     ];
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))addObjectsCellController:(NSArray *)addTs {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertTrue(indexPath == nil, "indexPath");
+        XCTAssertEqual(type, NSFetchedResultsChangeInsert);
+        if ([addTs[0] isEqual:anObject]) {
+            XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:1 inSection:0]);
+        } else {
+            XCTAssertEqualObjects(addTs[1], anObject);
+            XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:0 inSection:1]);
+        }
+    };
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))updateObjectCellController:(AVOTestObject *)updateT {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertEqualObjects(updateT, anObject);
+        XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:0 inSection:0]);
+        XCTAssertEqual(type, NSFetchedResultsChangeUpdate);;
+        XCTAssert(newIndexPath == [NSIndexPath indexPathForRow:0 inSection:0], "hoge");
+    };
+}
+@end
+
+@interface SortedGroupedListTest : SortedListTest
+@end
+
+@implementation SortedGroupedListTest
+- (void)setUp {
+    self.groupeBy = @"groupe";
     [super setUp];
 }
 
+- (NSArray *)sections {
+    return @[
+            [[AVOArrayControllerSectionInfo alloc] initWithName:@"A" objects:[self sortedArray]]
+    ];
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))addObjectsCellController:(NSArray *)addTs {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertTrue(indexPath == nil, "indexPath");
+        XCTAssertEqual(type, NSFetchedResultsChangeInsert);
+        if ([addTs[0] isEqual:anObject]) {
+            XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:1 inSection:0]);
+        } else {
+            XCTAssertEqualObjects(addTs[1], anObject);
+            XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:0 inSection:1]);
+        }
+    };
+}
 @end
 
-@interface MoreSortedListTest: MoreListTest
+@interface MoreListTest : AVOArrayControllerTest
 @end
+
+@implementation MoreListTest
+- (void)setUp {
+    self.array = [[self groupedA] arrayByAddingObjectsFromArray:[self groupedB]];
+    [super setUp];
+}
+
+- (NSArray *)groupedA {
+    return @[
+             [[AVOTestObject alloc] initWithString:@"charlie" identifier:3 groupe:@"A"],
+             [[AVOTestObject alloc] initWithString:@"alice" identifier:1 groupe:@"A"],
+             ];
+}
+
+- (NSArray *)groupedB {
+    return @[
+             [[AVOTestObject alloc] initWithString:@"bob" identifier:2 groupe:@"B"],
+             ];
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))removeObjectCellController:(AVOTestObject *)removeT {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertEqualObjects(removeT, anObject);
+        XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:1 inSection:0]);
+        XCTAssertEqual(type, NSFetchedResultsChangeDelete);;
+        XCTAssert(newIndexPath == nil, "hoge");
+    };
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))updateObjectCellController:(AVOTestObject *)updateT {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertEqualObjects(updateT, anObject);
+        XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:1 inSection:0]);
+        XCTAssertEqual(type, NSFetchedResultsChangeUpdate);;
+        XCTAssert(newIndexPath == [NSIndexPath indexPathForRow:1 inSection:0], "hoge");
+    };
+}
+@end
+
+@interface MoreSortedListTest : MoreListTest
+@end
+
 @implementation MoreSortedListTest
-
 - (void)setUp {
     self.sortTerm = ^NSComparisonResult(id obj1, id obj2) {
         return [obj1 compare:obj2];
@@ -305,4 +429,131 @@
     [super setUp];
 }
 
+- (NSArray *)sortedArray {
+    return @[
+             [[AVOTestObject alloc] initWithString:@"alice" identifier:1 groupe:@"A"],
+            [[AVOTestObject alloc] initWithString:@"charlie" identifier:3 groupe:@"A"],
+            [[AVOTestObject alloc] initWithString:@"bob" identifier:2 groupe:@"B"],
+    ];
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))addObjectCellController:(AVOTestObject *)addT {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertEqualObjects(addT, anObject);
+        XCTAssert(indexPath == nil);
+        XCTAssertEqual(type, NSFetchedResultsChangeInsert);
+        XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:2 inSection:0]);
+    };
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))addObjectsCellController:(NSArray *)addTs {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertTrue(indexPath == nil, "indexPath");
+        XCTAssertEqual(type, NSFetchedResultsChangeInsert);
+        if ([addTs[0] isEqual:anObject]) {
+            XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:2 inSection:0]);
+        } else {
+            XCTAssertEqualObjects(addTs[1], anObject);
+            XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:4 inSection:0]);
+        }
+    };
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))removeObjectCellController:(AVOTestObject *)removeT {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertEqualObjects(removeT, anObject);
+        XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:0 inSection:0]);
+        XCTAssertEqual(type, NSFetchedResultsChangeDelete);;
+        XCTAssert(newIndexPath == nil, "hoge");
+    };
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))updateObjectCellController:(AVOTestObject *)updateT {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertEqualObjects(updateT, anObject);
+        XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:0 inSection:0]);
+        XCTAssertEqual(type, NSFetchedResultsChangeUpdate);;
+        XCTAssert(newIndexPath == [NSIndexPath indexPathForRow:0 inSection:0], "hoge");
+    };
+}
+@end
+
+
+@interface MoreGroupedListTest : MoreListTest
+@end
+
+@implementation MoreGroupedListTest
+- (void)setUp {
+    self.groupeBy = @"groupe";
+    [super setUp];
+}
+
+- (NSArray *)sections {
+    return @[
+            [[AVOArrayControllerSectionInfo alloc] initWithName:@"A" objects:[self groupedA]],
+            [[AVOArrayControllerSectionInfo alloc] initWithName:@"B" objects:[self groupedB]],
+    ];
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))addObjectCellController:(AVOTestObject *)addT {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertEqualObjects(addT, anObject);
+        XCTAssert(indexPath == nil);
+        XCTAssertEqual(type, NSFetchedResultsChangeInsert);
+        XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:0 inSection:1]);
+    };
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))addObjectsCellController:(NSArray *)addTs {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertTrue(indexPath == nil, "indexPath");
+        XCTAssertEqual(type, NSFetchedResultsChangeInsert);
+        if ([addTs[0] isEqual:anObject]) {
+            XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:0 inSection:1]);
+        } else {
+            XCTAssertEqualObjects(addTs[1], anObject);
+            XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:1 inSection:1]);
+        }
+    };
+}
+
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))removeObjectCellController:(AVOTestObject *)removeT {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertEqualObjects(removeT, anObject);
+        XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:1 inSection:0]);
+        XCTAssertEqual(type, NSFetchedResultsChangeDelete);;
+        XCTAssert(newIndexPath == nil, "hoge");
+    };
+}
+@end
+
+@interface MoreSortedGroupedListTest : MoreSortedListTest
+@end
+
+@implementation MoreSortedGroupedListTest
+- (void)setUp {
+    self.groupeBy = @"groupe";
+    [super setUp];
+}
+
+- (NSArray *)sections {
+    return @[
+            [[AVOArrayControllerSectionInfo alloc] initWithName:@"A" objects:[[self groupedA] sortedArrayUsingComparator:self.sortTerm]],
+            [[AVOArrayControllerSectionInfo alloc] initWithName:@"B" objects:[self groupedB]],
+    ];
+}
+
+- (void (^)(id, NSIndexPath *, NSFetchedResultsChangeType, NSIndexPath *))addObjectsCellController:(NSArray *)addTs {
+    return ^(id anObject, NSIndexPath *indexPath, NSFetchedResultsChangeType type, NSIndexPath *newIndexPath) {
+        XCTAssertTrue(indexPath == nil, "indexPath");
+        XCTAssertEqual(type, NSFetchedResultsChangeInsert);
+        if ([addTs[0] isEqual:anObject]) {
+            XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:2 inSection:0]);
+        } else {
+            XCTAssertEqualObjects(addTs[1], anObject);
+            XCTAssertEqualObjects(newIndexPath, [NSIndexPath indexPathForRow:1 inSection:1]);
+        }
+    };
+}
 @end
