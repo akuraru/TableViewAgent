@@ -58,7 +58,7 @@
 #pragma -
 #pragma mark TableViewAgentDelegate
 - (NSString *)cellIdentifier:(id)viewObject {
-    return @"Cell";
+    return kReuseCustomTableViewCell;
 }
 
 - (void)didSelectCell:(ViewObject *)viewObject {

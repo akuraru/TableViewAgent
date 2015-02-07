@@ -218,7 +218,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="bVh-JY-BVG" detailTextLabel="sy9-gw-iKz" style="IBUITableViewCellStyleValue1" id="DhJ-S6-pxc" customClass="CustomTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CustomTableViewCell" textLabel="bVh-JY-BVG" detailTextLabel="sy9-gw-iKz" style="IBUITableViewCellStyleValue1" id="DhJ-S6-pxc" customClass="CustomTableViewCell">
                                 <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DhJ-S6-pxc" id="Iou-aJ-9bD">
@@ -307,7 +307,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="enq-GW-AK9" detailTextLabel="aVM-EB-cpi" style="IBUITableViewCellStyleValue1" id="Xwc-aW-eg3" customClass="CustomTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CustomTableViewCell" textLabel="enq-GW-AK9" detailTextLabel="aVM-EB-cpi" style="IBUITableViewCellStyleValue1" id="Xwc-aW-eg3" customClass="CustomTableViewCell">
                                 <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xwc-aW-eg3" id="7Ry-ec-iTc">
@@ -378,7 +378,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="D5A-Ve-y5r" detailTextLabel="TtE-N7-Vh7" style="IBUITableViewCellStyleValue1" id="y7F-Le-pUm" customClass="CustomTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CustomTableViewCell" textLabel="D5A-Ve-y5r" detailTextLabel="TtE-N7-Vh7" style="IBUITableViewCellStyleValue1" id="y7F-Le-pUm" customClass="CustomTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y7F-Le-pUm" id="s0F-aM-noE">
@@ -457,7 +457,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="oAi-ry-xn6" detailTextLabel="pNa-WH-Pr4" style="IBUITableViewCellStyleValue1" id="LR4-1X-M8j" customClass="CustomTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CustomTableViewCell" textLabel="oAi-ry-xn6" detailTextLabel="pNa-WH-Pr4" style="IBUITableViewCellStyleValue1" id="LR4-1X-M8j" customClass="CustomTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LR4-1X-M8j" id="LLc-fB-qVo">
@@ -534,6 +534,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Ywr-3e-TSQ"/>
+        <segue reference="Ra1-m5-Ego"/>
     </inferredMetricsTieBreakers>
 </document>
