@@ -122,7 +122,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaI-M5-H48">
-                                <rect key="frame" x="20" y="21" width="101" height="20.5"/>
+                                <rect key="frame" x="20" y="21" width="101" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="101" id="xDJ-0G-3Aq"/>
                                 </constraints>
@@ -136,7 +136,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMt-bN-ktp">
-                                <rect key="frame" x="20" y="54" width="101" height="20.5"/>
+                                <rect key="frame" x="20" y="54" width="101" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
