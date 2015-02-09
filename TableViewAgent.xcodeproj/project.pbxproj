@@ -30,6 +30,7 @@
 		BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1217719B3200A6113E /* SSViewController.m */; };
 		BEEDD1471A86005B00300C64 /* AVOArrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDD1461A86005B00300C64 /* AVOArrayViewController.m */; };
 		BEEDD1491A88727F00300C64 /* AVOMergeSectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDD1481A88727F00300C64 /* AVOMergeSectionsViewController.m */; };
+		C87900BA8010076E29B09D0F /* AddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790107316816FC45484689 /* AddTableViewCell.m */; };
 		C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */; };
 		C87903536A8986DA6EC5F746 /* MainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790598EDF8FE8AE36B952B /* MainService.m */; };
 		C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8790F785A526609644BE7B5 /* ThirdViewObject.m */; };
@@ -92,6 +93,7 @@
 		C879000AD100E37BD5CCF83C /* WETodo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETodo.m; sourceTree = "<group>"; };
 		C8790043B0A754925503375F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C87900D1196B2A54304A1558 /* FRCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRCViewController.h; sourceTree = "<group>"; };
+		C8790107316816FC45484689 /* AddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTableViewCell.m; sourceTree = "<group>"; };
 		C87902B6380B6A554115F053 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		C8790352EF7D1394525F8E95 /* ViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewObject.h; sourceTree = "<group>"; };
 		C879056EE85037B2CC3E8E04 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		C8790665BD0F40D548AD722F /* ViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewObject.m; sourceTree = "<group>"; };
 		C879070AF31E3D8CD56EE98B /* WETodo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WETodo.h; sourceTree = "<group>"; };
 		C8790854A9F301ADFCD0C447 /* AVOArrrayControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVOArrrayControllerTest.m; sourceTree = "<group>"; };
+		C87909B64FEB944A371144D6 /* AddTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTableViewCell.h; sourceTree = "<group>"; };
 		C8790A0C3B4E3F0F06841882 /* MainService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainService.h; sourceTree = "<group>"; };
 		C8790ACD959A44401E4E0D54 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRCViewController.m; sourceTree = "<group>"; };
@@ -282,6 +285,8 @@
 			children = (
 				C8790ACD959A44401E4E0D54 /* CustomTableViewCell.m */,
 				C87902B6380B6A554115F053 /* CustomTableViewCell.h */,
+				C8790107316816FC45484689 /* AddTableViewCell.m */,
+				C87909B64FEB944A371144D6 /* AddTableViewCell.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 				BE5C3CE917C0FE0C00D28713 /* MSViewController.m in Sources */,
 				C8790128F6144CDF1B25DCD9 /* FRCViewController.m in Sources */,
 				C87905270237FA75311D678E /* WETodo.m in Sources */,
+				C87900BA8010076E29B09D0F /* AddTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

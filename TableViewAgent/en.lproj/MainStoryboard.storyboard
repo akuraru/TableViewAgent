@@ -545,10 +545,10 @@
             </objects>
             <point key="canvasLocation" x="1355" y="1014"/>
         </scene>
-        <!--Array View Controller-->
+        <!--Merge Sections View Controller-->
         <scene sceneID="1bG-XW-aYV">
             <objects>
-                <tableViewController id="h5l-2I-4Tg" customClass="AVOArrayViewController" sceneMemberID="viewController">
+                <tableViewController id="h5l-2I-4Tg" customClass="AVOMergeSectionsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hIP-4l-tsP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -578,7 +578,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Add" textLabel="Ksu-R5-a6a" style="IBUITableViewCellStyleDefault" id="TWI-0t-B1T">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Add" textLabel="Ksu-R5-a6a" style="IBUITableViewCellStyleDefault" id="TWI-0t-B1T" customClass="AddTableViewCell">
                                 <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TWI-0t-B1T" id="Zwn-Ak-Z5Y">
