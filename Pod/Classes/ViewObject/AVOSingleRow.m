@@ -45,4 +45,7 @@
 - (NSUInteger)sectionCount {
     return 1;
 }
+
+-(void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
+}
 @end
