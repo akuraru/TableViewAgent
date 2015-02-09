@@ -2,6 +2,7 @@
 #define kSegueMalutSection @"MalutSection"
 #define kSegueFectedResult @"FectedResult"
 #define kSegueArray @"Array"
+#define kSegueMergeSections @"MergeSections"
 #define kReuseCustomTableViewCell @"CustomTableViewCell"
 #define kReuseAdd @"Add"
 #define kSegueEdit @"Edit"
