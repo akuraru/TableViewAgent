@@ -14,6 +14,8 @@
 #import "AdditionalCellStateAlways.h"
 #import "AdditionalCellStateHideEditing.h"
 #import "AdditionalCellStateShowEditing.h"
+#import "EditableStateEditingEnable.h"
+#import "EditableStateEditingNonEnable.h"
 
 typedef struct {
     BOOL didSelectCell              : 1;
@@ -225,7 +227,7 @@ typedef struct {
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return _editableState.canEdit && [self isAdditionalSection:indexPath.section] == NO;
+    return [_editableState editableForEditing:self.editing] && [self isAdditionalSection:indexPath.section] == NO;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -324,6 +326,10 @@ typedef struct {
             return [EditableStateNone new];
         case EditableModeEnable :
             return [EditableStateEnadle new];
+        case EditableModeEditingEnable:
+            return [EditableStateEditingEnable new];
+        case EditableModeEditingNonEnable:
+            return [EditableStateEditingNonEnable new];
     }
 }
 

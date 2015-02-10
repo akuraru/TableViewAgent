@@ -11,5 +11,6 @@
 @interface EditableState : NSObject
 
 - (BOOL)canEdit;
+- (BOOL)editableForEditing:(BOOL)editing;
 
 @end

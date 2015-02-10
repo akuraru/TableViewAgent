@@ -22,6 +22,8 @@ typedef NS_ENUM (NSInteger, AdditionalCellMode) {
 typedef NS_ENUM (NSInteger, EditableMode) {
     EditableModeNone,
     EditableModeEnable,
+    EditableModeEditingEnable,
+    EditableModeEditingNonEnable,
 };
 
 @interface TableViewAgent : NSObject
