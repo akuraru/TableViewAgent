@@ -17,7 +17,7 @@
 #import "AVOMergeSections.h"
 #import "AVOSingleRow.h"
 
-@interface AVOMergeSectionsViewController : UITableViewController
+@interface AVOMergeSectionsViewController : UITableViewController <TableViewAgentDelegate>
 @property (nonatomic) AVOArrayController *arrayController;
 @end
 
