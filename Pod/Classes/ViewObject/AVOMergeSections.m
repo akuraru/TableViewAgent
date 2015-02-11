@@ -25,6 +25,13 @@ typedef struct AVOMergeSectionPath AVOMergeSectionPath;
     return self;
 }
 
+- (void)setAgent:(TableViewAgent *)agent {
+    _agent = agent;
+    for (id<AgentViewObjectProtocol> agentViewObject in self.agentViewObjects) {
+        [agentViewObject setAgent:agent];
+    }
+}
+
 - (NSUInteger)countInSection:(NSUInteger)section {
     AVOMergeSectionPath path = [self sectionPathForIndexPath:section];
     return [self.agentViewObjects[path.agentIndex] countInSection:path.section];
@@ -33,8 +40,7 @@ typedef struct AVOMergeSectionPath AVOMergeSectionPath;
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
     AVOMergeSectionPath path = [self sectionPathForIndexPath:indexPath.section];
     id<AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
-    id viewObject = [agentViewObject objectAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:path.section]];
-    return self.convert ? self.convert(viewObject) : viewObject;
+    return [agentViewObject objectAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:path.section]];
 }
 
 - (NSArray *)sectionObjects:(NSInteger)section {

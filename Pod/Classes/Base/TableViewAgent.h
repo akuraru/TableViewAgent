@@ -19,12 +19,6 @@ typedef NS_ENUM (NSInteger, AdditionalCellMode) {
     AdditionalCellModeHideEditing,
     AdditionalCellModeShowEditing,
 };
-typedef NS_ENUM (NSInteger, EditableMode) {
-    EditableModeNone,
-    EditableModeEnable,
-    EditableModeEditingEnable,
-    EditableModeEditingNonEnable,
-};
 
 @interface TableViewAgent : NSObject
 
@@ -33,7 +27,6 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 @property (nonatomic) BOOL editing;
 
 - (void)setAdditionalCellMode:(AdditionalCellMode)mode;
-- (void)setEditableMode:(EditableMode)mode;
 
 - (void)redraw;
 @end

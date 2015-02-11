@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AgentViewObjectProtocol.h"
+#import "AVOBase.h"
 
 @interface AVOSingleRow : NSObject <AgentViewObjectProtocol>
 @property(strong, nonatomic) id viewObject;

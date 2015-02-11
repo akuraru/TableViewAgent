@@ -33,7 +33,7 @@
     agent = [[TableViewAgent alloc] init];
     agent.viewObjects = [[FRCAgentViewObject alloc] initWithFetch:[TodoManager fetchController]];
     agent.delegate = self;
-    [agent setEditableMode:EditableModeEnable];
+    [agent.viewObjects setEditableMode:EditableModeEnable];
     [agent setAdditionalCellMode:AdditionalCellModeAlways];
 }
 

@@ -39,7 +39,7 @@
     }];
     agent.viewObjects = [[FRCAgentViewObject alloc]initWithFetch:(id)self.arrayController];
     agent.delegate = self;
-    [agent setEditableMode:EditableModeEnable];
+    [agent.viewObjects setEditableMode:EditableModeEnable];
     [agent setAdditionalCellMode:AdditionalCellModeHideEditing];
 }
 

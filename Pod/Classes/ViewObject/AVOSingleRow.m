@@ -41,4 +41,12 @@
 - (NSUInteger)sectionCount {
     return 1;
 }
+
+- (BOOL)canEditRowForIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
+- (BOOL)canEdit {
+    return NO;
+}
 @end

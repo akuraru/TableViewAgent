@@ -10,6 +10,13 @@
 
 @class TableViewAgent;
 
+typedef NS_ENUM (NSInteger, EditableMode) {
+    EditableModeNone,
+    EditableModeEnable,
+    EditableModeEditingEnable,
+    EditableModeEditingNonEnable,
+};
+
 @protocol AgentViewObjectProtocol <NSObject>
 - (NSUInteger)sectionCount;
 - (NSUInteger)countInSection:(NSUInteger)section;
@@ -17,6 +24,13 @@
 - (NSArray *)sectionObjects:(NSInteger)section;
 @property(weak, nonatomic) TableViewAgent *agent;
 
+// editing
+- (BOOL)canEditRowForIndexPath:(NSIndexPath *)indexPath;
+- (BOOL)canEdit;
+
 @optional
 @property(copy, nonatomic) id(^convert)(id);
+
+// editing
+- (void)setEditableMode:(EditableMode)editableMode;
 @end

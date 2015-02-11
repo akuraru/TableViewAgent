@@ -27,13 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     agent = [[TableViewAgent alloc] init];
-    agent.viewObjects = [[SSAgentViewObject alloc] initWithArray:@[
+    SSAgentViewObject *agentViewObject = [[SSAgentViewObject alloc] initWithArray:@[
      [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
      [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
      [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
      ]];
+
+    [agentViewObject setEditableMode:EditableModeEnable];
+    agent.viewObjects = agentViewObject;
     agent.delegate = self;
-    [agent setEditableMode:EditableModeEnable];
     [agent setAdditionalCellMode:AdditionalCellModeHideEditing];
 }
 

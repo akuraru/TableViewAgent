@@ -31,6 +31,11 @@
     }
 }
 
+- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
+    [_array removeObjectAtIndex:indexPath.row];
+    [_agent deleteCell:indexPath];
+}
+
 - (NSIndexPath *)indexPathForObject:(id)object {
     for (NSInteger i = 0, _len = _array.count; i < _len; i++) {
         if ([_array[i] isEqual:object]) {

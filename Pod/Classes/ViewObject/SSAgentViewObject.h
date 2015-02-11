@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "AgentViewObjectProtocol.h"
+#import "AVOBase.h"
 
-@interface SSAgentViewObject : NSObject <AgentViewObjectProtocol>
+@interface SSAgentViewObject : AVOBase <AgentViewObjectProtocol>
 @property(nonatomic, strong) NSMutableArray *array;
 @property(weak, nonatomic) TableViewAgent *agent;
 @property(copy, nonatomic) id(^convert)(id);
@@ -19,4 +20,6 @@
 - (void)addObject:(id)object;
 
 - (void)changeObject:(id)object;
+
+- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath;
 @end

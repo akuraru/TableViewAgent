@@ -7,15 +7,11 @@
 
 
 #import "TableViewAgent.h"
-#import "EditableStateNone.h"
-#import "EditableStateEnadle.h"
 #import "AgentViewObjectProtocol.h"
 #import "AdditionalCellStateNone.h"
 #import "AdditionalCellStateAlways.h"
 #import "AdditionalCellStateHideEditing.h"
 #import "AdditionalCellStateShowEditing.h"
-#import "EditableStateEditingEnable.h"
-#import "EditableStateEditingNonEnable.h"
 
 typedef struct {
     BOOL didSelectCell              : 1;
@@ -34,7 +30,6 @@ typedef struct {
 } HasSelectors;
 
 @interface TableViewAgent () <UITableViewDataSource, UITableViewDelegate>
-@property(nonatomic) EditableState *editableState;
 @property(nonatomic) AdditionalCellState *addState;
 @end
 
@@ -46,7 +41,6 @@ typedef struct {
     self = [super init];
     if (self) {
         _addState = [AdditionalCellStateNone new];
-        _editableState = [EditableStateNone new];
         _editing = NO;
     }
     return self;
@@ -65,16 +59,12 @@ typedef struct {
     _addState = [self createAdditionalCellMode:mode];
 }
 
-- (void)setEditableMode:(EditableMode)mode {
-    _editableState = [self createEditableMode:mode];
-}
-
 - (id)viewObjectWithIndex:(NSIndexPath *)path {
     return [_viewObjects objectAtIndexPath:path];
 }
 
 - (void)setEditing:(BOOL)b {
-    if (_editableState.canEdit && _editing != b) {
+    if ([self.viewObjects canEdit] && _editing != b) {
         _editing = b;
         [[_delegate tableView] setEditing:!b animated:NO];
         [[_delegate tableView] setEditing:b animated:YES];
@@ -172,12 +162,7 @@ typedef struct {
         if ([cellClass respondsToSelector:@selector(heightFromViewObject:)]) {
             return [cellClass heightFromViewObject:viewObject];
         } else {
-            id cell = [self dequeueCell:indexPath];
-            if ([cell respondsToSelector:@selector(heightFromViewObject:)]) {
-                return [cell heightFromViewObject:[self viewObjectWithIndex:indexPath]];
-            } else {
-                return [self tableView:tableView cellForRowAtIndexPath:indexPath].frame.size.height;
-            }
+            return [self tableView:tableView cellForRowAtIndexPath:indexPath].frame.size.height;
         }
     }
 }
@@ -224,7 +209,7 @@ typedef struct {
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [_editableState editableForEditing:self.editing] && [self isAdditionalSection:indexPath.section] == NO;
+    return [self.viewObjects canEditRowForIndexPath:indexPath] && [self isAdditionalSection:indexPath.section] == NO;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -274,11 +259,7 @@ typedef struct {
 - (UITableViewCell *)createCell:(NSIndexPath *)indexPath {
     id viewObject = [self viewObjectWithIndex:indexPath];
     id cell = [self dequeueCell:indexPath];
-    if (hasSelectors.commonViewObject) {
-        [cell setViewObject:viewObject common:[_delegate commonViewObject:viewObject]];
-    } else {
-        [cell setViewObject:viewObject];
-    }
+    [cell setViewObject:viewObject];
     return cell;
 }
 
@@ -314,19 +295,8 @@ typedef struct {
             return [AdditionalCellStateHideEditing new];
         case AdditionalCellModeShowEditing:
             return [AdditionalCellStateShowEditing new];
-    }
-}
-
-- (EditableState *)createEditableMode:(EditableMode)mode {
-    switch (mode) {
-        case EditableModeNone :
-            return [EditableStateNone new];
-        case EditableModeEnable :
-            return [EditableStateEnadle new];
-        case EditableModeEditingEnable:
-            return [EditableStateEditingEnable new];
-        case EditableModeEditingNonEnable:
-            return [EditableStateEditingNonEnable new];
+        default:
+            return nil;
     }
 }
 

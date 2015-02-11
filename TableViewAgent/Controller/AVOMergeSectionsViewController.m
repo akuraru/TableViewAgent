@@ -46,7 +46,7 @@
     ]];
     agent.viewObjects = mergeSections;
     agent.delegate = self;
-    [agent setEditableMode:EditableModeEditingEnable];
+    [agent.viewObjects setEditableMode:EditableModeEnable];
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {

@@ -20,7 +20,7 @@
 - (id)initWithArray:(NSMutableArray *)array {
     precondition(
             assert(![_array isKindOfClass:NSMutableArray.class]);
-            for (int i = 0, _len = _array.count; i < _len; i++) {
+            for (NSInteger i = 0, _len = _array.count; i < _len; i++) {
                 assert(![_array[i] isKindOfClass:NSMutableArray.class]);
             });
 
@@ -41,6 +41,15 @@
 
 - (void)changeObject:(id)object {
     [_agent changeUpdateCell:[self indexPathForObject:object]];
+}
+
+- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *a = _array[indexPath.section];
+    [a removeObjectAtIndex:indexPath.row];
+    if (a.count == 0) {
+        [_array removeObjectAtIndex:indexPath.section];
+    }
+    [_agent deleteCell:indexPath];
 }
 
 - (NSIndexPath *)indexPathForObject:(id)object {

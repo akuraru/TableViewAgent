@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/NSFetchedResultsController.h>
 #import "AgentViewObjectProtocol.h"
+#import "AVOBase.h"
 
 @class TableViewAgent;
 
-@interface FRCAgentViewObject : NSObject <AgentViewObjectProtocol>
+@interface FRCAgentViewObject : AVOBase <AgentViewObjectProtocol>
 
 @property(readonly, nonatomic) NSFetchedResultsController *controller;
 @property(weak, nonatomic) TableViewAgent *agent;
