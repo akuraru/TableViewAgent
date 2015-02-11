@@ -34,18 +34,11 @@
     return self.convert ? self.convert(self.viewObject) : self.viewObject;
 }
 
-- (BOOL)existObject:(NSIndexPath *)indexPath {
-    return indexPath.row == 0 && indexPath.section == 0;
-}
-
 - (NSArray *)sectionObjects:(NSInteger)section {
     return @[self.viewObject];
 }
 
 - (NSUInteger)sectionCount {
     return 1;
-}
-
--(void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
 }
 @end

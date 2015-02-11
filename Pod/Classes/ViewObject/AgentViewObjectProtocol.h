@@ -14,10 +14,8 @@
 - (NSUInteger)sectionCount;
 - (NSUInteger)countInSection:(NSUInteger)section;
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
-- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath __attribute__ ((deprecated));
-- (BOOL)existObject:(NSIndexPath *)indexPath __attribute__ ((deprecated));
 - (NSArray *)sectionObjects:(NSInteger)section;
-@property (weak, nonatomic) TableViewAgent *agent;
+@property(weak, nonatomic) TableViewAgent *agent;
 
 @optional
 @property(copy, nonatomic) id(^convert)(id);

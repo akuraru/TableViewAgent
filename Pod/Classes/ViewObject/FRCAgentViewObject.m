@@ -39,11 +39,6 @@
     id object = [_controller objectAtIndexPath:indexPath];
     return self.convert ? self.convert(object) : object;
 }
-- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
-}
-- (BOOL)existObject:(NSIndexPath *)indexPath {
-    return indexPath.section < [self sectionCount] && indexPath.row < [self countInSection:indexPath.section];
-}
 - (NSArray *)sectionObjects:(NSInteger)section {
     return @[[self objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]]];
 }

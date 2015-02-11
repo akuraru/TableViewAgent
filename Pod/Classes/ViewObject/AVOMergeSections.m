@@ -37,12 +37,6 @@ typedef struct AVOMergeSectionPath AVOMergeSectionPath;
     return self.convert ? self.convert(viewObject) : viewObject;
 }
 
-- (BOOL)existObject:(NSIndexPath *)indexPath {
-    AVOMergeSectionPath path = [self sectionPathForIndexPath:indexPath.section];
-    id<AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
-    return [agentViewObject existObject:[NSIndexPath indexPathForRow:indexPath.row inSection:path.section]];
-}
-
 - (NSArray *)sectionObjects:(NSInteger)section {
     AVOMergeSectionPath path = [self sectionPathForIndexPath:section];
     id<AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
@@ -55,9 +49,6 @@ typedef struct AVOMergeSectionPath AVOMergeSectionPath;
         result += [agentViewObject sectionCount];
     }
     return result;
-}
-
-- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (AVOMergeSectionPath)sectionPathForIndexPath:(NSInteger)section {

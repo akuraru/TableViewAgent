@@ -71,19 +71,6 @@
     return self.convert ? self.convert(object) : object;
 }
 
-- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableArray *a = _array[indexPath.section];
-    [a removeObjectAtIndex:indexPath.row];
-    if (a.count == 0) {
-        [_array removeObjectAtIndex:indexPath.section];
-    }
-    [_agent deleteCell:indexPath];
-}
-
-- (BOOL)existObject:(NSIndexPath *)indexPath {
-    return indexPath.section < _array.count && indexPath.row < [_array[indexPath.section] count];
-}
-
 - (NSArray *)sectionObjects:(NSInteger)section {
     return _array[section];
 }

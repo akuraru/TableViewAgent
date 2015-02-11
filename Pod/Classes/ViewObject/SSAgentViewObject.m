@@ -53,15 +53,6 @@
     return self.convert ? self.convert(object) : object;
 }
 
-- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
-    [_array removeObjectAtIndex:indexPath.row];
-    [_agent deleteCell:indexPath];
-}
-
-- (BOOL)existObject:(NSIndexPath *)indexPath {
-    return indexPath.section == 0 && indexPath.row < _array.count;
-}
-
 - (NSArray *)sectionObjects:(NSInteger)section {
     return _array;
 }
