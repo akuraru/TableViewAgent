@@ -12,7 +12,7 @@
 
 @interface SSAgentViewObject : AVOBase <AgentViewObjectProtocol>
 @property(nonatomic, strong) NSMutableArray *array;
-@property(weak, nonatomic) TableViewAgent *agent;
+@property(weak, nonatomic) id<TableViewAgentProtocol>agent;
 @property(copy, nonatomic) id(^convert)(id);
 
 - (id)initWithArray:(NSArray *)array;

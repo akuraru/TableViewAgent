@@ -40,7 +40,6 @@
     agent.viewObjects = [[FRCAgentViewObject alloc]initWithFetch:(id)self.arrayController];
     agent.delegate = self;
     [agent.viewObjects setEditableMode:EditableModeEnable];
-    [agent setAdditionalCellMode:AdditionalCellModeHideEditing];
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {

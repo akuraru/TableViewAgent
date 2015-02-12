@@ -7,7 +7,7 @@
 
 
 #import "SSAgentViewObject.h"
-#import "TableViewAgentCategory.h"
+#import "TableViewAgentProtocol.h"
 
 @implementation SSAgentViewObject
 
@@ -21,19 +21,19 @@
 
 - (void)addObject:(id)object {
     [_array addObject:object];
-    [_agent insertCell:[NSIndexPath indexPathForItem:_array.count - 1 inSection:0]];
+    [self.agent insertCell:self atIndexPath:[NSIndexPath indexPathForItem:_array.count - 1 inSection:0]];
 }
 
 - (void)changeObject:(id)object {
     NSIndexPath *path = [self indexPathForObject:object];
     if (path) {
-        [_agent changeUpdateCell:path];
+        [self.agent changeUpdateCell:self atIndexPath:path];
     }
 }
 
 - (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
     [_array removeObjectAtIndex:indexPath.row];
-    [_agent deleteCell:indexPath];
+    [self.agent deleteCell:self atIndexPath:indexPath];
 }
 
 - (NSIndexPath *)indexPathForObject:(id)object {
@@ -64,5 +64,8 @@
 
 - (NSUInteger)sectionCount {
     return 0 < _array.count;
+}
+
+- (void)setEditing:(BOOL)editing {
 }
 @end

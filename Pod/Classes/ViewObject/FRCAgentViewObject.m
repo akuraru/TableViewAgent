@@ -7,7 +7,7 @@
 
 
 #import "FRCAgentViewObject.h"
-#import "TableViewAgentCategory.h"
+#import "TableViewAgentProtocol.h"
 
 @interface FRCAgentViewObject () <NSFetchedResultsControllerDelegate>
 @property (nonatomic) NSFetchedResultsController * controller;
@@ -47,20 +47,23 @@
         newIndexPath:(NSIndexPath *)newIndexPath {
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            [_agent insertCell:newIndexPath];
+            [self.agent insertCell:self atIndexPath:newIndexPath];
             break;
 
         case NSFetchedResultsChangeDelete:
-            [_agent deleteCell:indexPath];
+            [self.agent deleteCell:self atIndexPath:indexPath];
             break;
 
         case NSFetchedResultsChangeUpdate:
-            [_agent changeUpdateCell:indexPath];
+            [self.agent changeUpdateCell:self atIndexPath:indexPath];
             break;
 
         case NSFetchedResultsChangeMove:
-            [_agent changeMoveCell:indexPath toIndexPath:newIndexPath];
+            [self.agent changeMoveCell:self fromIndexPath:indexPath toIndexPath:newIndexPath];
             break;
     }
+}
+
+- (void)setEditing:(BOOL)editing {
 }
 @end

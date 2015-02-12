@@ -16,7 +16,7 @@
 @interface FRCAgentViewObject : AVOBase <AgentViewObjectProtocol>
 
 @property(readonly, nonatomic) NSFetchedResultsController *controller;
-@property(weak, nonatomic) TableViewAgent *agent;
+@property(weak, nonatomic) id<TableViewAgentProtocol>agent;
 @property(copy, nonatomic) id(^convert)(id);
 
 - (id)initWithFetch:(NSFetchedResultsController *)controller;

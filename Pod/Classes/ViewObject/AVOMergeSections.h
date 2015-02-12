@@ -10,9 +10,9 @@
 #import "AgentViewObjectProtocol.h"
 #import "AVOBase.h"
 
-@interface AVOMergeSections : AVOBase <AgentViewObjectProtocol>
+@interface AVOMergeSections : NSObject <AgentViewObjectProtocol>
 @property(strong, nonatomic) NSArray *agentViewObjects;
-@property(weak, nonatomic) TableViewAgent *agent;
+@property(weak, nonatomic) id<TableViewAgentProtocol>agent;
 
 - (id)initWithAgentViewObjects:(NSArray *)agentViewObjects;
 @end

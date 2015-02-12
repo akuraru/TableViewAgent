@@ -6,6 +6,7 @@
 //  Copyright (c) 2013年 P.I.akura. All rights reserved.
 //
 
+#import <TableViewAgent/AVOMergeSections.h>
 #import "MSViewController.h"
 #import "TableViewAgent.h"
 #import "ExtactedID.h"
@@ -13,6 +14,8 @@
 #import "ViewObject.h"
 #import "MSAgentViewObject.h"
 #import "ThirdViewController.h"
+#import "TableViewAgentDelegate.h"
+#import "AVOAdditionalSection.h"
 
 @interface MSViewController () <TableViewAgentDelegate>
 
@@ -20,22 +23,30 @@
 
 @implementation MSViewController {
     TableViewAgent *agent;
+    MSAgentViewObject *agentViewObject;
 }
 
 - (IBAction)touchEdit:(id)sender {
     [agent setEditing:!agent.editing];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     agent = [[TableViewAgent alloc] init];
-    agent.viewObjects = [[MSAgentViewObject alloc] initWithArray:@[@[
-                         [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
-                         [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
-                         ].mutableCopy, @[
-                         [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
-                         ].mutableCopy].mutableCopy];
-    [agent.viewObjects setEditableMode:EditableModeEnable];
-    [agent setAdditionalCellMode:AdditionalCellModeAlways];
+    AVOAdditionalSection *additionalSection = [[AVOAdditionalSection alloc] initWithViewObject:kReuseAdd];
+    [additionalSection setAdditionalCellMode:AdditionalCellModeShowEditing];
+    
+    agentViewObject = [[MSAgentViewObject alloc] initWithArray:@[@[
+            [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
+            [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
+    ].mutableCopy, @[
+            [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
+    ].mutableCopy].mutableCopy];
+    [agentViewObject setEditableMode:EditableModeEnable];
+    agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
+            agentViewObject,
+            additionalSection,
+    ]];
     agent.delegate = self;
 }
 
@@ -44,16 +55,14 @@
         ViewObject *vo = tvo.viewObject;
         vo.title = tvo.title;
         vo.message = tvo.message;
-        
-        MSAgentViewObject *avo = agent.viewObjects;
-        [avo changeObject:vo];
+
+        [agentViewObject changeObject:vo];
     } else {
         ViewObject *vo = [[ViewObject alloc] init];
         vo.title = tvo.title;
         vo.message = tvo.message;
-        
-        MSAgentViewObject *avo = agent.viewObjects;
-        [avo addObject:vo inSection:0];
+
+        [agentViewObject addObject:vo inSection:0];
     }
 }
 
@@ -71,29 +80,36 @@
 
 #pragma -
 #pragma mark TableViewAgentDelegate
+
 - (NSString *)cellIdentifier:(id)viewObject {
-    return kReuseCustomTableViewCell;
+    if ([viewObject isKindOfClass:[NSString class]]) {
+        return kReuseAdd;
+    } else {
+        return kReuseCustomTableViewCell;
+    }
 }
 
 - (void)didSelectCell:(ViewObject *)viewObject {
-    [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
+    if ([viewObject isKindOfClass:[NSString class]]) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
+    } else {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
+    }
 }
+
 - (void)deleteCell:(id)viewObject {
 }
+
 - (UIView *)sectionHeader:(id)viewObject {
-    return ({
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-        [label setText:[viewObject[0] message]];
-        [label setBackgroundColor:[UIColor lightGrayColor]];
-        label;
-    });
+    if ([viewObject[0] isKindOfClass:[NSString class]]) {
+        return nil;
+    } else {
+        return ({
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+            [label setText:[viewObject[0] message]];
+            [label setBackgroundColor:[UIColor lightGrayColor]];
+            label;
+        });
+    }
 }
-
-- (NSString *)addCellIdentifier {
-    return kReuseAdd;
-}
-- (void)didSelectAdditionalCell {
-    [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
-}
-
 @end

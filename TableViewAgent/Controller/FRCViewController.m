@@ -6,16 +6,18 @@
 //
 
 
+#import <TableViewAgent/AVOMergeSections.h>
 #import "FRCViewController.h"
 #import "TableViewAgent.h"
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
-#import "MSAgentViewObject.h"
 #import "FRCAgentViewObject.h"
 #import "TodoManager.h"
 #import "WETodo.h"
 #import "ThirdViewController.h"
+#import "TableViewAgentDelegate.h"
+#import "AVOAdditionalSection.h"
 
 @interface FRCViewController () <TableViewAgentDelegate>
 @end
@@ -27,14 +29,20 @@
 - (IBAction)touchEdit:(id)sender {
     [agent setEditing:!agent.editing];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     agent = [[TableViewAgent alloc] init];
-    agent.viewObjects = [[FRCAgentViewObject alloc] initWithFetch:[TodoManager fetchController]];
+    AVOAdditionalSection *additionalSection = [[AVOAdditionalSection alloc] initWithViewObject:kReuseAdd];
+    [additionalSection setAdditionalCellMode:AdditionalCellModeAlways];
+    FRCAgentViewObject *viewObject = [[FRCAgentViewObject alloc] initWithFetch:[TodoManager fetchController]];
+    [viewObject setEditableMode:EditableModeEnable];
+    agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
+            viewObject,
+            additionalSection,
+    ]];
     agent.delegate = self;
-    [agent.viewObjects setEditableMode:EditableModeEnable];
-    [agent setAdditionalCellMode:AdditionalCellModeAlways];
 }
 
 - (void)saveViewObject:(WETodo *)we {
@@ -57,23 +65,35 @@
 
 #pragma -
 #pragma mark TableViewAgentDelegate
+
 - (NSString *)cellIdentifier:(id)viewObject {
-    return kReuseCustomTableViewCell;
+    if ([viewObject isKindOfClass:[NSString class]]) {
+        return kReuseAdd;
+    } else {
+        return kReuseCustomTableViewCell;
+    }
 }
 
 - (void)didSelectCell:(ViewObject *)viewObject {
-    [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:viewObject]];
+    if ([viewObject isKindOfClass:[NSString class]]) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
+    } else {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:viewObject]];
+    }
 }
+
 - (void)deleteCell:(id)viewObject {
     [TodoManager deleteEntity:viewObject];
 }
+
 - (NSString *)sectionTitle:(NSArray *)viewObjects {
-    return [viewObjects[0] title];
+    if ([viewObjects[0] isKindOfClass:[NSString class]]) {
+        return nil;
+    } else {
+        return [viewObjects[0] title];
+    }
 }
 
-- (NSString *)addCellIdentifier {
-    return kReuseAdd;
-}
 - (void)didSelectAdditionalCell {
     [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
 }

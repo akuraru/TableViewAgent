@@ -16,6 +16,7 @@
 #import "ExtactedID.h"
 #import "AVOMergeSections.h"
 #import "AVOSingleRow.h"
+#import "TableViewAgentDelegate.h"
 
 @interface AVOMergeSectionsViewController : UITableViewController <TableViewAgentDelegate>
 @property (nonatomic) AVOArrayController *arrayController;
@@ -36,17 +37,19 @@
                              [[ViewObject alloc] initWithTitle:@"piyo" message:@"B"],
                              [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"A"],
                              ];
+    
     self.arrayController = [[AVOArrayController alloc] initWithArray:viewObjects groupedBy:@"message" withPredicate:nil sortedBy:^NSComparisonResult(id obj1, id obj2) {
         return [[obj1 message] compare:[obj2 message]];
     }];
+    FRCAgentViewObject *agentViewObject = [[FRCAgentViewObject alloc]initWithFetch:(id)self.arrayController];
+    [agentViewObject setEditableMode:EditableModeEnable];
     AVOSingleRow *singleRow = [[AVOSingleRow alloc] initWithViewObject:kReuseAdd];
     AVOMergeSections *mergeSections = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
-            [[FRCAgentViewObject alloc]initWithFetch:(id)self.arrayController],
+            agentViewObject,
             singleRow
     ]];
     agent.viewObjects = mergeSections;
     agent.delegate = self;
-    [agent.viewObjects setEditableMode:EditableModeEnable];
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {

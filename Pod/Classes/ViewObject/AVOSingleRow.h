@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "AgentViewObjectProtocol.h"
-#import "AVOBase.h"
+
+@protocol TableViewAgentProtocol;
 
 @interface AVOSingleRow : NSObject <AgentViewObjectProtocol>
 @property(strong, nonatomic) id viewObject;
-@property(weak, nonatomic) TableViewAgent *agent;
+@property(weak, nonatomic) id<TableViewAgentProtocol>agent;
 @property(copy, nonatomic) id(^convert)(id);
 
 - (id)initWithViewObject:(id)viewObject;

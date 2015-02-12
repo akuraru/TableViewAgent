@@ -7,7 +7,7 @@
 
 
 #import "AVOSingleRow.h"
-#import "TableViewAgentCategory.h"
+#import "TableViewAgentProtocol.h"
 
 @implementation AVOSingleRow
 
@@ -48,5 +48,8 @@
 
 - (BOOL)canEdit {
     return NO;
+}
+
+- (void)setEditing:(BOOL)editing {
 }
 @end

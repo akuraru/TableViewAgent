@@ -7,7 +7,7 @@
 
 
 #import "MSAgentViewObject.h"
-#import "TableViewAgentCategory.h"
+#import "TableViewAgentProtocol.h"
 
 #ifdef DEBUG
 #define precondition(code) ({code});
@@ -36,11 +36,11 @@
         [_array addObject:[NSMutableArray array]];
     }
     [_array[section] addObject:object];
-    [_agent insertCell:[NSIndexPath indexPathForItem:[_array[section] count] - 1 inSection:section]];
+    [self.agent insertCell:self atIndexPath:[NSIndexPath indexPathForItem:[_array[section] count] - 1 inSection:section]];
 }
 
 - (void)changeObject:(id)object {
-    [_agent changeUpdateCell:[self indexPathForObject:object]];
+    [self.agent changeUpdateCell:self atIndexPath:[self indexPathForObject:object]];
 }
 
 - (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath {
@@ -49,7 +49,7 @@
     if (a.count == 0) {
         [_array removeObjectAtIndex:indexPath.section];
     }
-    [_agent deleteCell:indexPath];
+    [self.agent deleteCell:self atIndexPath:indexPath];
 }
 
 - (NSIndexPath *)indexPathForObject:(id)object {
@@ -84,4 +84,6 @@
     return _array[section];
 }
 
+- (void)setEditing:(BOOL)editing {
+}
 @end

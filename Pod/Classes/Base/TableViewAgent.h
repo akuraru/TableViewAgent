@@ -8,25 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "TableViewAgentCellDelegate.h"
-#import "TableViewAgentProtocol.h"
+#import "TableViewAgentDelegate.h"
 
 @class EditableState;
 @protocol AgentViewObjectProtocol;
-
-typedef NS_ENUM (NSInteger, AdditionalCellMode) {
-    AdditionalCellModeNone,
-    AdditionalCellModeAlways,
-    AdditionalCellModeHideEditing,
-    AdditionalCellModeShowEditing,
-};
 
 @interface TableViewAgent : NSObject
 
 @property (nonatomic) id<AgentViewObjectProtocol> viewObjects;
 @property (weak, nonatomic) id<TableViewAgentDelegate> delegate;
 @property (nonatomic) BOOL editing;
-
-- (void)setAdditionalCellMode:(AdditionalCellMode)mode;
 
 - (void)redraw;
 @end
