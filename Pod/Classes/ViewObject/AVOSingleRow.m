@@ -52,4 +52,8 @@
 
 - (void)setEditing:(BOOL)editing {
 }
+
+- (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path {
+    return UITableViewCellEditingStyleNone;
+}
 @end

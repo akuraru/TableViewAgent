@@ -55,7 +55,7 @@
 }
 
 - (BOOL)canEditRowForIndexPath:(NSIndexPath *)indexPath {
-    return NO;
+    return self.editing;
 }
 
 - (BOOL)canEdit {
@@ -104,5 +104,9 @@
 
 - (void)showAddCell {
     [self.agent insertSection:self atSection:0];
+}
+
+- (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path {
+    return UITableViewCellEditingStyleInsert;
 }
 @end

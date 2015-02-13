@@ -29,9 +29,12 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 - (BOOL)canEdit;
 - (void)setEditing:(BOOL)editing;
 
+- (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path;
+
 @optional
 @property(copy, nonatomic) id(^convert)(id);
 
 // editing
 - (void)setEditableMode:(EditableMode)editableMode;
+
 @end

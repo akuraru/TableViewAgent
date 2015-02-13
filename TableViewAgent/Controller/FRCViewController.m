@@ -86,6 +86,10 @@
     [TodoManager deleteEntity:viewObject];
 }
 
+- (void)insertCell:(id)viewObject {
+    [self didSelectCell:viewObject];
+}
+
 - (NSString *)sectionTitle:(NSArray *)viewObjects {
     if ([viewObjects[0] isKindOfClass:[NSString class]]) {
         return nil;

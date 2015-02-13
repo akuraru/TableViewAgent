@@ -13,4 +13,5 @@
 - (BOOL)canEditRowForIndexPath:(NSIndexPath *)indexPath;
 - (BOOL)canEdit;
 - (void)setEditableMode:(EditableMode)editableMode;
+- (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path;
 @end

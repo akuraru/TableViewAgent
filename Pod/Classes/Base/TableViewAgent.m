@@ -14,6 +14,7 @@
 typedef struct {
     BOOL didSelectCell              : 1;
     BOOL deleteCell                 : 1;
+    BOOL insertCell                 : 1;
     BOOL cellIdentifier             : 1;
     BOOL sectionTitle               : 1;
     BOOL commonViewObject           : 1;
@@ -54,9 +55,9 @@ typedef struct {
 - (void)setEditing:(BOOL)b {
     if ([self.viewObjects canEdit] && _editing != b) {
         _editing = b;
+        [self.viewObjects setEditing:b];
         [[_delegate tableView] setEditing:!b animated:NO];
         [[_delegate tableView] setEditing:b animated:YES];
-        [self.viewObjects setEditing:b];
     }
 }
 
@@ -149,6 +150,11 @@ typedef struct {
             id viewObject = [self viewObjectWithIndex:indexPath];
             [_delegate deleteCell:viewObject];
         }
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        if (hasSelectors.insertCell) {
+            id viewObject = [self viewObjectWithIndex:indexPath];
+            [self.delegate insertCell:viewObject];
+        }
     }
 }
 
@@ -218,6 +224,10 @@ typedef struct {
     return nil;
 }
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.viewObjects editingStyleForRowAtIndexPath:indexPath];
+}
+
 #pragma mark -
 
 - (UITableViewCell *)createCell:(NSIndexPath *)indexPath {
@@ -258,6 +268,7 @@ typedef struct {
     s.cellHeight = [d respondsToSelector:@selector(cellHeight:)];
     s.didSelectCell = [d respondsToSelector:@selector(didSelectCell:)];
     s.deleteCell = [d respondsToSelector:@selector(deleteCell:)];
+    s.insertCell = [d respondsToSelector:@selector(insertCell:)];
     s.cellIdentifier = [d respondsToSelector:@selector(cellIdentifier:)];
     s.commonViewObject = [d respondsToSelector:@selector(commonViewObject:)];
     s.sectionTitle = [d respondsToSelector:@selector(sectionTitle:)];

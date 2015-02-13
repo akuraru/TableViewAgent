@@ -47,6 +47,12 @@
             return [EditableStateEditingEnable new];
         case EditableModeEditingNonEnable:
             return [EditableStateEditingNonEnable new];
+        default:
+            return nil;
     }
+}
+
+- (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path {
+    return UITableViewCellEditingStyleDelete;
 }
 @end
