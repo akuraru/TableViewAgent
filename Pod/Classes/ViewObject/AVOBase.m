@@ -55,4 +55,13 @@
 - (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path {
     return UITableViewCellEditingStyleDelete;
 }
+
+- (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath {
+    return self.cellIdentifier([self objectAtIndexPath:indexPath]);
+}
+
+// need override
+- (id)objectAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
 @end

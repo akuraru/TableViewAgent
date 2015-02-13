@@ -23,6 +23,7 @@ typedef NS_ENUM (NSInteger, AdditionalCellMode) {
 @property(strong, nonatomic) id viewObject;
 @property(weak, nonatomic) id <TableViewAgentProtocol> agent;
 @property(copy, nonatomic) id (^convert)(id);
+@property(copy, nonatomic) NSString *(^cellIdentifier)(id viewObject);
 @property(nonatomic) BOOL editing;
 
 - (id)initWithViewObject:(id)viewObject;

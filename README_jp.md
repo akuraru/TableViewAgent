@@ -14,7 +14,7 @@
 2. そのインスタンスは`setViewObject:`を実装している必要があります。
 3. TableViewAgentをメンバー変数として宣言してください。
 4. `viewDidload`でTableViewAgentを初期化してください。
-5. viewControllerは`cellIdentifier:`を実装し、`dequeueReusableCellWithIdentifier:`で使うIdentiferを返す必要があります。
+5. 任意の集合を`AgentViewObject`でラップして、TableViewAgentに渡してください。
 
 ```
 @implementation CustomViewController {
@@ -50,11 +50,19 @@
 
 ### AgentViewObject
 
-AgentViewObjectは、規則性のあるデータをラップしてAgentに対して受け渡すための機能である。
+AgentViewObjectは、集合ををラップしてAgentに対して受け渡すための機能である。各AgentViewObjectには特色があり、表示のされ方が異なる。
+
+`@property(copy, nonatomic) NSString *(^cellIdentifer)(id viewObject);`
+
+各セルの要素からcell identiferを返す。
 
 #### FRCAgentViewOject
 
 NSFetchedResultController用のAgentViewObjectです。NSFetchedResultControllerが変更を反映する機能を提供しています。
+
+#### AVOMergeSections
+
+複数のAgentViewObjectを一つのAgentViewObjectとして扱うためのクラスです。
 
 
 

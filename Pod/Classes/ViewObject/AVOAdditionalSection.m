@@ -109,4 +109,8 @@
 - (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path {
     return UITableViewCellEditingStyleInsert;
 }
+
+- (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath {
+    return self.cellIdentifier([self objectAtIndexPath:indexPath]);
+}
 @end

@@ -36,8 +36,14 @@
     agent = [[TableViewAgent alloc] init];
     AVOAdditionalSection *additionalSection = [[AVOAdditionalSection alloc] initWithViewObject:kReuseAdd];
     [additionalSection setAdditionalCellMode:AdditionalCellModeAlways];
+    [additionalSection setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseAdd;
+    }];
     FRCAgentViewObject *viewObject = [[FRCAgentViewObject alloc] initWithFetch:[TodoManager fetchController]];
     [viewObject setEditableMode:EditableModeEnable];
+    [viewObject setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseCustomTableViewCell;
+    }];
     agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
             viewObject,
             additionalSection,
@@ -65,14 +71,6 @@
 
 #pragma -
 #pragma mark TableViewAgentDelegate
-
-- (NSString *)cellIdentifier:(id)viewObject {
-    if ([viewObject isKindOfClass:[NSString class]]) {
-        return kReuseAdd;
-    } else {
-        return kReuseCustomTableViewCell;
-    }
-}
 
 - (void)didSelectCell:(ViewObject *)viewObject {
     if ([viewObject isKindOfClass:[NSString class]]) {

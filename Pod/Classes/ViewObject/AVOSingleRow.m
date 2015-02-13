@@ -56,4 +56,8 @@
 - (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path {
     return UITableViewCellEditingStyleNone;
 }
+
+- (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath {
+    return self.cellIdentifier([self objectAtIndexPath:indexPath]);
+}
 @end

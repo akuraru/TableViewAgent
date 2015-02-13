@@ -1,6 +1,5 @@
 
 @protocol TableViewAgentDelegate <NSObject>
-- (NSString *)cellIdentifier:(id)viewObject;
 - (UITableView *)tableView;
 @optional
 - (void)didSelectCell:(id)viewObject;

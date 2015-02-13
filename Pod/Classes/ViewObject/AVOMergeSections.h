@@ -13,6 +13,7 @@
 @interface AVOMergeSections : NSObject <AgentViewObjectProtocol>
 @property(strong, nonatomic) NSArray *agentViewObjects;
 @property(weak, nonatomic) id<TableViewAgentProtocol>agent;
+@property(copy, nonatomic) NSString *(^cellIdentifier)(id viewObject);
 
 - (id)initWithAgentViewObjects:(NSArray *)agentViewObjects;
 @end

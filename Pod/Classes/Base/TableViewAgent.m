@@ -160,7 +160,7 @@ typedef struct {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     id viewObject = [self viewObjectWithIndex:indexPath];
-    NSString *cellIdentifier = [_delegate cellIdentifier:viewObject];
+    NSString *cellIdentifier = [self.viewObjects cellIdentifierAtIndexPath:indexPath];
     Class <TableViewAgentCellDelegate> cellClass = NSClassFromString(cellIdentifier);
     if ([cellClass respondsToSelector:@selector(heightFromViewObject:)]) {
         return [cellClass heightFromViewObject:viewObject];
@@ -232,31 +232,18 @@ typedef struct {
 
 - (UITableViewCell *)createCell:(NSIndexPath *)indexPath {
     id viewObject = [self viewObjectWithIndex:indexPath];
-    id cell = [self dequeueCell:indexPath];
+    id cell = [[self.delegate tableView] dequeueReusableCellWithIdentifier:[self.viewObjects cellIdentifierAtIndexPath:indexPath]];
     [cell setViewObject:viewObject];
     return cell;
 }
 
 #pragma mark -
 
-- (void)insertRowWithSection:(NSInteger)section createSection:(BOOL)b {
-    if (b) {
-        [[_delegate tableView] insertSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
-    } else {
-        [[_delegate tableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[_viewObjects countInSection:section] - 1 inSection:section]] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-}
-
 - (void)setDelegate:(id)d {
     _delegate = d;
     hasSelectors = [self createHasSelector:_delegate];
     [[d tableView] setDelegate:self];
     [[d tableView] setDataSource:self];
-}
-
-- (UITableViewCell *)dequeueCell:(NSIndexPath *)indexPath {
-    id viewObject = [self viewObjectWithIndex:indexPath];
-    return [[_delegate tableView] dequeueReusableCellWithIdentifier:[_delegate cellIdentifier:viewObject]];
 }
 
 - (NSComparisonResult)compareSectionCount:(NSUInteger)count {

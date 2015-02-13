@@ -10,8 +10,14 @@
 #import "AgentViewObjectProtocol.h"
 
 @interface AVOBase : NSObject
+@property(copy, nonatomic) NSString *(^cellIdentifier)(id viewObject);
+- (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath;
+
 - (BOOL)canEditRowForIndexPath:(NSIndexPath *)indexPath;
 - (BOOL)canEdit;
 - (void)setEditableMode:(EditableMode)editableMode;
 - (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path;
+
+// need override
+- (id)objectAtIndexPath:(NSIndexPath *)indexPath;
 @end

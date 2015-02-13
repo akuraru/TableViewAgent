@@ -36,8 +36,14 @@
      [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
      ]];
     [agentViewObject setEditableMode:EditableModeEnable];
+    [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseCustomTableViewCell;
+    }];
     AVOAdditionalSection *additionalSection = [[AVOAdditionalSection alloc] initWithViewObject:kReuseAdd];
     [additionalSection setAdditionalCellMode:AdditionalCellModeHideEditing];
+    [additionalSection setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseAdd;
+    }];
 
     agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
             agentViewObject,
@@ -62,12 +68,6 @@
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [agent redraw];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kSegueEdit]) {
         ThirdViewController *controller = segue.destinationViewController;
@@ -78,13 +78,6 @@
 
 #pragma -
 #pragma mark TableViewAgentDelegate
-- (NSString *)cellIdentifier:(id)viewObject {
-    if ([viewObject isKindOfClass:[NSString class]]) {
-        return kReuseAdd;
-    } else {
-        return kReuseCustomTableViewCell;
-    }
-}
 
 - (void)didSelectCell:(ViewObject *)viewObject {
     if ([viewObject isKindOfClass:[NSString class]]) {

@@ -15,6 +15,7 @@
 @property(strong, nonatomic) id viewObject;
 @property(weak, nonatomic) id<TableViewAgentProtocol>agent;
 @property(copy, nonatomic) id(^convert)(id);
+@property(copy, nonatomic) NSString *(^cellIdentifier)(id viewObject);
 
 - (id)initWithViewObject:(id)viewObject;
 @end

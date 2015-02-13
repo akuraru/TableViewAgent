@@ -38,6 +38,10 @@
         return [[obj1 message] compare:[obj2 message]];
     }];
     agent.viewObjects = [[FRCAgentViewObject alloc]initWithFetch:(id)self.arrayController];
+
+    [agent.viewObjects setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseCustomTableViewCell;
+    }];
     agent.delegate = self;
     [agent.viewObjects setEditableMode:EditableModeEnable];
 }
@@ -74,9 +78,6 @@
 
 #pragma -
 #pragma mark TableViewAgentDelegate
-- (NSString *)cellIdentifier:(id)viewObject {
-    return kReuseCustomTableViewCell;
-}
 
 - (void)didSelectCell:(ViewObject *)viewObject {
     [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];

@@ -6,7 +6,6 @@
 //  Copyright (c) 2015年 P.I.akura. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "TableViewAgent.h"
 #import "AVOArrayControoler.h"
 #import "ViewObject.h"
@@ -16,34 +15,40 @@
 #import "ExtactedID.h"
 #import "AVOMergeSections.h"
 #import "AVOSingleRow.h"
-#import "TableViewAgentDelegate.h"
 
 @interface AVOMergeSectionsViewController : UITableViewController <TableViewAgentDelegate>
-@property (nonatomic) AVOArrayController *arrayController;
+@property(nonatomic) AVOArrayController *arrayController;
 @end
 
-@implementation AVOMergeSectionsViewController{
+@implementation AVOMergeSectionsViewController {
     TableViewAgent *agent;
 }
 
 - (IBAction)touchEdit:(id)sender {
     [agent setEditing:!agent.editing];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     agent = [[TableViewAgent alloc] init];
     NSArray *viewObjects = @[
-                             [[ViewObject alloc] initWithTitle:@"hoge" message:@"A"],
-                             [[ViewObject alloc] initWithTitle:@"piyo" message:@"B"],
-                             [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"A"],
-                             ];
-    
+            [[ViewObject alloc] initWithTitle:@"hoge" message:@"A"],
+            [[ViewObject alloc] initWithTitle:@"piyo" message:@"B"],
+            [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"A"],
+    ];
+
     self.arrayController = [[AVOArrayController alloc] initWithArray:viewObjects groupedBy:@"message" withPredicate:nil sortedBy:^NSComparisonResult(id obj1, id obj2) {
         return [[obj1 message] compare:[obj2 message]];
     }];
-    FRCAgentViewObject *agentViewObject = [[FRCAgentViewObject alloc]initWithFetch:(id)self.arrayController];
+    FRCAgentViewObject *agentViewObject = [[FRCAgentViewObject alloc] initWithFetch:(id) self.arrayController];
     [agentViewObject setEditableMode:EditableModeEnable];
+    [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseCustomTableViewCell;
+    }];
     AVOSingleRow *singleRow = [[AVOSingleRow alloc] initWithViewObject:kReuseAdd];
+    [singleRow setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseAdd;
+    }];
     AVOMergeSections *mergeSections = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
             agentViewObject,
             singleRow
@@ -57,20 +62,20 @@
         ViewObject *vo = tvo.viewObject;
         vo.title = tvo.title;
         vo.message = tvo.message;
-        
+
         [self.arrayController updateObject:vo];
     } else {
         ViewObject *vo = [[ViewObject alloc] init];
         vo.title = tvo.title;
         vo.message = tvo.message;
-        
+
         [self.arrayController addObject:vo];
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     [agent redraw];
 }
 
@@ -84,13 +89,6 @@
 
 #pragma -
 #pragma mark TableViewAgentDelegate
-- (NSString *)cellIdentifier:(id)viewObject {
-    if ([viewObject isKindOfClass:[NSString class]]) {
-        return kReuseAdd;
-    } else {
-        return kReuseCustomTableViewCell;
-    }
-}
 
 - (void)didSelectCell:(id)viewObject {
     if ([viewObject isKindOfClass:[NSString class]]) {

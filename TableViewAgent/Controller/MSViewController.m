@@ -35,6 +35,9 @@
     agent = [[TableViewAgent alloc] init];
     AVOAdditionalSection *additionalSection = [[AVOAdditionalSection alloc] initWithViewObject:kReuseAdd];
     [additionalSection setAdditionalCellMode:AdditionalCellModeShowEditing];
+    [additionalSection setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseAdd;
+    }];
     
     agentViewObject = [[MSAgentViewObject alloc] initWithArray:@[@[
             [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
@@ -43,6 +46,10 @@
             [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
     ].mutableCopy].mutableCopy];
     [agentViewObject setEditableMode:EditableModeEnable];
+    [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseCustomTableViewCell;
+    }];
+    
     agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
             agentViewObject,
             additionalSection,
@@ -80,14 +87,6 @@
 
 #pragma -
 #pragma mark TableViewAgentDelegate
-
-- (NSString *)cellIdentifier:(id)viewObject {
-    if ([viewObject isKindOfClass:[NSString class]]) {
-        return kReuseAdd;
-    } else {
-        return kReuseCustomTableViewCell;
-    }
-}
 
 - (void)didSelectCell:(ViewObject *)viewObject {
     if ([viewObject isKindOfClass:[NSString class]]) {
