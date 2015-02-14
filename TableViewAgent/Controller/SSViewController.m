@@ -17,26 +17,26 @@
 #import "AVOAdditionalSection.h"
 
 @interface SSViewController () <TableViewAgentDelegate>
+@property(nonatomic) TableViewAgent *agent;
+@property(nonatomic) SSAgentViewObject *agentViewObject;
 @end
 
 @implementation SSViewController {
-    TableViewAgent *agent;
-    SSAgentViewObject *agentViewObject;
 }
 
 - (IBAction)touchEdit:(id)sender {
-    [agent setEditing:!agent.editing];
+    [self.agent setEditing:!self.agent.editing];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    agent = [[TableViewAgent alloc] init];
-    agentViewObject= [[SSAgentViewObject alloc] initWithArray:@[
+    self.agent = [[TableViewAgent alloc] init];
+    self.agentViewObject= [[SSAgentViewObject alloc] initWithArray:@[
      [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
      [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
      [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
      ]];
-    [agentViewObject setEditableMode:EditableModeEnable];
-    [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
+    [self.agentViewObject setEditableMode:EditableModeEnable];
+    [self.agentViewObject setCellIdentifier:^NSString *(id viewObject) {
         return kReuseCustomTableViewCell;
     }];
     AVOAdditionalSection *additionalSection = [[AVOAdditionalSection alloc] initWithViewObject:kReuseAdd];
@@ -45,11 +45,11 @@
         return kReuseAdd;
     }];
 
-    agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
-            agentViewObject,
+    self.agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
+            self.agentViewObject,
             additionalSection,
     ]];
-    agent.delegate = self;
+    self.agent.delegate = self;
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
@@ -58,13 +58,13 @@
         vo.title = tvo.title;
         vo.message = tvo.message;
         
-        [agentViewObject changeObject:vo];
+        [self.agentViewObject changeObject:vo];
     } else {
         ViewObject *vo = [[ViewObject alloc] init];
         vo.title = tvo.title;
         vo.message = tvo.message;
         
-        [agentViewObject addObject:vo];
+        [self.agentViewObject addObject:vo];
     }
 }
 
@@ -88,7 +88,7 @@
 }
 
 - (void)deleteCell:(id)viewObject {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[agentViewObject.array indexOfObject:viewObject] inSection:0];
-    [agentViewObject removeObjectAtIndexPath:indexPath];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.agentViewObject.array indexOfObject:viewObject] inSection:0];
+    [self.agentViewObject removeObjectAtIndexPath:indexPath];
 }
 @end

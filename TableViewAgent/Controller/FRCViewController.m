@@ -20,35 +20,43 @@
 #import "AVOAdditionalSection.h"
 
 @interface FRCViewController () <TableViewAgentDelegate>
+@property (nonatomic) TableViewAgent *agent;
 @end
 
 @implementation FRCViewController {
-    TableViewAgent *agent;
 }
 
 - (IBAction)touchEdit:(id)sender {
-    [agent setEditing:!agent.editing];
+    [self.agent setEditing:!self.agent.editing];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    agent = [[TableViewAgent alloc] init];
+    self.agent = [[TableViewAgent alloc] init];
+    self.agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
+            [self createAgentViewObject],
+            [self createAdditionalSection],
+    ]];
+    self.agent.delegate = self;
+}
+
+- (FRCAgentViewObject *)createAgentViewObject {
+    FRCAgentViewObject *agentViewObject = [[FRCAgentViewObject alloc] initWithFetch:[TodoManager fetchController]];
+    [agentViewObject setEditableMode:EditableModeEnable];
+    [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseCustomTableViewCell;
+    }];
+    return agentViewObject;
+}
+
+- (AVOAdditionalSection *)createAdditionalSection {
     AVOAdditionalSection *additionalSection = [[AVOAdditionalSection alloc] initWithViewObject:kReuseAdd];
     [additionalSection setAdditionalCellMode:AdditionalCellModeAlways];
     [additionalSection setCellIdentifier:^NSString *(id viewObject) {
         return kReuseAdd;
     }];
-    FRCAgentViewObject *viewObject = [[FRCAgentViewObject alloc] initWithFetch:[TodoManager fetchController]];
-    [viewObject setEditableMode:EditableModeEnable];
-    [viewObject setCellIdentifier:^NSString *(id viewObject) {
-        return kReuseCustomTableViewCell;
-    }];
-    agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
-            viewObject,
-            additionalSection,
-    ]];
-    agent.delegate = self;
+    return additionalSection;
 }
 
 - (void)saveViewObject:(WETodo *)we {
@@ -58,7 +66,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    [agent redraw];
+    [self.agent redraw];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

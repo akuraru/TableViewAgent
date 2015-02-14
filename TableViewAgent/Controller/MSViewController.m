@@ -14,32 +14,43 @@
 #import "ViewObject.h"
 #import "MSAgentViewObject.h"
 #import "ThirdViewController.h"
-#import "TableViewAgentDelegate.h"
 #import "AVOAdditionalSection.h"
 
 @interface MSViewController () <TableViewAgentDelegate>
-
+@property(nonatomic) TableViewAgent *agent;
+@property(nonatomic) MSAgentViewObject *agentViewObject;
 @end
 
 @implementation MSViewController {
-    TableViewAgent *agent;
-    MSAgentViewObject *agentViewObject;
+
 }
 
 - (IBAction)touchEdit:(id)sender {
-    [agent setEditing:!agent.editing];
+    [self.agent setEditing:!self.agent.editing];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    agent = [[TableViewAgent alloc] init];
+    self.agent = [[TableViewAgent alloc] init];
+    self.agentViewObject = [self createAgentViewObject];
+    self.agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
+            self.agentViewObject,
+            [self createAdditionalSection],
+    ]];
+    self.agent.delegate = self;
+}
+
+- (AVOAdditionalSection *)createAdditionalSection {
     AVOAdditionalSection *additionalSection = [[AVOAdditionalSection alloc] initWithViewObject:kReuseAdd];
     [additionalSection setAdditionalCellMode:AdditionalCellModeShowEditing];
     [additionalSection setCellIdentifier:^NSString *(id viewObject) {
         return kReuseAdd;
     }];
-    
-    agentViewObject = [[MSAgentViewObject alloc] initWithArray:@[@[
+    return additionalSection;
+}
+
+- (MSAgentViewObject *)createAgentViewObject {
+    MSAgentViewObject *agentViewObject = [[MSAgentViewObject alloc] initWithArray:@[@[
             [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
             [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
     ].mutableCopy, @[
@@ -49,12 +60,7 @@
     [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
         return kReuseCustomTableViewCell;
     }];
-    
-    agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
-            agentViewObject,
-            additionalSection,
-    ]];
-    agent.delegate = self;
+    return agentViewObject;
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
@@ -63,13 +69,13 @@
         vo.title = tvo.title;
         vo.message = tvo.message;
 
-        [agentViewObject changeObject:vo];
+        [self.agentViewObject changeObject:vo];
     } else {
         ViewObject *vo = [[ViewObject alloc] init];
         vo.title = tvo.title;
         vo.message = tvo.message;
 
-        [agentViewObject addObject:vo inSection:0];
+        [self.agentViewObject addObject:vo inSection:0];
     }
 }
 

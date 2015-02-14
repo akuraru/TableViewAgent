@@ -6,7 +6,6 @@
 //  Copyright (c) 2015年 P.I.akura. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "TableViewAgent.h"
 #import "AVOArrayControoler.h"
 #import "ViewObject.h"
@@ -16,34 +15,43 @@
 #import "ExtactedID.h"
 
 @interface AVOArrayViewController : UITableViewController <TableViewAgentDelegate>
-@property (nonatomic) AVOArrayController *arrayController;
+@property(nonatomic) TableViewAgent *agent;
+@property(nonatomic) AVOArrayController *arrayController;
 @end
 
-@implementation AVOArrayViewController{
-    TableViewAgent *agent;
+@implementation AVOArrayViewController {
 }
 
 - (IBAction)touchEdit:(id)sender {
-    [agent setEditing:!agent.editing];
+    [self.agent setEditing:!self.agent.editing];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    agent = [[TableViewAgent alloc] init];
+    self.agent = [[TableViewAgent alloc] init];
+    self.arrayController = [self createArrayController];
+    self.agent.viewObjects = [self createAgentViewObject:self.arrayController];
+    self.agent.delegate = self;
+    [self.agent.viewObjects setEditableMode:EditableModeEnable];
+}
+
+- (AVOArrayController *)createArrayController {
     NSArray *viewObjects = @[
-                             [[ViewObject alloc] initWithTitle:@"hoge" message:@"A"],
-                             [[ViewObject alloc] initWithTitle:@"piyo" message:@"B"],
-                             [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"A"],
-                             ];
-    self.arrayController = [[AVOArrayController alloc] initWithArray:viewObjects groupedBy:@"message" withPredicate:nil sortedBy:^NSComparisonResult(id obj1, id obj2) {
+        [[ViewObject alloc] initWithTitle:@"hoge" message:@"A"],
+        [[ViewObject alloc] initWithTitle:@"piyo" message:@"B"],
+        [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"A"],
+    ];
+    return [[AVOArrayController alloc] initWithArray:viewObjects groupedBy:@"message" withPredicate:nil sortedBy:^NSComparisonResult(id obj1, id obj2) {
         return [[obj1 message] compare:[obj2 message]];
     }];
-    agent.viewObjects = [[FRCAgentViewObject alloc]initWithFetch:(id)self.arrayController];
+}
 
-    [agent.viewObjects setCellIdentifier:^NSString *(id viewObject) {
+- (FRCAgentViewObject *)createAgentViewObject:(id)arrayController {
+    FRCAgentViewObject *agentViewObject = [[FRCAgentViewObject alloc] initWithFetch:arrayController];
+    [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
         return kReuseCustomTableViewCell;
     }];
-    agent.delegate = self;
-    [agent.viewObjects setEditableMode:EditableModeEnable];
+    return agentViewObject;
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
@@ -51,21 +59,21 @@
         ViewObject *vo = tvo.viewObject;
         vo.title = tvo.title;
         vo.message = tvo.message;
-        
+
         [self.arrayController updateObject:vo];
     } else {
         ViewObject *vo = [[ViewObject alloc] init];
         vo.title = tvo.title;
         vo.message = tvo.message;
-        
+
         [self.arrayController addObject:vo];
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    [agent redraw];
+
+    [self.agent redraw];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -82,6 +90,7 @@
 - (void)didSelectCell:(ViewObject *)viewObject {
     [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
 }
+
 - (void)deleteCell:(id)viewObject {
     [self.arrayController removeObject:viewObject];
 }
@@ -89,6 +98,7 @@
 - (NSString *)addCellIdentifier {
     return kReuseAdd;
 }
+
 - (void)didSelectAdditionalCell {
     [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
 }
