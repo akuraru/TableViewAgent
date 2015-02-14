@@ -60,4 +60,10 @@
 - (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath {
     return self.cellIdentifier([self objectAtIndexPath:indexPath]);
 }
+
+- (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.didSelectCell) {
+        self.didSelectCell([self objectAtIndexPath:indexPath]);
+    }
+}
 @end

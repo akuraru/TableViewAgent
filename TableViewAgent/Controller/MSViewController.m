@@ -40,15 +40,6 @@
     self.agent.delegate = self;
 }
 
-- (AVOAdditionalSection *)createAdditionalSection {
-    AVOAdditionalSection *additionalSection = [[AVOAdditionalSection alloc] initWithViewObject:kReuseAdd];
-    [additionalSection setAdditionalCellMode:AdditionalCellModeShowEditing];
-    [additionalSection setCellIdentifier:^NSString *(id viewObject) {
-        return kReuseAdd;
-    }];
-    return additionalSection;
-}
-
 - (MSAgentViewObject *)createAgentViewObject {
     MSAgentViewObject *agentViewObject = [[MSAgentViewObject alloc] initWithArray:@[@[
             [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
@@ -60,7 +51,22 @@
     [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
         return kReuseCustomTableViewCell;
     }];
+    [agentViewObject setDidSelectCell:^(id viewObject) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
+    }];
     return agentViewObject;
+}
+
+- (AVOAdditionalSection *)createAdditionalSection {
+    AVOAdditionalSection *additionalSection = [[AVOAdditionalSection alloc] initWithViewObject:kReuseAdd];
+    [additionalSection setAdditionalCellMode:AdditionalCellModeShowEditing];
+    [additionalSection setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseAdd;
+    }];
+    [additionalSection setDidSelectCell:^(id viewObject) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
+    }];
+    return additionalSection;
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
@@ -93,14 +99,6 @@
 
 #pragma -
 #pragma mark TableViewAgentDelegate
-
-- (void)didSelectCell:(ViewObject *)viewObject {
-    if ([viewObject isKindOfClass:[NSString class]]) {
-        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
-    } else {
-        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
-    }
-}
 
 - (void)deleteCell:(id)viewObject {
 }

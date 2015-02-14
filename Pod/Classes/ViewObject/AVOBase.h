@@ -11,7 +11,10 @@
 
 @interface AVOBase : NSObject
 @property(copy, nonatomic) NSString *(^cellIdentifier)(id viewObject);
+@property(copy, nonatomic) void (^didSelectCell)(id viewObject);
+
 - (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath;
+- (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
 - (BOOL)canEditRowForIndexPath:(NSIndexPath *)indexPath;
 - (BOOL)canEdit;

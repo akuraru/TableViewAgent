@@ -59,6 +59,9 @@
     [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
         return kReuseCustomTableViewCell;
     }];
+    [agentViewObject setDidSelectCell:^(id viewObject) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
+    }];
     return agentViewObject;
 }
 
@@ -66,6 +69,9 @@
     AVOSingleRow *singleRow = [[AVOSingleRow alloc] initWithViewObject:kReuseAdd];
     [singleRow setCellIdentifier:^NSString *(id viewObject) {
         return kReuseAdd;
+    }];
+    [singleRow setDidSelectCell:^(id viewObject) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
     }];
     return singleRow;
 }
@@ -96,14 +102,6 @@
 
 #pragma -
 #pragma mark TableViewAgentDelegate
-
-- (void)didSelectCell:(id)viewObject {
-    if ([viewObject isKindOfClass:[NSString class]]) {
-        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
-    } else {
-        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
-    }
-}
 
 - (void)deleteCell:(id)viewObject {
     [self.arrayController removeObject:viewObject];

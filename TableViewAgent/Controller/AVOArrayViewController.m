@@ -51,6 +51,9 @@
     [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
         return kReuseCustomTableViewCell;
     }];
+    [agentViewObject setDidSelectCell:^(id viewObject) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
+    }];
     return agentViewObject;
 }
 
@@ -86,10 +89,6 @@
 
 #pragma -
 #pragma mark TableViewAgentDelegate
-
-- (void)didSelectCell:(ViewObject *)viewObject {
-    [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
-}
 
 - (void)deleteCell:(id)viewObject {
     [self.arrayController removeObject:viewObject];

@@ -47,6 +47,9 @@
     [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
         return kReuseCustomTableViewCell;
     }];
+    [agentViewObject setDidSelectCell:^(id viewObject) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:viewObject]];
+    }];
     return agentViewObject;
 }
 
@@ -55,6 +58,9 @@
     [additionalSection setAdditionalCellMode:AdditionalCellModeAlways];
     [additionalSection setCellIdentifier:^NSString *(id viewObject) {
         return kReuseAdd;
+    }];
+    [additionalSection setDidSelectCell:^(id viewObject) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
     }];
     return additionalSection;
 }
@@ -80,20 +86,12 @@
 #pragma -
 #pragma mark TableViewAgentDelegate
 
-- (void)didSelectCell:(ViewObject *)viewObject {
-    if ([viewObject isKindOfClass:[NSString class]]) {
-        [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
-    } else {
-        [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:viewObject]];
-    }
-}
-
 - (void)deleteCell:(id)viewObject {
     [TodoManager deleteEntity:viewObject];
 }
 
 - (void)insertCell:(id)viewObject {
-    [self didSelectCell:viewObject];
+    [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
 }
 
 - (NSString *)sectionTitle:(NSArray *)viewObjects {
@@ -104,7 +102,4 @@
     }
 }
 
-- (void)didSelectAdditionalCell {
-    [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
-}
 @end

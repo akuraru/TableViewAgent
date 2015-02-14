@@ -32,6 +32,7 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 - (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path;
 
 - (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath;
+- (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @optional
 @property(copy, nonatomic) id(^convert)(id);
@@ -41,5 +42,6 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 
 //
 @property(copy, nonatomic) NSString *(^cellIdentifier)(id viewObject);
+@property(copy, nonatomic) void (^didSelectCell)(id viewObject);
 
 @end

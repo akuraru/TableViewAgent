@@ -60,6 +60,14 @@
     return self.cellIdentifier([self objectAtIndexPath:indexPath]);
 }
 
+- (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.didSelectCell) {
+        self.didSelectCell([self objectAtIndexPath:indexPath]);
+    } else {
+        NSAssert(NO, @"hoge");
+    }
+}
+
 // need override
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
     return nil;

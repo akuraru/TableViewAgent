@@ -56,8 +56,12 @@ AgentViewObjectは、集合ををラップしてAgentに対して受け渡すた
 
 各セルの要素からcell identiferを返す。
 
-#### FRCAgentViewOject
+`@property(copy, nonatomic) void (^didSelectCell)(id viewObject);`
 
+各セルが選択されたときの処理を書いてください。
+
+#### FRCAgentViewOject
+	
 NSFetchedResultController用のAgentViewObjectです。NSFetchedResultControllerが変更を反映する機能を提供しています。
 
 #### AVOMergeSections

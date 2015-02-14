@@ -27,29 +27,44 @@
 - (IBAction)touchEdit:(id)sender {
     [self.agent setEditing:!self.agent.editing];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.agent = [[TableViewAgent alloc] init];
-    self.agentViewObject= [[SSAgentViewObject alloc] initWithArray:@[
-     [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
-     [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
-     [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
-     ]];
-    [self.agentViewObject setEditableMode:EditableModeEnable];
-    [self.agentViewObject setCellIdentifier:^NSString *(id viewObject) {
+    self.agentViewObject = [self agentViewObject];
+    self.agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
+            self.agentViewObject,
+            [self createAdditionalSection],
+    ]];
+    self.agent.delegate = self;
+}
+
+- (SSAgentViewObject *)agentViewObject {
+    SSAgentViewObject *agentViewObject = [[SSAgentViewObject alloc] initWithArray:@[
+            [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
+            [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
+            [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],
+    ]];
+    [agentViewObject setEditableMode:EditableModeEnable];
+    [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
         return kReuseCustomTableViewCell;
     }];
+    [agentViewObject setDidSelectCell:^(id viewObject) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
+    }];
+    return agentViewObject;
+}
+
+- (AVOAdditionalSection *)createAdditionalSection {
     AVOAdditionalSection *additionalSection = [[AVOAdditionalSection alloc] initWithViewObject:kReuseAdd];
     [additionalSection setAdditionalCellMode:AdditionalCellModeHideEditing];
     [additionalSection setCellIdentifier:^NSString *(id viewObject) {
         return kReuseAdd;
     }];
-
-    self.agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
-            self.agentViewObject,
-            additionalSection,
-    ]];
-    self.agent.delegate = self;
+    [additionalSection setDidSelectCell:^(id viewObject) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
+    }];
+    return additionalSection;
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
@@ -57,13 +72,13 @@
         ViewObject *vo = tvo.viewObject;
         vo.title = tvo.title;
         vo.message = tvo.message;
-        
+
         [self.agentViewObject changeObject:vo];
     } else {
         ViewObject *vo = [[ViewObject alloc] init];
         vo.title = tvo.title;
         vo.message = tvo.message;
-        
+
         [self.agentViewObject addObject:vo];
     }
 }
@@ -78,14 +93,6 @@
 
 #pragma -
 #pragma mark TableViewAgentDelegate
-
-- (void)didSelectCell:(ViewObject *)viewObject {
-    if ([viewObject isKindOfClass:[NSString class]]) {
-        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
-    } else {
-        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
-    }
-}
 
 - (void)deleteCell:(id)viewObject {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.agentViewObject.array indexOfObject:viewObject] inSection:0];

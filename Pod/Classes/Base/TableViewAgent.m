@@ -9,13 +9,10 @@
 #import "TableViewAgent.h"
 #import "AgentViewObjectProtocol.h"
 #import "TableViewAgentProtocol.h"
-#import "TableViewAgentDelegate.h"
 
 typedef struct {
-    BOOL didSelectCell              : 1;
     BOOL deleteCell                 : 1;
     BOOL insertCell                 : 1;
-    BOOL cellIdentifier             : 1;
     BOOL sectionTitle               : 1;
     BOOL commonViewObject           : 1;
     BOOL sectionHeightForHeader     : 1;
@@ -64,7 +61,7 @@ typedef struct {
 #pragma mark -
 #pragma mark change cell
 
-- (void)deleteCell:(id<AgentViewObjectProtocol>)agentViewObject atIndexPath:(NSIndexPath *)indexPath {
+- (void)deleteCell:(id <AgentViewObjectProtocol>)agentViewObject atIndexPath:(NSIndexPath *)indexPath {
     if ([self compareSectionCount:_viewObjects.sectionCount]) {
         [_delegate.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
     } else {
@@ -72,11 +69,11 @@ typedef struct {
     }
 }
 
-- (void)deleteSection:(id<AgentViewObjectProtocol>)agentViewObject atSection:(NSInteger)section {
+- (void)deleteSection:(id <AgentViewObjectProtocol>)agentViewObject atSection:(NSInteger)section {
     [self.delegate.tableView deleteSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)deleteCells:(id<AgentViewObjectProtocol>)agentViewObject atSection:(NSInteger)section rows:(NSArray *)rows {
+- (void)deleteCells:(id <AgentViewObjectProtocol>)agentViewObject atSection:(NSInteger)section rows:(NSArray *)rows {
     if ([self compareSectionCount:_viewObjects.sectionCount]) {
         [_delegate.tableView deleteSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
     } else {
@@ -84,7 +81,7 @@ typedef struct {
     }
 }
 
-- (void)insertCell:(id<AgentViewObjectProtocol>)agentViewObject atIndexPath:(NSIndexPath *)indexPath {
+- (void)insertCell:(id <AgentViewObjectProtocol>)agentViewObject atIndexPath:(NSIndexPath *)indexPath {
     if ([self compareSectionCount:_viewObjects.sectionCount]) {
         [_delegate.tableView insertSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
     } else {
@@ -92,7 +89,7 @@ typedef struct {
     }
 }
 
-- (void)insertSection:(id<AgentViewObjectProtocol>)agentViewObject atSection:(NSInteger)section {
+- (void)insertSection:(id <AgentViewObjectProtocol>)agentViewObject atSection:(NSInteger)section {
     [[self.delegate tableView] insertSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
@@ -104,11 +101,11 @@ typedef struct {
     }
 }
 
-- (void)changeUpdateCell:(id<AgentViewObjectProtocol>)agentViewObject atIndexPath:(NSIndexPath *)indexPath {
+- (void)changeUpdateCell:(id <AgentViewObjectProtocol>)agentViewObject atIndexPath:(NSIndexPath *)indexPath {
     [_delegate.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)changeMoveCell:(id<AgentViewObjectProtocol>)agentViewObject fromIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath {
+- (void)changeMoveCell:(id <AgentViewObjectProtocol>)agentViewObject fromIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = _delegate.tableView;
     [tableView beginUpdates];
     switch ([self compareSectionCount:_viewObjects.sectionCount]) {
@@ -176,10 +173,7 @@ typedef struct {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    if (hasSelectors.didSelectCell) {
-        [_delegate didSelectCell:[self viewObjectWithIndex:indexPath]];
-    }
+    [self.viewObjects didSelectRowAtIndexPath:indexPath];
 }
 
 #pragma mark -
@@ -253,10 +247,8 @@ typedef struct {
 - (HasSelectors)createHasSelector:(id)d {
     HasSelectors s;
     s.cellHeight = [d respondsToSelector:@selector(cellHeight:)];
-    s.didSelectCell = [d respondsToSelector:@selector(didSelectCell:)];
     s.deleteCell = [d respondsToSelector:@selector(deleteCell:)];
     s.insertCell = [d respondsToSelector:@selector(insertCell:)];
-    s.cellIdentifier = [d respondsToSelector:@selector(cellIdentifier:)];
     s.commonViewObject = [d respondsToSelector:@selector(commonViewObject:)];
     s.sectionTitle = [d respondsToSelector:@selector(sectionTitle:)];
     s.sectionHeightForHeader = [d respondsToSelector:@selector(sectionHeightForHeader:)];
