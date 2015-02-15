@@ -42,7 +42,6 @@
 
 @end
 ```
-`
 
 ### TableViewAgent
 
@@ -59,6 +58,10 @@ AgentViewObjectは、集合ををラップしてAgentに対して受け渡すた
 `@property(copy, nonatomic) void (^didSelectCell)(id viewObject);`
 
 各セルが選択されたときの処理を書いてください。
+
+`@property(copy, nonatomic) NSString *(^headerTitleForSectionObject)(id sectionObject);`
+
+
 
 #### FRCAgentViewOject
 	
