@@ -61,7 +61,7 @@ AgentViewObjectは、集合ををラップしてAgentに対して受け渡すた
 
 `@property(copy, nonatomic) NSString *(^headerTitleForSectionObject)(id sectionObject);`
 
-
+各セクションのヘッダーのタイトルを決めるブロック。
 
 #### FRCAgentViewOject
 	
