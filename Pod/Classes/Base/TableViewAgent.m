@@ -155,7 +155,7 @@ typedef struct {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     id viewObject = [self viewObjectWithIndex:indexPath];
     NSString *cellIdentifier = [self.viewObjects cellIdentifierAtIndexPath:indexPath];
-    Class <TableViewAgentCellDelegate> cellClass = NSClassFromString(cellIdentifier);
+    Class cellClass = NSClassFromString(cellIdentifier);
     if ([cellClass respondsToSelector:@selector(heightFromViewObject:)]) {
         return [cellClass heightFromViewObject:viewObject];
     } else {
