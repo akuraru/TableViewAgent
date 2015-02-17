@@ -10,7 +10,7 @@
 #import "TableViewAgentProtocol.h"
 
 @interface FRCAgentViewObject () <NSFetchedResultsControllerDelegate>
-@property (nonatomic) NSFetchedResultsController * controller;
+@property(nonatomic) NSFetchedResultsController *controller;
 @end
 
 @implementation FRCAgentViewObject
@@ -23,29 +23,35 @@
     }
     return self;
 }
+
 - (void)dealloc {
     _controller = nil;
 }
+
 - (NSUInteger)sectionCount {
     if (_controller.sections.count == 1 && [_controller.sections[0] numberOfObjects] == 0) {
         return 0;
     }
     return _controller.sections.count;
 }
+
 - (NSUInteger)countInSection:(NSUInteger)section {
     return [_controller.sections[section] numberOfObjects];
 }
+
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
     id object = [_controller objectAtIndexPath:indexPath];
     return self.convert ? self.convert(object) : object;
 }
-- (NSArray *)sectionObjects:(NSInteger)section {
-    return @[[self objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]]];
+
+- (id)sectionObjectInSection:(NSInteger)section {
+    return [self objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]];
 }
+
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-        newIndexPath:(NSIndexPath *)newIndexPath {
-    switch(type) {
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.agent insertCell:self atIndexPath:newIndexPath];
             break;

@@ -13,11 +13,8 @@
 typedef struct {
     BOOL deleteCell                 : 1;
     BOOL insertCell                 : 1;
-    BOOL sectionTitle               : 1;
-    BOOL commonViewObject           : 1;
     BOOL sectionHeightForHeader     : 1;
     BOOL sectionHeader              : 1;
-    BOOL cellHeight                 : 1;
 } HasSelectors;
 
 @interface TableViewAgent () <UITableViewDataSource, UITableViewDelegate, TableViewAgentProtocol>
@@ -196,25 +193,24 @@ typedef struct {
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (hasSelectors.sectionTitle) {
-        return [self.delegate sectionTitle:[_viewObjects sectionObjects:section]];
-    }
-    return @"";
+    return [self.viewObjects titleForHeaderInSection:section];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (hasSelectors.sectionHeightForHeader) {
-        return [_delegate sectionHeightForHeader:[_viewObjects sectionObjects:section]];
-    } else if (hasSelectors.sectionHeader) {
-        return [_delegate sectionHeader:[_viewObjects sectionObjects:section]].frame.size.height;
-    }
+// todo: height
+//    if (hasSelectors.sectionHeightForHeader) {
+//        return [_delegate sectionHeightForHeader:[_viewObjects sectionObjects:section]];
+//    } else if (hasSelectors.sectionHeader) {
+//        return [_delegate sectionHeader:[_viewObjects sectionObjects:section]].frame.size.height;
+//    }
     return -1;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (hasSelectors.sectionHeader) {
-        return [self.delegate sectionHeader:[_viewObjects sectionObjects:section]];
-    }
+// todo: header view
+//    if (hasSelectors.sectionHeader) {
+//        return [self.delegate sectionHeader:[_viewObjects sectionObjects:section]];
+//    }
     return nil;
 }
 
@@ -246,11 +242,8 @@ typedef struct {
 
 - (HasSelectors)createHasSelector:(id)d {
     HasSelectors s;
-    s.cellHeight = [d respondsToSelector:@selector(cellHeight:)];
     s.deleteCell = [d respondsToSelector:@selector(deleteCell:)];
     s.insertCell = [d respondsToSelector:@selector(insertCell:)];
-    s.commonViewObject = [d respondsToSelector:@selector(commonViewObject:)];
-    s.sectionTitle = [d respondsToSelector:@selector(sectionTitle:)];
     s.sectionHeightForHeader = [d respondsToSelector:@selector(sectionHeightForHeader:)];
     s.sectionHeader = [d respondsToSelector:@selector(sectionHeader:)];
     return s;

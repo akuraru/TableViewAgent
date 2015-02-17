@@ -46,10 +46,6 @@
     return self.viewObject;
 }
 
-- (NSArray *)sectionObjects:(NSInteger)section {
-    return @[self.viewObject];
-}
-
 - (NSUInteger)sectionCount {
     return [self.addState isShowAddCell:self.editing] ? 1 : 0;
 }
@@ -118,5 +114,16 @@
     if (self.didSelectCell) {
         self.didSelectCell([self objectAtIndexPath:indexPath]);
     }
+}
+
+- (NSString *)titleForHeaderInSection:(NSInteger)section {
+    if (self.headerTitleForSectionObject) {
+        return self.headerTitleForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
+
+- (id)sectionObjectInSection:(NSInteger)section {
+    return self.viewObject;
 }
 @end

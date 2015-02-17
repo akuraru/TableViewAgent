@@ -80,7 +80,7 @@
     return self.convert ? self.convert(object) : object;
 }
 
-- (NSArray *)sectionObjects:(NSInteger)section {
+- (id)sectionObjectInSection:(NSInteger)section {
     return _array[section];
 }
 

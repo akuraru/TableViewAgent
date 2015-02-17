@@ -68,8 +68,19 @@
     }
 }
 
+- (NSString *)titleForHeaderInSection:(NSInteger)section {
+    if (self.headerTitleForSectionObject) {
+        return self.headerTitleForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
+
 // need override
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
+- (id)sectionObjectInSection:(NSInteger)section {
     return nil;
 }
 @end

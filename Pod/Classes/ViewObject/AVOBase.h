@@ -12,15 +12,17 @@
 @interface AVOBase : NSObject
 @property(copy, nonatomic) NSString *(^cellIdentifier)(id viewObject);
 @property(copy, nonatomic) void (^didSelectCell)(id viewObject);
-
-- (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath;
-- (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+@property(copy, nonatomic) NSString *(^headerTitleForSectionObject)(id sectionObject);
 
 - (BOOL)canEditRowForIndexPath:(NSIndexPath *)indexPath;
 - (BOOL)canEdit;
 - (void)setEditableMode:(EditableMode)editableMode;
 - (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path;
+- (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath;
+- (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (NSString *)titleForHeaderInSection:(NSInteger)section;
 
 // need override
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
+- (id)sectionObjectInSection:(NSInteger)section;
 @end

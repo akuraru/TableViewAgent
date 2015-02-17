@@ -34,8 +34,8 @@
     return self.convert ? self.convert(self.viewObject) : self.viewObject;
 }
 
-- (NSArray *)sectionObjects:(NSInteger)section {
-    return @[self.viewObject];
+- (id)sectionObjectInSection:(NSInteger)section {
+    return self.viewObject;
 }
 
 - (NSUInteger)sectionCount {
@@ -65,5 +65,12 @@
     if (self.didSelectCell) {
         self.didSelectCell([self objectAtIndexPath:indexPath]);
     }
+}
+
+- (NSString *)titleForHeaderInSection:(NSInteger)section {
+    if (self.headerTitleForSectionObject) {
+        return self.headerTitleForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
 }
 @end

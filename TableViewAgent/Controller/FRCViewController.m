@@ -50,6 +50,9 @@
     [agentViewObject setDidSelectCell:^(id viewObject) {
         [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:viewObject]];
     }];
+    [agentViewObject setHeaderTitleForSectionObject:^NSString *(id sectionObject) {
+        return [sectionObject title];
+    }];
     return agentViewObject;
 }
 
@@ -69,12 +72,6 @@
     [TodoManager updateEntity:we];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-
-    [self.agent redraw];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kSegueEdit]) {
         ThirdViewController *controller = segue.destinationViewController;
@@ -92,14 +89,6 @@
 
 - (void)insertCell:(id)viewObject {
     [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
-}
-
-- (NSString *)sectionTitle:(NSArray *)viewObjects {
-    if ([viewObjects[0] isKindOfClass:[NSString class]]) {
-        return nil;
-    } else {
-        return [viewObjects[0] title];
-    }
 }
 
 @end
