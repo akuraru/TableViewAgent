@@ -57,13 +57,19 @@ class Storyboard < Type
     Storyboard === type && super(type)
 end
 end
+
+class Reuse < Type
+  def == (type)
+    Reuse === type && super(type)
+  end
+end
   
 class UserDefualts
   def initialize
   end
   def fileRead(fileName)
     data = nil
-    File.open(fileName,  :mode => "rb", :encoding => "UTF-16LE") {|f|
+    File.open(fileName, :encoding => Encoding::UTF_8) {|f|
       transText = f.read.toutf8
       data = transText.scan(/(.*)\n/).flatten
     }
@@ -84,6 +90,8 @@ class UserDefualts
     [Restore.new($1)]
   elsif /storyboardIdentifier="(\w+)"/ =~ s then
     [Storyboard.new($1)]
+  elsif /reuseIdentifier="(\w+)"/ =~ s then
+    [Reuse.new($1)]
   else
     []
   end
