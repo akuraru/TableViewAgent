@@ -333,7 +333,6 @@
 			buildConfigurationList = BE225711176BCABD0022DA33 /* Build configuration list for PBXNativeTarget "TableViewAgent" */;
 			buildPhases = (
 				0F16669AF49F4ED19A06AC79 /* Check Pods Manifest.lock */,
-				BE225717176BD2490022DA33 /* ShellScript */,
 				BE2256EA176BCABC0022DA33 /* Sources */,
 				BE2256EB176BCABC0022DA33 /* Frameworks */,
 				BE2256EC176BCABC0022DA33 /* Resources */,
@@ -483,19 +482,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TableViewAgent/Pods-TableViewAgent-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		BE225717176BD2490022DA33 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "sh tools/exchange.sh |\nsh tools/ignore.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 
