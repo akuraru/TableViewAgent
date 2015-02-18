@@ -46,6 +46,12 @@ typedef struct AVOMergeSectionPath AVOMergeSectionPath;
     return [agentViewObject objectAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:path.section]];
 }
 
+- (id)sectionObjectInSection:(NSInteger)section {
+    AVOMergeSectionPath path = [self sectionPathForIndexPath:section];
+    id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
+    return [agentViewObject sectionObjectInSection:path.section];
+}
+
 - (NSUInteger)sectionCount {
     NSUInteger result = 0;
     for (id <AgentViewObjectProtocol> agentViewObject in self.agentViewObjects) {
@@ -110,6 +116,12 @@ typedef struct AVOMergeSectionPath AVOMergeSectionPath;
     AVOMergeSectionPath path = [self sectionPathForIndexPath:section];
     id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
     return [agentViewObject titleForHeaderInSection:path.section];
+}
+
+- (NSString *)headerIdentifierInSection:(NSInteger)section {
+    AVOMergeSectionPath path = [self sectionPathForIndexPath:section];
+    id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
+    return [agentViewObject headerIdentifierInSection:path.section];
 }
 
 #pragma mark - Table View Agent Protocol

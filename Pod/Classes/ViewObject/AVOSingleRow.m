@@ -73,4 +73,11 @@
     }
     return nil;
 }
+
+- (NSString *)headerIdentifierInSection:(NSInteger)section {
+    if (self.headerIdentifierForSectionObject) {
+        return self.headerIdentifierForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
 @end

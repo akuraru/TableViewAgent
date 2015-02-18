@@ -66,6 +66,7 @@
 - (void)setAdditionalCellMode:(AdditionalCellMode)mode {
     _addState = [self createAdditionalCellMode:mode];
 }
+
 - (AdditionalCellState *)createAdditionalCellMode:(AdditionalCellMode)mode {
     switch (mode) {
         case AdditionalCellModeNone :
@@ -119,6 +120,13 @@
 - (NSString *)titleForHeaderInSection:(NSInteger)section {
     if (self.headerTitleForSectionObject) {
         return self.headerTitleForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
+
+- (NSString *)headerIdentifierInSection:(NSInteger)section {
+    if (self.headerIdentifierForSectionObject) {
+        return self.headerIdentifierForSectionObject([self sectionObjectInSection:section]);
     }
     return nil;
 }

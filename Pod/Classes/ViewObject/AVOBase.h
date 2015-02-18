@@ -13,6 +13,7 @@
 @property(copy, nonatomic) NSString *(^cellIdentifier)(id viewObject);
 @property(copy, nonatomic) void (^didSelectCell)(id viewObject);
 @property(copy, nonatomic) NSString *(^headerTitleForSectionObject)(id sectionObject);
+@property(copy, nonatomic) NSString *(^headerIdentifierForSectionObject)(id sectionObject);
 
 - (BOOL)canEditRowForIndexPath:(NSIndexPath *)indexPath;
 - (BOOL)canEdit;
@@ -21,6 +22,7 @@
 - (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath;
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)titleForHeaderInSection:(NSInteger)section;
+- (NSString *)headerIdentifierInSection:(NSInteger)section;
 
 // need override
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;

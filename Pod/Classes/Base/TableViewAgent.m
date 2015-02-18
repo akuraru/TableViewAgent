@@ -9,12 +9,11 @@
 #import "TableViewAgent.h"
 #import "AgentViewObjectProtocol.h"
 #import "TableViewAgentProtocol.h"
+#import "TableViewAgentSectionViewDelegate.h"
 
 typedef struct {
     BOOL deleteCell                 : 1;
     BOOL insertCell                 : 1;
-    BOOL sectionHeightForHeader     : 1;
-    BOOL sectionHeader              : 1;
 } HasSelectors;
 
 @interface TableViewAgent () <UITableViewDataSource, UITableViewDelegate, TableViewAgentProtocol>
@@ -197,21 +196,26 @@ typedef struct {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-// todo: height
-//    if (hasSelectors.sectionHeightForHeader) {
-//        return [_delegate sectionHeightForHeader:[_viewObjects sectionObjects:section]];
-//    } else if (hasSelectors.sectionHeader) {
-//        return [_delegate sectionHeader:[_viewObjects sectionObjects:section]].frame.size.height;
-//    }
-    return -1;
+    NSString *headerIdentifier = [self.viewObjects headerIdentifierInSection:section];
+    if (headerIdentifier) {
+        Class sectionViewClass = NSClassFromString(headerIdentifier);
+        id sectionObject = [self.viewObjects sectionObjectInSection:section];
+        return [sectionViewClass heightFromSectionObject:sectionObject];
+    } else {
+        return -1;
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-// todo: header view
-//    if (hasSelectors.sectionHeader) {
-//        return [self.delegate sectionHeader:[_viewObjects sectionObjects:section]];
-//    }
-    return nil;
+    NSString *headerIdentifier = [self.viewObjects headerIdentifierInSection:section];
+    if (headerIdentifier) {
+        UIView <TableViewAgentSectionViewDelegate> *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdentifier];
+        id sectionObject = [self.viewObjects sectionObjectInSection:section];
+        [view setSectionObject:sectionObject];
+        return view;
+    } else {
+        return nil;
+    }
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -244,8 +248,6 @@ typedef struct {
     HasSelectors s;
     s.deleteCell = [d respondsToSelector:@selector(deleteCell:)];
     s.insertCell = [d respondsToSelector:@selector(insertCell:)];
-    s.sectionHeightForHeader = [d respondsToSelector:@selector(sectionHeightForHeader:)];
-    s.sectionHeader = [d respondsToSelector:@selector(sectionHeader:)];
     return s;
 }
 @end

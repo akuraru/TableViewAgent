@@ -75,6 +75,13 @@
     return nil;
 }
 
+- (NSString *)headerIdentifierInSection:(NSInteger)section {
+    if (self.headerIdentifierForSectionObject) {
+        return self.headerIdentifierForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
+
 // need override
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
     return nil;

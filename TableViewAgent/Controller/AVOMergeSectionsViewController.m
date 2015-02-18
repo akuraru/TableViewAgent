@@ -30,6 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UINib *nib = [UINib nibWithNibName:@"SectionView" bundle:nil];
+    [self.tableView registerNib:nib forHeaderFooterViewReuseIdentifier:@"SectionView"];
     self.agent = [[TableViewAgent alloc] init];
 
     self.arrayController = [self createArrayController];
@@ -61,6 +63,9 @@
     }];
     [agentViewObject setDidSelectCell:^(id viewObject) {
         [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
+    }];
+    [agentViewObject setHeaderIdentifierForSectionObject:^NSString *(id o) {
+        return @"SectionView";
     }];
     return agentViewObject;
 }

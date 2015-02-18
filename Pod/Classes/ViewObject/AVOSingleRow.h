@@ -18,6 +18,7 @@
 @property(copy, nonatomic) NSString *(^cellIdentifier)(id viewObject);
 @property(copy, nonatomic) void (^didSelectCell)(id viewObject);
 @property(copy, nonatomic) NSString *(^headerTitleForSectionObject)(id sectionObject);
+@property(copy, nonatomic) NSString *(^headerIdentifierForSectionObject)(id sectionObject);
 
 - (id)initWithViewObject:(id)viewObject;
 @end

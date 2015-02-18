@@ -19,6 +19,8 @@
 		BE225706176BCABD0022DA33 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE225705176BCABD0022DA33 /* Default@2x.png */; };
 		BE225708176BCABD0022DA33 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE225707176BCABD0022DA33 /* Default-568h@2x.png */; };
 		BE22570B176BCABD0022DA33 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE225709176BCABD0022DA33 /* MainStoryboard.storyboard */; };
+		BE3E04C91A9411E600A8A253 /* SectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3E04C81A9411E600A8A253 /* SectionView.xib */; };
+		BE3E04CB1A94120F00A8A253 /* SectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3E04CA1A94120F00A8A253 /* SectionView.m */; };
 		BE4D744217F5056D00287CE8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744017F5056D00287CE8 /* Model.xcdatamodeld */; };
 		BE4D744717F5066300287CE8 /* _Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744417F5066300287CE8 /* _Todo.m */; };
 		BE4D744817F5066300287CE8 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744617F5066300287CE8 /* Todo.m */; };
@@ -75,6 +77,8 @@
 		BE225707176BCABD0022DA33 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BE22570A176BCABD0022DA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		BE225716176BCF2B0022DA33 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/ExtactedID.h; sourceTree = "<group>"; };
+		BE3E04C81A9411E600A8A253 /* SectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionView.xib; sourceTree = "<group>"; };
+		BE3E04CA1A94120F00A8A253 /* SectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionView.m; sourceTree = "<group>"; };
 		BE4D744117F5056D00287CE8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		BE4D744317F5066300287CE8 /* _Todo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Todo.h; sourceTree = "<group>"; };
 		BE4D744417F5066300287CE8 /* _Todo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Todo.m; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 		C8790A0C3B4E3F0F06841882 /* MainService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainService.h; sourceTree = "<group>"; };
 		C8790ACD959A44401E4E0D54 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		C8790BD3B5F51CA3ECC79660 /* FRCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRCViewController.m; sourceTree = "<group>"; };
+		C8790C2351F8EF68EBF5DCAA /* TableViewAgentSectionViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableViewAgentSectionViewDelegate.h; path = Pod/Classes/Base/TableViewAgentSectionViewDelegate.h; sourceTree = "<group>"; };
 		C8790C8A20FD24508847CBEE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C8790DD4728C683034FBAF4A /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		C8790E7509D540B912A684D8 /* ThirdViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewObject.h; sourceTree = "<group>"; };
@@ -160,6 +165,7 @@
 				BE2256F0176BCABC0022DA33 /* Frameworks */,
 				BE2256EF176BCABC0022DA33 /* Products */,
 				ADDBC7DD05D9375519499FFE /* Pods */,
+				C8790C2351F8EF68EBF5DCAA /* TableViewAgentSectionViewDelegate.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -291,6 +297,8 @@
 				C87902B6380B6A554115F053 /* CustomTableViewCell.h */,
 				C8790107316816FC45484689 /* AddTableViewCell.m */,
 				C87909B64FEB944A371144D6 /* AddTableViewCell.h */,
+				BE3E04C81A9411E600A8A253 /* SectionView.xib */,
+				BE3E04CA1A94120F00A8A253 /* SectionView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -408,6 +416,7 @@
 				BE225704176BCABD0022DA33 /* Default.png in Resources */,
 				BE225706176BCABD0022DA33 /* Default@2x.png in Resources */,
 				BE225708176BCABD0022DA33 /* Default-568h@2x.png in Resources */,
+				BE3E04C91A9411E600A8A253 /* SectionView.xib in Resources */,
 				BE22570B176BCABD0022DA33 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,6 +503,7 @@
 				BE4D744817F5066300287CE8 /* Todo.m in Sources */,
 				BE225702176BCABC0022DA33 /* AppDelegate.m in Sources */,
 				BE4D744717F5066300287CE8 /* _Todo.m in Sources */,
+				BE3E04CB1A94120F00A8A253 /* SectionView.m in Sources */,
 				C87909C858C0691F2E527E6C /* MainViewController.m in Sources */,
 				C879079959003B75D9C7BF87 /* ThirdViewController.m in Sources */,
 				C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */,

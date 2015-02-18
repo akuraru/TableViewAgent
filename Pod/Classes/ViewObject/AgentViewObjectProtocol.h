@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol TableViewAgentProtocol;
+@protocol TableViewAgentSectionViewDelegate;
 
 typedef NS_ENUM (NSInteger, EditableMode) {
     EditableModeNone,
@@ -21,6 +22,7 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 - (NSUInteger)sectionCount;
 - (NSUInteger)countInSection:(NSUInteger)section;
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
+- (id)sectionObjectInSection:(NSInteger)section;
 @property(weak, nonatomic) id<TableViewAgentProtocol>agent;
 
 // editing
@@ -33,6 +35,7 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 - (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath;
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)titleForHeaderInSection:(NSInteger)section;
+- (NSString *)headerIdentifierInSection:(NSInteger)section;
 
 @optional
 @property(copy, nonatomic) id(^convert)(id);
@@ -44,5 +47,6 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 @property(copy, nonatomic) NSString *(^cellIdentifier)(id viewObject);
 @property(copy, nonatomic) void (^didSelectCell)(id viewObject);
 @property(copy, nonatomic) NSString *(^headerTitleForSectionObject)(id sectionObject);
+@property(copy, nonatomic) NSString *(^headerIdentifierForSectionObject)(id sectionObject);
 
 @end
