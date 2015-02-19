@@ -12,13 +12,13 @@
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
-#import "MSAgentViewObject.h"
+#import "AVOMultipleSections.h"
 #import "ThirdViewController.h"
 #import "AVOAdditionalSection.h"
 
 @interface MSViewController ()
 @property(nonatomic) TableViewAgent *agent;
-@property(nonatomic) MSAgentViewObject *agentViewObject;
+@property(nonatomic) AVOMultipleSections *agentViewObject;
 @end
 
 @implementation MSViewController {
@@ -42,8 +42,8 @@
     self.agent.tableView = self.tableView;
 }
 
-- (MSAgentViewObject *)createAgentViewObject {
-    MSAgentViewObject *agentViewObject = [[MSAgentViewObject alloc] initWithArray:@[@[
+- (AVOMultipleSections *)createAgentViewObject {
+    AVOMultipleSections *agentViewObject = [[AVOMultipleSections alloc] initWithArray:@[@[
             [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
             [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
     ].mutableCopy, @[

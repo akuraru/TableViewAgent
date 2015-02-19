@@ -9,7 +9,7 @@
 #import "TableViewAgent.h"
 #import "AVOArrayControoler.h"
 #import "ViewObject.h"
-#import "FRCAgentViewObject.h"
+#import "AVOFetchedResultController.h"
 #import "ThirdViewController.h"
 #import "ThirdViewObject.h"
 #import "ExtactedID.h"
@@ -55,8 +55,8 @@
     return arrayController;
 }
 
-- (FRCAgentViewObject *)createAgentViewController:(id)arrayController {
-    FRCAgentViewObject *agentViewObject = [[FRCAgentViewObject alloc] initWithFetch:arrayController];
+- (AVOFetchedResultController *)createAgentViewController:(id)arrayController {
+    AVOFetchedResultController *agentViewObject = [[AVOFetchedResultController alloc] initWithFetch:arrayController];
     [agentViewObject setEditableMode:EditableModeEnable];
     [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
         return kReuseCustomTableViewCell;

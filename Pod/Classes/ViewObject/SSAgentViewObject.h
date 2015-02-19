@@ -6,20 +6,8 @@
 //
 
 
-#import <Foundation/Foundation.h>
-#import "AgentViewObjectProtocol.h"
-#import "AVOBase.h"
+#import <TableViewAgent/AVOSingleSection.h>
 
-@interface SSAgentViewObject : AVOBase <AgentViewObjectProtocol>
-@property(nonatomic, strong) NSMutableArray *array;
-@property(weak, nonatomic) id<TableViewAgentProtocol>agent;
-@property(copy, nonatomic) id(^convert)(id);
-
-- (id)initWithArray:(NSArray *)array;
-
-- (void)addObject:(id)object;
-
-- (void)changeObject:(id)object;
-
-- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath;
+__attribute__((deprecated("use AVOSingleSection")))
+@interface SSAgentViewObject : AVOSingleSection
 @end

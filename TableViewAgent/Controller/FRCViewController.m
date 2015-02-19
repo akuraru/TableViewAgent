@@ -12,11 +12,12 @@
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
-#import "FRCAgentViewObject.h"
+#import "AVOFetchedResultController.h"
 #import "TodoManager.h"
 #import "WETodo.h"
 #import "ThirdViewController.h"
 #import "AVOAdditionalSection.h"
+#import "FRCAgentViewObject.h"
 
 @interface FRCViewController ()
 @property (nonatomic) TableViewAgent *agent;
@@ -31,7 +32,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     self.agent = [[TableViewAgent alloc] init];
     self.agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
             [self createAgentViewObject],
@@ -40,8 +40,8 @@
     self.agent.tableView = self.tableView;
 }
 
-- (FRCAgentViewObject *)createAgentViewObject {
-    FRCAgentViewObject *agentViewObject = [[FRCAgentViewObject alloc] initWithFetch:[TodoManager fetchController]];
+- (AVOFetchedResultController *)createAgentViewObject {
+    AVOFetchedResultController *agentViewObject = [[AVOFetchedResultController alloc] initWithFetch:[TodoManager fetchController]];
     [agentViewObject setEditableMode:EditableModeEnable];
     [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
         return kReuseCustomTableViewCell;

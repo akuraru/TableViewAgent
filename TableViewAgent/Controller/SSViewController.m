@@ -12,13 +12,13 @@
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
-#import "SSAgentViewObject.h"
+#import "AVOSingleSection.h"
 #import "ThirdViewController.h"
 #import "AVOAdditionalSection.h"
 
 @interface SSViewController ()
 @property(nonatomic) TableViewAgent *agent;
-@property(nonatomic) SSAgentViewObject *agentViewObject;
+@property(nonatomic) AVOSingleSection *agentViewObject;
 @end
 
 @implementation SSViewController {
@@ -39,8 +39,8 @@
     self.agent.tableView = self.tableView;
 }
 
-- (SSAgentViewObject *)createAgentViewObject {
-    SSAgentViewObject *agentViewObject = [[SSAgentViewObject alloc] initWithArray:@[
+- (AVOSingleSection *)createAgentViewObject {
+    AVOSingleSection *agentViewObject = [[AVOSingleSection alloc] initWithArray:@[
             [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
             [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],
             [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"2012/04/03"],

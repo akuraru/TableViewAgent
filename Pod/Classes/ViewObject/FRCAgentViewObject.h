@@ -6,19 +6,8 @@
 //
 
 
-#import <Foundation/Foundation.h>
-#import <CoreData/NSFetchedResultsController.h>
-#import "AgentViewObjectProtocol.h"
-#import "AVOBase.h"
+#import "AVOFetchedResultController.h"
 
-@class TableViewAgent;
-
-@interface FRCAgentViewObject : AVOBase <AgentViewObjectProtocol>
-
-@property(readonly, nonatomic) NSFetchedResultsController *controller;
-@property(weak, nonatomic) id<TableViewAgentProtocol>agent;
-@property(copy, nonatomic) id(^convert)(id);
-
-- (id)initWithFetch:(NSFetchedResultsController *)controller;
-
+__attribute__((deprecated("use AVOFetchedResultController")))
+@interface FRCAgentViewObject : AVOFetchedResultController
 @end

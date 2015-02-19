@@ -6,20 +6,8 @@
 //
 
 
-#import <Foundation/Foundation.h>
-#import "AgentViewObjectProtocol.h"
-#import "AVOBase.h"
+#import "AVOMultipleSections.h"
 
-@interface MSAgentViewObject : AVOBase <AgentViewObjectProtocol>
-@property(nonatomic, strong) NSMutableArray *array;
-@property(weak, nonatomic) id<TableViewAgentProtocol>agent;
-@property(copy, nonatomic) id(^convert)(id);
-
-- (id)initWithArray:(NSMutableArray *)array;
-
-- (void)addObject:(id)object inSection:(NSInteger)section;
-
-- (void)changeObject:(id)object;
-
-- (void)removeObject:(id)viewObject;
+__attribute__((deprecated("use AVOMultipleSections")))
+@interface MSAgentViewObject : AVOMultipleSections
 @end
