@@ -53,6 +53,9 @@
     [agentViewObject setHeaderTitleForSectionObject:^NSString *(id sectionObject) {
         return [sectionObject title];
     }];
+    [agentViewObject setEditingDeleteViewObject:^(id viewObject) {
+        [TodoManager deleteEntity:viewObject];
+    }];
     return agentViewObject;
 }
 
@@ -62,8 +65,12 @@
     [additionalSection setCellIdentifier:^NSString *(id viewObject) {
         return kReuseAdd;
     }];
+    __weak typeof(self) this = self;
     [additionalSection setDidSelectCell:^(id viewObject) {
-        [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
+        [this performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
+    }];
+    [additionalSection setEditingInsertViewObject:^(id viewObject) {
+        [this performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
     }];
     return additionalSection;
 }
@@ -79,16 +86,4 @@
         [controller setDelegate:self];
     }
 }
-
-#pragma -
-#pragma mark TableViewAgentDelegate
-
-- (void)deleteCell:(id)viewObject {
-    [TodoManager deleteEntity:viewObject];
-}
-
-- (void)insertCell:(id)viewObject {
-    [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
-}
-
 @end

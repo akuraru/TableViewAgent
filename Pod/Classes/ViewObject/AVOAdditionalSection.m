@@ -131,6 +131,14 @@
     return nil;
 }
 
+- (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+- (void)editingInsertForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self editingInsertViewObject]) {
+        self.editingInsertViewObject([self objectAtIndexPath:indexPath]);
+    }
+}
+
 - (id)sectionObjectInSection:(NSInteger)section {
     return self.viewObject;
 }

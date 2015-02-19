@@ -14,6 +14,8 @@
 @property(copy, nonatomic) void (^didSelectCell)(id viewObject);
 @property(copy, nonatomic) NSString *(^headerTitleForSectionObject)(id sectionObject);
 @property(copy, nonatomic) NSString *(^headerIdentifierForSectionObject)(id sectionObject);
+@property(copy, nonatomic) void (^editingDeleteViewObject)(id viewObject);
+@property(copy, nonatomic) void (^editingInsertViewObject)(id viewObject);
 
 - (BOOL)canEditRowForIndexPath:(NSIndexPath *)indexPath;
 - (BOOL)canEdit;
@@ -23,6 +25,8 @@
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)titleForHeaderInSection:(NSInteger)section;
 - (NSString *)headerIdentifierInSection:(NSInteger)section;
+- (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)editingInsertForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 // need override
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;

@@ -82,6 +82,18 @@
     return nil;
 }
 
+- (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.editingDeleteViewObject) {
+        self.editingDeleteViewObject([self objectAtIndexPath:indexPath]);
+    }
+}
+
+- (void)editingInsertForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self editingInsertViewObject]) {
+        self.editingInsertViewObject([self objectAtIndexPath:indexPath]);
+    }
+}
+
 // need override
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
     return nil;

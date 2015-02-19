@@ -52,6 +52,11 @@
     [agentViewObject setDidSelectCell:^(id viewObject) {
         [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
     }];
+    __weak typeof(agentViewObject) avo = agentViewObject;
+    [agentViewObject setEditingDeleteViewObject:^(id viewObject) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.agentViewObject.array indexOfObject:viewObject] inSection:0];
+        [avo removeObjectAtIndexPath:indexPath];
+    }];
     return agentViewObject;
 }
 
@@ -89,13 +94,5 @@
         [controller setViewObject:sender];
         [controller setDelegate:self];
     }
-}
-
-#pragma -
-#pragma mark TableViewAgentDelegate
-
-- (void)deleteCell:(id)viewObject {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.agentViewObject.array indexOfObject:viewObject] inSection:0];
-    [self.agentViewObject removeObjectAtIndexPath:indexPath];
 }
 @end

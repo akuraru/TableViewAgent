@@ -67,6 +67,9 @@
     [agentViewObject setHeaderIdentifierForSectionObject:^NSString *(id o) {
         return @"SectionView";
     }];
+    [agentViewObject setEditingDeleteViewObject:^(id viewObject) {
+        [self.arrayController removeObject:viewObject];
+    }];
     return agentViewObject;
 }
 
@@ -103,12 +106,5 @@
         [controller setViewObject:sender];
         [controller setDelegate:self];
     }
-}
-
-#pragma -
-#pragma mark TableViewAgentDelegate
-
-- (void)deleteCell:(id)viewObject {
-    [self.arrayController removeObject:viewObject];
 }
 @end

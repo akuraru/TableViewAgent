@@ -19,6 +19,9 @@
     return 20;
 }
 - (void)setSectionObject:(id)o {
+    if ([o isKindOfClass:[NSArray class]]) {
+        o = o[0];
+    }
     self.label.text = [o title];
 }
 

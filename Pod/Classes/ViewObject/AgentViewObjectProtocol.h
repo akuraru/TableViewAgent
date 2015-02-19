@@ -37,6 +37,9 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 - (NSString *)titleForHeaderInSection:(NSInteger)section;
 - (NSString *)headerIdentifierInSection:(NSInteger)section;
 
+- (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)editingInsertForRowAtIndexPath:(NSIndexPath *)indexPath;
+
 @optional
 @property(copy, nonatomic) id(^convert)(id);
 
@@ -49,4 +52,6 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 @property(copy, nonatomic) NSString *(^headerTitleForSectionObject)(id sectionObject);
 @property(copy, nonatomic) NSString *(^headerIdentifierForSectionObject)(id sectionObject);
 
+@property(copy, nonatomic) void (^editingDeleteViewObject)(id viewObject);
+@property(copy, nonatomic) void (^editingInsertViewObject)(id viewObject);
 @end

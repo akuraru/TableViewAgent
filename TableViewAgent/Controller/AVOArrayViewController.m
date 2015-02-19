@@ -13,6 +13,7 @@
 #import "ThirdViewController.h"
 #import "ThirdViewObject.h"
 #import "ExtactedID.h"
+#import "AVOAdditionalSection.h"
 
 @interface AVOArrayViewController : UITableViewController <TableViewAgentDelegate>
 @property(nonatomic) TableViewAgent *agent;
@@ -54,7 +55,26 @@
     [agentViewObject setDidSelectCell:^(id viewObject) {
         [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
     }];
+    [agentViewObject setEditingDeleteViewObject:^(id viewObject) {
+        [self.arrayController removeObject:viewObject];
+    }];
     return agentViewObject;
+}
+
+- (AVOAdditionalSection *)createAdditionalSection {
+    AVOAdditionalSection *additionalSection = [[AVOAdditionalSection alloc] initWithViewObject:kReuseAdd];
+    [additionalSection setAdditionalCellMode:AdditionalCellModeAlways];
+    [additionalSection setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseAdd;
+    }];
+    __weak typeof(self) this = self;
+    [additionalSection setDidSelectCell:^(id viewObject) {
+        [this performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
+    }];
+    [additionalSection setEditingInsertViewObject:^(id viewObject) {
+        [this performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
+    }];
+    return additionalSection;
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
@@ -85,20 +105,5 @@
         [controller setViewObject:sender];
         [controller setDelegate:self];
     }
-}
-
-#pragma -
-#pragma mark TableViewAgentDelegate
-
-- (void)deleteCell:(id)viewObject {
-    [self.arrayController removeObject:viewObject];
-}
-
-- (NSString *)addCellIdentifier {
-    return kReuseAdd;
-}
-
-- (void)didSelectAdditionalCell {
-    [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
 }
 @end

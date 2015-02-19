@@ -11,17 +11,10 @@
 #import "TableViewAgentProtocol.h"
 #import "TableViewAgentSectionViewDelegate.h"
 
-typedef struct {
-    BOOL deleteCell                 : 1;
-    BOOL insertCell                 : 1;
-} HasSelectors;
-
 @interface TableViewAgent () <UITableViewDataSource, UITableViewDelegate, TableViewAgentProtocol>
 @end
 
-@implementation TableViewAgent {
-    HasSelectors hasSelectors;
-}
+@implementation TableViewAgent
 
 - (id)init {
     self = [super init];
@@ -139,15 +132,9 @@ typedef struct {
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        if (hasSelectors.deleteCell) {
-            id viewObject = [self viewObjectWithIndex:indexPath];
-            [_delegate deleteCell:viewObject];
-        }
+        [self.viewObjects editingDeleteForRowAtIndexPath:indexPath];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        if (hasSelectors.insertCell) {
-            id viewObject = [self viewObjectWithIndex:indexPath];
-            [self.delegate insertCell:viewObject];
-        }
+        [self.viewObjects editingInsertForRowAtIndexPath:indexPath];
     }
 }
 
@@ -199,8 +186,12 @@ typedef struct {
     NSString *headerIdentifier = [self.viewObjects headerIdentifierInSection:section];
     if (headerIdentifier) {
         Class sectionViewClass = NSClassFromString(headerIdentifier);
-        id sectionObject = [self.viewObjects sectionObjectInSection:section];
-        return [sectionViewClass heightFromSectionObject:sectionObject];
+        if (sectionViewClass) {
+            id sectionObject = [self.viewObjects sectionObjectInSection:section];
+            return [sectionViewClass heightFromSectionObject:sectionObject];
+        } else {
+            return [[self tableView:tableView viewForHeaderInSection:section] frame].size.height;
+        }
     } else {
         return -1;
     }
@@ -235,19 +226,11 @@ typedef struct {
 
 - (void)setDelegate:(id)d {
     _delegate = d;
-    hasSelectors = [self createHasSelector:_delegate];
     [[d tableView] setDelegate:self];
     [[d tableView] setDataSource:self];
 }
 
 - (NSComparisonResult)compareSectionCount:(NSUInteger)count {
     return [@([_viewObjects sectionCount]) compare:@([_delegate.tableView numberOfSections])];
-}
-
-- (HasSelectors)createHasSelector:(id)d {
-    HasSelectors s;
-    s.deleteCell = [d respondsToSelector:@selector(deleteCell:)];
-    s.insertCell = [d respondsToSelector:@selector(insertCell:)];
-    return s;
 }
 @end

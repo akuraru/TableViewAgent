@@ -31,6 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UINib *nib = [UINib nibWithNibName:@"SectionView" bundle:nil];
+    [self.tableView registerNib:nib forHeaderFooterViewReuseIdentifier:@"SectionView"];
     self.agent = [[TableViewAgent alloc] init];
     self.agentViewObject = [self createAgentViewObject];
     self.agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
@@ -53,6 +55,9 @@
     }];
     [agentViewObject setDidSelectCell:^(id viewObject) {
         [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
+    }];
+    [agentViewObject setHeaderIdentifierForSectionObject:^NSString *(id sectionObject) {
+        return @"SectionView";
     }];
     return agentViewObject;
 }
@@ -94,25 +99,6 @@
         ThirdViewController *controller = segue.destinationViewController;
         [controller setViewObject:sender];
         [controller setDelegate:self];
-    }
-}
-
-#pragma -
-#pragma mark TableViewAgentDelegate
-
-- (void)deleteCell:(id)viewObject {
-}
-
-- (UIView *)sectionHeader:(id)viewObject {
-    if ([viewObject[0] isKindOfClass:[NSString class]]) {
-        return nil;
-    } else {
-        return ({
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-            [label setText:[viewObject[0] message]];
-            [label setBackgroundColor:[UIColor lightGrayColor]];
-            label;
-        });
     }
 }
 @end

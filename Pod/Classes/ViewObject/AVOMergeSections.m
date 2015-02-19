@@ -124,6 +124,18 @@ typedef struct AVOMergeSectionPath AVOMergeSectionPath;
     return [agentViewObject headerIdentifierInSection:path.section];
 }
 
+- (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath {
+    AVOMergeSectionPath path = [self sectionPathForIndexPath:indexPath.section];
+    id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
+    return [agentViewObject editingDeleteForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:path.section]];
+}
+
+- (void)editingInsertForRowAtIndexPath:(NSIndexPath *)indexPath {
+    AVOMergeSectionPath path = [self sectionPathForIndexPath:indexPath.section];
+    id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
+    return [agentViewObject editingInsertForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:path.section]];
+}
+
 #pragma mark - Table View Agent Protocol
 
 - (void)deleteCell:(id <AgentViewObjectProtocol>)agentViewObject atIndexPath:(NSIndexPath *)indexPath {
