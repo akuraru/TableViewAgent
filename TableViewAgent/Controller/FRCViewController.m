@@ -16,10 +16,9 @@
 #import "TodoManager.h"
 #import "WETodo.h"
 #import "ThirdViewController.h"
-#import "TableViewAgentDelegate.h"
 #import "AVOAdditionalSection.h"
 
-@interface FRCViewController () <TableViewAgentDelegate>
+@interface FRCViewController ()
 @property (nonatomic) TableViewAgent *agent;
 @end
 
@@ -38,7 +37,7 @@
             [self createAgentViewObject],
             [self createAdditionalSection],
     ]];
-    self.agent.delegate = self;
+    self.agent.tableView = self.tableView;
 }
 
 - (FRCAgentViewObject *)createAgentViewObject {
@@ -51,7 +50,7 @@
         [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:viewObject]];
     }];
     [agentViewObject setHeaderTitleForSectionObject:^NSString *(id sectionObject) {
-        return [sectionObject title];
+        return [sectionObject name];
     }];
     [agentViewObject setEditingDeleteViewObject:^(id viewObject) {
         [TodoManager deleteEntity:viewObject];

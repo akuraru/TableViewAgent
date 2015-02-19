@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TableViewAgentSectionViewDelegate.h"
+#import "ViewObject.h"
 
 @interface SectionView : UITableViewHeaderFooterView <TableViewAgentSectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *label;
@@ -22,7 +23,11 @@
     if ([o isKindOfClass:[NSArray class]]) {
         o = o[0];
     }
-    self.label.text = [o title];
+    if ([o isKindOfClass:[ViewObject class]]) {
+        self.label.text = [o title];
+    } else {
+        self.label.text = [o name];
+    }
 }
 
 @end

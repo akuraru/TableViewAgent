@@ -16,7 +16,7 @@
 #import "ThirdViewController.h"
 #import "AVOAdditionalSection.h"
 
-@interface SSViewController () <TableViewAgentDelegate>
+@interface SSViewController ()
 @property(nonatomic) TableViewAgent *agent;
 @property(nonatomic) SSAgentViewObject *agentViewObject;
 @end
@@ -31,15 +31,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.agent = [[TableViewAgent alloc] init];
-    self.agentViewObject = [self agentViewObject];
+    self.agentViewObject = [self createAgentViewObject];
     self.agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
             self.agentViewObject,
             [self createAdditionalSection],
     ]];
-    self.agent.delegate = self;
+    self.agent.tableView = self.tableView;
 }
 
-- (SSAgentViewObject *)agentViewObject {
+- (SSAgentViewObject *)createAgentViewObject {
     SSAgentViewObject *agentViewObject = [[SSAgentViewObject alloc] initWithArray:@[
             [[ViewObject alloc] initWithTitle:@"hoge" message:@"2012/12/11"],
             [[ViewObject alloc] initWithTitle:@"piyo" message:@"2012/05/31"],

@@ -16,7 +16,7 @@
 #import "AVOMergeSections.h"
 #import "AVOSingleRow.h"
 
-@interface AVOMergeSectionsViewController : UITableViewController <TableViewAgentDelegate>
+@interface AVOMergeSectionsViewController : UITableViewController
 @property(nonatomic) TableViewAgent *agent;
 @property(nonatomic) AVOArrayController *arrayController;
 @end
@@ -40,7 +40,7 @@
             [self createSingleRow],
     ]];
     self.agent.viewObjects = mergeSections;
-    self.agent.delegate = self;
+    self.agent.tableView = self.tableView;
 }
 
 - (AVOArrayController *)createArrayController {

@@ -21,5 +21,5 @@
 
 - (void)changeObject:(id)object;
 
-- (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath;
+- (void)removeObject:(id)viewObject;
 @end

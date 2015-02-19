@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "TableViewAgentCellDelegate.h"
-#import "TableViewAgentDelegate.h"
 
 @class EditableState;
 @protocol AgentViewObjectProtocol;
@@ -16,7 +15,7 @@
 @interface TableViewAgent : NSObject
 
 @property (nonatomic) id<AgentViewObjectProtocol> viewObjects;
-@property (weak, nonatomic) id<TableViewAgentDelegate> delegate;
+@property (weak, nonatomic) UITableView *tableView;
 @property (nonatomic) BOOL editing;
 
 - (void)redraw;

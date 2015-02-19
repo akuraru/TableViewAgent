@@ -45,7 +45,7 @@
 }
 
 - (id)sectionObjectInSection:(NSInteger)section {
-    return [self objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]];
+    return self.controller.sections[section];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject

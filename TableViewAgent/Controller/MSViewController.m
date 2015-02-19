@@ -16,7 +16,7 @@
 #import "ThirdViewController.h"
 #import "AVOAdditionalSection.h"
 
-@interface MSViewController () <TableViewAgentDelegate>
+@interface MSViewController ()
 @property(nonatomic) TableViewAgent *agent;
 @property(nonatomic) MSAgentViewObject *agentViewObject;
 @end
@@ -39,7 +39,7 @@
             self.agentViewObject,
             [self createAdditionalSection],
     ]];
-    self.agent.delegate = self;
+    self.agent.tableView = self.tableView;
 }
 
 - (MSAgentViewObject *)createAgentViewObject {
@@ -56,6 +56,9 @@
     [agentViewObject setDidSelectCell:^(id viewObject) {
         [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
     }];
+    [agentViewObject setEditingDeleteViewObject:^(id viewObject) {
+        [self.agentViewObject removeObject:viewObject];
+    }];
     [agentViewObject setHeaderIdentifierForSectionObject:^NSString *(id sectionObject) {
         return @"SectionView";
     }];
@@ -69,6 +72,9 @@
         return kReuseAdd;
     }];
     [additionalSection setDidSelectCell:^(id viewObject) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
+    }];
+    [additionalSection setEditingInsertViewObject:^(id viewObject) {
         [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
     }];
     return additionalSection;

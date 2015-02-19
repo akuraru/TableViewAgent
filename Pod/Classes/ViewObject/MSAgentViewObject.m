@@ -52,6 +52,11 @@
     [self.agent deleteCell:self atIndexPath:indexPath];
 }
 
+- (void)removeObject:(id)viewObject {
+    NSIndexPath *indexPath = [self indexPathForObject:viewObject];
+    [self removeObjectAtIndexPath:indexPath];
+}
+
 - (NSIndexPath *)indexPathForObject:(id)object {
     for (NSInteger i = 0, _len = _array.count; i < _len; i++) {
         for (NSInteger j = 0, _len = [_array[i] count]; j < _len; j++) {

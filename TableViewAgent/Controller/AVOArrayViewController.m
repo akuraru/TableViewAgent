@@ -15,7 +15,7 @@
 #import "ExtactedID.h"
 #import "AVOAdditionalSection.h"
 
-@interface AVOArrayViewController : UITableViewController <TableViewAgentDelegate>
+@interface AVOArrayViewController : UITableViewController
 @property(nonatomic) TableViewAgent *agent;
 @property(nonatomic) AVOArrayController *arrayController;
 @end
@@ -32,7 +32,7 @@
     self.agent = [[TableViewAgent alloc] init];
     self.arrayController = [self createArrayController];
     self.agent.viewObjects = [self createAgentViewObject:self.arrayController];
-    self.agent.delegate = self;
+    self.agent.tableView = self.tableView;
     [self.agent.viewObjects setEditableMode:EditableModeEnable];
 }
 
