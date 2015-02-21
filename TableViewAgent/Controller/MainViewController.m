@@ -17,7 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+#ifdef TEST
+#else
     [MagicalRecord setupCoreDataStack];
+#endif
 
     service = [MainService new];
 }
