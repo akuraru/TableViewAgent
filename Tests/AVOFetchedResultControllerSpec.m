@@ -28,5 +28,11 @@ SPEC_BEGIN(AVOFetchedResultControllerSpec)
             [[theValue([section numberOfObjects]) should] equal:theValue(0)];
             [[[section objects] should] equal:@[]];
         });
+        let(firstObject, ^{
+            Todo *todo = [Todo MR_createEntity];
+            todo.title = @"title";
+            todo.message = @"message";
+            return todo;
+        });
     });
 SPEC_END
