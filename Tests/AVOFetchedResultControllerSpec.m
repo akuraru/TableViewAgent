@@ -12,7 +12,7 @@ SPEC_BEGIN(AVOFetchedResultControllerSpec)
         [MagicalRecord cleanUp];
     });
     describe(@"meke empty controller", ^{
-        let(controller, ^{return [Todo MR_fetchAllGroupedBy:nil withPredicate:nil sortedBy:@"message,title" ascending:YES];});
+        let(controller, ^NSFetchedResultsController{return [Todo MR_fetchAllGroupedBy:nil withPredicate:nil sortedBy:@"message,title" ascending:YES];});
         let(avo, ^{return [[AVOFetchedResultController alloc] initWithFetch:controller];});
         it(@"controller is empty sectionIndexTitles", ^{
             [[[controller sectionIndexTitles] should] equal:@[]];
@@ -34,5 +34,10 @@ SPEC_BEGIN(AVOFetchedResultControllerSpec)
             todo.message = @"message";
             return todo;
         });
+        it(@"do delegate TableViewAgent controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:" , ^{});
+        it(@"do delegate TableViewAgent controller:didChangeSection:atIndex:forChangeType:", ^{});
+        it(@"do delegate TableViewAgent controllerWillChangeContent:", ^{});
+        it(@"do delegate TableViewAgent controllerDidChangeContent:", ^{});
+        it(@"do delegate TableViewAgent controller:sectionIndexTitleForSectionName:", ^{});
     });
 SPEC_END
