@@ -19,8 +19,10 @@ SPEC_BEGIN(AVOFetchedResultControllerSpec)
     describe(@"meke empty controller", ^{
         __block NSFetchedResultsController *controller;
         __block AVOFetchedResultController *avo;
+        __block id mock;
         beforeEach(^{
-            controller = [Todo MR_fetchAllGroupedBy:nil withPredicate:nil sortedBy:@"message,title" ascending:YES inContext:context];
+            mock = [KWMock mock];
+            controller = [Todo MR_fetchAllSortedBy:@"message,title" ascending:YES withPredicate:nil groupBy:nil delegate:mock inContext:context];
             avo = [[AVOFetchedResultController alloc] initWithFetch:controller];
         });
         it(@"controller is empty sectionIndexTitles", ^{
@@ -44,40 +46,30 @@ SPEC_BEGIN(AVOFetchedResultControllerSpec)
             firstObject.title = @"title";
             firstObject.message = @"message";
         });
-        it(@"do delegate TableViewAgent controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:" , ^{
-            id mock = [KWMock mock];
+        it(@"do delegate NSFetchedResultsControllerDelegate controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:" , ^{
             [[mock should] receive:@selector(controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:)];
-            controller.delegate = mock;
             [firstObject.managedObjectContext MR_saveOnlySelfAndWait];
-            [[[Todo MR_findAllInContext:context][0] should] equal:firstObject];
+            [[controller.fetchedObjects[0] should] equal:firstObject];
         });
-        it(@"do delegate TableViewAgent controller:didChangeSection:atIndex:forChangeType:", ^{
-            id mock = [KWMock mock];
-            controller.delegate = mock;
+        it(@"do delegate NSFetchedResultsControllerDelegate controller:didChangeSection:atIndex:forChangeType:", ^{
             [[mock should] receive:@selector(controller:didChangeSection:atIndex:forChangeType:)];
             [firstObject.managedObjectContext MR_saveToPersistentStoreAndWait];
-            [[[Todo MR_findAllInContext:context][0] should] equal:firstObject];
+            [[controller.fetchedObjects[0] should] equal:firstObject];
         });
-        it(@"do delegate TableViewAgent controllerWillChangeContent:", ^{
-            id mock = [KWMock mock];
-            controller.delegate = mock;
+        it(@"do delegate NSFetchedResultsControllerDelegate controllerWillChangeContent:", ^{
             [[mock should] receive:@selector(controllerWillChangeContent:)];
             [firstObject.managedObjectContext MR_saveToPersistentStoreAndWait];
-            [[[Todo MR_findAllInContext:context][0] should] equal:firstObject];
+            [[controller.fetchedObjects[0] should] equal:firstObject];
         });
-        it(@"do delegate TableViewAgent controllerDidChangeContent:", ^{
-            id mock = [KWMock mock];
-            controller.delegate = mock;
+        it(@"do delegate NSFetchedResultsControllerDelegate controllerDidChangeContent:", ^{
             [[mock should] receive:@selector(controllerDidChangeContent:)];
             [firstObject.managedObjectContext MR_saveToPersistentStoreAndWait];
-            [[[Todo MR_findAllInContext:context][0] should] equal:firstObject];
+            [[controller.fetchedObjects[0] should] equal:firstObject];
         });
-        it(@"do delegate TableViewAgent controller:sectionIndexTitleForSectionName:", ^{
-            id mock = [KWMock mock];
-            controller.delegate = mock;
+        it(@"do delegate NSFetchedResultsControllerDelegate controller:sectionIndexTitleForSectionName:", ^{
             [[mock should] receive:@selector(controller:sectionIndexTitleForSectionName:)];
             [firstObject.managedObjectContext MR_saveToPersistentStoreAndWait];
-            [[[Todo MR_findAllInContext:context][0] should] equal:firstObject];
+            [[controller.fetchedObjects[0] should] equal:firstObject];
         });
     });
     });
