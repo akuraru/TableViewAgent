@@ -71,6 +71,10 @@ NSFetchedResultController用のAgentViewObjectです。NSFetchedResultController
 
 複数のAgentViewObjectを一つのAgentViewObjectとして扱うためのクラスです。
 
+#### AVOAddtionalSection
+
+追加用のCellを作るためのAgentViewObjectです。編集時に表示、非表示を行う機能があります。`editingInsertViewObject`に選択された際の挙動をBlocksで設定することができます。
+
 
 
 ## 思想
