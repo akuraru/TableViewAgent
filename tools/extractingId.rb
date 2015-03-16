@@ -69,7 +69,7 @@ class UserDefualts
   end
   def fileRead(fileName)
     data = nil
-    File.open(fileName, "r:UTF-16") {|f|
+    File.open(fileName, :encoding => Encoding::UTF_8) {|f|
       transText = f.read.toutf8
       data = transText.scan(/(.*)\n/).flatten
     }

@@ -8,19 +8,29 @@
 
 #import <Foundation/Foundation.h>
 #import "AgentViewObjectProtocol.h"
+#import "AVOBase.h"
 
 @protocol TableViewAgentProtocol;
 
-@interface AVOSingleRow : NSObject <AgentViewObjectProtocol>
+typedef NS_ENUM (NSInteger, AdditionalCellMode) {
+    AdditionalCellModeNone,
+    AdditionalCellModeAlways,
+    AdditionalCellModeHideEditing,
+    AdditionalCellModeShowEditing,
+};
+
+@interface AVOAdditionalSection : NSObject <AgentViewObjectProtocol>
 @property(strong, nonatomic) id viewObject;
-@property(weak, nonatomic) id<TableViewAgentProtocol>agent;
-@property(copy, nonatomic) id(^convert)(id);
+@property(weak, nonatomic) id <TableViewAgentProtocol> agent;
+@property(copy, nonatomic) id (^convert)(id);
 @property(copy, nonatomic) NSString *(^cellIdentifier)(id viewObject);
 @property(copy, nonatomic) void (^didSelectCell)(id viewObject);
 @property(copy, nonatomic) NSString *(^headerTitleForSectionObject)(id sectionObject);
 @property(copy, nonatomic) NSString *(^headerIdentifierForSectionObject)(id sectionObject);
-@property(copy, nonatomic) void (^editingDeleteViewObject)(id viewObject);
 @property(copy, nonatomic) void (^editingInsertViewObject)(id viewObject);
+@property(nonatomic) BOOL editing;
 
 - (id)initWithViewObject:(id)viewObject;
+
+- (void)setAdditionalCellMode:(AdditionalCellMode)mode;
 @end

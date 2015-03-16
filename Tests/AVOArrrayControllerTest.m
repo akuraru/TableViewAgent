@@ -202,7 +202,7 @@
             XCTAssertEqualObjects(updateT, anObject);
             XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:0 inSection:0]);
             XCTAssertEqual(type, NSFetchedResultsChangeUpdate);;
-            XCTAssert(newIndexPath == [NSIndexPath indexPathForRow:0 inSection:0], "hoge");
+            XCTAssert([newIndexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:0]], "hoge");
         };
 }
 
@@ -343,7 +343,7 @@
         XCTAssertEqualObjects(updateT, anObject);
         XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:0 inSection:0]);
         XCTAssertEqual(type, NSFetchedResultsChangeUpdate);;
-        XCTAssert(newIndexPath == [NSIndexPath indexPathForRow:0 inSection:0], "hoge");
+        XCTAssert([newIndexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:0]], "hoge");
     };
 }
 @end
@@ -413,7 +413,7 @@
         XCTAssertEqualObjects(updateT, anObject);
         XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:1 inSection:0]);
         XCTAssertEqual(type, NSFetchedResultsChangeUpdate);;
-        XCTAssert(newIndexPath == [NSIndexPath indexPathForRow:1 inSection:0], "hoge");
+        XCTAssert([newIndexPath isEqual:[NSIndexPath indexPathForRow:1 inSection:0]], "hoge");
     };
 }
 @end
@@ -473,7 +473,7 @@
         XCTAssertEqualObjects(updateT, anObject);
         XCTAssertEqualObjects(indexPath, [NSIndexPath indexPathForRow:0 inSection:0]);
         XCTAssertEqual(type, NSFetchedResultsChangeUpdate);;
-        XCTAssert(newIndexPath == [NSIndexPath indexPathForRow:0 inSection:0], "hoge");
+        XCTAssert([newIndexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:0]], "hoge");
     };
 }
 @end

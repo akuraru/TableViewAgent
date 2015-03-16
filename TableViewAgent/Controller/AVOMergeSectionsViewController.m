@@ -6,11 +6,10 @@
 //  Copyright (c) 2015年 P.I.akura. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "TableViewAgent.h"
 #import "AVOArrayControoler.h"
 #import "ViewObject.h"
-#import "FRCAgentViewObject.h"
+#import "AVOFetchedResultController.h"
 #import "ThirdViewController.h"
 #import "ThirdViewObject.h"
 #import "ExtactedID.h"
@@ -18,35 +17,71 @@
 #import "AVOSingleRow.h"
 
 @interface AVOMergeSectionsViewController : UITableViewController
-@property (nonatomic) AVOArrayController *arrayController;
+@property(nonatomic) TableViewAgent *agent;
+@property(nonatomic) AVOArrayController *arrayController;
 @end
 
-@implementation AVOMergeSectionsViewController{
-    TableViewAgent *agent;
+@implementation AVOMergeSectionsViewController {
 }
 
 - (IBAction)touchEdit:(id)sender {
-    [agent setEditing:!agent.editing];
+    [self.agent setEditing:!self.agent.editing];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    agent = [[TableViewAgent alloc] init];
+    UINib *nib = [UINib nibWithNibName:@"SectionView" bundle:nil];
+    [self.tableView registerNib:nib forHeaderFooterViewReuseIdentifier:@"SectionView"];
+    self.agent = [[TableViewAgent alloc] init];
+
+    self.arrayController = [self createArrayController];
+    AVOMergeSections *mergeSections = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
+            [self createAgentViewController:self.arrayController],
+            [self createSingleRow],
+    ]];
+    self.agent.viewObjects = mergeSections;
+    self.agent.tableView = self.tableView;
+}
+
+- (AVOArrayController *)createArrayController {
     NSArray *viewObjects = @[
-                             [[ViewObject alloc] initWithTitle:@"hoge" message:@"A"],
-                             [[ViewObject alloc] initWithTitle:@"piyo" message:@"B"],
-                             [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"A"],
-                             ];
-    self.arrayController = [[AVOArrayController alloc] initWithArray:viewObjects groupedBy:@"message" withPredicate:nil sortedBy:^NSComparisonResult(id obj1, id obj2) {
+            [[ViewObject alloc] initWithTitle:@"hoge" message:@"A"],
+            [[ViewObject alloc] initWithTitle:@"piyo" message:@"B"],
+            [[ViewObject alloc] initWithTitle:@"fugafuga" message:@"A"],
+    ];
+    AVOArrayController *arrayController = [[AVOArrayController alloc] initWithArray:viewObjects groupedBy:@"message" withPredicate:nil sortedBy:^NSComparisonResult(id obj1, id obj2) {
         return [[obj1 message] compare:[obj2 message]];
     }];
+    return arrayController;
+}
+
+- (AVOFetchedResultController *)createAgentViewController:(id)arrayController {
+    AVOFetchedResultController *agentViewObject = [[AVOFetchedResultController alloc] initWithFetch:arrayController];
+    [agentViewObject setEditableMode:EditableModeEnable];
+    [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseCustomTableViewCell;
+    }];
+    [agentViewObject setDidSelectCell:^(id viewObject) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
+    }];
+    [agentViewObject setHeaderIdentifierForSectionObject:^NSString *(id o) {
+        return @"SectionView";
+    }];
+    [agentViewObject setEditingDeleteViewObject:^(id viewObject) {
+        [self.arrayController removeObject:viewObject];
+    }];
+    return agentViewObject;
+}
+
+- (AVOSingleRow *)createSingleRow {
     AVOSingleRow *singleRow = [[AVOSingleRow alloc] initWithViewObject:kReuseAdd];
-    AVOMergeSections *mergeSections = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
-            [[FRCAgentViewObject alloc]initWithFetch:(id)self.arrayController],
-            singleRow
-    ]];
-    agent.viewObjects = mergeSections;
-    agent.delegate = self;
-    [agent setEditableMode:EditableModeEnable];
+    [singleRow setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseAdd;
+    }];
+    [singleRow setDidSelectCell:^(id viewObject) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
+    }];
+    return singleRow;
 }
 
 - (void)saveViewObject:(ThirdViewObject *)tvo {
@@ -54,21 +89,15 @@
         ViewObject *vo = tvo.viewObject;
         vo.title = tvo.title;
         vo.message = tvo.message;
-        
+
         [self.arrayController updateObject:vo];
     } else {
         ViewObject *vo = [[ViewObject alloc] init];
         vo.title = tvo.title;
         vo.message = tvo.message;
-        
+
         [self.arrayController addObject:vo];
     }
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [agent redraw];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -77,27 +106,5 @@
         [controller setViewObject:sender];
         [controller setDelegate:self];
     }
-}
-
-#pragma -
-#pragma mark TableViewAgentDelegate
-- (NSString *)cellIdentifier:(id)viewObject {
-    if ([viewObject isKindOfClass:[NSString class]]) {
-        return kReuseAdd;
-    } else {
-        return kReuseCustomTableViewCell;
-    }
-}
-
-- (void)didSelectCell:(id)viewObject {
-    if ([viewObject isKindOfClass:[NSString class]]) {
-        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:nil]];
-    } else {
-        [self performSegueWithIdentifier:kSegueEdit sender:[[ThirdViewObject alloc] initWithViewObject:viewObject]];
-    }
-}
-
-- (void)deleteCell:(id)viewObject {
-    [self.arrayController removeObject:viewObject];
 }
 @end

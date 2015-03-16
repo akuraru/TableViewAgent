@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "TableViewAgent"
-  s.version      = "1.1.0"
+  s.version      = "2.0.0"
   s.summary      = "library that wraps the delegate and datesource of UITableView"
   s.homepage     = "https://github.com/akuraru/TableViewAgent"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }

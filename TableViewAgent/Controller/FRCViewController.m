@@ -6,45 +6,76 @@
 //
 
 
+#import <TableViewAgent/AVOMergeSections.h>
 #import "FRCViewController.h"
 #import "TableViewAgent.h"
 #import "ExtactedID.h"
 #import "ThirdViewObject.h"
 #import "ViewObject.h"
-#import "MSAgentViewObject.h"
-#import "FRCAgentViewObject.h"
+#import "AVOFetchedResultController.h"
 #import "TodoManager.h"
 #import "WETodo.h"
 #import "ThirdViewController.h"
+#import "AVOAdditionalSection.h"
+#import "FRCAgentViewObject.h"
 
-@interface FRCViewController () <TableViewAgentDelegate>
+@interface FRCViewController ()
+@property (nonatomic) TableViewAgent *agent;
 @end
 
 @implementation FRCViewController {
-    TableViewAgent *agent;
 }
 
 - (IBAction)touchEdit:(id)sender {
-    [agent setEditing:!agent.editing];
+    [self.agent setEditing:!self.agent.editing];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.agent = [[TableViewAgent alloc] init];
+    self.agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
+            [self createAgentViewObject],
+            [self createAdditionalSection],
+    ]];
+    self.agent.tableView = self.tableView;
+}
 
-    agent = [[TableViewAgent alloc] init];
-    agent.viewObjects = [[FRCAgentViewObject alloc] initWithFetch:[TodoManager fetchController]];
-    agent.delegate = self;
-    [agent setEditableMode:EditableModeEnable];
-    [agent setAdditionalCellMode:AdditionalCellModeAlways];
+- (AVOFetchedResultController *)createAgentViewObject {
+    AVOFetchedResultController *agentViewObject = [[AVOFetchedResultController alloc] initWithFetch:[TodoManager fetchController]];
+    [agentViewObject setEditableMode:EditableModeEnable];
+    [agentViewObject setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseCustomTableViewCell;
+    }];
+    [agentViewObject setDidSelectCell:^(id viewObject) {
+        [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:viewObject]];
+    }];
+    [agentViewObject setHeaderTitleForSectionObject:^NSString *(id sectionObject) {
+        return [sectionObject name];
+    }];
+    [agentViewObject setEditingDeleteViewObject:^(id viewObject) {
+        [TodoManager deleteEntity:viewObject];
+    }];
+    return agentViewObject;
+}
+
+- (AVOAdditionalSection *)createAdditionalSection {
+    AVOAdditionalSection *additionalSection = [[AVOAdditionalSection alloc] initWithViewObject:kReuseAdd];
+    [additionalSection setAdditionalCellMode:AdditionalCellModeAlways];
+    [additionalSection setCellIdentifier:^NSString *(id viewObject) {
+        return kReuseAdd;
+    }];
+    __weak typeof(self) this = self;
+    [additionalSection setDidSelectCell:^(id viewObject) {
+        [this performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
+    }];
+    [additionalSection setEditingInsertViewObject:^(id viewObject) {
+        [this performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
+    }];
+    return additionalSection;
 }
 
 - (void)saveViewObject:(WETodo *)we {
     [TodoManager updateEntity:we];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-
-    [agent redraw];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -52,28 +83,5 @@
         [segue.destinationViewController setViewObject:sender];
         [segue.destinationViewController setDelegate:self];
     }
-}
-
-#pragma -
-#pragma mark TableViewAgentDelegate
-- (NSString *)cellIdentifier:(id)viewObject {
-    return kReuseCustomTableViewCell;
-}
-
-- (void)didSelectCell:(ViewObject *)viewObject {
-    [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:viewObject]];
-}
-- (void)deleteCell:(id)viewObject {
-    [TodoManager deleteEntity:viewObject];
-}
-- (NSString *)sectionTitle:(NSArray *)viewObjects {
-    return [viewObjects[0] title];
-}
-
-- (NSString *)addCellIdentifier {
-    return kReuseAdd;
-}
-- (void)didSelectAdditionalCell {
-    [self performSegueWithIdentifier:kSegueEdit sender:[[WETodo alloc] initWithTodo:nil]];
 }
 @end

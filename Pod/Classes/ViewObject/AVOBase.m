@@ -6,55 +6,54 @@
 //
 
 
-#import "AVOSingleRow.h"
-#import "TableViewAgentProtocol.h"
+#import "AVOBase.h"
+#import "EditableStateNone.h"
+#import "EditableStateEnadle.h"
+#import "EditableStateEditingEnable.h"
+#import "EditableStateEditingNonEnable.h"
 
-@implementation AVOSingleRow
+@interface AVOBase ()
+@property(nonatomic) EditableState *editableState;
+@end
 
-- (id)initWithViewObject:(id)viewObject {
+@implementation AVOBase
+- (instancetype)init {
     self = [super init];
     if (self) {
-        self.viewObject = viewObject;
+        _editableState = [EditableStateNone new];
     }
     return self;
 }
 
-- (NSIndexPath *)indexPathForObject:(id)object {
-    if ([self.viewObject isEqual:object]) {
-        return [NSIndexPath indexPathForRow:0 inSection:0];
-    }
-    return nil;
-}
-
-- (NSUInteger)countInSection:(NSUInteger)section {
-    return 1;
-}
-
-- (id)objectAtIndexPath:(NSIndexPath *)indexPath {
-    return self.convert ? self.convert(self.viewObject) : self.viewObject;
-}
-
-- (id)sectionObjectInSection:(NSInteger)section {
-    return self.viewObject;
-}
-
-- (NSUInteger)sectionCount {
-    return 1;
-}
-
 - (BOOL)canEditRowForIndexPath:(NSIndexPath *)indexPath {
-    return NO;
+    return [self canEdit];
 }
 
 - (BOOL)canEdit {
-    return NO;
+    return self.editableState.canEdit;
 }
 
-- (void)setEditing:(BOOL)editing {
+- (void)setEditableMode:(EditableMode)mode {
+    _editableState = [self createEditableMode:mode];
+}
+
+- (EditableState *)createEditableMode:(EditableMode)mode {
+    switch (mode) {
+        case EditableModeNone :
+            return [EditableStateNone new];
+        case EditableModeEnable :
+            return [EditableStateEnadle new];
+        case EditableModeEditingEnable:
+            return [EditableStateEditingEnable new];
+        case EditableModeEditingNonEnable:
+            return [EditableStateEditingNonEnable new];
+        default:
+            return nil;
+    }
 }
 
 - (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path {
-    return UITableViewCellEditingStyleNone;
+    return UITableViewCellEditingStyleDelete;
 }
 
 - (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath {
@@ -64,6 +63,8 @@
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.didSelectCell) {
         self.didSelectCell([self objectAtIndexPath:indexPath]);
+    } else {
+        NSAssert(NO, @"hoge");
     }
 }
 
@@ -91,5 +92,14 @@
     if ([self editingInsertViewObject]) {
         self.editingInsertViewObject([self objectAtIndexPath:indexPath]);
     }
+}
+
+// need override
+- (id)objectAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
+- (id)sectionObjectInSection:(NSInteger)section {
+    return nil;
 }
 @end

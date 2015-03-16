@@ -22,7 +22,7 @@
 
 }
 
-- (id)initWithArray:(NSArray *)array groupedBy:(NSString *)groupedTerm withPredicate:(NSPredicate *)searchTerm sortedBy:(NSComparisonResult (^)(id, id))sortTerm;
+- (instancetype)initWithArray:(NSArray *)array groupedBy:(NSString *)groupedTerm withPredicate:(NSPredicate *)searchTerm sortedBy:(NSComparisonResult (^)(id, id))sortTerm;
 
 @property(nonatomic, readonly) NSString *sectionNameKeyPath;
 

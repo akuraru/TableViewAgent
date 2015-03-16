@@ -1,62 +1,25 @@
+//
+//  TableViewAgentCategory.h
+//  TableViewAgent
+//
+//  Created by P.I.akura on 2013/10/13.
+//  Copyright (c) 2013年 P.I.akura. All rights reserved.
+//
 
-@protocol didSelectCell <NSObject>
-@optional
-- (void)didSelectCell:(id)viewObject;
-@end
-@protocol deleteCell <NSObject>
-@optional
-- (void)deleteCell:(id)viewObject;
-@end
-@protocol cellIdentifier <NSObject>
-- (NSString *)cellIdentifier:(id)viewObject;
-@end
-@protocol commonViewObject <NSObject>
-@optional
-- (id)commonViewObject:(id)viewObject;
-@end
-@protocol tableView <NSObject>
-- (UITableView *)tableView;
-@end
-@protocol sectionTitle <NSObject>
-@optional
-- (NSString *)sectionTitle:(NSArray *)viewObjects;
-@end
+#import <Foundation/Foundation.h>
+#import "TableViewAgent.h"
 
+@protocol AgentViewObjectProtocol;
 
-@protocol addCellIdentifier <NSObject>
-@optional
-- (NSString *)addCellIdentifier;
-@end
-@protocol didSelectAdditionalCell <NSObject>
-@optional
-- (void)didSelectAdditionalCell;
-@end
-@protocol addSectionTitle <NSObject>
-@optional
-- (NSString *)addSectionTitle;
-@end
+@protocol TableViewAgentProtocol
 
-@protocol addSectionHeightForHeader <NSObject>
-@optional
-- (CGFloat)addSectionHeightForHeader;
-@end
-@protocol addSectionHeader <NSObject>
-@optional
-- (UIView *)addSectionHeader;
-@end
-@protocol sectionHeightForHeader <NSObject>
-@optional
-- (CGFloat)sectionHeightForHeader:(id)viewObject;
-@end
-@protocol sectionHeader <NSObject>
-@optional
-- (UIView *)sectionHeader:(id)viewObject;
-@end
-@protocol cellHeight <NSObject>
-@optional
-- (CGFloat)cellHeight:(id)viewObject;
-@end
+- (void)deleteCell:(id<AgentViewObjectProtocol>)agentViewObject atIndexPath:(NSIndexPath *)indexPath;
+- (void)deleteSection:(id<AgentViewObjectProtocol>)agentViewObject atSection:(NSInteger)section;
+- (void)deleteCells:(id<AgentViewObjectProtocol>)agentViewObject atSection:(NSInteger)section rows:(NSArray *)rows;
+- (void)insertCell:(id<AgentViewObjectProtocol>)agentViewObject atIndexPath:(NSIndexPath *)indexPath;
+- (void)insertSection:(id<AgentViewObjectProtocol>)agentViewObject atSection:(NSInteger)section;
+- (void)insertCells:(id<AgentViewObjectProtocol>)agentViewObject atSection:(NSInteger)section rows:(NSArray *)rows;
+- (void)changeUpdateCell:(id<AgentViewObjectProtocol>)agentViewObject atIndexPath:(NSIndexPath *)indexPath;
+- (void)changeMoveCell:(id<AgentViewObjectProtocol>)agentViewObject fromIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
 
-
-@protocol TableViewAgentDelegate <tableView, didSelectCell, deleteCell, cellIdentifier, commonViewObject, sectionTitle, addCellIdentifier, didSelectAdditionalCell, addSectionTitle, addSectionHeightForHeader, addSectionHeader, sectionHeightForHeader, sectionHeader, cellHeight>
 @end

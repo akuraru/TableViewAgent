@@ -1,21 +1,21 @@
 //
-//  EditableState.m
+//  EditableStateEnadle.m
 //  TableViewAgent
 //
 //  Created by P.I.akura on 2013/06/20.
 //  Copyright (c) 2013年 P.I.akura. All rights reserved.
 //
 
-#import "EditableState.h"
+#import "EditableStateEditingNonEnable.h"
 
-@implementation EditableState
+@implementation EditableStateEditingNonEnable
 
 - (BOOL)canEdit {
-    return NO;
+    return YES;
 }
 
 - (BOOL)editableForEditing:(BOOL)editing {
-    return self.canEdit;
+    return !editing;
 }
 
 @end
