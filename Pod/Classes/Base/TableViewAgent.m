@@ -169,8 +169,8 @@ typedef struct {
     } else {
         id viewObject = [self viewObjectWithIndex:indexPath];
         NSString *cellIdentifier = [_delegate cellIdentifier:viewObject];
-        Class<TableViewAgentCellDelegate> cellClass = NSClassFromString(cellIdentifier);
-        if ([cellClass respondsToSelector:@selector(heightFromViewObject:)]) {
+        Class cellClass = NSClassFromString(cellIdentifier);
+        if ([cellClass conformsToProtocol:@protocol(TableViewAgentCellDelegate)]) {
             return [cellClass heightFromViewObject:viewObject];
         } else {
             id cell = [self dequeueCell:indexPath];

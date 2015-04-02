@@ -3,7 +3,7 @@ PODS:
   - MagicalRecord (2.2):
     - MagicalRecord/Core (= 2.2)
   - MagicalRecord/Core (2.2)
-  - TableViewAgent (0.3.3)
+  - TableViewAgent (1.1.0)
 
 DEPENDENCIES:
   - Kiwi
@@ -12,11 +12,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   TableViewAgent:
-    :path: ./
+    :path: "./"
 
 SPEC CHECKSUMS:
-  Kiwi: 73e1400209055ee9c8ba78c6012b6b642d0fb9f7
-  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
-  TableViewAgent: 2b7052b19e0f1e7315d3b24abc1efbdeee57c855
+  Kiwi: f038a6c61f7a9e4d7766bff5717aa3b3fdb75f55
+  MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
+  TableViewAgent: 45eab44be70e7923a1bace4f15debc2aa3c6e9c5
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.1
