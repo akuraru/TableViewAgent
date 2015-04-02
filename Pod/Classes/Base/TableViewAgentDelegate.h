@@ -16,8 +16,3 @@
 - (void)deleteCell:(id)viewObject;
 - (void)didSelectAdditionalCell;
 @end
-
-@protocol MSTableViewAgentDelegate <TableViewAgentDelegate, viewForHeaderView>
-@optional
-- (UIView *)viewForHeaderView:(id)viewObjects;
-@end
