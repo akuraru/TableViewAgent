@@ -178,8 +178,16 @@
     return [self.viewObjects canEditRowForIndexPath:indexPath];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.viewObjects canMoveRowAtIndexPath:indexPath];
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [self.viewObjects titleForHeaderInSection:section];
+}
+
+- (nullable NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    return [self.viewObjects titleForFooterInSection:section];;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -200,7 +208,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     NSString *headerIdentifier = [self.viewObjects headerIdentifierInSection:section];
     if (headerIdentifier) {
-        UIView <TableViewAgentSectionViewDelegate> *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdentifier];
+        UITableViewHeaderFooterView<TableViewAgentSectionViewDelegate> *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdentifier];
         id sectionObject = [self.viewObjects sectionObjectInSection:section];
         [view setSectionObject:sectionObject];
         return view;
@@ -233,4 +241,8 @@
 - (NSComparisonResult)compareSectionCount:(NSUInteger)count {
     return [@([_viewObjects sectionCount]) compare:@([self.tableView numberOfSections])];
 }
+
+//- (nullable NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView __TVOS_PROHIBITED { return @[]; }
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index __TVOS_PROHIBITED { return 0; }
+//- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {}
 @end

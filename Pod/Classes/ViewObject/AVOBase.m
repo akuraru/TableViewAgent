@@ -33,6 +33,10 @@
     return self.editableState.canEdit;
 }
 
+- (BOOL)canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.canMove;
+}
+
 - (void)setEditableMode:(EditableMode)mode {
     _editableState = [self createEditableMode:mode];
 }
@@ -63,14 +67,19 @@
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.didSelectCell) {
         self.didSelectCell([self objectAtIndexPath:indexPath]);
-    } else {
-        NSAssert(NO, @"hoge");
     }
 }
 
 - (NSString *)titleForHeaderInSection:(NSInteger)section {
     if (self.headerTitleForSectionObject) {
         return self.headerTitleForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
+
+- (NSString *)titleForFooterInSection:(NSInteger)section {
+    if (self.footerTitleForSectionObject) {
+        return self.footerTitleForSectionObject([self sectionObjectInSection:section]);
     }
     return nil;
 }

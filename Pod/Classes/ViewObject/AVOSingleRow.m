@@ -50,6 +50,10 @@
     return NO;
 }
 
+- (BOOL)canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.canMove;
+}
+
 - (void)setEditing:(BOOL)editing {
 }
 
@@ -70,6 +74,13 @@
 - (NSString *)titleForHeaderInSection:(NSInteger)section {
     if (self.headerTitleForSectionObject) {
         return self.headerTitleForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
+
+- (NSString *)titleForFooterInSection:(NSInteger)section {
+    if (self.footerTitleForSectionObject) {
+        return self.footerTitleForSectionObject([self sectionObjectInSection:section]);
     }
     return nil;
 }
