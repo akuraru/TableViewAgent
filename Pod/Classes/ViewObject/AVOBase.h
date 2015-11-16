@@ -20,8 +20,6 @@
 
 - (BOOL)canEditRowForIndexPath:(NSIndexPath *)indexPath;
 - (BOOL)canEdit;
-- (BOOL)canMoveRowAtIndexPath:(NSIndexPath *)indexPath;
-@property(nonatomic) BOOL canMove;
 - (void)setEditableMode:(EditableMode)editableMode;
 - (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path;
 - (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath;

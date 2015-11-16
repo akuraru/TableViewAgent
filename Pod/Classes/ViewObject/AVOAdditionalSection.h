@@ -30,7 +30,6 @@ typedef NS_ENUM (NSInteger, AdditionalCellMode) {
 @property(copy, nonatomic) NSString *(^headerIdentifierForSectionObject)(id sectionObject);
 @property(copy, nonatomic) void (^editingInsertViewObject)(id viewObject);
 @property(nonatomic) BOOL editing;
-@property(nonatomic) BOOL canMove;
 
 - (id)initWithViewObject:(id)viewObject;
 

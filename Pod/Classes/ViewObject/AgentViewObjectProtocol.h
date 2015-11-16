@@ -27,7 +27,6 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 
 // editing
 - (BOOL)canEditRowForIndexPath:(NSIndexPath *)indexPath;
-- (BOOL)canMoveRowAtIndexPath:(NSIndexPath *)indexPath;
 - (BOOL)canEdit;
 - (void)setEditing:(BOOL)editing;
 

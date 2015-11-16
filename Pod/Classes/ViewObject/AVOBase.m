@@ -33,10 +33,6 @@
     return self.editableState.canEdit;
 }
 
-- (BOOL)canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.canMove;
-}
-
 - (void)setEditableMode:(EditableMode)mode {
     _editableState = [self createEditableMode:mode];
 }

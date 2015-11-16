@@ -57,9 +57,6 @@
 - (BOOL)canEdit {
     return NO;
 }
-- (BOOL)canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.canEdit;
-}
 
 - (void)setEditing:(BOOL)editing {
     _editing = editing;

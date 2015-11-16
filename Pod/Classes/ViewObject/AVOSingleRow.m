@@ -50,10 +50,6 @@
     return NO;
 }
 
-- (BOOL)canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.canMove;
-}
-
 - (void)setEditing:(BOOL)editing {
 }
 

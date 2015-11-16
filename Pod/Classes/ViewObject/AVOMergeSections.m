@@ -88,13 +88,6 @@ typedef struct AVOMergeSectionPath AVOMergeSectionPath;
     return [agentViewObject canEditRowForIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:path.section]];
 }
 
-- (BOOL)canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    AVOMergeSectionPath path = [self sectionPathForIndexPath:indexPath.section];
-    id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
-    return [agentViewObject canMoveRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:path.section]];
-    
-}
-
 - (void)setEditing:(BOOL)editing {
     for (id <AgentViewObjectProtocol> agentViewObject in self.agentViewObjects) {
         [agentViewObject setEditing:editing];
