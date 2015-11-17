@@ -24,6 +24,16 @@
     return self;
 }
 
+- (void)selfSizingCell:(BOOL)b {
+    if (b) {
+        self.tableView.estimatedRowHeight = 100.0;
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+    } else {
+        self.tableView.estimatedRowHeight = 0;
+        self.tableView.rowHeight = 0;
+    }
+}
+
 - (void)redraw {
     [self.tableView reloadData];
     [self setEditing:NO];
