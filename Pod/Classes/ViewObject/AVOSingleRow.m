@@ -88,6 +88,13 @@
     return nil;
 }
 
+- (NSString *)footerIdentifierInSection:(NSInteger)section {
+    if (self.footerIdentifierForSectionObject) {
+        return self.footerIdentifierForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
+
 - (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.editingDeleteViewObject) {
         self.editingDeleteViewObject([self objectAtIndexPath:indexPath]);

@@ -37,6 +37,7 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 - (NSString *)titleForHeaderInSection:(NSInteger)section;
 - (NSString *)titleForFooterInSection:(NSInteger)section;
 - (NSString *)headerIdentifierInSection:(NSInteger)section;
+- (NSString *)footerIdentifierInSection:(NSInteger)section;
 
 - (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)editingInsertForRowAtIndexPath:(NSIndexPath *)indexPath;

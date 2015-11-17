@@ -130,6 +130,12 @@ typedef struct AVOMergeSectionPath AVOMergeSectionPath;
     return [agentViewObject headerIdentifierInSection:path.section];
 }
 
+- (NSString *)footerIdentifierInSection:(NSInteger)section {
+    AVOMergeSectionPath path = [self sectionPathForIndexPath:section];
+    id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
+    return [agentViewObject footerIdentifierInSection:path.section];
+}
+
 - (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath {
     AVOMergeSectionPath path = [self sectionPathForIndexPath:indexPath.section];
     id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];

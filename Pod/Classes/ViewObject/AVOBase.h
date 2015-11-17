@@ -15,6 +15,7 @@
 @property(copy, nonatomic) NSString *(^headerTitleForSectionObject)(id sectionObject);
 @property(copy, nonatomic) NSString *(^footerTitleForSectionObject)(id sectionObject);
 @property(copy, nonatomic) NSString *(^headerIdentifierForSectionObject)(id sectionObject);
+@property(copy, nonatomic) NSString *(^footerIdentifierForSectionObject)(id sectionObject);
 @property(copy, nonatomic) void (^editingDeleteViewObject)(id viewObject);
 @property(copy, nonatomic) void (^editingInsertViewObject)(id viewObject);
 
@@ -27,6 +28,7 @@
 - (NSString *)titleForHeaderInSection:(NSInteger)section;
 - (NSString *)titleForFooterInSection:(NSInteger)section;
 - (NSString *)headerIdentifierInSection:(NSInteger)section;
+- (NSString *)footerIdentifierInSection:(NSInteger)section;
 - (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)editingInsertForRowAtIndexPath:(NSIndexPath *)indexPath;
 

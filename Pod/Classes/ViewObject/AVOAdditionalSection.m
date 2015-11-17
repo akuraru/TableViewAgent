@@ -138,6 +138,13 @@
     return nil;
 }
 
+- (NSString *)footerIdentifierInSection:(NSInteger)section {
+    if (self.footerIdentifierForSectionObject) {
+        return self.footerIdentifierForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
+
 - (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 - (void)editingInsertForRowAtIndexPath:(NSIndexPath *)indexPath {
