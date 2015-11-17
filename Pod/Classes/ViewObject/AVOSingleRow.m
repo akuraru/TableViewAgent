@@ -116,6 +116,16 @@
     return nil;
 }
 
+- (BOOL)canDidSelectAccessoryButton:(NSIndexPath *)indexPath {
+    return self.didSelectAccessoryButton != nil;
+}
+
+- (void)didSelectAccessoryButtonAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.didSelectAccessoryButton) {
+        self.didSelectAccessoryButton([self objectAtIndexPath:indexPath]);
+    }
+}
+
 - (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.editingDeleteViewObject) {
         self.editingDeleteViewObject([self objectAtIndexPath:indexPath]);

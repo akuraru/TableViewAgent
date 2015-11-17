@@ -44,6 +44,9 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 - (NSString *)headerIdentifierInSection:(NSInteger)section;
 - (NSString *)footerIdentifierInSection:(NSInteger)section;
 
+- (BOOL)canDidSelectAccessoryButton:(NSIndexPath *)indexPath;
+- (void)didSelectAccessoryButtonAtIndexPath:(NSIndexPath *)indexPath;
+
 - (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)editingInsertForRowAtIndexPath:(NSIndexPath *)indexPath;
 

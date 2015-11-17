@@ -228,7 +228,11 @@
 //- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath { return UITableViewCellAccessoryNone; }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    [self tableView:tableView didSelectRowAtIndexPath:indexPath];
+    if ([self.viewObjects canDidSelectAccessoryButton:indexPath]) {
+        [self.viewObjects didSelectAccessoryButtonAtIndexPath:indexPath];
+    } else {
+        [self tableView:tableView didSelectRowAtIndexPath:indexPath];
+    }
 }
 
 //- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath { return 0; }
