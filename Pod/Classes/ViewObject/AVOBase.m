@@ -66,6 +66,27 @@
     }
 }
 
+- (UIColor *)cellBackgroundColor:(NSIndexPath *)indexPath {
+    if (self.cellBackgroundColorForObject) {
+        self.cellBackgroundColorForObject([self objectAtIndexPath:indexPath]);
+    }
+    return nil;
+}
+
+- (UIColor *)headerViewBackgroundColor:(NSInteger)section {
+    if (self.headerViewBackgroundColorForSectionObject) {
+        self.headerViewBackgroundColorForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
+
+- (UIColor *)footerViewBackgroundColor:(NSInteger)section {
+    if (self.footerViewBackgroundColorForSectionObject) {
+        self.footerViewBackgroundColorForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
+
 - (NSString *)titleForHeaderInSection:(NSInteger)section {
     if (self.headerTitleForSectionObject) {
         return self.headerTitleForSectionObject([self sectionObjectInSection:section]);

@@ -7,11 +7,15 @@
 
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "AgentViewObjectProtocol.h"
 
 @interface AVOBase : NSObject
 @property(copy, nonatomic) NSString *(^cellIdentifier)(id viewObject);
 @property(copy, nonatomic) void (^didSelectCell)(id viewObject);
+@property(copy, nonatomic) UIColor *(^cellBackgroundColorForObject)(id viewObject);
+@property(copy, nonatomic) UIColor *(^headerViewBackgroundColorForSectionObject)(id sectionObject);
+@property(copy, nonatomic) UIColor *(^footerViewBackgroundColorForSectionObject)(id sectionObject);
 @property(copy, nonatomic) NSString *(^headerTitleForSectionObject)(id sectionObject);
 @property(copy, nonatomic) NSString *(^footerTitleForSectionObject)(id sectionObject);
 @property(copy, nonatomic) NSString *(^headerIdentifierForSectionObject)(id sectionObject);
@@ -25,6 +29,9 @@
 - (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path;
 - (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath;
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (UIColor *)cellBackgroundColor:(NSIndexPath *)indexPath;
+- (UIColor *)headerViewBackgroundColor:(NSInteger)section;
+- (UIColor *)footerViewBackgroundColor:(NSInteger)section;
 - (NSString *)titleForHeaderInSection:(NSInteger)section;
 - (NSString *)titleForFooterInSection:(NSInteger)section;
 - (NSString *)headerIdentifierInSection:(NSInteger)section;
