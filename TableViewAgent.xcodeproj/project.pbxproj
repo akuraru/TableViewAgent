@@ -57,11 +57,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B99CF6925CDE17ED6485306 /* Pods-TableViewAgent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewAgent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TableViewAgent/Pods-TableViewAgent.debug.xcconfig"; sourceTree = "<group>"; };
-		74B6D6E51EDEDEDFE9258EC3 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		0666FA220CB4D2FFBBE557BE /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		11668695058172EE5041F99A /* Pods-TableViewAgent.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewAgent.test.xcconfig"; path = "Pods/Target Support Files/Pods-TableViewAgent/Pods-TableViewAgent.test.xcconfig"; sourceTree = "<group>"; };
+		6D5C744D2958CFBA6C521A2C /* Pods-Tests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.test.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.test.xcconfig"; sourceTree = "<group>"; };
 		849FF54B3FD24C2FEC4CBB41 /* libPods-TableViewAgent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TableViewAgent.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9582A4AE38D6F9A618407AF1 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF64B09054088C3D0460F56C /* Pods-TableViewAgent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewAgent.release.xcconfig"; path = "Pods/Target Support Files/Pods-TableViewAgent/Pods-TableViewAgent.release.xcconfig"; sourceTree = "<group>"; };
+		9B734BB618E95334E54C2833 /* Pods-TableViewAgent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewAgent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TableViewAgent/Pods-TableViewAgent.debug.xcconfig"; sourceTree = "<group>"; };
+		9DFE27BEE8456FB9C7CF10F0 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		BE0C26811A8D78B2006D4C60 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BE0C26831A8D78C8006D4C60 /* README_jp.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README_jp.md; sourceTree = "<group>"; };
 		BE2256EE176BCABC0022DA33 /* TableViewAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +100,6 @@
 		BE8FDB1217719B3200A6113E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
 		BEEDD1461A86005B00300C64 /* AVOArrayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVOArrayViewController.m; sourceTree = "<group>"; };
 		BEEDD1481A88727F00300C64 /* AVOMergeSectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVOMergeSectionsViewController.m; sourceTree = "<group>"; };
-		C39552D99E3C5862CEECF8AF /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C879000AD100E37BD5CCF83C /* WETodo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETodo.m; sourceTree = "<group>"; };
 		C8790043B0A754925503375F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C87900D1196B2A54304A1558 /* FRCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRCViewController.h; sourceTree = "<group>"; };
@@ -120,6 +121,7 @@
 		C8790DD4728C683034FBAF4A /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		C8790E7509D540B912A684D8 /* ThirdViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewObject.h; sourceTree = "<group>"; };
 		C8790F785A526609644BE7B5 /* ThirdViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewObject.m; sourceTree = "<group>"; };
+		E55CBE757D8D83D5E06F6838 /* Pods-TableViewAgent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewAgent.release.xcconfig"; path = "Pods/Target Support Files/Pods-TableViewAgent/Pods-TableViewAgent.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,10 +152,12 @@
 		ADDBC7DD05D9375519499FFE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2B99CF6925CDE17ED6485306 /* Pods-TableViewAgent.debug.xcconfig */,
-				AF64B09054088C3D0460F56C /* Pods-TableViewAgent.release.xcconfig */,
-				74B6D6E51EDEDEDFE9258EC3 /* Pods-Tests.debug.xcconfig */,
-				C39552D99E3C5862CEECF8AF /* Pods-Tests.release.xcconfig */,
+				9B734BB618E95334E54C2833 /* Pods-TableViewAgent.debug.xcconfig */,
+				11668695058172EE5041F99A /* Pods-TableViewAgent.test.xcconfig */,
+				E55CBE757D8D83D5E06F6838 /* Pods-TableViewAgent.release.xcconfig */,
+				9DFE27BEE8456FB9C7CF10F0 /* Pods-Tests.debug.xcconfig */,
+				6D5C744D2958CFBA6C521A2C /* Pods-Tests.test.xcconfig */,
+				0666FA220CB4D2FFBBE557BE /* Pods-Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -349,6 +353,7 @@
 				BE2256EB176BCABC0022DA33 /* Frameworks */,
 				BE2256EC176BCABC0022DA33 /* Resources */,
 				923EE4889AC54640B21C192A /* Copy Pods Resources */,
+				131F4DC0246316F18CD941D3 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -368,6 +373,7 @@
 				BE76B95718498F77001E749D /* Frameworks */,
 				BE76B95818498F77001E749D /* Resources */,
 				1B194E7301D14D57AEEDE3B3 /* Copy Pods Resources */,
+				2E14AF31CED3BA00CE4848B5 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -385,8 +391,13 @@
 		BE2256E6176BCABC0022DA33 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = P.I.akura;
+				TargetAttributes = {
+					BE76B95918498F77001E749D = {
+						TestTargetID = BE2256ED176BCABC0022DA33;
+					};
+				};
 			};
 			buildConfigurationList = BE2256E9176BCABC0022DA33 /* Build configuration list for PBXProject "TableViewAgent" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -446,6 +457,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		131F4DC0246316F18CD941D3 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TableViewAgent/Pods-TableViewAgent-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1B194E7301D14D57AEEDE3B3 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -459,6 +485,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2E14AF31CED3BA00CE4848B5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5FDA5A35BA1A4402AB508566 /* Check Pods Manifest.lock */ = {
@@ -591,12 +632,13 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					"DEBUG=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -623,6 +665,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -635,13 +678,18 @@
 		};
 		BE225712176BCABD0022DA33 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B99CF6925CDE17ED6485306 /* Pods-TableViewAgent.debug.xcconfig */;
+			baseConfigurationReference = 9B734BB618E95334E54C2833 /* Pods-TableViewAgent.debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableViewAgent/TableViewAgent-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = "TableViewAgent/TableViewAgent-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = "akuraru.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -651,13 +699,18 @@
 		};
 		BE225713176BCABD0022DA33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF64B09054088C3D0460F56C /* Pods-TableViewAgent.release.xcconfig */;
+			baseConfigurationReference = E55CBE757D8D83D5E06F6838 /* Pods-TableViewAgent.release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableViewAgent/TableViewAgent-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = "TableViewAgent/TableViewAgent-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = "akuraru.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -667,7 +720,7 @@
 		};
 		BE76B96A18498F77001E749D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74B6D6E51EDEDEDFE9258EC3 /* Pods-Tests.debug.xcconfig */;
+			baseConfigurationReference = 9DFE27BEE8456FB9C7CF10F0 /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -682,8 +735,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					"DEBUG=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -691,6 +744,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.plusr.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TableViewAgent.app/TableViewAgent";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -700,7 +754,7 @@
 		};
 		BE76B96B18498F77001E749D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C39552D99E3C5862CEECF8AF /* Pods-Tests.release.xcconfig */;
+			baseConfigurationReference = 0666FA220CB4D2FFBBE557BE /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -715,12 +769,17 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.plusr.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TableViewAgent.app/TableViewAgent";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -746,8 +805,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					"DEBUG=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -761,7 +820,7 @@
 		};
 		BE9911DF1A98B5AD00CE877C /* Test */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B99CF6925CDE17ED6485306 /* Pods-TableViewAgent.debug.xcconfig */;
+			baseConfigurationReference = 11668695058172EE5041F99A /* Pods-TableViewAgent.test.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableViewAgent/TableViewAgent-Prefix.pch";
@@ -773,6 +832,7 @@
 				INFOPLIST_FILE = "TableViewAgent/TableViewAgent-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = "akuraru.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -782,7 +842,7 @@
 		};
 		BE9911E01A98B5AD00CE877C /* Test */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74B6D6E51EDEDEDFE9258EC3 /* Pods-Tests.debug.xcconfig */;
+			baseConfigurationReference = 6D5C744D2958CFBA6C521A2C /* Pods-Tests.test.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -797,8 +857,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					"DEBUG=1",
 					"TEST=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -807,6 +867,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.plusr.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TableViewAgent.app/TableViewAgent";
 				VALID_ARCHS = "armv7 armv7s arm64";

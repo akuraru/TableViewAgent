@@ -25,8 +25,13 @@ typedef NS_ENUM (NSInteger, AdditionalCellMode) {
 @property(copy, nonatomic) id (^convert)(id);
 @property(copy, nonatomic) NSString *(^cellIdentifier)(id viewObject);
 @property(copy, nonatomic) void (^didSelectCell)(id viewObject);
+@property(copy, nonatomic) UIColor *(^cellBackgroundColorForObject)(id viewObject);
+@property(copy, nonatomic) UIColor *(^headerViewBackgroundColorForSectionObject)(id sectionObject);
+@property(copy, nonatomic) UIColor *(^footerViewBackgroundColorForSectionObject)(id sectionObject);
 @property(copy, nonatomic) NSString *(^headerTitleForSectionObject)(id sectionObject);
+@property(copy, nonatomic) NSString *(^footerTitleForSectionObject)(id sectionObject);
 @property(copy, nonatomic) NSString *(^headerIdentifierForSectionObject)(id sectionObject);
+@property(copy, nonatomic) NSString *(^footerIdentifierForSectionObject)(id sectionObject);
 @property(copy, nonatomic) void (^editingInsertViewObject)(id viewObject);
 @property(nonatomic) BOOL editing;
 

@@ -8,7 +8,7 @@
 
 #import "TodoManager.h"
 #import "Todo.h"
-#import "CoreData+MagicalRecord.h"
+#import <MagicalRecord/MagicalRecord.h>
 #import "WETodo.h"
 
 @implementation TodoManager
@@ -18,7 +18,7 @@
 }
 
 + (void)deleteEntity:(id)object {
-    [object MR_deleteInContext:[self context]];
+    [object MR_deleteEntityInContext:[self context]];
     [[self context] MR_saveToPersistentStoreAndWait];
 }
 
@@ -27,7 +27,7 @@
 }
 
 + (void)updateEntity:(WETodo *)todo {
-    Todo *entity = todo.todo ?: [Todo MR_createInContext:[self context]];
+    Todo *entity = todo.todo ?: [Todo MR_createEntityInContext:[self context]];
     entity.title = todo.title;
     entity.message = todo.message;
     [[self context] MR_saveToPersistentStoreAndWait];

@@ -18,5 +18,6 @@
 @property (weak, nonatomic) UITableView *tableView;
 @property (nonatomic) BOOL editing;
 
+- (void)selfSizingCell:(BOOL)b;
 - (void)redraw;
 @end

@@ -112,16 +112,46 @@ typedef struct AVOMergeSectionPath AVOMergeSectionPath;
     return [agentViewObject didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:path.section]];
 }
 
+- (UIColor *)cellBackgroundColor:(NSIndexPath *)indexPath {
+    AVOMergeSectionPath path = [self sectionPathForIndexPath:indexPath.section];
+    id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
+    return [agentViewObject cellBackgroundColor:[NSIndexPath indexPathForRow:indexPath.row inSection:path.section]];
+}
+
+- (UIColor *)headerViewBackgroundColor:(NSInteger)section {
+    AVOMergeSectionPath path = [self sectionPathForIndexPath:section];
+    id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
+    return [agentViewObject headerViewBackgroundColor:path.section];
+}
+
+- (UIColor *)footerViewBackgroundColor:(NSInteger)section {
+    AVOMergeSectionPath path = [self sectionPathForIndexPath:section];
+    id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
+    return [agentViewObject footerViewBackgroundColor:path.section];
+}
+
 - (NSString *)titleForHeaderInSection:(NSInteger)section {
     AVOMergeSectionPath path = [self sectionPathForIndexPath:section];
     id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
     return [agentViewObject titleForHeaderInSection:path.section];
 }
 
+- (NSString *)titleForFooterInSection:(NSInteger)section {
+    AVOMergeSectionPath path = [self sectionPathForIndexPath:section];
+    id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
+    return [agentViewObject titleForFooterInSection:path.section];
+}
+
 - (NSString *)headerIdentifierInSection:(NSInteger)section {
     AVOMergeSectionPath path = [self sectionPathForIndexPath:section];
     id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
     return [agentViewObject headerIdentifierInSection:path.section];
+}
+
+- (NSString *)footerIdentifierInSection:(NSInteger)section {
+    AVOMergeSectionPath path = [self sectionPathForIndexPath:section];
+    id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
+    return [agentViewObject footerIdentifierInSection:path.section];
 }
 
 - (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -7,14 +7,20 @@
 //
 
 #import "AppDelegate.h"
+#import <MagicalRecord/MagicalRecord.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+#ifdef TEST
+#else
+    [MagicalRecord setupCoreDataStack];
+#endif
     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

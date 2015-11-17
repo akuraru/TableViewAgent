@@ -7,6 +7,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @protocol TableViewAgentProtocol;
 @protocol TableViewAgentSectionViewDelegate;
@@ -32,10 +33,16 @@ typedef NS_ENUM (NSInteger, EditableMode) {
 
 - (UITableViewCellEditingStyle)editingStyleForRowAtIndexPath:(NSIndexPath *)path;
 
+- (UIColor *)cellBackgroundColor:(NSIndexPath *)indexPath;
+- (UIColor *)headerViewBackgroundColor:(NSInteger)section;
+- (UIColor *)footerViewBackgroundColor:(NSInteger)section;
+
 - (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath;
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)titleForHeaderInSection:(NSInteger)section;
+- (NSString *)titleForFooterInSection:(NSInteger)section;
 - (NSString *)headerIdentifierInSection:(NSInteger)section;
+- (NSString *)footerIdentifierInSection:(NSInteger)section;
 
 - (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)editingInsertForRowAtIndexPath:(NSIndexPath *)indexPath;

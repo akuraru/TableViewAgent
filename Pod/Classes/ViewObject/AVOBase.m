@@ -63,9 +63,28 @@
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.didSelectCell) {
         self.didSelectCell([self objectAtIndexPath:indexPath]);
-    } else {
-        NSAssert(NO, @"hoge");
     }
+}
+
+- (UIColor *)cellBackgroundColor:(NSIndexPath *)indexPath {
+    if (self.cellBackgroundColorForObject) {
+        self.cellBackgroundColorForObject([self objectAtIndexPath:indexPath]);
+    }
+    return nil;
+}
+
+- (UIColor *)headerViewBackgroundColor:(NSInteger)section {
+    if (self.headerViewBackgroundColorForSectionObject) {
+        self.headerViewBackgroundColorForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
+
+- (UIColor *)footerViewBackgroundColor:(NSInteger)section {
+    if (self.footerViewBackgroundColorForSectionObject) {
+        self.footerViewBackgroundColorForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
 }
 
 - (NSString *)titleForHeaderInSection:(NSInteger)section {
@@ -75,9 +94,23 @@
     return nil;
 }
 
+- (NSString *)titleForFooterInSection:(NSInteger)section {
+    if (self.footerTitleForSectionObject) {
+        return self.footerTitleForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
+
 - (NSString *)headerIdentifierInSection:(NSInteger)section {
     if (self.headerIdentifierForSectionObject) {
         return self.headerIdentifierForSectionObject([self sectionObjectInSection:section]);
+    }
+    return nil;
+}
+
+- (NSString *)footerIdentifierInSection:(NSInteger)section {
+    if (self.footerIdentifierForSectionObject) {
+        return self.footerIdentifierForSectionObject([self sectionObjectInSection:section]);
     }
     return nil;
 }

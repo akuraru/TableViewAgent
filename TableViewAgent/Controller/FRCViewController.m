@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.agent = [[TableViewAgent alloc] init];
+    [self.agent selfSizingCell:YES];
     self.agent.viewObjects = [[AVOMergeSections alloc] initWithAgentViewObjects:@[
             [self createAgentViewObject],
             [self createAdditionalSection],
