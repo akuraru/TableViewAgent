@@ -20,6 +20,7 @@
     self = [super init];
     if (self) {
         _editing = NO;
+        _clearsSelectionOnDidSelect = NO;
     }
     return self;
 }
@@ -37,6 +38,13 @@
 - (void)redraw {
     [self.tableView reloadData];
     [self setEditing:NO];
+}
+
+- (void)deselectRows {
+    for (NSIndexPath *indexPath in [self.tableView indexPathsForSelectedRows]) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    [self.tableView flashScrollIndicators];
 }
 
 - (void)setViewObjects:(id <AgentViewObjectProtocol>)viewObjects {
@@ -243,7 +251,9 @@
 //- (nullable NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath { return indexPath; }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (self.clearsSelectionOnDidSelect) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
     [self.viewObjects didSelectRowAtIndexPath:indexPath];
 }
 
