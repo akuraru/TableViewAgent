@@ -154,6 +154,18 @@ typedef struct AVOMergeSectionPath AVOMergeSectionPath;
     return [agentViewObject footerIdentifierInSection:path.section];
 }
 
+- (BOOL)canDidSelectAccessoryButton:(NSIndexPath *)indexPath {
+    AVOMergeSectionPath path = [self sectionPathForIndexPath:indexPath.section];
+    id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
+    return [agentViewObject canDidSelectAccessoryButton:[NSIndexPath indexPathForRow:indexPath.row inSection:path.section]];
+}
+
+- (void)didSelectAccessoryButtonAtIndexPath:(NSIndexPath *)indexPath {
+    AVOMergeSectionPath path = [self sectionPathForIndexPath:indexPath.section];
+    id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];
+    [agentViewObject didSelectAccessoryButtonAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:path.section]];
+}
+
 - (void)editingDeleteForRowAtIndexPath:(NSIndexPath *)indexPath {
     AVOMergeSectionPath path = [self sectionPathForIndexPath:indexPath.section];
     id <AgentViewObjectProtocol> agentViewObject = self.agentViewObjects[path.agentIndex];

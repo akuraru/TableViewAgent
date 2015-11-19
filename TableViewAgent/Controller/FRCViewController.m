@@ -75,6 +75,11 @@
     return additionalSection;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.agent deselectRows];
+}
+
 - (void)saveViewObject:(WETodo *)we {
     [TodoManager updateEntity:we];
 }

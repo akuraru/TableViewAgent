@@ -20,4 +20,7 @@
 
 - (void)selfSizingCell:(BOOL)b;
 - (void)redraw;
+
+@property (nonatomic) BOOL clearsSelectionOnDidSelect; // recommend running `deselectRows` on `viewWillAppear:`
+- (void)deselectRows;
 @end
