@@ -7,11 +7,23 @@
 #import "AgentViewObjectProtocol.h"
 #import "AVOBase.h"
 
-@interface AVOUnlimitedObjectWorks<__covariant ObjectType> : AVOBase <AgentViewObjectProtocol>
+typedef NS_ENUM(NSInteger, AVOUnlimited) {
+    AVOUnlimitedSuccessor,
+    AVOUnlimitedPredecessor,
+};
+
+@interface AVOUnlimitedObjectWorks<__covariant ObjectType, SourceType> : AVOBase <AgentViewObjectProtocol>
 @property(readonly, nonatomic, strong) NSMutableArray<NSArray<ObjectType> *> *array;
 @property(weak, nonatomic) id<TableViewAgentProtocol>agent;
 @property(copy, nonatomic) id(^convert)(ObjectType objectType);
-@property(nonatomic, strong) id initializeSourceData;
+@property(nonatomic, strong) SourceType initializeSourceData;
+
+@property(copy, nonatomic) NSInteger(^countOfNextLoad)(SourceType source, AVOUnlimited type);
+@property(copy, nonatomic) NSArray<ObjectType> *(^loadObject)(SourceType source);
 
 - (id)init;
+
+- (void)reload;
+- (void)loadSuccessor;
+- (void)loadPredecessor;
 @end

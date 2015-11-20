@@ -27,6 +27,10 @@
 
 - (void)reload {
 }
+- (void)loadSuccessor {
+}
+- (void)loadPredecessor {
+}
 
 - (NSIndexPath *)indexPathForObject:(id)object {
     for (NSInteger i = 0, _len = _array.count; i < _len; i++) {
