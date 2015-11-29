@@ -12,6 +12,13 @@ typedef NS_ENUM(NSInteger, AVOUnlimited) {
     AVOUnlimitedPredecessor,
 };
 
+@interface AVOUnlimitedLoadObject<__covariant ObjectType, SourceType>: NSObject
+@property (strong, nonatomic) NSArray<ObjectType> *loadObject;
+@property (strong, nonatomic) SourceType nextSourceObject;
+
+- (instancetype)initWithLoad:(NSArray<ObjectType> *)loadObject source:(SourceType)nextObject;
+@end
+
 @interface AVOUnlimitedObjectWorks<__covariant ObjectType, SourceType> : AVOBase <AgentViewObjectProtocol>
 @property(readonly, nonatomic, strong) NSMutableArray<NSArray<ObjectType> *> *array;
 @property(weak, nonatomic) id<TableViewAgentProtocol>agent;
@@ -19,7 +26,7 @@ typedef NS_ENUM(NSInteger, AVOUnlimited) {
 @property(nonatomic, strong) SourceType initializeSourceData;
 
 @property(copy, nonatomic) NSInteger(^countOfNextLoad)(SourceType source, AVOUnlimited type);
-@property(copy, nonatomic) NSArray<ObjectType> *(^loadObject)(SourceType source);
+@property(copy, nonatomic) AVOUnlimitedLoadObject<ObjectType, SourceType> *(^loadObject)(SourceType source, AVOUnlimited type);
 
 - (id)init;
 

@@ -31,6 +31,7 @@
 		BE76B96418498F77001E749D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE76B96218498F77001E749D /* InfoPlist.strings */; };
 		BE8FDB1317719B3200A6113E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FDB1217719B3200A6113E /* SSViewController.m */; };
 		BE9911E31A98BE1A00CE877C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE4D744017F5056D00287CE8 /* Model.xcdatamodeld */; };
+		BEC19E9D1C0AD67700D37A54 /* AVOUnlimitedObjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC19E9C1C0AD67700D37A54 /* AVOUnlimitedObjectViewController.m */; };
 		BEEDD1471A86005B00300C64 /* AVOArrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDD1461A86005B00300C64 /* AVOArrayViewController.m */; };
 		BEEDD1491A88727F00300C64 /* AVOMergeSectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDD1481A88727F00300C64 /* AVOMergeSectionsViewController.m */; };
 		C879004CADDE8104CBBAA518 /* AVOFetchedResultControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C87908BD00550E283A409803 /* AVOFetchedResultControllerSpec.m */; };
@@ -98,6 +99,8 @@
 		BE76B96718498F77001E749D /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		BE8FDB1117719B3200A6113E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
 		BE8FDB1217719B3200A6113E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
+		BEC19E9B1C0AD67700D37A54 /* AVOUnlimitedObjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVOUnlimitedObjectViewController.h; sourceTree = "<group>"; };
+		BEC19E9C1C0AD67700D37A54 /* AVOUnlimitedObjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVOUnlimitedObjectViewController.m; sourceTree = "<group>"; };
 		BEEDD1461A86005B00300C64 /* AVOArrayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVOArrayViewController.m; sourceTree = "<group>"; };
 		BEEDD1481A88727F00300C64 /* AVOMergeSectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVOMergeSectionsViewController.m; sourceTree = "<group>"; };
 		C879000AD100E37BD5CCF83C /* WETodo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETodo.m; sourceTree = "<group>"; };
@@ -273,6 +276,8 @@
 				C87900D1196B2A54304A1558 /* FRCViewController.h */,
 				BEEDD1461A86005B00300C64 /* AVOArrayViewController.m */,
 				BEEDD1481A88727F00300C64 /* AVOMergeSectionsViewController.m */,
+				BEC19E9B1C0AD67700D37A54 /* AVOUnlimitedObjectViewController.h */,
+				BEC19E9C1C0AD67700D37A54 /* AVOUnlimitedObjectViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -548,6 +553,7 @@
 				C879079959003B75D9C7BF87 /* ThirdViewController.m in Sources */,
 				C87906FA06A04BF05B52B65B /* ViewObject.m in Sources */,
 				C879041242F8D565D437DBD5 /* CustomTableViewCell.m in Sources */,
+				BEC19E9D1C0AD67700D37A54 /* AVOUnlimitedObjectViewController.m in Sources */,
 				BEEDD1471A86005B00300C64 /* AVOArrayViewController.m in Sources */,
 				C87903765D35CE58D99C4BE3 /* ThirdViewObject.m in Sources */,
 				BE4D744217F5056D00287CE8 /* Model.xcdatamodeld in Sources */,

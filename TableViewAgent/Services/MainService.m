@@ -12,7 +12,7 @@
 @implementation MainService
 
 - (NSArray *)segues {
-    return @[kSegueSingleSection, kSegueMalutSection, kSegueFectedResult, kSegueArray, kSegueMergeSections];
+    return @[kSegueSingleSection, kSegueMalutSection, kSegueFectedResult, kSegueArray, kSegueMergeSections, @"UnlimitedObjectWorks"];
 }
 
 - (NSString *)segue:(NSInteger)index {

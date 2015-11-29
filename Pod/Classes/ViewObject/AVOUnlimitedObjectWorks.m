@@ -7,7 +7,20 @@
 #import "TableViewAgentProtocol.h"
 
 
-@interface AVOUnlimitedObjectWorks ()
+@interface AVOUnlimitedObjectWorks<__covariant ObjectType, SourceType> ()
+@property(nonatomic, strong) SourceType successorSourceData;
+@property(nonatomic, strong) SourceType predecessorSourceData;
+@end
+
+@implementation AVOUnlimitedLoadObject
+- (instancetype)initWithLoad:(NSArray *)loadObject source:(id)nextSourceObject {
+    self = [super init];
+    if (self) {
+        self.loadObject = loadObject;
+        self.nextSourceObject = nextSourceObject;
+    }
+    return self;
+}
 @end
 
 @implementation AVOUnlimitedObjectWorks
@@ -16,20 +29,51 @@
     self = [super init];
     if (self) {
         _array = [NSMutableArray array];
+        self.countOfNextLoad = nil;
+        self.loadObject = nil;
     }
     return self;
 }
 
 - (void)setInitializeSourceData:(id)initializeSourceData {
     _initializeSourceData = initializeSourceData;
+    self.successorSourceData = initializeSourceData;
+    self.predecessorSourceData = initializeSourceData;
     [self reload];
 }
 
 - (void)reload {
+    NSInteger count = self.countOfNextLoad ? self.countOfNextLoad(self.initializeSourceData, AVOUnlimitedSuccessor) : 1;
+    id nextObject = self.initializeSourceData;
+    for (NSInteger i = 0; i < count; i++) {
+        AVOUnlimitedLoadObject *loadObject = self.loadObject(nextObject, AVOUnlimitedSuccessor);
+        [self.array addObject:loadObject.loadObject];
+        nextObject = loadObject.nextSourceObject;
+        [self.agent insertSection:self atSection:self.array.count - 1];
+    }
+    self.successorSourceData = nextObject;
 }
 - (void)loadSuccessor {
+    NSInteger count = self.countOfNextLoad ? self.countOfNextLoad(self.successorSourceData, AVOUnlimitedSuccessor) : 1;
+    id nextObject = self.successorSourceData;
+    for (NSInteger i = 0; i < count; i++) {
+        AVOUnlimitedLoadObject *loadObject = self.loadObject(nextObject, AVOUnlimitedSuccessor);
+        [self.array addObject:loadObject.loadObject];
+        nextObject = loadObject.nextSourceObject;
+        [self.agent insertSection:self atSection:self.array.count - 1];
+    }
+    self.successorSourceData = nextObject;
 }
 - (void)loadPredecessor {
+    NSInteger count = self.countOfNextLoad ? self.countOfNextLoad(self.predecessorSourceData, AVOUnlimitedPredecessor) : 1;
+    id nextObject = self.predecessorSourceData;
+    for (NSInteger i = 0; i < count; i++) {
+        AVOUnlimitedLoadObject *loadObject = self.loadObject(nextObject, AVOUnlimitedPredecessor);
+        [self.array insertObject:loadObject.loadObject atIndex:0];
+        nextObject = loadObject.nextSourceObject;
+        [self.agent insertSection:self atSection:0];
+    }
+    self.predecessorSourceData = nextObject;
 }
 
 - (NSIndexPath *)indexPathForObject:(id)object {
